@@ -1,0 +1,304 @@
+{
+  "run_id": "public-vllm-20260828T152057426215Z-2a6647a387e7",
+  "run_name": "public-vllm-smoke-3model",
+  "protocol_version": "engineering-public-vllm-smoke-v1.1.0",
+  "log_schema_version": "2.0.0",
+  "metric_version": "engineering-only-v1.0.0",
+  "response_contract_version": "phase-response-v2.0.0",
+  "response_schema_sha256": "964a9d3fbe3932fd9cc0b8bee03d7dfc3680031383ccfc6c0e0165e7a24e889d",
+  "response_schema_hash_algorithm": "sha256-canonical-json-v1",
+  "vllm_transport_contract_version": "vllm-openai-compatible-transport-v1.2.0",
+  "start_time_utc": "2026-08-28T15:23:02.992061+00:00",
+  "end_time_utc": "2026-08-28T15:23:09.302754+00:00",
+  "start_time": "2026-08-28T15:23:02.992061+00:00",
+  "end_time": "2026-08-28T15:23:09.302754+00:00",
+  "status": "completed",
+  "aborted": false,
+  "abort_reason": null,
+  "failure_step": null,
+  "failure_phase": null,
+  "failure_agent_id": null,
+  "failure_exception_type": null,
+  "expected_steps": 1,
+  "completed_steps": 1,
+  "expected_agents": 3,
+  "observed_agents": 3,
+  "logical_llm_calls": 6,
+  "http_attempts": 6,
+  "generation_retries": 0,
+  "transport_failures": 0,
+  "syntax_parse_attempt_failures": 0,
+  "syntax_parse_failures": 0,
+  "schema_validation_failures": 0,
+  "schema_validation_supported": true,
+  "terminal_record_schema_version": "1.0.0",
+  "failure_thresholds": {
+    "transport_failures": 0,
+    "syntax_parse_failures": 0,
+    "schema_validation_failures": 0
+  },
+  "git_sha": "f1d7db7b60102b8524e9419c613e06fd7990044b",
+  "git_dirty": false,
+  "git_probe_status": "available",
+  "git_probe_errors": [],
+  "config": {
+    "agents": {
+      "communication_radius": 12,
+      "edge_policy": "full",
+      "memory_limit": 20,
+      "memory_size": 5,
+      "message_context_size": 5,
+      "message_history_limit": 20
+    },
+    "blocs": [
+      {
+        "backend_version": "0.27.1",
+        "chat_template": "tokenizer_config.json:chat_template:sha256:cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+        "data_parallel_size": 1,
+        "device_slot": "public-smoke-device-0",
+        "dtype": "bfloat16",
+        "endpoint_id": "public-smoke-qwen",
+        "flashinfer_mode": "disabled",
+        "generation_config": "vllm",
+        "gpu_memory_utilization": 0.9,
+        "llm_overrides": {},
+        "max_model_len": 4096,
+        "model": "qwen2.5-7b-instruct",
+        "model_digest": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "model_source": "Qwen/Qwen2.5-7B-Instruct",
+        "name": "qwen",
+        "num_agents": 1,
+        "provider": "vllm",
+        "quantization": "none",
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28"
+      },
+      {
+        "backend_version": "0.27.1",
+        "chat_template": "tokenizer_config.json:chat_template:sha256:e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+        "data_parallel_size": 1,
+        "device_slot": "public-smoke-device-1",
+        "dtype": "bfloat16",
+        "endpoint_id": "public-smoke-llama",
+        "flashinfer_mode": "disabled",
+        "generation_config": "vllm",
+        "gpu_memory_utilization": 0.9,
+        "llm_overrides": {},
+        "max_model_len": 4096,
+        "model": "llama-3.1-8b-instruct",
+        "model_digest": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "model_source": "meta-llama/Llama-3.1-8B-Instruct",
+        "name": "llama",
+        "num_agents": 1,
+        "provider": "vllm",
+        "quantization": "none",
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+      },
+      {
+        "backend_version": "0.27.1",
+        "chat_template": "tokenizer_config.json:chat_template:sha256:ecd6ae513fe103f0eb62e8ab5bfa8d0fe45c1074fa398b089c93a7e70c15cfd6",
+        "data_parallel_size": 1,
+        "device_slot": "public-smoke-device-group-2",
+        "dtype": "bfloat16",
+        "endpoint_id": "public-smoke-gemma",
+        "flashinfer_mode": "disabled",
+        "generation_config": "vllm",
+        "gpu_memory_utilization": 0.92,
+        "llm_overrides": {},
+        "max_model_len": 4096,
+        "model": "gemma-2-9b-it",
+        "model_digest": "11c9b309abf73637e4b6f9a3fa1e92e615547819",
+        "model_source": "google/gemma-2-9b-it",
+        "name": "gemma",
+        "num_agents": 1,
+        "provider": "vllm",
+        "quantization": "none",
+        "tensor_parallel_size": 2,
+        "tokenizer_revision": "11c9b309abf73637e4b6f9a3fa1e92e615547819"
+      }
+    ],
+    "llm_defaults": {
+      "max_concurrency": 3,
+      "max_tokens": 512,
+      "temperature": 0.0,
+      "timeout_s": 120
+    },
+    "places": [],
+    "simulation": {
+      "duration": 1,
+      "execution_mode": "vllm_openai_compatible",
+      "failure_thresholds": {
+        "schema_validation_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "half_space_size": 25,
+      "log_schema_version": "2.0.0",
+      "metric_version": "engineering-only-v1.0.0",
+      "protocol_version": "engineering-public-vllm-smoke-v1.1.0",
+      "research_eligible": false,
+      "response_contract_version": "phase-response-v2.0.0",
+      "run_id": "public-vllm-20260828T152057426215Z-2a6647a387e7",
+      "run_name": "public-vllm-smoke-3model",
+      "seed": 2301
+    }
+  },
+  "config_hash": "f3c1718beb415e3822645e969ee5d76f40e7a6486d0935c7c45d447c4d4dc0cd",
+  "config_hash_algorithm": "sha256-canonical-json-v1",
+  "prompt_hash": "4b1f0bb63015239d57b9a3af296e0cab7da19b2240776cd860abbdae4425655b",
+  "prompt_hash_algorithm": "sha256-file-bytes",
+  "execution_identity_policy": "logical-endpoints-only-v1",
+  "os": "Linux",
+  "platform": "Linux-5.15.0-187-generic-x86_64-with-glibc2.35",
+  "runtime_probe_errors": [],
+  "python_version": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]",
+  "dependencies": {
+    "requests": "2.34.2",
+    "PyYAML": "5.4.1",
+    "matplotlib": null,
+    "Pillow": "12.3.0",
+    "huggingface-hub": "1.28.0",
+    "pydantic": "2.13.4",
+    "tokenizers": "0.22.2",
+    "torch": "2.13.0",
+    "transformers": "5.15.1",
+    "vllm": "0.27.1",
+    "flashinfer-python": "0.6.16.post3"
+  },
+  "dependencies_probe_status": "partial",
+  "dependencies_probe_errors": [
+    "matplotlib:version_unavailable"
+  ],
+  "gpu_info": {
+    "status": "available",
+    "error": null,
+    "driver_version": "595.84",
+    "cuda_version": "13.2",
+    "cuda_probe_status": "available",
+    "cuda_probe_error": null,
+    "malformed_device_rows": 0,
+    "devices": [
+      {
+        "index": "0",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "1",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "2",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "3",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "4",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "5",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "6",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "7",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      }
+    ]
+  },
+  "models": [
+    {
+      "bloc": "qwen",
+      "provider": "vllm",
+      "model": "qwen2.5-7b-instruct",
+      "model_digest": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "quantization": "none",
+      "chat_template_hash": "cd5892af132b18331c83ad51a14becf7e165c3ad9124d6f00507af540fe08aef",
+      "detail_source": "config",
+      "endpoint_id": "public-smoke-qwen",
+      "device_slot": "public-smoke-device-0",
+      "endpoint_assignment_policy": null
+    },
+    {
+      "bloc": "llama",
+      "provider": "vllm",
+      "model": "llama-3.1-8b-instruct",
+      "model_digest": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "quantization": "none",
+      "chat_template_hash": "18d4bc509e8ea2d7fbd45c9b6007c0f90b194783a9ef8a2aa1532bbd8fc8122b",
+      "detail_source": "config",
+      "endpoint_id": "public-smoke-llama",
+      "device_slot": "public-smoke-device-1",
+      "endpoint_assignment_policy": null
+    },
+    {
+      "bloc": "gemma",
+      "provider": "vllm",
+      "model": "gemma-2-9b-it",
+      "model_digest": "11c9b309abf73637e4b6f9a3fa1e92e615547819",
+      "quantization": "none",
+      "chat_template_hash": "5c4014435cdc5530da287e04bc96d549ef6e169fe7b580cfaaa651a09f8675b9",
+      "detail_source": "config",
+      "endpoint_id": "public-smoke-gemma",
+      "device_slot": "public-smoke-device-group-2",
+      "endpoint_assignment_policy": null
+    }
+  ],
+  "raw_manifest": {
+    "algorithm": "sha256",
+    "files": {
+      "phase1_raw.jsonl": {
+        "sha256": "e0e51173efc07fea3ed2fbc2b9e32a45693886261565046b4e69b850a99ddd29",
+        "bytes": 1335,
+        "lines": 3
+      },
+      "messages.jsonl": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "lines": 0
+      },
+      "memory_reasoning.jsonl": {
+        "sha256": "a371db3353a7cb072ce6dfe40718743b4cd69833555bd4471b5dc94361be05af",
+        "bytes": 1130,
+        "lines": 3
+      },
+      "parse_errors.jsonl": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "lines": 0
+      },
+      "llm_attempts.jsonl": {
+        "sha256": "b09cd148b8f7627db6dcf2387dab988d955d174869de03dfbc51c85d9f1b5970",
+        "bytes": 19972,
+        "lines": 6
+      },
+      "termination.jsonl": {
+        "sha256": "84b9b1c1f03d123f2fe48443148751ea72536fbd0a3c8f797a7967825b214a16",
+        "bytes": 390,
+        "lines": 1
+      }
+    }
+  },
+  "raw_manifest_status": "available",
+  "raw_manifest_error": null,
+  "output_directory": "output_public-vllm-20260828T152057426215Z-2a6647a387e7",
+  "seed": 2301,
+  "total_llm_calls": 6,
+  "parse_errors": 0,
+  "parse_error_rate": 0.0
+}

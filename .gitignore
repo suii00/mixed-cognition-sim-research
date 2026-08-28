@@ -18,8 +18,8 @@ configs/runtime-bindings.local.yml
 secrets/
 
 # Direct runs under runs/ and versioned artifacts under derived/ are tracked.
-output_*/
-validation-output-*/
+/output_*/
+/validation-output-*/
 *.bundle
 *.tar.gz
 *.zip

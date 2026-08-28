@@ -1,5 +1,6 @@
 import hashlib
 import json
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -61,6 +62,35 @@ class RepositoryWorkflowTests(unittest.TestCase):
     def test_ingest_rejects_destination_inside_source(self):
         with self.assertRaisesRegex(ValueError, "must not be inside"):
             ingest_run(self.source, self.source / "runs")
+
+    def test_run_outputs_are_trackable_while_root_scratch_outputs_are_ignored(self):
+        repository = Path(__file__).resolve().parents[1]
+        tracked_run = subprocess.run(
+            [
+                "git",
+                "check-ignore",
+                "--no-index",
+                "runs/output_public-example/run_meta.json",
+            ],
+            cwd=repository,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        root_scratch = subprocess.run(
+            [
+                "git",
+                "check-ignore",
+                "--no-index",
+                "output_scratch/run_meta.json",
+            ],
+            cwd=repository,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(tracked_run.returncode, 1)
+        self.assertEqual(root_scratch.returncode, 0)
 
 
 if __name__ == "__main__":
