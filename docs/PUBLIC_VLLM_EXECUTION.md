@@ -103,3 +103,28 @@ python tools/run_public_vllm.py --config configs/<public-vllm-config>
 
 config は logical endpoint、exact model digest、context、sampling、response contract を保持し、
 runtime address や実機固有 ID を保持しません。
+
+## Formal 60-run matrix
+
+`tools/run_public_disaster_matrix.py`は同じpublic-by-construction primitiveを使い、
+`configs/public_formal_disaster_v3/manifest.json`に固定した60 runを二つのworker laneで実行します。
+serverはQwen replica 2、Llama replica 2、Gemma TP2 shared 1の計5 process、6 GPUです。
+
+```bash
+python tools/build_public_disaster_matrix.py --check
+python tools/run_public_disaster_matrix.py \
+  --source-git-sha <full-sha> \
+  --contract-only
+python tools/run_public_disaster_matrix.py \
+  --source-git-sha <full-sha> \
+  --preflight-only
+```
+
+本実行はcleanな承認済みsource SHA、GPU indices、8時間以下のwall limitを要求します。
+各workerは30 run/72,000 call、全体は60 run/144,000 callです。retryは許可せず、HTTP attemptも
+144,000をhard ceilingとします。一つでもrun、server、GPU scope、strict validation、scan、cleanupが
+失敗すると全体を停止し、どのrunもpublic treeへ昇格しません。成功時のaggregate evidenceは
+`derived/validation-vllm-matrix-<batch_id>/verification.json`です。
+
+条件、seed、介入、対照、観測連鎖は
+`docs/EXPERIMENT_PROTOCOL_PUBLIC_DISASTER_V3.md`に事前登録されています。

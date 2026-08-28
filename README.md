@@ -55,6 +55,26 @@ publication finding 0、runtime-binding 非残存、process cleanup、GPU releas
 
 詳細は [Public vLLM execution](docs/PUBLIC_VLLM_EXECUTION.md) を参照してください。
 
+## 公開用60-run正式matrix
+
+QQQ、LLL、GGG、三モデル混合を、三つのcommunication条件と五つの事前固定seedで
+実行する正式matrixも、このリポジトリ単体で生成・起動・検証できます。全体は60 run、
+144,000 logical callです。Qwen/Llamaを二つずつ、GemmaをTP2で一つ起動し、最大6 GPUを
+使用します。
+
+```bash
+python tools/build_public_disaster_matrix.py --check
+python tools/run_public_disaster_matrix.py --source-git-sha <full-sha> --contract-only
+python tools/run_public_disaster_matrix.py --source-git-sha <full-sha> --preflight-only
+python tools/run_public_disaster_matrix.py --source-git-sha <approved-full-sha> --gpu-indices 0,1,2,3,4,5
+```
+
+launcherは全60 runをignored stagingへ生成し、各runと全体を二重検証します。全件がstrict
+PASS、HTTP retry/failure 0、publication finding 0、runtime-binding残存0の場合だけraw bytesを
+`runs/`へ昇格します。途中失敗したmatrixを部分成果として公開したり、出力をsanitizationして
+成功扱いにしたりしません。実験条件と観測連鎖は
+[Public disaster formal protocol](docs/EXPERIMENT_PROTOCOL_PUBLIC_DISASTER_V3.md) に事前登録しています。
+
 ## 補助実行経路: Ollama
 
 Ollama は小規模な補助確認用です。主要成果物の再現経路ではありません。
@@ -78,7 +98,8 @@ python main.py \
 1. `docs/EXPERIMENT_PROTOCOL.md` の項目を事前登録し、protocol version を決めます。
 2. 既存 config を新しい名前へコピーし、`run_id`、seed、介入、対照、model 条件を
    明示します。public config に runtime 値は書きません。
-3. vLLM 実験は `python tools/run_public_vllm.py --config <config>` で実行します。
+3. 単一vLLM実験は `python tools/run_public_vllm.py --config <config>`、固定した正式matrixは
+   専用の`run_public_disaster_matrix.py`で実行します。
    remote machine で別出力へ生成した場合だけ
    `python tools/ingest_run.py <output_dir>` で同一 bytes を取り込みます。
 4. run 単体と repository 全体を検証します。

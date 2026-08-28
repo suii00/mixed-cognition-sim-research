@@ -31,6 +31,13 @@ python tools/ingest_run.py <source-output-directory>
 
 ## Experiment builders and runners
 
+- `build_public_disaster_matrix.py`: freezes the research-eligible 4 x 3 x 5
+  public matrix at 60 runs and 144,000 no-retry HTTP attempts.
+- `run_public_disaster_matrix.py`: owns five no-log vLLM servers on at most six
+  GPUs, two fail-fast workers, per-run and aggregate strict validation, scan,
+  byte-preserving promotion, and cleanup.
+- `public_disaster_matrix_worker.py`: internal one-shot worker used only inside
+  ignored staging; it is not a standalone runtime entry point.
 - `build_disaster_matrix.py` and `build_disaster_120_matrix.py`: create versioned matrix configs.
 - `disaster_matrix_runner.py` and `disaster_120_matrix_runner.py`: execute matrix cells with a
   separately supplied runtime binding.

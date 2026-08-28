@@ -1,0 +1,131 @@
+{
+  "agents": {
+    "communication_radius": 12,
+    "edge_policy": "full",
+    "memory_limit": 20,
+    "memory_size": 5,
+    "message_context_size": 5,
+    "message_history_limit": 20
+  },
+  "blocs": [
+    {
+      "backend_version": "0.27.1",
+      "chat_template": "tokenizer_config.json:chat_template:sha256:ecd6ae513fe103f0eb62e8ab5bfa8d0fe45c1074fa398b089c93a7e70c15cfd6",
+      "data_parallel_size": 1,
+      "device_slot": "public-gemma-shared-tp2",
+      "dtype": "bfloat16",
+      "endpoint_id": "worker-a-gemma",
+      "flashinfer_mode": "disabled",
+      "generation_config": "vllm",
+      "gpu_memory_utilization": 0.92,
+      "max_model_len": 4096,
+      "model": "gemma-2-9b-it",
+      "model_digest": "11c9b309abf73637e4b6f9a3fa1e92e615547819",
+      "model_source": "google/gemma-2-9b-it",
+      "name": "gemma",
+      "num_agents": 24,
+      "provider": "vllm",
+      "quantization": "none",
+      "tensor_parallel_size": 2,
+      "tokenizer_revision": "11c9b309abf73637e4b6f9a3fa1e92e615547819",
+      "use_flashinfer_sampler": false
+    }
+  ],
+  "llm_defaults": {
+    "max_concurrency": 24,
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "timeout_s": 120
+  },
+  "places": [],
+  "scenario": {
+    "communication_mode": "structured_warning",
+    "hazard": {
+      "hazard_id": "inundation-zone-1",
+      "stages": [
+        {
+          "rectangles": [
+            {
+              "x_max": 25,
+              "x_min": -25,
+              "y_max": -8,
+              "y_min": -25
+            }
+          ],
+          "start_step": 10
+        },
+        {
+          "rectangles": [
+            {
+              "x_max": 25,
+              "x_min": -25,
+              "y_max": 0,
+              "y_min": -25
+            }
+          ],
+          "start_step": 30
+        }
+      ]
+    },
+    "initial_eligible_rectangles": [
+      {
+        "x_max": 25,
+        "x_min": -25,
+        "y_max": 17,
+        "y_min": -25
+      }
+    ],
+    "official_warning": {
+      "initial_recipient_ids": [
+        1,
+        5,
+        9,
+        13,
+        17,
+        21
+      ],
+      "issue_step": 10,
+      "warning_id": "warning-inundation-1"
+    },
+    "refuges": [
+      {
+        "rectangle": {
+          "x_max": -18,
+          "x_min": -23,
+          "y_max": 23,
+          "y_min": 18
+        },
+        "refuge_id": "refuge-west"
+      },
+      {
+        "rectangle": {
+          "x_max": 23,
+          "x_min": 18,
+          "y_max": 23,
+          "y_min": 18
+        },
+        "refuge_id": "refuge-east"
+      }
+    ],
+    "schema_version": "disaster-scenario-v1.0.0",
+    "type": "disaster_v1"
+  },
+  "simulation": {
+    "duration": 60,
+    "execution_mode": "vllm_openai_compatible",
+    "failure_thresholds": {
+      "schema_validation_failures": 0,
+      "syntax_parse_failures": 0,
+      "transport_failures": 0
+    },
+    "half_space_size": 25,
+    "log_schema_version": "2.0.0",
+    "metric_version": "disaster-metric-v1.0.0",
+    "protocol_version": "formal-public-disaster-protocol-v3.0.0",
+    "research_eligible": true,
+    "response_contract_version": "phase-response-v2.0.0",
+    "run_id": "public-disaster-v3-gemma_only-structured_warning-s3101-wa",
+    "run_name": "public-disaster-v3-gemma_only-structured_warning-s3101-wa",
+    "seed": 3101
+  }
+}

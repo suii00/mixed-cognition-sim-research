@@ -24,10 +24,11 @@ def _public_config_paths(root: Path) -> list[Path]:
     config_root = root / "configs"
     return [
         path
-        for path in sorted(config_root.iterdir())
+        for path in sorted(config_root.rglob("*"))
         if path.is_file()
         and path.suffix.lower() in {".json", ".yaml", ".yml"}
         and not path.name.startswith(RUNTIME_BINDING_PREFIX)
+        and path.name != "manifest.json"
     ]
 
 
