@@ -1,0 +1,45 @@
+simulation:
+  duration: 15
+  half_space_size: 25
+  seed: 42
+  run_name: smoke_local
+  protocol_version: public-smoke-v2.0.0
+  log_schema_version: 2.0.0
+  metric_version: engineering-only-v1.0.0
+
+blocs:
+  - name: alpha
+    model: "qwen2.5:3b"
+    endpoint_id: "ollama-local"
+    num_agents: 2
+    llm_overrides:
+      format: "json"
+  - name: beta
+    model: "gemma3:4b"
+    endpoint_id: "ollama-local"
+    num_agents: 2
+    llm_overrides:
+      format: "json"
+  - name: neutral
+    model: "llama3.2:3b"
+    endpoint_id: "ollama-local"
+    num_agents: 2
+    llm_overrides:
+      format: "json"
+
+agents:
+  communication_radius: 8
+  memory_limit: 20
+  memory_size: 5
+  message_history_limit: 10
+  message_context_size: 3
+
+places:
+  - {name: left_bar, center_x: -15, center_y: 0, half_size: 5, capacity: 6}
+  - {name: right_bar, center_x: 15, center_y: 0, half_size: 5, capacity: 5}
+
+llm_defaults:
+  temperature: 0.2
+  max_tokens: 1024
+  timeout_s: 120
+  max_concurrency: 1

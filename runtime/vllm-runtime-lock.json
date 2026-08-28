@@ -1,0 +1,25 @@
+{
+  "schema_version": "public-vllm-runtime-lock-v1.0.0",
+  "python": {
+    "implementation": "CPython",
+    "version": "3.10.12"
+  },
+  "packages": {
+    "PyYAML": "5.4.1",
+    "flashinfer-python": "0.6.16.post3",
+    "huggingface-hub": "1.28.0",
+    "pydantic": "2.13.4",
+    "requests": "2.34.2",
+    "tokenizers": "0.22.2",
+    "torch": "2.13.0",
+    "transformers": "5.15.1",
+    "vllm": "0.27.1"
+  },
+  "execution_contract": {
+    "flashinfer_mode": "installed-but-disabled-before-import",
+    "loopback_only": true,
+    "max_gpu_count": 6,
+    "model_resolution": "offline-exact-snapshot",
+    "server_output": "discarded-without-file-creation"
+  }
+}

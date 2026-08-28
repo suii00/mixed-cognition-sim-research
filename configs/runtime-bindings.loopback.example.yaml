@@ -1,0 +1,5 @@
+# Operational values are loaded in memory and are never copied into run output.
+# For remote services, keep the real binding file outside the repository.
+endpoints:
+  ollama-local:
+    base_url: "http://127.0.0.1:11434"

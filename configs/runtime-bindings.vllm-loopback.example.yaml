@@ -1,0 +1,15 @@
+# Example only. The experiment configs retain logical endpoint IDs; this file
+# supplies local transport addresses at execution time and is not persisted.
+endpoints:
+  worker-a-qwen:
+    base_url: "http://127.0.0.1:8100"
+  worker-a-llama:
+    base_url: "http://127.0.0.1:8101"
+  worker-a-gemma:
+    base_url: "http://127.0.0.1:8102"
+  worker-b-qwen:
+    base_url: "http://127.0.0.1:8103"
+  worker-b-llama:
+    base_url: "http://127.0.0.1:8104"
+  worker-b-gemma:
+    base_url: "http://127.0.0.1:8105"

@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+.tmp/
+
+# Runtime routing is local state. Safe loopback examples remain tracked.
+runtime-bindings.local.yaml
+runtime-bindings.local.yml
+configs/runtime-bindings.local.yaml
+configs/runtime-bindings.local.yml
+*.runtime-bindings.local.yaml
+.env
+.env.*
+secrets/
+
+# Direct runs under runs/ and versioned artifacts under derived/ are tracked.
+output_*/
+validation-output-*/
+*.bundle
+*.tar.gz
+*.zip
+*_local.md

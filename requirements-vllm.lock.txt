@@ -1,0 +1,11 @@
+# Verified public vLLM smoke runtime. Keep in sync with
+# runtime/vllm-runtime-lock.json and tools/run_public_vllm_smoke.py.
+requests==2.34.2
+PyYAML==5.4.1
+huggingface-hub==1.28.0
+pydantic==2.13.4
+tokenizers==0.22.2
+torch==2.13.0
+transformers==5.15.1
+vllm==0.27.1
+flashinfer-python==0.6.16.post3

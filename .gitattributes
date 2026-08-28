@@ -1,0 +1,5 @@
+* text=auto
+
+# Preserve hash-bound evidence bytes and generator-selected line endings.
+/runs/output_*/** -text -whitespace
+/derived/** -text -whitespace
