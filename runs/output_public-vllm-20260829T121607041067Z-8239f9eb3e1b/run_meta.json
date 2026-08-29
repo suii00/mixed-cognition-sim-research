@@ -1,0 +1,252 @@
+{
+  "run_id": "public-vllm-20260829T121607041067Z-8239f9eb3e1b",
+  "run_name": "legacy-reproduction-vllm-llama1x1-20260823-r001",
+  "protocol_version": "legacy-reproduction-v1.0.0",
+  "log_schema_version": "2.0.0",
+  "metric_version": "metric-v2.0.0",
+  "response_contract_version": "phase-response-v1.0.0",
+  "prompt_contract_version": "legacy-prompts-v1.0.0",
+  "transport_behavior_version": "legacy-subobject-generation-retry-v1.0.0",
+  "response_failure_policy": "record_and_continue",
+  "response_schema_sha256": null,
+  "response_schema_hash_algorithm": null,
+  "vllm_transport_contract_version": "vllm-openai-compatible-transport-v1.1.0",
+  "start_time_utc": "2026-08-29T12:17:53.059674+00:00",
+  "end_time_utc": "2026-08-29T12:17:59.015337+00:00",
+  "start_time": "2026-08-29T12:17:53.059674+00:00",
+  "end_time": "2026-08-29T12:17:59.015337+00:00",
+  "status": "completed",
+  "aborted": false,
+  "abort_reason": null,
+  "failure_step": null,
+  "failure_phase": null,
+  "failure_agent_id": null,
+  "failure_exception_type": null,
+  "expected_steps": 1,
+  "completed_steps": 1,
+  "expected_agents": 1,
+  "observed_agents": 1,
+  "logical_llm_calls": 2,
+  "http_attempts": 2,
+  "generation_retries": 0,
+  "transport_failures": 0,
+  "syntax_parse_attempt_failures": 0,
+  "syntax_parse_failures": 0,
+  "schema_validation_failures": 0,
+  "schema_validation_supported": true,
+  "terminal_record_schema_version": "1.0.0",
+  "failure_thresholds": {
+    "transport_failures": 0,
+    "syntax_parse_failures": 0,
+    "schema_validation_failures": 0
+  },
+  "git_sha": "391026533677694d5ee00765d555861148124bf3",
+  "git_dirty": false,
+  "git_probe_status": "available",
+  "git_probe_errors": [],
+  "config": {
+    "agents": {
+      "communication_radius": 5,
+      "edge_policy": "full",
+      "memory_limit": 20,
+      "memory_size": 5,
+      "message_context_size": 3,
+      "message_history_limit": 10
+    },
+    "blocs": [
+      {
+        "backend_version": "0.27.1",
+        "chat_template": "tokenizer_config.json:chat_template:sha256:e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+        "data_parallel_size": 1,
+        "device_slot": "legacy-vllm-llama1x1-20260823-r001-llama-device",
+        "dtype": "bfloat16",
+        "endpoint_id": "legacy-vllm-llama1x1-20260823-r001-llama",
+        "flashinfer_mode": "disabled",
+        "generation_config": "vllm",
+        "gpu_memory_utilization": 0.9,
+        "llm_overrides": {},
+        "max_model_len": 4096,
+        "model": "llama-3.1-8b-instruct",
+        "model_digest": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "model_source": "meta-llama/Llama-3.1-8B-Instruct",
+        "name": "llama",
+        "num_agents": 1,
+        "provider": "vllm",
+        "quantization": "none",
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+      }
+    ],
+    "llm_defaults": {
+      "max_concurrency": 1,
+      "max_tokens": 256,
+      "temperature": 0.0,
+      "timeout_s": 120
+    },
+    "places": [],
+    "reproduction": {
+      "source_completed_steps": 1,
+      "source_config_sha256": "d90504e0ecbdebf8e091057a4ddffb66d26f5aa7f65b8ea538dcaf51489459dc",
+      "source_git_sha": "81e3cc1b43ac7a6bab9be8160d4d23dffb4186db",
+      "source_log_schema_version": "1.1.0",
+      "source_prompt_sha256": "f414ab30a963636d80239644c2d3770672c77d5b8bdde027de2eb15a0d08bc3d",
+      "source_protocol_version": "vllm-adapter-engineering-smoke-v1.0.0",
+      "source_run_id": "vllm-llama1x1-20260823-r001",
+      "source_status": "completed"
+    },
+    "simulation": {
+      "duration": 1,
+      "execution_mode": "vllm_openai_compatible",
+      "failure_thresholds": {
+        "schema_validation_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "half_space_size": 25,
+      "log_schema_version": "2.0.0",
+      "metric_version": "metric-v2.0.0",
+      "prompt_contract_version": "legacy-prompts-v1.0.0",
+      "protocol_version": "legacy-reproduction-v1.0.0",
+      "research_eligible": false,
+      "response_contract_version": "phase-response-v1.0.0",
+      "response_failure_policy": "record_and_continue",
+      "run_id": "public-vllm-20260829T121607041067Z-8239f9eb3e1b",
+      "run_name": "legacy-reproduction-vllm-llama1x1-20260823-r001",
+      "seed": 42,
+      "transport_behavior_version": "legacy-subobject-generation-retry-v1.0.0"
+    }
+  },
+  "config_hash": "13b67e39511255731b3ab03ee11ca39446092cc9114f492d683fcdcf939a318a",
+  "config_hash_algorithm": "sha256-canonical-json-v1",
+  "prompt_hash": "f414ab30a963636d80239644c2d3770672c77d5b8bdde027de2eb15a0d08bc3d",
+  "prompt_hash_algorithm": "sha256-file-bytes",
+  "execution_identity_policy": "logical-endpoints-only-v1",
+  "os": "Linux",
+  "platform": "Linux-5.15.0-187-generic-x86_64-with-glibc2.35",
+  "runtime_probe_errors": [],
+  "python_version": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]",
+  "dependencies": {
+    "requests": "2.34.2",
+    "PyYAML": "5.4.1",
+    "matplotlib": null,
+    "Pillow": "12.3.0",
+    "huggingface-hub": "1.28.0",
+    "pydantic": "2.13.4",
+    "tokenizers": "0.22.2",
+    "torch": "2.13.0",
+    "transformers": "5.15.1",
+    "vllm": "0.27.1",
+    "flashinfer-python": "0.6.16.post3"
+  },
+  "dependencies_probe_status": "partial",
+  "dependencies_probe_errors": [
+    "matplotlib:version_unavailable"
+  ],
+  "gpu_info": {
+    "status": "available",
+    "error": null,
+    "driver_version": "595.84",
+    "cuda_version": "13.2",
+    "cuda_probe_status": "available",
+    "cuda_probe_error": null,
+    "malformed_device_rows": 0,
+    "devices": [
+      {
+        "index": "0",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "1",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "2",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "3",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "4",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "5",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "6",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "7",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      }
+    ]
+  },
+  "models": [
+    {
+      "bloc": "llama",
+      "provider": "vllm",
+      "model": "llama-3.1-8b-instruct",
+      "model_digest": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "quantization": "none",
+      "chat_template_hash": "18d4bc509e8ea2d7fbd45c9b6007c0f90b194783a9ef8a2aa1532bbd8fc8122b",
+      "detail_source": "config",
+      "endpoint_id": "legacy-vllm-llama1x1-20260823-r001-llama",
+      "device_slot": "legacy-vllm-llama1x1-20260823-r001-llama-device",
+      "endpoint_assignment_policy": null
+    }
+  ],
+  "raw_manifest": {
+    "algorithm": "sha256",
+    "files": {
+      "phase1_raw.jsonl": {
+        "sha256": "fe632722bd3ed12dbdef59c018a43f25c71162fde72377d2ce64b2500105b114",
+        "bytes": 450,
+        "lines": 1
+      },
+      "messages.jsonl": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "lines": 0
+      },
+      "memory_reasoning.jsonl": {
+        "sha256": "522f5303b9b920df456c70951f357a5c670405b037c06e7d971d85ac16d68e65",
+        "bytes": 429,
+        "lines": 1
+      },
+      "parse_errors.jsonl": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "lines": 0
+      },
+      "llm_attempts.jsonl": {
+        "sha256": "7827791956890f910a988936a75ff2589bc1dfa5baa74e17f13a41d5c9442841",
+        "bytes": 6967,
+        "lines": 2
+      },
+      "termination.jsonl": {
+        "sha256": "b6f71544bfae59bc9462fd967d6076285165ce19bc13bbcaab7132bcc1be0cdd",
+        "bytes": 390,
+        "lines": 1
+      }
+    }
+  },
+  "raw_manifest_status": "available",
+  "raw_manifest_error": null,
+  "output_directory": "output_public-vllm-20260829T121607041067Z-8239f9eb3e1b",
+  "seed": 42,
+  "total_llm_calls": 2,
+  "parse_errors": 0,
+  "parse_error_rate": 0.0
+}
