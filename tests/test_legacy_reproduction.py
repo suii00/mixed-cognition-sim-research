@@ -82,6 +82,9 @@ class LegacyReproductionTests(unittest.TestCase):
                 simulation["transport_behavior_version"],
                 LEGACY_TRANSPORT_BEHAVIOR_VERSION,
             )
+            for bloc in config["blocs"]:
+                if bloc.get("model") == "gemma-2-9b-it":
+                    self.assertEqual(bloc["gpu_memory_utilization"], 0.95)
 
     def test_public_vllm_launcher_requires_explicit_legacy_opt_in(self):
         manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))

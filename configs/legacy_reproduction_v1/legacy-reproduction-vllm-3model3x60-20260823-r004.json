@@ -59,7 +59,7 @@
       "endpoint_id": "legacy-vllm-3model3x60-20260823-r004-gemma",
       "flashinfer_mode": "disabled",
       "generation_config": "vllm",
-      "gpu_memory_utilization": 0.92,
+      "gpu_memory_utilization": 0.95,
       "max_model_len": 4096,
       "model": "gemma-2-9b-it",
       "model_digest": "11c9b309abf73637e4b6f9a3fa1e92e615547819",

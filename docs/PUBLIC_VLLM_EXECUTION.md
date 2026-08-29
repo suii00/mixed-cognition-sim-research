@@ -20,10 +20,16 @@ Ollama は `main.py` の補助経路として残しますが、vLLM 成果物の
 launcher は Python implementation、patch version、主要 package version の完全一致を
 起動前に検査します。範囲指定や「互換と思われる」version では実行しません。
 
-検証済み profile では `flashinfer-python` 0.6.16.post3 を環境同一性の一部として固定します。
-ただし CPython 3.10.12 との import 不整合が直接観測されたため、temporary import boundary
-で FlashInfer を unavailable とし、FlashInfer sampler と all-reduce を明示的に無効化します。
-temporary boundary は終了時に削除され、repository や run には入りません。
+検証済み profile は、歴史的vLLM成果物で記録されたCPython 3.12.14、vLLM 0.27.1、
+torch 2.13.0+cu132、`flashinfer-python` 0.6.16.post3を完全一致で固定します。
+temporary import boundaryでFlashInferをunavailableとし、FlashInfer samplerと
+all-reduceを明示的に無効化します。temporary boundaryとcompile cacheはrunごとに
+一時生成して終了時に削除し、repositoryやrunには入りません。
+
+Gemma 2 9BをTP1、context 4096、fresh compile cacheで起動するconfigは
+`gpu_memory_utilization=0.95`を使います。`0.92`で成功した歴史的dual-worker endpointは
+永続AOT cacheを再利用しており、fresh-cache profileでは同じmemory余裕を再現しません。
+この調整はmodel、context、prompt、sampling、response contractを変更しません。
 
 ## No-log server lifecycle
 

@@ -67,8 +67,15 @@ not be hidden:
 - Multiple vLLM servers start sequentially under one shared startup deadline,
   avoiding simultaneous model-load peaks. Simulation begins only after every
   declared endpoint passes its model-identity health check.
-- The public runtime uses CPython 3.10.12. Historical vLLM simulator metadata
-  recorded CPython 3.12.14; the Ollama source attempts recorded CPython 3.10.12.
+- The common public runtime uses CPython 3.12.14, matching the historical vLLM
+  simulator metadata. The Ollama source attempts recorded CPython 3.10.12, so
+  their Python interpreter is not byte-identical to this common runtime.
+- Gemma TP1 endpoints use GPU memory utilization `0.95` with the public
+  per-run ephemeral compile cache. Historical r004 used `0.95`. Historical
+  `0.92` dual-worker endpoints directly recorded AOT cache reuse and a much
+  lower profiling peak; relying on that undeclared persistent cache would
+  violate the public runtime boundary. Model, context 4096, prompt, sampling,
+  response contract, and seed are unchanged.
 - Dual-worker A and B may be executed sequentially on one host under the
   six-GPU guard. Such runs do not reproduce simultaneous two-worker host load.
 

@@ -172,6 +172,7 @@ def validate_runtime_lock(value: Mapping[str, Any]) -> None:
     ):
         raise PublicVllmError("runtime lock package versions are invalid")
     expected_contract = {
+        "compile_cache": "ephemeral-per-run",
         "flashinfer_mode": "installed-but-disabled-before-import",
         "loopback_only": True,
         "max_gpu_count": 6,

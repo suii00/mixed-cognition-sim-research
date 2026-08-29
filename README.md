@@ -39,9 +39,10 @@ Vol.1 課題（GPL-3.0）に由来し、AUTOMATA ハッカソン Vol.2 では公
 ## 標準実行経路: vLLM
 
 実成果物の主要 backend に合わせ、vLLM を標準実行経路とします。検証済み runtime は
-CPython 3.10.12、vLLM 0.27.1、torch 2.13.0 です。FlashInfer 0.6.16.post3 は
-環境同一性のため記録・固定しますが、この Python 組合せで生じる import 不整合を避ける
-ため、launcher が import 前に無効化し、torch 経路を使います。
+CPython 3.12.14、vLLM 0.27.1、torch 2.13.0+cu132 です。FlashInfer 0.6.16.post3 は
+環境同一性のため記録・固定し、launcher は sampler と all-reduce を import 前に無効化して
+torch/FlashAttention 経路を使います。compile cache はrunごとに一時生成し、公開成果物へ
+保存しません。
 
 ```bash
 python -m venv .venv
@@ -141,6 +142,9 @@ launcherは最大6 GPUを強制します。この許可内では8/10条件を実
 を参照してください。Ollamaのmodel rootは実行時引数としてのみ渡され、公開config、
 run、検証記録には保存されません。複数のvLLM serverは共有startup deadline内で
 順次起動し、全endpointのhealth check後にのみsimulationを開始します。
+Gemma 2 9BのTP1/4096 contextはfresh compile cacheでも起動できるよう
+`gpu_memory_utilization=0.95`を固定します。これはmodel、context、prompt、sampling、
+response contractを変えない運用上のmemory予約です。
 
 ## 新しい実験
 

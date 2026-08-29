@@ -69,7 +69,7 @@
       "endpoint_id": "legacy-vllm-3model24x60-3gpu-json-20260823-r002-gemma",
       "flashinfer_mode": "disabled",
       "generation_config": "vllm",
-      "gpu_memory_utilization": 0.92,
+      "gpu_memory_utilization": 0.95,
       "llm_overrides": {
         "response_format": {
           "type": "json_object"

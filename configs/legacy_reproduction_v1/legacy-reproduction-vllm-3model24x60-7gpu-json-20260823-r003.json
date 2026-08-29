@@ -100,7 +100,7 @@
       ],
       "flashinfer_mode": "disabled",
       "generation_config": "vllm",
-      "gpu_memory_utilization": 0.92,
+      "gpu_memory_utilization": 0.95,
       "llm_overrides": {
         "response_format": {
           "type": "json_object"

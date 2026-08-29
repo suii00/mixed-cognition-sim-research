@@ -58,7 +58,9 @@ class PublicVllmContractTests(unittest.TestCase):
 
     def test_runtime_lock_records_exact_flashinfer_disabled_profile(self):
         _config, lock = self.load_contract()
-        self.assertEqual(lock["python"]["version"], "3.10.12")
+        self.assertEqual(lock["python"]["version"], "3.12.14")
+        self.assertEqual(lock["packages"]["PyYAML"], "6.0.3")
+        self.assertEqual(lock["packages"]["torch"], "2.13.0+cu132")
         self.assertEqual(lock["packages"]["vllm"], "0.27.1")
         self.assertEqual(
             lock["packages"]["flashinfer-python"],
@@ -73,6 +75,10 @@ class PublicVllmContractTests(unittest.TestCase):
             lock["execution_contract"]["server_startup"],
             "sequential-under-shared-deadline",
         )
+        self.assertEqual(
+            lock["execution_contract"]["compile_cache"],
+            "ephemeral-per-run",
+        )
 
     def test_runtime_check_rejects_any_version_drift(self):
         _config, lock = self.load_contract()
@@ -85,7 +91,7 @@ class PublicVllmContractTests(unittest.TestCase):
         ), mock.patch.object(
             launcher.platform,
             "python_version",
-            return_value="3.10.12",
+            return_value="3.12.14",
         ), mock.patch.object(
             launcher.importlib.metadata,
             "version",

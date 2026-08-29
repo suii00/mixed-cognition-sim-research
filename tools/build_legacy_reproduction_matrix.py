@@ -101,7 +101,10 @@ VLLM_MODELS: Mapping[str, Mapping[str, Any]] = {
         "dtype": "bfloat16",
         "flashinfer_mode": "disabled",
         "generation_config": "vllm",
-        "gpu_memory_utilization": 0.92,
+        # A fresh per-run compile cache raises the observed profiling peak.
+        # 0.95 is the source r004 value that retained context 4096 on A5000;
+        # 0.92 succeeded only after a persistent AOT cache was reused.
+        "gpu_memory_utilization": 0.95,
         "max_model_len": 4096,
         "model": "gemma-2-9b-it",
         "model_digest": "11c9b309abf73637e4b6f9a3fa1e92e615547819",
