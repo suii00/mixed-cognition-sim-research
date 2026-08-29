@@ -1,0 +1,29 @@
+{
+  "all_process_groups_stopped": true,
+  "flashinfer_mode": "installed-but-disabled-before-import",
+  "gpu_release_verified": true,
+  "max_model_len_values": [
+    4096
+  ],
+  "maximum_observed_active_gpu_count": 3,
+  "metric_version": "metric-v2.0.0",
+  "model_sources": [
+    "Qwen/Qwen2.5-7B-Instruct",
+    "google/gemma-2-9b-it",
+    "meta-llama/Llama-3.1-8B-Instruct"
+  ],
+  "protocol_version": "legacy-reproduction-v1.0.0",
+  "publication_scan_finding_count": 0,
+  "response_contract_version": "phase-response-v1.0.0",
+  "run_id": "public-vllm-20260829T151127995633Z-44a6ec3cb9d5",
+  "run_tree_sha256": "42ced415942580af4dd37b244aecfaa761de79f29068a4aa3e2ad86656423657",
+  "runtime_binding_values_persisted": false,
+  "runtime_lock_sha256": "787155a3e6bda400a06e465751f3904b63b96bd2397b8b2a53b5add2937822aa",
+  "schema_version": "public-vllm-verification-v1.0.0",
+  "selected_gpu_count": 3,
+  "server_startup": "sequential-under-shared-deadline",
+  "source_git_sha": "66fa94c6d268b095afeeda367f700e79f30744d9",
+  "strict_unverifiable_count": 5,
+  "strict_validation_passed": false,
+  "vllm_server_log_files_created": false
+}
