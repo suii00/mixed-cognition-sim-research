@@ -1,10 +1,18 @@
 # Tools
 
-## Standard vLLM execution
+## Backend execution
+
+The foundational Ollama path enters through `main.py`; see the
+[repository README](../README.md) and
+[local execution guide](../docs/SIMPLE_BACKEND_EXECUTION.md). The advanced
+vLLM path uses the launcher below.
+
+## Advanced vLLM execution
 
 `run_public_vllm.py` owns the no-log server lifecycle, exact runtime/model
 preflight, maximum-six-GPU allocation, health checks, strict validation,
-publication scan, and cleanup. It is the standard path for vLLM experiments.
+publication scan, and cleanup. It is the standard launcher for vLLM experiments
+and for reproducing the repository's current formal artifacts.
 
 ```bash
 python tools/run_public_vllm.py --preflight-only
