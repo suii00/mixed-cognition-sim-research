@@ -176,6 +176,7 @@ def validate_runtime_lock(value: Mapping[str, Any]) -> None:
         "loopback_only": True,
         "max_gpu_count": 6,
         "model_resolution": "offline-exact-snapshot",
+        "server_startup": "sequential-under-shared-deadline",
         "server_output": "discarded-without-file-creation",
     }
     if contract != expected_contract:
@@ -595,8 +596,12 @@ def wait_for_servers(
     while time.monotonic() < deadline:
         guard.observe(query_gpu_rows())
         for ordinal, (spec, process) in enumerate(zip(specs, processes)):
-            if process.poll() is not None:
-                raise PublicVllmError("a vLLM server stopped during startup")
+            return_code = process.poll()
+            if return_code is not None:
+                raise PublicVllmError(
+                    "vLLM server "
+                    f"{ordinal} stopped during startup with exit code {return_code}"
+                )
             if ordinal not in ready and endpoint_ready(spec):
                 ready.add(ordinal)
         if len(ready) == len(specs):
@@ -615,6 +620,29 @@ def wait_for_servers(
             return
         time.sleep(1.0)
     raise PublicVllmError("vLLM startup health check timed out")
+
+
+def start_servers_sequentially(
+    specs: Sequence[EndpointSpec],
+    processes: list[subprocess.Popen[bytes]],
+    runtime_root: Path,
+    shadow_root: Path,
+    guard: GpuGuard,
+    timeout_s: float,
+) -> None:
+    deadline = time.monotonic() + timeout_s
+    for spec in specs:
+        processes.append(start_server(spec, runtime_root, shadow_root))
+        remaining_s = deadline - time.monotonic()
+        if remaining_s <= 0:
+            raise PublicVllmError("vLLM startup health check timed out")
+        count = len(processes)
+        wait_for_servers(
+            specs[:count],
+            processes,
+            guard,
+            remaining_s,
+        )
 
 
 def wait_for_gpu_release(guard: GpuGuard, timeout_s: float = 45.0) -> bool:
@@ -780,6 +808,7 @@ def write_evidence(
         "strict_unverifiable_count": strict_unverifiable_count,
         "publication_scan_finding_count": publication_findings,
         "runtime_binding_values_persisted": False,
+        "server_startup": lock["execution_contract"]["server_startup"],
         "vllm_server_log_files_created": False,
         "selected_gpu_count": len(guard.selected),
         "maximum_observed_active_gpu_count": guard.max_observed_active_gpu_count,
@@ -874,13 +903,11 @@ def run_public_vllm(args: argparse.Namespace) -> tuple[str, Path]:
                 specs,
             )
             try:
-                servers = [
-                    start_server(spec, runtime_root, shadow_root)
-                    for spec in specs
-                ]
-                wait_for_servers(
+                start_servers_sequentially(
                     specs,
                     servers,
+                    runtime_root,
+                    shadow_root,
                     guard,
                     args.startup_timeout_s,
                 )

@@ -69,6 +69,10 @@ class PublicVllmContractTests(unittest.TestCase):
             "installed-but-disabled-before-import",
         )
         self.assertEqual(lock["execution_contract"]["max_gpu_count"], 6)
+        self.assertEqual(
+            lock["execution_contract"]["server_startup"],
+            "sequential-under-shared-deadline",
+        )
 
     def test_runtime_check_rejects_any_version_drift(self):
         _config, lock = self.load_contract()
@@ -244,6 +248,41 @@ class PublicVllmProcessBoundaryTests(unittest.TestCase):
             self.assertEqual(kwargs["stdin"], subprocess.DEVNULL)
             self.assertTrue(kwargs["start_new_session"])
             self.assertEqual(kwargs["cwd"], snapshot)
+
+    def test_servers_start_sequentially_under_one_shared_deadline(self):
+        specs = [
+            self.make_spec(Path(f"snapshot-{ordinal}"))
+            for ordinal in range(3)
+        ]
+        processes = []
+        created = [mock.Mock(name=f"process-{ordinal}") for ordinal in range(3)]
+        observed_counts = []
+        with mock.patch.object(
+            launcher,
+            "start_server",
+            side_effect=created,
+        ) as start, mock.patch.object(
+            launcher,
+            "wait_for_servers",
+            side_effect=lambda ready_specs, ready_processes, _guard, _timeout: (
+                observed_counts.append((len(ready_specs), len(ready_processes)))
+            ),
+        ), mock.patch.object(
+            launcher.time,
+            "monotonic",
+            side_effect=(100.0, 101.0, 102.0, 103.0),
+        ):
+            launcher.start_servers_sequentially(
+                specs,
+                processes,
+                Path("runtime"),
+                Path("shadow"),
+                mock.Mock(),
+                10.0,
+            )
+        self.assertEqual(processes, created)
+        self.assertEqual(observed_counts, [(1, 1), (2, 2), (3, 3)])
+        self.assertEqual(start.call_count, 3)
 
     def test_flashinfer_shadow_disables_import_without_persisted_log(self):
         with tempfile.TemporaryDirectory() as temporary:

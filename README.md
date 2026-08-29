@@ -139,7 +139,8 @@ launcherは最大6 GPUを強制します。この許可内では8/10条件を実
 送っていないため、同一テキストやraw bytesは保証しません。詳細は
 [Historical Run Reproduction Protocol](docs/EXPERIMENT_PROTOCOL_LEGACY_REPRODUCTION_V1.md)
 を参照してください。Ollamaのmodel rootは実行時引数としてのみ渡され、公開config、
-run、検証記録には保存されません。
+run、検証記録には保存されません。複数のvLLM serverは共有startup deadline内で
+順次起動し、全endpointのhealth check後にのみsimulationを開始します。
 
 ## 新しい実験
 

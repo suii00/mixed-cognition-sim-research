@@ -20,6 +20,7 @@
     "loopback_only": true,
     "max_gpu_count": 6,
     "model_resolution": "offline-exact-snapshot",
+    "server_startup": "sequential-under-shared-deadline",
     "server_output": "discarded-without-file-creation"
   }
 }

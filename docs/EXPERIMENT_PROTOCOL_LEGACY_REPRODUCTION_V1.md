@@ -64,6 +64,9 @@ not be hidden:
   mechanically checked to be absent from the run tree and verification record.
 - The public vLLM runtime disables FlashInfer before import. This differs from
   any historical endpoint for which sampler-kernel selection was not recorded.
+- Multiple vLLM servers start sequentially under one shared startup deadline,
+  avoiding simultaneous model-load peaks. Simulation begins only after every
+  declared endpoint passes its model-identity health check.
 - The public runtime uses CPython 3.10.12. Historical vLLM simulator metadata
   recorded CPython 3.12.14; the Ollama source attempts recorded CPython 3.10.12.
 - Dual-worker A and B may be executed sequentially on one host under the
