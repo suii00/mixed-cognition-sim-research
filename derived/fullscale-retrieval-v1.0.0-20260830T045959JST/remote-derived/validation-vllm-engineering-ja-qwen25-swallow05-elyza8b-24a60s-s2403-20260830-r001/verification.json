@@ -1,0 +1,29 @@
+{
+  "all_process_groups_stopped": true,
+  "flashinfer_mode": "installed-but-disabled-before-import",
+  "gpu_release_verified": true,
+  "max_model_len_values": [
+    4096
+  ],
+  "maximum_observed_active_gpu_count": 3,
+  "metric_version": "engineering-only-v1.0.0",
+  "model_sources": [
+    "Qwen/Qwen2.5-7B-Instruct",
+    "elyza/Llama-3-ELYZA-JP-8B",
+    "tokyotech-llm/Llama-3.1-Swallow-8B-Instruct-v0.5"
+  ],
+  "protocol_version": "engineering-japanese-3model-24agent-60step-fullscale-v1.0.0",
+  "publication_scan_finding_count": 0,
+  "response_contract_version": "phase-response-v2.0.0",
+  "run_id": "engineering-ja-qwen25-swallow05-elyza8b-24a60s-s2403-20260830-r001",
+  "run_tree_sha256": "063d2c706219158718903034a9a3b638dc78774b9162bed3993635c66a9a55d1",
+  "runtime_binding_values_persisted": false,
+  "runtime_lock_sha256": "787155a3e6bda400a06e465751f3904b63b96bd2397b8b2a53b5add2937822aa",
+  "schema_version": "public-vllm-verification-v1.0.0",
+  "selected_gpu_count": 3,
+  "server_startup": "sequential-under-shared-deadline",
+  "source_git_sha": "3f9e141a67c2ff6ed700e9ffa4fe29230882f297",
+  "strict_unverifiable_count": 5,
+  "strict_validation_passed": true,
+  "vllm_server_log_files_created": false
+}

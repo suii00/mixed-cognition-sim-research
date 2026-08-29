@@ -1,0 +1,66 @@
+{
+  "schema_version": "fullscale-retrieval-manifest-v1.0.0",
+  "retrieved_at": "2026-08-30T05:03:25.9617166+09:00",
+  "run_id": "engineering-ja-qwen25-swallow05-elyza8b-24a60s-s2403-20260830-r001",
+  "research_eligible": false,
+  "source": {
+    "git_sha": "3f9e141a67c2ff6ed700e9ffa4fe29230882f297",
+    "git_dirty": false,
+    "bundle_sha256": "0bf2b7aa32cb3c7adce9af151bc74bd6599e4fca2e952339fb16ebe97069292f"
+  },
+  "contracts": {
+    "protocol_version": "engineering-japanese-3model-24agent-60step-fullscale-v1.0.0",
+    "metric_version": "engineering-only-v1.0.0",
+    "response_contract_version": "phase-response-v2.0.0"
+  },
+  "execution": {
+    "status": "completed",
+    "aborted": false,
+    "completed_steps": 60,
+    "expected_steps": 60,
+    "expected_agents": 24
+  },
+  "retrieval_integrity": {
+    "remote_file_count": 11,
+    "local_file_count": 11,
+    "all_relative_paths_and_sha256_equal": true,
+    "raw_run_tree_sha256": "063d2c706219158718903034a9a3b638dc78774b9162bed3993635c66a9a55d1"
+  },
+  "validation": {
+    "strict_validation_passed": true,
+    "strict_unverifiable_count": 5,
+    "publication_scan_finding_count": 0
+  },
+  "artifacts": [
+    {
+      "path": "../../runs/output_engineering-ja-qwen25-swallow05-elyza8b-24a60s-s2403-20260830-r001",
+      "role": "immutable_raw_run",
+      "sha256": "063d2c706219158718903034a9a3b638dc78774b9162bed3993635c66a9a55d1",
+      "sha256_scope": "run_tree"
+    },
+    {
+      "path": "inputs/engineering_ja_qwen25_swallow05_elyza8b_24a60s_s2403_r001.json",
+      "role": "public_config",
+      "sha256": "2ff2361804c65ed7af8dad070d6d1541c5d2c794e33f1a2e6754cc6ab1132d40",
+      "sha256_scope": "file"
+    },
+    {
+      "path": "inputs/experiment_plan_24a60s.json",
+      "role": "experiment_plan",
+      "sha256": "c464a6895dc8f583bc276e0516bac0373c578699235a5bfd0b710951acdd5db2",
+      "sha256_scope": "file"
+    },
+    {
+      "path": "remote-derived/validation-vllm-engineering-ja-qwen25-swallow05-elyza8b-24a60s-s2403-20260830-r001/verification.json",
+      "role": "remote_validation_evidence",
+      "sha256": "ef482a471ee78da5f75c894f69a57efe8f6992bb252b1212ab3b0b6e299c0568",
+      "sha256_scope": "file"
+    },
+    {
+      "path": "remote-derived/fullscale-result-v1.0.0/fullscale_result_24a60s.json",
+      "role": "fullscale_engineering_result",
+      "sha256": "230b09a70d5e70fb42b62c7b437bb85235a20214d8b34a1c561747609df21dd1",
+      "sha256_scope": "file"
+    }
+  ]
+}

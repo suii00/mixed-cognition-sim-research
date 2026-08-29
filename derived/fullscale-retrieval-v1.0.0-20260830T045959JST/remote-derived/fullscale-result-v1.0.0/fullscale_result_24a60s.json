@@ -1,0 +1,109 @@
+{
+  "schema_version": "engineering-fullscale-result-v1.0.0",
+  "experiment_id": "engineering-ja-qwen25-swallow05-elyza8b-24a60s-s2403-20260830-r001",
+  "source": {
+    "git_commit": "3f9e141a67c2ff6ed700e9ffa4fe29230882f297",
+    "git_bundle_sha256": "0bf2b7aa32cb3c7adce9af151bc74bd6599e4fca2e952339fb16ebe97069292f",
+    "clean_before_execution": true,
+    "clean_after_execution": true
+  },
+  "inputs": {
+    "config_sha256": "2ff2361804c65ed7af8dad070d6d1541c5d2c794e33f1a2e6754cc6ab1132d40",
+    "experiment_plan_sha256": "c464a6895dc8f583bc276e0516bac0373c578699235a5bfd0b710951acdd5db2",
+    "research_eligible": false,
+    "seed": 2403,
+    "duration": 60
+  },
+  "control": {
+    "run_id": "engineering-ja-qwen25-swallow05-elyza8b-24a10s-s2403-20260830-r001",
+    "run_tree_sha256": "b5f11bc2ce5c453d4fb882f7f47cbfbfc0e281c989e335079e6616bffb461dd6"
+  },
+  "direct_observation": {
+    "run_id": "engineering-ja-qwen25-swallow05-elyza8b-24a60s-s2403-20260830-r001",
+    "status": "completed",
+    "aborted": false,
+    "completed_steps": 60,
+    "phase1_attempts": 1440,
+    "phase3_attempts": 1440,
+    "attempts_per_phase_per_model": 480,
+    "llm_attempts": 2880,
+    "phase1_rows": 1440,
+    "memory_reasoning_rows": 1440,
+    "message_rows": 1410,
+    "parse_error_rows": 0,
+    "attempts_with_japanese_script": 2880,
+    "transport_failures": 0,
+    "syntax_parse_failures": 0,
+    "schema_validation_failures": 0,
+    "http_status_values": [200],
+    "finish_reason_values": ["stop"],
+    "transport_status_values": ["ok"],
+    "parse_status_values": ["valid"],
+    "schema_status_values": ["valid"],
+    "failure_kind_values": [null],
+    "error_type_values": [null]
+  },
+  "mechanical_derivation": {
+    "qwen": {
+      "attempts": 960,
+      "prompt_tokens_total": 355856,
+      "prompt_tokens_max": 463,
+      "completion_tokens_total": 70783,
+      "completion_tokens_max": 125
+    },
+    "swallow": {
+      "attempts": 960,
+      "prompt_tokens_total": 445516,
+      "prompt_tokens_max": 579,
+      "completion_tokens_total": 68721,
+      "completion_tokens_max": 132
+    },
+    "elyza": {
+      "attempts": 960,
+      "prompt_tokens_total": 335816,
+      "prompt_tokens_max": 489,
+      "completion_tokens_total": 53514,
+      "completion_tokens_max": 103
+    },
+    "all_60_steps_have_24_phase1_attempts_followed_by_24_phase3_attempts": true,
+    "maximum_prompt_tokens_below_4096_context_limit": true,
+    "maximum_completion_tokens_below_256_generation_limit": true
+  },
+  "validation": {
+    "strict_validation_passed": true,
+    "strict_unverifiable_count": 5,
+    "publication_scan_finding_count": 0,
+    "runtime_binding_values_persisted": false,
+    "selected_gpu_count": 3,
+    "maximum_observed_active_gpu_count": 3,
+    "gpu_release_verified": true,
+    "all_process_groups_stopped": true,
+    "vllm_server_log_files_created": false,
+    "post_run_gpu_memory_mib": {
+      "selected_slot_0": 1,
+      "selected_slot_1": 1,
+      "selected_slot_2": 1
+    },
+    "run_tree_sha256": "063d2c706219158718903034a9a3b638dc78774b9162bed3993635c66a9a55d1"
+  },
+  "decision": {
+    "fullscale_engineering_operation_passed": true,
+    "research_eligible": false,
+    "may_be_promoted_to_research": false
+  },
+  "interpretation": "The clean-source Japanese three-model 24-agent by 60-step engineering operation passed every pre-registered operational, coverage, response, token-envelope, publication, and cleanup rule. This result establishes only the recorded engineering operation and is not research evidence.",
+  "analysis_restrictions_applied": [
+    "No model actions, messages, explanation text, or behavioral metrics were used for the gate decision.",
+    "The 1410 message rows record exposure only and are not interpreted as receiver reuse or adoption.",
+    "Model-generated reasoning fields are not interpreted as access to internal model reasoning.",
+    "Seed 2403 remains reserved for engineering use and this run will not be pooled with a formal run."
+  ],
+  "remaining_unverifiable": [
+    "matplotlib dependency version unavailable",
+    "complete dependency environment unavailable",
+    "global event identity does not cover every primary Phase/message row under schema 2.0",
+    "raw manifest hashes are not externally signed",
+    "operational endpoint address identity is deliberately excluded"
+  ],
+  "research_eligible": false
+}
