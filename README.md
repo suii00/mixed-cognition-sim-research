@@ -24,6 +24,18 @@ simulation、disaster scenario、parallel transport、metrics、可視化、run 
 
 詳細は [Publication boundary](docs/PUBLICATION_BOUNDARY.md) を参照してください。
 
+## クレジットと系譜
+
+数値情報のみを与え定性評価を排除する観察パラダイムは、シンギュラボ ハッカソン
+Vol.1 課題（GPL-3.0）に由来し、AUTOMATA ハッカソン Vol.2 では公式デモ
+[ryukih/SD-Hackathon-2026DEMO](https://github.com/ryukih/SD-Hackathon-2026DEMO)
+（Apache-2.0, © 2026 Dr. Ryuki HYODO / SpaceData Inc.）として提供されている。
+
+本リポジトリは設計仕様書からのスクラッチ実装であり、上記からのコード流用は
+ない。4フェーズ実行順序・通信制約・jsonl フィールド名は、Vol.1 で筆者が構築した
+[suii00/2d-multi-places-simulation-on-fire-public](https://github.com/suii00/2d-multi-places-simulation-on-fire-public)
+を適用可能にするため、意図的に互換を保っている。
+
 ## 標準実行経路: vLLM
 
 実成果物の主要 backend に合わせ、vLLM を標準実行経路とします。検証済み runtime は
