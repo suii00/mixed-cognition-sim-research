@@ -58,7 +58,7 @@ from tools.scan_publication import scan_text, scan_tree  # noqa: E402
 
 DEFAULT_BASE_PORT = 18200
 MAXIMUM_WALL_TIMEOUT_S = 8 * 60 * 60
-EVIDENCE_SCHEMA_VERSION = "public-disaster-matrix-verification-v1.0.0"
+EVIDENCE_SCHEMA_VERSION = "public-disaster-matrix-verification-v1.1.0"
 SOURCE_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 SAFE_WORKER_FAILURE_CODES = frozenset({
     "source_revision_mismatch",
@@ -396,6 +396,7 @@ def write_evidence(
         "metric_version": manifest["metric_version"],
         "response_contract_version": manifest["response_contract_version"],
         "log_schema_version": manifest["log_schema_version"],
+        "validation_gate_version": manifest["validation_gate_version"],
         "research_eligible": True,
         "seeds": manifest["seeds"],
         "compositions": manifest["compositions"],
@@ -412,7 +413,15 @@ def write_evidence(
         "syntax_parse_failures": 0,
         "schema_validation_failures": 0,
         "strict_validation_passed": True,
-        "strict_unverifiable_count": 0,
+        "runs_with_strict_unverifiable": sum(
+            row["strict_unverifiable_count"] > 0 for row in verified
+        ),
+        "strict_unverifiable_total_count": sum(
+            row["strict_unverifiable_count"] for row in verified
+        ),
+        "strict_unverifiable_digest_set": sorted({
+            row["strict_unverifiable_sha256"] for row in verified
+        }),
         "publication_scan_finding_count": 0,
         "runtime_binding_values_persisted": False,
         "vllm_server_log_files_created": False,

@@ -126,5 +126,8 @@ python tools/run_public_disaster_matrix.py \
 失敗すると全体を停止し、どのrunもpublic treeへ昇格しません。成功時のaggregate evidenceは
 `derived/validation-vllm-matrix-<batch_id>/verification.json`です。
 
+strict validationの`unverifiable`はerrorとは別のepistemic limitationです。launcherは
+`valid == true`を必須とし、unverifiableを隠さず件数とdigestでevidenceへ記録します。
+
 条件、seed、介入、対照、観測連鎖は
 `docs/EXPERIMENT_PROTOCOL_PUBLIC_DISASTER_V3.md`に事前登録されています。

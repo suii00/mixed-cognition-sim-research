@@ -126,7 +126,7 @@ def verify_one_run(
     forbidden_runtime_values: Sequence[bytes],
 ) -> dict:
     report = validate_run(run_dir, strict=True)
-    if not report.valid or report.unverifiable:
+    if not report.valid:
         raise WorkerError("strict_validation_failed")
     findings = scan_tree(run_dir)
     if findings:
@@ -164,6 +164,11 @@ def verify_one_run(
         or persisted_config.get("simulation", {}).get("research_eligible") is not True
     ):
         raise WorkerError("research_eligibility_not_persisted")
+    unverifiable_bytes = json.dumps(
+        report.unverifiable,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).encode("utf-8")
     return {
         "run_id": row["run_id"],
         "config_sha256": row["sha256"],
@@ -171,7 +176,10 @@ def verify_one_run(
         "logical_llm_calls": expected_calls,
         "http_attempts": int(row["expected_http_attempts"]),
         "strict_validation_passed": True,
-        "strict_unverifiable_count": 0,
+        "strict_unverifiable_count": len(report.unverifiable),
+        "strict_unverifiable_sha256": hashlib.sha256(
+            unverifiable_bytes
+        ).hexdigest(),
         "publication_scan_finding_count": 0,
         "runtime_binding_values_persisted": False,
     }

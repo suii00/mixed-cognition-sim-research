@@ -30,6 +30,7 @@ OUTPUT_DIR = REPO_ROOT / "configs" / "public_formal_disaster_v3"
 SEEDS = (3101, 3102, 3103, 3104, 3105)
 PROTOCOL_VERSION = "formal-public-disaster-protocol-v3.0.0"
 MATRIX_SCHEMA_VERSION = "formal-public-disaster-matrix-v1.0.0"
+VALIDATION_GATE_VERSION = "public-strict-gate-v1.1.0"
 RESPONSE_CONTRACT_VERSION = CANONICAL_RESPONSE_CONTRACT_VERSION
 LOG_SCHEMA_VERSION = "2.0.0"
 DURATION = 60
@@ -158,6 +159,7 @@ def build_files() -> dict[str, bytes]:
         "metric_version": METRIC_VERSION,
         "response_contract_version": RESPONSE_CONTRACT_VERSION,
         "log_schema_version": LOG_SCHEMA_VERSION,
+        "validation_gate_version": VALIDATION_GATE_VERSION,
         "duration": DURATION,
         "agent_count": AGENT_COUNT,
         "research_eligible": True,

@@ -96,7 +96,8 @@ fileやpipeを作らない。子process環境はallowlistで再構成し、認�
 - status completed、60/60 step、24/24 agent
 - logical callとHTTP attemptがmanifestのexact count
 - retry、transport、syntax、schema failureがすべて0
-- strict validation PASSかつunverifiable 0
+- strict validation PASS。validatorが証明不能と明示する事項は件数とdigestを保存し、
+  validation errorと混同しない
 - publication scan finding 0
 - runtime-binding byteの非残存
 - runtime/run内のserver log file 0
@@ -119,3 +120,12 @@ stagingに残る安全なcompleted、negative、aborted evidenceは元bytesを�
 - fail-fast停止条件
 
 承認された上限を超えるoptionはlauncherが拒否する。
+
+## Strict-validation epistemic limits
+
+strict validatorの`valid`は、現行schemaから機械的に検査できる整合条件がすべてPASSしたことを
+意味する。外部署名によるcryptographic authenticity、意図的に成果物から除外したruntime address、
+全primary rowを覆うglobal event identityなど、成果物だけから証明できない事項は
+`unverifiable`として別に報告される。これらをPASSと主張せず、同時にvalidation errorとしても
+扱わない。formal gateは`valid == true`を要求し、各runのunverifiable listは本文を複製せず、件数と
+canonical digestをaggregate evidenceへ保存する。

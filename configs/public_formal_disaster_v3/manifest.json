@@ -872,6 +872,7 @@
       "tensor_parallel_size": 2
     }
   ],
+  "validation_gate_version": "public-strict-gate-v1.1.0",
   "worker_slots": [
     "a",
     "b"

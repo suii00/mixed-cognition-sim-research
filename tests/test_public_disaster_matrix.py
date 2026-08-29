@@ -5,11 +5,14 @@ import tempfile
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
+from types import SimpleNamespace
+from unittest import mock
 
 import yaml
 
 from engine.config import build_effective_config
 from tools import run_public_disaster_matrix as launcher
+from tools import public_disaster_matrix_worker as worker
 from tools.build_public_disaster_matrix import (
     COMPOSITIONS,
     LOG_SCHEMA_VERSION,
@@ -50,6 +53,10 @@ class PublicDisasterMatrixContractTests(unittest.TestCase):
         self.assertEqual(self.manifest["planned_runs"], 60)
         self.assertEqual(self.manifest["planned_logical_llm_calls"], 144000)
         self.assertEqual(self.manifest["planned_http_attempts"], 144000)
+        self.assertEqual(
+            self.manifest["validation_gate_version"],
+            "public-strict-gate-v1.1.0",
+        )
         self.assertEqual(
             self.manifest["contingency_ceiling_logical_llm_calls"],
             144000,
@@ -209,6 +216,65 @@ class PublicDisasterLauncherTests(unittest.TestCase):
                 '{"value":"http://127.0.0.1:19000"}\n', encoding="utf-8"
             )
             self.assertFalse(runtime_values_absent(root, (b"http://127.0.0.1:19000",)))
+
+    def test_strict_unverifiable_is_recorded_without_becoming_an_error(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            run_dir = Path(temporary) / "output_run-a"
+            run_dir.mkdir()
+            source_sha = "a" * 40
+            config = {
+                "simulation": {"duration": 60, "research_eligible": True}
+            }
+            meta = {
+                "run_id": "run-a",
+                "status": "completed",
+                "aborted": False,
+                "expected_steps": 60,
+                "completed_steps": 60,
+                "expected_agents": 24,
+                "observed_agents": 24,
+                "logical_llm_calls": 1440,
+                "http_attempts": 1440,
+                "git_sha": source_sha,
+                "git_dirty": False,
+                "raw_manifest_status": "available",
+                "response_contract_version": "phase-response-v2.0.0",
+                "log_schema_version": "2.0.0",
+                "generation_retries": 0,
+                "transport_failures": 0,
+                "syntax_parse_attempt_failures": 0,
+                "syntax_parse_failures": 0,
+                "schema_validation_failures": 0,
+                "config": config,
+            }
+            (run_dir / "run_meta.json").write_text(
+                json.dumps(meta) + "\n",
+                encoding="utf-8",
+            )
+            row = {
+                "run_id": "run-a",
+                "sha256": "b" * 64,
+                "expected_logical_llm_calls": 1440,
+                "expected_http_attempts": 1440,
+            }
+            with mock.patch.object(
+                worker,
+                "validate_run",
+                return_value=SimpleNamespace(
+                    valid=True,
+                    unverifiable=["known epistemic limitation"],
+                ),
+            ), mock.patch.object(worker, "scan_tree", return_value=[]):
+                result = worker.verify_one_run(
+                    run_dir,
+                    row,
+                    config,
+                    source_sha,
+                    (b"http://127.0.0.1:19000",),
+                )
+            self.assertTrue(result["strict_validation_passed"])
+            self.assertEqual(result["strict_unverifiable_count"], 1)
+            self.assertEqual(len(result["strict_unverifiable_sha256"]), 64)
 
     def make_staged_runs(self, root: Path):
         stage = root / "stage"
