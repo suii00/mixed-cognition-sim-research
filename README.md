@@ -125,6 +125,12 @@ python tools/run_legacy_reproduction.py \
   --execute \
   --source-git-sha <approved-full-sha> \
   --gpu-indices 0,1,2,3,4,5
+python tools/run_legacy_reproduction.py \
+  --provider ollama \
+  --preflight-only \
+  --source-git-sha <approved-full-sha> \
+  --gpu-indices 0,1,2 \
+  --ollama-model-root <read-only-model-root>
 ```
 
 launcherは最大6 GPUを強制します。この許可内では8/10条件を実行可能です。元の
@@ -132,7 +138,8 @@ launcherは最大6 GPUを強制します。この許可内では8/10条件を実
 として残ります。同じsimulation seedはworld状態を再現しますが、旧runはLLM生成seedを
 送っていないため、同一テキストやraw bytesは保証しません。詳細は
 [Historical Run Reproduction Protocol](docs/EXPERIMENT_PROTOCOL_LEGACY_REPRODUCTION_V1.md)
-を参照してください。
+を参照してください。Ollamaのmodel rootは実行時引数としてのみ渡され、公開config、
+run、検証記録には保存されません。
 
 ## 新しい実験
 

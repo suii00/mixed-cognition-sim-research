@@ -110,6 +110,12 @@ def _launcher_command(
         "--max-initial-memory-mib",
         str(args.max_initial_memory_mib),
     ))
+    if provider == "ollama":
+        if args.ollama_model_root is None:
+            raise LegacyBatchError(
+                "--ollama-model-root is required for Ollama runtime operations"
+            )
+        command.extend(("--model-root", str(args.ollama_model_root)))
     if args.preflight_only:
         command.append("--preflight-only")
     return command
@@ -133,11 +139,16 @@ def _read_verification(path: Path) -> dict[str, Any]:
 
 
 def _cleanup_boundary_passed(value: Mapping[str, Any]) -> bool:
+    model_root_check = (
+        value.get("schema_version") != "public-ollama-verification-v1.0.0"
+        or value.get("runtime_model_root_persisted") is False
+    )
     return (
         value.get("all_process_groups_stopped") is True
         and value.get("gpu_release_verified") is True
         and value.get("publication_scan_finding_count") == 0
         and value.get("runtime_binding_values_persisted") is False
+        and model_root_check
     )
 
 
@@ -232,6 +243,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--startup-timeout-s", type=float, default=600.0)
     parser.add_argument("--run-timeout-s", type=float, default=7200.0)
     parser.add_argument("--max-initial-memory-mib", type=int, default=512)
+    parser.add_argument("--ollama-model-root", type=Path)
     parser.add_argument("--output-root", type=Path, default=REPO_ROOT / "runs")
     parser.add_argument("--evidence-root", type=Path, default=REPO_ROOT / "derived")
     mode = parser.add_mutually_exclusive_group(required=True)

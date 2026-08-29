@@ -167,27 +167,33 @@ def check_ollama_binary() -> None:
     combined = f"{result.stdout}\n{result.stderr}"
     if result.returncode != 0 or OLLAMA_VERSION not in combined:
         raise PublicOllamaError("the installed Ollama version differs from the lock")
-    sudo = subprocess.run(
-        ["sudo", "-n", "-u", "ollama", "true"],
-        check=False,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-        timeout=15,
-    )
-    if sudo.returncode != 0:
-        raise PublicOllamaError("passwordless execution as the Ollama service user is unavailable")
 
 
-def build_server_command(spec: OllamaEndpointSpec) -> list[str]:
+def resolve_model_root(path: Path | None) -> Path:
+    if path is None:
+        raise PublicOllamaError("--model-root is required for Ollama runtime operations")
+    try:
+        resolved = path.resolve(strict=True)
+    except OSError as error:
+        raise PublicOllamaError("the runtime Ollama model root is unavailable") from error
+    if not resolved.is_dir() or not os.access(resolved, os.R_OK | os.X_OK):
+        raise PublicOllamaError("the runtime Ollama model root is not readable")
+    return resolved
+
+
+def build_server_command(
+    spec: OllamaEndpointSpec,
+    model_root: Path,
+    server_home: Path,
+) -> list[str]:
     return [
-        "sudo",
-        "-n",
-        "-H",
-        "-u",
-        "ollama",
-        "env",
+        "/usr/bin/env",
         "-i",
         "PATH=/usr/local/bin:/usr/bin:/bin",
+        f"HOME={server_home}",
+        f"XDG_CACHE_HOME={server_home / 'cache'}",
+        f"TMPDIR={server_home / 'tmp'}",
+        f"OLLAMA_MODELS={model_root}",
         f"CUDA_VISIBLE_DEVICES={spec.gpu_index}",
         "OLLAMA_VULKAN=0",
         f"OLLAMA_HOST={LOOPBACK_HOST}:{spec.port}",
@@ -201,9 +207,16 @@ def build_server_command(spec: OllamaEndpointSpec) -> list[str]:
     ]
 
 
-def start_server(spec: OllamaEndpointSpec) -> subprocess.Popen[bytes]:
+def start_server(
+    spec: OllamaEndpointSpec,
+    model_root: Path,
+    server_home: Path,
+) -> subprocess.Popen[bytes]:
+    (server_home / "cache").mkdir(parents=True, exist_ok=False)
+    (server_home / "tmp").mkdir(parents=True, exist_ok=False)
     return subprocess.Popen(
-        build_server_command(spec),
+        build_server_command(spec, model_root, server_home),
+        cwd=server_home,
         stdin=subprocess.DEVNULL,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
@@ -211,8 +224,11 @@ def start_server(spec: OllamaEndpointSpec) -> subprocess.Popen[bytes]:
     )
 
 
+_NO_PROXY_OPENER = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+
+
 def _http_json(url: str, timeout_s: float) -> Any:
-    with urllib.request.urlopen(url, timeout=timeout_s) as response:
+    with _NO_PROXY_OPENER.open(url, timeout=timeout_s) as response:
         return json.loads(response.read())
 
 
@@ -223,7 +239,7 @@ def _http_post_json(url: str, value: Mapping[str, Any], timeout_s: float) -> Any
         headers={"Content-Type": "application/json"},
         method="POST",
     )
-    with urllib.request.urlopen(request, timeout=timeout_s) as response:
+    with _NO_PROXY_OPENER.open(request, timeout=timeout_s) as response:
         return json.loads(response.read())
 
 
@@ -275,22 +291,28 @@ def verify_models(specs: Sequence[OllamaEndpointSpec]) -> None:
             raise PublicOllamaError("an Ollama chat template differs from the public config")
 
 
-def simulator_environment() -> dict[str, str]:
-    allowed = (
-        "PATH",
-        "HOME",
-        "LD_LIBRARY_PATH",
-        "VIRTUAL_ENV",
-        "CONDA_PREFIX",
-        "LANG",
-        "LC_ALL",
-    )
-    environment = {key: os.environ[key] for key in allowed if key in os.environ}
-    environment["PYTHONNOUSERSITE"] = "1"
+def simulator_environment(runtime_root: Path) -> dict[str, str]:
+    home = runtime_root / "simulator-home"
+    cache = home / "cache"
+    temporary = home / "tmp"
+    cache.mkdir(parents=True, exist_ok=False)
+    temporary.mkdir(parents=True, exist_ok=False)
+    environment = {
+        "HOME": str(home),
+        "PATH": os.environ.get("PATH", "/usr/local/bin:/usr/bin:/bin"),
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONNOUSERSITE": "1",
+        "TMPDIR": str(temporary),
+        "XDG_CACHE_HOME": str(cache),
+    }
+    for key in ("LANG", "LC_ALL", "LD_LIBRARY_PATH"):
+        if os.environ.get(key):
+            environment[key] = os.environ[key]
     return environment
 
 
 def start_simulator(
+    runtime_root: Path,
     config_path: Path,
     bindings_path: Path,
     stage_root: Path,
@@ -307,7 +329,7 @@ def start_simulator(
             str(stage_root),
         ],
         cwd=REPO_ROOT,
-        env=simulator_environment(),
+        env=simulator_environment(runtime_root),
         stdin=subprocess.DEVNULL,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
@@ -335,10 +357,25 @@ def wait_for_simulator(
     raise PublicOllamaError("simulation time limit exceeded")
 
 
+def runtime_values_absent(
+    run_dir: Path,
+    specs: Sequence[OllamaEndpointSpec],
+    model_root: Path,
+) -> bool:
+    if not runtime_binding_values_absent(run_dir, specs):
+        return False
+    forbidden = str(model_root).encode("utf-8")
+    return all(
+        forbidden not in path.read_bytes()
+        for path in sorted(item for item in run_dir.rglob("*") if item.is_file())
+    )
+
+
 def verify_completed_run(
     run_dir: Path,
     config: Mapping[str, Any],
     specs: Sequence[OllamaEndpointSpec],
+    model_root: Path,
 ) -> tuple[bool, int]:
     report = validate_run(run_dir, strict=True)
     if not report.valid:
@@ -355,7 +392,7 @@ def verify_completed_run(
     }
     if any(meta.get(key) != value for key, value in expected.items()):
         return False, len(report.unverifiable)
-    if not runtime_binding_values_absent(run_dir, specs):
+    if not runtime_values_absent(run_dir, specs, model_root):
         return False, len(report.unverifiable)
     return True, len(report.unverifiable)
 
@@ -386,6 +423,7 @@ def write_evidence(
         "run_id": run_id,
         "run_tree_sha256": _tree_digest(run_dir),
         "runtime_binding_values_persisted": False,
+        "runtime_model_root_persisted": False,
         "schema_version": EVIDENCE_SCHEMA,
         "selected_gpu_count": len(guard.selected),
         "source_git_sha": meta.get("git_sha"),
@@ -417,6 +455,7 @@ def run_public_ollama(args: argparse.Namespace) -> tuple[str, Path]:
     if os.name != "posix":
         raise PublicOllamaError("GPU Ollama execution requires a POSIX host")
 
+    model_root = resolve_model_root(args.model_root)
     require_git_head()
     check_installed_runtime(lock)
     check_ollama_binary()
@@ -428,82 +467,113 @@ def run_public_ollama(args: argparse.Namespace) -> tuple[str, Path]:
     guard = create_gpu_guard(indices, gpu_limit, args.max_initial_memory_mib)
 
     servers: list[subprocess.Popen[bytes]] = []
+    simulation: subprocess.Popen[bytes] | None = None
     processes_stopped = False
     gpu_release_verified = False
+    execution_error: PublicOllamaError | None = None
+    simulation_code: int | None = None
+    run_config: dict[str, Any] | None = None
+    destination: Path | None = None
+    stage_root: Path | None = None
+    findings = []
+    strict_passed = False
+    unverifiable_count = 0
     try:
-        servers = [start_server(spec) for spec in specs]
-        wait_for_servers(specs, servers, guard, args.startup_timeout_s)
-        verify_models(specs)
-        if args.preflight_only:
-            return "preflight-only", args.config
-
-        run_config = copy.deepcopy(config)
-        simulation_config = run_config["simulation"]
-        run_id = simulation_config.get("run_id")
-        if run_id is None:
-            run_id = f"public-ollama-{generate_run_id()}"
-            simulation_config["run_id"] = run_id
-        output_root = args.output_root.resolve()
-        evidence_root = args.evidence_root.resolve()
-        output_root.mkdir(parents=True, exist_ok=True)
-        evidence_root.mkdir(parents=True, exist_ok=True)
-        destination = output_root / f"output_{run_id}"
-        if destination.exists() or destination.is_symlink():
-            raise PublicOllamaError("run output collision detected")
-        stage_root = output_root / ".tmp" / f"{run_id}-stage"
-        stage_root.mkdir(parents=True, exist_ok=False)
-
-        execution_error: PublicOllamaError | None = None
-        simulation_code: int | None = None
-        with tempfile.TemporaryDirectory(prefix="public-ollama-runtime-") as temporary:
+        with tempfile.TemporaryDirectory(prefix="public-ollama-managed-") as temporary:
             runtime_root = Path(temporary)
-            config_path, bindings_path = write_runtime_inputs(
-                runtime_root,
-                run_config,
-                specs,
-            )
-            simulation = start_simulator(config_path, bindings_path, stage_root)
             try:
-                simulation_code = wait_for_simulator(
-                    simulation,
-                    servers,
-                    guard,
-                    args.run_timeout_s,
-                )
+                for ordinal, spec in enumerate(specs):
+                    servers.append(start_server(
+                        spec,
+                        model_root,
+                        runtime_root / f"server-{ordinal}",
+                    ))
+                wait_for_servers(specs, servers, guard, args.startup_timeout_s)
+                verify_models(specs)
+
+                if not args.preflight_only:
+                    run_config = copy.deepcopy(config)
+                    simulation_config = run_config["simulation"]
+                    run_id = simulation_config.get("run_id")
+                    if run_id is None:
+                        run_id = f"public-ollama-{generate_run_id()}"
+                        simulation_config["run_id"] = run_id
+                    output_root = args.output_root.resolve()
+                    evidence_root = args.evidence_root.resolve()
+                    output_root.mkdir(parents=True, exist_ok=True)
+                    evidence_root.mkdir(parents=True, exist_ok=True)
+                    destination = output_root / f"output_{run_id}"
+                    if destination.exists() or destination.is_symlink():
+                        raise PublicOllamaError("run output collision detected")
+                    stage_root = output_root / ".tmp" / f"{run_id}-stage"
+                    stage_root.mkdir(parents=True, exist_ok=False)
+                    config_path, bindings_path = write_runtime_inputs(
+                        runtime_root,
+                        run_config,
+                        specs,
+                    )
+                    simulation = start_simulator(
+                        runtime_root,
+                        config_path,
+                        bindings_path,
+                        stage_root,
+                    )
+                    simulation_code = wait_for_simulator(
+                        simulation,
+                        servers,
+                        guard,
+                        args.run_timeout_s,
+                    )
             except PublicOllamaError as error:
                 execution_error = error
+            except (OSError, subprocess.SubprocessError) as error:
+                execution_error = PublicOllamaError(
+                    "a managed child process could not be executed"
+                )
             finally:
-                stop_process_groups([simulation])
-
-        staged_run = stage_root / f"output_{run_id}"
-        if not staged_run.is_dir():
-            shutil.rmtree(stage_root, ignore_errors=True)
-            if execution_error is not None:
-                raise execution_error
-            raise PublicOllamaError("simulation produced no run directory")
-        findings = scan_tree(staged_run)
-        if findings:
-            shutil.rmtree(stage_root)
-            raise PublicOllamaError("generated run failed the publication boundary")
-        if not runtime_binding_values_absent(staged_run, specs):
-            shutil.rmtree(stage_root)
-            raise PublicOllamaError("runtime binding values entered the generated run")
-        strict_passed = False
-        unverifiable_count = 0
-        if execution_error is None and simulation_code == 0:
-            strict_passed, unverifiable_count = verify_completed_run(
-                staged_run,
-                run_config,
-                specs,
-            )
-        os.replace(staged_run, destination)
-        shutil.rmtree(stage_root)
+                processes = [process for process in [simulation, *servers] if process]
+                processes_stopped = stop_process_groups(processes)
     finally:
-        processes_stopped = stop_process_groups(servers)
         gpu_release_verified = wait_for_gpu_release(guard)
 
+    if args.preflight_only:
+        if execution_error is not None:
+            raise execution_error
+        if not processes_stopped:
+            raise PublicOllamaError("one or more process groups remained active")
+        if not gpu_release_verified:
+            raise PublicOllamaError("GPU release could not be verified")
+        return "preflight-only", args.config
+
+    if stage_root is None or run_config is None or destination is None:
+        if execution_error is not None:
+            raise execution_error
+        raise PublicOllamaError("simulation staging was not initialized")
+    run_id = run_config["simulation"]["run_id"]
+    staged_run = stage_root / f"output_{run_id}"
+    if not staged_run.is_dir():
+        shutil.rmtree(stage_root, ignore_errors=True)
+        if execution_error is not None:
+            raise execution_error
+        raise PublicOllamaError("simulation produced no run directory")
+    findings = scan_tree(staged_run)
+    if findings:
+        shutil.rmtree(stage_root)
+        raise PublicOllamaError("generated run failed the publication boundary")
+    if not runtime_values_absent(staged_run, specs, model_root):
+        shutil.rmtree(stage_root)
+        raise PublicOllamaError("runtime-only values entered the generated run")
+    if execution_error is None and simulation_code == 0:
+        strict_passed, unverifiable_count = verify_completed_run(
+            staged_run,
+            run_config,
+            specs,
+            model_root,
+        )
+    os.replace(staged_run, destination)
+    shutil.rmtree(stage_root)
     evidence_path = write_evidence(
-        evidence_root,
+        args.evidence_root.resolve(),
         destination,
         run_config,
         guard,
@@ -532,6 +602,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--runtime-lock", type=Path, default=DEFAULT_LOCK)
     parser.add_argument("--output-root", type=Path, default=REPO_ROOT / "runs")
     parser.add_argument("--evidence-root", type=Path, default=REPO_ROOT / "derived")
+    parser.add_argument("--model-root", type=Path)
     parser.add_argument("--gpu-indices")
     parser.add_argument("--base-port", type=int, default=DEFAULT_BASE_PORT)
     parser.add_argument("--startup-timeout-s", type=float, default=600.0)

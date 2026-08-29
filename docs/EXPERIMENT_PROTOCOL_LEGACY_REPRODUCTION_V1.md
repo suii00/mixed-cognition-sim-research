@@ -58,6 +58,10 @@ not be hidden:
   validation. Historical raw logs are never edited or overwritten.
 - vLLM and Ollama server stdout/stderr are connected directly to the null
   device. No server-log file is created and no sanitizer is run.
+- Managed Ollama servers run as the invoking user with a clean environment,
+  loopback-only listeners, and per-server ephemeral home/cache directories.
+  The read-only model root is supplied only at launch and its literal value is
+  mechanically checked to be absent from the run tree and verification record.
 - The public vLLM runtime disables FlashInfer before import. This differs from
   any historical endpoint for which sampler-kernel selection was not recorded.
 - The public runtime uses CPython 3.10.12. Historical vLLM simulator metadata

@@ -9,6 +9,7 @@ from engine.execution_contracts import LEGACY_TRANSPORT_BEHAVIOR_VERSION
 from engine.llm_client import call_vllm, extract_json, extract_legacy_json
 from engine.provenance import compute_prompt_hash
 from tools import build_legacy_reproduction_matrix as builder
+from tools import run_legacy_reproduction as batch_launcher
 from tools import run_public_ollama as ollama_launcher
 from tools import run_public_vllm as launcher
 
@@ -109,19 +110,36 @@ class LegacyReproductionTests(unittest.TestCase):
             allow_legacy_reproduction=True,
         )
         specs = ollama_launcher.build_endpoint_specs(config, (0, 1, 2), 18340)
-        command = ollama_launcher.build_server_command(specs[0])
-        self.assertIn("env", command)
+        model_root = Path("/runtime-only/models")
+        server_home = Path("/runtime-only/server-0")
+        command = ollama_launcher.build_server_command(
+            specs[0],
+            model_root,
+            server_home,
+        )
+        self.assertIn("/usr/bin/env", command)
         self.assertIn("-i", command)
+        self.assertIn(f"HOME={server_home}", command)
+        self.assertIn(f"OLLAMA_MODELS={model_root}", command)
         self.assertIn("OLLAMA_NO_CLOUD=1", command)
         self.assertIn("OLLAMA_CONTEXT_LENGTH=4096", command)
+        self.assertNotIn("sudo", command)
         self.assertNotIn("HF_TOKEN", " ".join(command))
         process = mock.Mock()
-        with mock.patch.object(
-            ollama_launcher.subprocess,
-            "Popen",
-            return_value=process,
-        ) as popen:
-            self.assertIs(ollama_launcher.start_server(specs[0]), process)
+        with mock.patch.object(Path, "mkdir"):
+            with mock.patch.object(
+                ollama_launcher.subprocess,
+                "Popen",
+                return_value=process,
+            ) as popen:
+                self.assertIs(
+                    ollama_launcher.start_server(
+                        specs[0],
+                        model_root,
+                        server_home,
+                    ),
+                    process,
+                )
         self.assertIs(popen.call_args.kwargs["stdout"], ollama_launcher.subprocess.DEVNULL)
         self.assertIs(popen.call_args.kwargs["stderr"], ollama_launcher.subprocess.DEVNULL)
 
@@ -155,6 +173,18 @@ class LegacyReproductionTests(unittest.TestCase):
         self.assertEqual([item["generation_attempt"] for item in attempts], [1, 2])
         self.assertEqual(events.count("generation_retry"), 1)
         self.assertEqual(events.count("syntax_parse_attempt_failure"), 1)
+
+    def test_ollama_cleanup_boundary_requires_model_root_absence_evidence(self):
+        evidence = {
+            "all_process_groups_stopped": True,
+            "gpu_release_verified": True,
+            "publication_scan_finding_count": 0,
+            "runtime_binding_values_persisted": False,
+            "schema_version": "public-ollama-verification-v1.0.0",
+        }
+        self.assertFalse(batch_launcher._cleanup_boundary_passed(evidence))
+        evidence["runtime_model_root_persisted"] = False
+        self.assertTrue(batch_launcher._cleanup_boundary_passed(evidence))
 
 
 if __name__ == "__main__":
