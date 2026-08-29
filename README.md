@@ -36,9 +36,59 @@ Vol.1 課題（GPL-3.0）に由来し、AUTOMATA ハッカソン Vol.2 では公
 [suii00/2d-multi-places-simulation-on-fire-public](https://github.com/suii00/2d-multi-places-simulation-on-fire-public)
 を適用可能にするため、意図的に互換を保っている。
 
-## 標準実行経路: vLLM
+## 実行経路の位置づけ
 
-実成果物の主要 backend に合わせ、vLLM を標準実行経路とします。検証済み runtime は
+Ollama は、本シミュレータの原設計とローカル最小実行を支える基礎経路です。
+エージェント別モデルルーティング、4フェーズ同期、通信境界、ログ生成を小規模な構成で
+確認する場合は、まず Ollama を使います。
+
+vLLM は、commit digestで固定したlocal model snapshot、複数 GPU、高スループット、
+厳密な起動・検証・cleanupを加えた発展経路です。現在収録している正式成果物と
+公開用60-run matrixの再現にはvLLMを使います。
+
+| | Ollama | vLLM |
+|---|---|---|
+| 位置づけ | 基礎経路 | 発展経路 |
+| 主用途 | ローカル smoke、ルーティング・simulation・log の確認 | 複数 GPU 実行、正式成果物・matrix の再現 |
+| 入口 | `main.py` | `tools/run_public_vllm.py` |
+| 主な前提 | 稼働中の Ollama と取得済みモデル | 固定 runtime、local snapshot（既定 smoke は4 GPU、matrix は最大6 GPU） |
+
+backend は実験条件の一部です。Ollama run と vLLM run は自動的に同一条件とはみなさず、
+provider、model artifact、sampling、response contract、runtime versionを記録して区別します。
+
+## 基礎実行経路: Ollama
+
+Ollama serviceを起動し、`configs/smoke_local.yaml` が使う三つのモデルを用意します。
+既に取得済みの場合も、`ollama list` でモデル名を確認してください。
+次はWindows PowerShellでの例です。他の環境では、作成したvirtual environmentを
+そのshellの方法でactivateしてから同じPython commandを実行してください。
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+ollama pull qwen2.5:3b
+ollama pull gemma3:4b
+ollama pull llama3.2:3b
+ollama list
+.\.venv\Scripts\python.exe main.py --config configs/smoke_local.yaml --runtime-bindings configs/runtime-bindings.loopback.example.yaml --output-root runs
+```
+
+成功すると `runs/output_<run_id>/` が新規作成されます。同じ run ID の再実行は
+衝突として拒否され、既存 raw log へ追記されません。exit codeだけで成功とせず、
+生成されたrunをstrict validationします。
+
+```powershell
+.\.venv\Scripts\python.exe tools/validate_run.py runs/output_<run_id> --strict
+```
+
+実サービス用 binding は、example を元に repository 外または ignore 対象の
+`runtime-bindings.local.yaml` として作成してください。credential を URL に埋め込む
+形式は未対応です。詳しくは
+[Local execution](docs/SIMPLE_BACKEND_EXECUTION.md) を参照してください。
+
+## 発展実行経路: vLLM
+
+vLLMは、現在収録している正式成果物を再現する場合の標準入口です。検証済み runtime は
 CPython 3.12.14、vLLM 0.27.1、torch 2.13.0+cu132 です。FlashInfer 0.6.16.post3 は
 環境同一性のため記録・固定し、launcher は sampler と all-reduce を import 前に無効化して
 torch/FlashAttention 経路を使います。compile cache はrunごとに一時生成し、公開成果物へ
@@ -88,24 +138,6 @@ PASS、HTTP retry/failure 0、publication finding 0、runtime-binding残存0の�
 成功扱いにしたりしません。実験条件と観測連鎖は
 [Public disaster formal protocol v3.2](docs/EXPERIMENT_PROTOCOL_PUBLIC_DISASTER_V3_2.md) に事前登録しています。
 
-## 補助実行経路: Ollama
-
-Ollama は小規模な補助確認用です。主要成果物の再現経路ではありません。
-
-```bash
-python main.py \
-  --config configs/smoke_local.yaml \
-  --runtime-bindings configs/runtime-bindings.loopback.example.yaml \
-  --output-root runs
-```
-
-成功すると `runs/output_<run_id>/` が新規作成されます。同じ run ID の再実行は
-衝突として拒否され、既存 raw log へ追記されません。
-
-実サービス用 binding は、example を元に repository 外または ignore 対象の
-`runtime-bindings.local.yaml` として作成してください。credential を URL に埋め込む
-形式は未対応です。
-
 ## 歴史的runの独立再現
 
 旧リポジトリの10条件は、旧prompt bytes、seed、モデルdigest、sampling、endpoint
@@ -151,10 +183,12 @@ response contractを変えない運用上のmemory予約です。
 1. `docs/EXPERIMENT_PROTOCOL.md` の項目を事前登録し、protocol version を決めます。
 2. 既存 config を新しい名前へコピーし、`run_id`、seed、介入、対照、model 条件を
    明示します。public config に runtime 値は書きません。
-3. 単一vLLM実験は `python tools/run_public_vllm.py --config <config>`、固定した正式matrixは
-   専用の`run_public_disaster_matrix.py`で実行します。
-   remote machine で別出力へ生成した場合だけ
-   `python tools/ingest_run.py <output_dir>` で同一 bytes を取り込みます。
+3. backendを事前登録した実験条件として選びます。ローカルの基礎確認は
+   `python main.py --config <config> --runtime-bindings <binding> --output-root runs`、
+   単一vLLM実験は `python tools/run_public_vllm.py --config <config>`、固定した正式matrixは
+   専用の`run_public_disaster_matrix.py`で実行します。backendを変更したrunを同一条件として
+   混合せず、必要なら新しいprotocol/configとして事前登録します。remote machine で別出力へ
+   生成した場合だけ `python tools/ingest_run.py <output_dir>` で同一 bytes を取り込みます。
 4. run 単体と repository 全体を検証します。
 
 ```bash
