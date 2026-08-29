@@ -2,12 +2,13 @@
 
 ## Scope
 
-`tools/run_public_vllm.py` は vLLM 実験の標準入口です。既定 config は
+`tools/run_public_vllm.py` は発展経路である vLLM 実験の標準入口です。既定 config は
 `configs/public_vllm_smoke_3model.json` で、実成果物と同じ Qwen 2.5 7B、Llama 3.1 8B、
 Gemma 2 9B、4096 context、`phase-response-v2.0.0` を使います。これは engineering smoke
 であり、研究結論の証拠ではありません。
 
-Ollama は `main.py` の補助経路として残しますが、vLLM 成果物の再現には使いません。
+Ollama は `main.py` を入口とする基礎経路です。provider、sampling、response contract、
+runtimeが異なるため、Ollama runをvLLM成果物の再現としては扱いません。
 
 ## Exact runtime
 
