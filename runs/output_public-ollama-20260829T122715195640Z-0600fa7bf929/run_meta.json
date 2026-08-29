@@ -1,0 +1,313 @@
+{
+  "run_id": "public-ollama-20260829T122715195640Z-0600fa7bf929",
+  "run_name": "legacy-reproduction-pilot-het12x60-20260823-s1002-r002",
+  "protocol_version": "legacy-reproduction-v1.0.0",
+  "log_schema_version": "2.0.0",
+  "metric_version": "metric-v2.0.0",
+  "response_contract_version": "phase-response-v1.0.0",
+  "prompt_contract_version": "legacy-prompts-v1.0.0",
+  "transport_behavior_version": "legacy-subobject-generation-retry-v1.0.0",
+  "response_failure_policy": "record_and_continue",
+  "response_schema_sha256": null,
+  "response_schema_hash_algorithm": null,
+  "vllm_transport_contract_version": null,
+  "start_time_utc": "2026-08-29T12:27:15.364725+00:00",
+  "end_time_utc": "2026-08-29T13:31:11.996215+00:00",
+  "start_time": "2026-08-29T12:27:15.364725+00:00",
+  "end_time": "2026-08-29T13:31:11.996215+00:00",
+  "status": "completed",
+  "aborted": false,
+  "abort_reason": null,
+  "failure_step": null,
+  "failure_phase": null,
+  "failure_agent_id": null,
+  "failure_exception_type": null,
+  "expected_steps": 60,
+  "completed_steps": 60,
+  "expected_agents": 12,
+  "observed_agents": 12,
+  "logical_llm_calls": 1440,
+  "http_attempts": 1440,
+  "generation_retries": 0,
+  "transport_failures": 0,
+  "syntax_parse_attempt_failures": 0,
+  "syntax_parse_failures": 0,
+  "schema_validation_failures": 1,
+  "schema_validation_supported": true,
+  "terminal_record_schema_version": "1.0.0",
+  "failure_thresholds": {
+    "transport_failures": 0,
+    "syntax_parse_failures": 0,
+    "schema_validation_failures": 0
+  },
+  "git_sha": "391026533677694d5ee00765d555861148124bf3",
+  "git_dirty": false,
+  "git_probe_status": "available",
+  "git_probe_errors": [],
+  "config": {
+    "agents": {
+      "communication_radius": 5,
+      "edge_policy": "full",
+      "memory_limit": 20,
+      "memory_size": 5,
+      "message_context_size": 3,
+      "message_history_limit": 10
+    },
+    "blocs": [
+      {
+        "backend_version": "0.32.13",
+        "chat_template": "sha256:eb4402837c7829a690fa845de4d7f3fd842c2adee476d5341da8a46ea9255175",
+        "device_slot": "legacy-pilot-het12x60-20260823-s1002-r002-alpha-device",
+        "endpoint_id": "legacy-pilot-het12x60-20260823-s1002-r002-alpha",
+        "model": "qwen2.5:7b-instruct-fp16",
+        "model_digest": "59805ce4a4046be2d8f63231a78daacd2e66f5dccf1a64d0d138ebeeb26ff16c",
+        "name": "alpha",
+        "num_agents": 4,
+        "provider": "ollama",
+        "quantization": "F16"
+      },
+      {
+        "backend_version": "0.32.13",
+        "chat_template": "sha256:109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+        "device_slot": "legacy-pilot-het12x60-20260823-s1002-r002-beta-device",
+        "endpoint_id": "legacy-pilot-het12x60-20260823-s1002-r002-beta",
+        "model": "gemma2:9b-instruct-fp16",
+        "model_digest": "28e6684b085085f78551db7c96a9daa546161b1da9d055ea01b84cb1163013cf",
+        "name": "beta",
+        "num_agents": 4,
+        "provider": "ollama",
+        "quantization": "F16"
+      },
+      {
+        "backend_version": "0.32.13",
+        "chat_template": "sha256:948af2743fc78a328dcb3b0f5a31b3d75f415840fdb699e8b1235978392ecf85",
+        "device_slot": "legacy-pilot-het12x60-20260823-s1002-r002-neutral-device",
+        "endpoint_id": "legacy-pilot-het12x60-20260823-s1002-r002-neutral",
+        "model": "llama3.1:8b-instruct-fp16",
+        "model_digest": "4aacac4194543ff7f70dab3f2ebc169c132d5319bb36f7a7e99c4ff525ebcc09",
+        "name": "neutral",
+        "num_agents": 4,
+        "provider": "ollama",
+        "quantization": "F16"
+      }
+    ],
+    "llm_defaults": {
+      "max_concurrency": 1,
+      "max_tokens": 256,
+      "temperature": 0.2,
+      "timeout_s": 120
+    },
+    "places": [
+      {
+        "capacity": 6,
+        "center_x": -15,
+        "center_y": 0,
+        "half_size": 5,
+        "name": "left_bar"
+      },
+      {
+        "capacity": 5,
+        "center_x": 15,
+        "center_y": 0,
+        "half_size": 5,
+        "name": "right_bar"
+      }
+    ],
+    "reproduction": {
+      "source_completed_steps": 1,
+      "source_config_sha256": "de066432d80f2c8e030d5597e2ac8cd7ec9a2de618e37f6edc4e2904fd5fa141",
+      "source_git_sha": "6af938a19570cfb904df97433bdf9ea8a894d818",
+      "source_log_schema_version": "1.1.0",
+      "source_prompt_sha256": "f414ab30a963636d80239644c2d3770672c77d5b8bdde027de2eb15a0d08bc3d",
+      "source_protocol_version": "pilot-het12x60-v1.1.0",
+      "source_run_id": "pilot-het12x60-20260823-s1002-r002",
+      "source_status": "aborted"
+    },
+    "simulation": {
+      "duration": 60,
+      "execution_mode": "ollama_native",
+      "failure_thresholds": {
+        "schema_validation_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "half_space_size": 25,
+      "log_schema_version": "2.0.0",
+      "metric_version": "metric-v2.0.0",
+      "prompt_contract_version": "legacy-prompts-v1.0.0",
+      "protocol_version": "legacy-reproduction-v1.0.0",
+      "research_eligible": false,
+      "response_contract_version": "phase-response-v1.0.0",
+      "response_failure_policy": "record_and_continue",
+      "run_id": "public-ollama-20260829T122715195640Z-0600fa7bf929",
+      "run_name": "legacy-reproduction-pilot-het12x60-20260823-s1002-r002",
+      "seed": 1002,
+      "transport_behavior_version": "legacy-subobject-generation-retry-v1.0.0"
+    }
+  },
+  "config_hash": "8a61102ac06ea465b7da4641ad92d2ea8840525d9b591b07c981a9aa421d0df6",
+  "config_hash_algorithm": "sha256-canonical-json-v1",
+  "prompt_hash": "f414ab30a963636d80239644c2d3770672c77d5b8bdde027de2eb15a0d08bc3d",
+  "prompt_hash_algorithm": "sha256-file-bytes",
+  "execution_identity_policy": "logical-endpoints-only-v1",
+  "os": "Linux",
+  "platform": "Linux-5.15.0-187-generic-x86_64-with-glibc2.35",
+  "runtime_probe_errors": [],
+  "python_version": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]",
+  "dependencies": {
+    "requests": "2.25.1",
+    "PyYAML": "5.4.1",
+    "matplotlib": null,
+    "Pillow": null,
+    "huggingface-hub": null,
+    "pydantic": null,
+    "tokenizers": null,
+    "torch": null,
+    "transformers": null,
+    "vllm": null,
+    "flashinfer-python": null
+  },
+  "dependencies_probe_status": "partial",
+  "dependencies_probe_errors": [
+    "matplotlib:version_unavailable",
+    "Pillow:version_unavailable",
+    "huggingface-hub:version_unavailable",
+    "pydantic:version_unavailable",
+    "tokenizers:version_unavailable",
+    "torch:version_unavailable",
+    "transformers:version_unavailable",
+    "vllm:version_unavailable",
+    "flashinfer-python:version_unavailable"
+  ],
+  "gpu_info": {
+    "status": "available",
+    "error": null,
+    "driver_version": "595.84",
+    "cuda_version": "13.2",
+    "cuda_probe_status": "available",
+    "cuda_probe_error": null,
+    "malformed_device_rows": 0,
+    "devices": [
+      {
+        "index": "0",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "1",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "2",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "3",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "4",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "5",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "6",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "7",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      }
+    ]
+  },
+  "models": [
+    {
+      "bloc": "alpha",
+      "provider": "ollama",
+      "model": "qwen2.5:7b-instruct-fp16",
+      "model_digest": "59805ce4a4046be2d8f63231a78daacd2e66f5dccf1a64d0d138ebeeb26ff16c",
+      "quantization": "F16",
+      "chat_template_hash": "a928abe292ad4866ccb652848cce75e27d0daec33f9452004cb69bd5091a0b3f",
+      "detail_source": "config",
+      "endpoint_id": "legacy-pilot-het12x60-20260823-s1002-r002-alpha",
+      "device_slot": "legacy-pilot-het12x60-20260823-s1002-r002-alpha-device",
+      "endpoint_assignment_policy": null
+    },
+    {
+      "bloc": "beta",
+      "provider": "ollama",
+      "model": "gemma2:9b-instruct-fp16",
+      "model_digest": "28e6684b085085f78551db7c96a9daa546161b1da9d055ea01b84cb1163013cf",
+      "quantization": "F16",
+      "chat_template_hash": "ecf4ffbf865d874405ba76b1fc2c780b942b696bceaaf4e8e73fa03ddd6f53b0",
+      "detail_source": "config",
+      "endpoint_id": "legacy-pilot-het12x60-20260823-s1002-r002-beta",
+      "device_slot": "legacy-pilot-het12x60-20260823-s1002-r002-beta-device",
+      "endpoint_assignment_policy": null
+    },
+    {
+      "bloc": "neutral",
+      "provider": "ollama",
+      "model": "llama3.1:8b-instruct-fp16",
+      "model_digest": "4aacac4194543ff7f70dab3f2ebc169c132d5319bb36f7a7e99c4ff525ebcc09",
+      "quantization": "F16",
+      "chat_template_hash": "4de6b020fc37698c338325ebad578aaad0a061558a027447381f01c540868c29",
+      "detail_source": "config",
+      "endpoint_id": "legacy-pilot-het12x60-20260823-s1002-r002-neutral",
+      "device_slot": "legacy-pilot-het12x60-20260823-s1002-r002-neutral-device",
+      "endpoint_assignment_policy": null
+    }
+  ],
+  "raw_manifest": {
+    "algorithm": "sha256",
+    "files": {
+      "phase1_raw.jsonl": {
+        "sha256": "aa3dac75be395bf40b1bd8217510e3bee2aa99d1b63857e2c84d6df06531ae26",
+        "bytes": 531318,
+        "lines": 720
+      },
+      "messages.jsonl": {
+        "sha256": "2f601e42aa233b6cbd765ef63082a8fe8bbf953f73f3bbfc51ac00a977029231",
+        "bytes": 85691,
+        "lines": 183
+      },
+      "memory_reasoning.jsonl": {
+        "sha256": "22abb669248628bd76f8a558572934ff1f96dc4e94ae13026d436612ad081af6",
+        "bytes": 307383,
+        "lines": 720
+      },
+      "parse_errors.jsonl": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "lines": 0
+      },
+      "llm_attempts.jsonl": {
+        "sha256": "e8d40f3dd2d450cdbe4562faff47d9954f62c04ed03a0edb778a356d5f001792",
+        "bytes": 4241551,
+        "lines": 1440
+      },
+      "termination.jsonl": {
+        "sha256": "6ef9f5ab66996aff351d2f9e6691e6c47460a5b9bf5245f347a0b6d33a8539a5",
+        "bytes": 395,
+        "lines": 1
+      }
+    }
+  },
+  "raw_manifest_status": "available",
+  "raw_manifest_error": null,
+  "output_directory": "output_public-ollama-20260829T122715195640Z-0600fa7bf929",
+  "seed": 1002,
+  "total_llm_calls": 1440,
+  "parse_errors": 0,
+  "parse_error_rate": 0.0
+}
