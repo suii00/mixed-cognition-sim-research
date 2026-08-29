@@ -180,6 +180,11 @@ response contractを変えない運用上のmemory予約です。
 
 ## 新しい実験
 
+日本語対応モデルを共通の日本語prompt条件で比較する場合は、先に
+[Japanese Prompt Experiment v1](docs/JAPANESE_PROMPT_EXPERIMENT_V1.md) を参照し、
+`simulation.prompt_contract_version` に `japanese-prompts-v1.0.0` を明示します。
+既存の英語prompt条件やlegacy再現条件は変更しません。
+
 1. `docs/EXPERIMENT_PROTOCOL.md` の項目を事前登録し、protocol version を決めます。
 2. 既存 config を新しい名前へコピーし、`run_id`、seed、介入、対照、model 条件を
    明示します。public config に runtime 値は書きません。
