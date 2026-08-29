@@ -1,0 +1,23 @@
+{
+  "approved_source_git_sha": "8dbf7a99eb1f920c293398f3ac6e0a01f85ea6dc",
+  "gpu_indices": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "results": [
+    {
+      "evidence_directories": [],
+      "exit_code": 1,
+      "outcome": "failed",
+      "run_directories": [],
+      "source_run_id": "vllm-3model3x60-20260823-r004"
+    }
+  ],
+  "run_timeout_s": 7200.0,
+  "schema_version": "legacy-reproduction-batch-result-v1.0.0",
+  "startup_timeout_s": 600.0
+}

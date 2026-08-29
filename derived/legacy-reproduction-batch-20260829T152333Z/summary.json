@@ -1,0 +1,60 @@
+{
+  "approved_source_git_sha": "66fa94c6d268b095afeeda367f700e79f30744d9",
+  "gpu_indices": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "results": [
+    {
+      "evidence_directories": [
+        "validation-vllm-public-vllm-20260829T143444129120Z-5844a0c4ab8d"
+      ],
+      "exit_code": 1,
+      "outcome": "retained_run_level_failure",
+      "run_directories": [
+        "output_public-vllm-20260829T143444129120Z-5844a0c4ab8d"
+      ],
+      "source_run_id": "vllm-3model24x60-3gpu-20260823-r001"
+    },
+    {
+      "evidence_directories": [
+        "validation-vllm-public-vllm-20260829T144714598888Z-6d90fd29b119"
+      ],
+      "exit_code": 1,
+      "outcome": "retained_run_level_failure",
+      "run_directories": [
+        "output_public-vllm-20260829T144714598888Z-6d90fd29b119"
+      ],
+      "source_run_id": "vllm-3model24x60-3gpu-json-20260823-r002"
+    },
+    {
+      "evidence_directories": [
+        "validation-vllm-public-vllm-20260829T145930850084Z-f6c596fce669"
+      ],
+      "exit_code": 1,
+      "outcome": "retained_run_level_failure",
+      "run_directories": [
+        "output_public-vllm-20260829T145930850084Z-f6c596fce669"
+      ],
+      "source_run_id": "vllm-dual-worker-a-24x60-20260823-r001"
+    },
+    {
+      "evidence_directories": [
+        "validation-vllm-public-vllm-20260829T151127995633Z-44a6ec3cb9d5"
+      ],
+      "exit_code": 1,
+      "outcome": "retained_run_level_failure",
+      "run_directories": [
+        "output_public-vllm-20260829T151127995633Z-44a6ec3cb9d5"
+      ],
+      "source_run_id": "vllm-dual-worker-b-24x60-20260823-r001"
+    }
+  ],
+  "run_timeout_s": 7200.0,
+  "schema_version": "legacy-reproduction-batch-result-v1.0.0",
+  "startup_timeout_s": 600.0
+}

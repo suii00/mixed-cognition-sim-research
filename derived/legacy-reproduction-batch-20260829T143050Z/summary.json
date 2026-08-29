@@ -1,0 +1,27 @@
+{
+  "approved_source_git_sha": "66fa94c6d268b095afeeda367f700e79f30744d9",
+  "gpu_indices": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "results": [
+    {
+      "evidence_directories": [
+        "validation-vllm-public-vllm-20260829T142024302932Z-41b5f4525d9c"
+      ],
+      "exit_code": 0,
+      "outcome": "passed",
+      "run_directories": [
+        "output_public-vllm-20260829T142024302932Z-41b5f4525d9c"
+      ],
+      "source_run_id": "vllm-3model3x60-20260823-r004"
+    }
+  ],
+  "run_timeout_s": 7200.0,
+  "schema_version": "legacy-reproduction-batch-result-v1.0.0",
+  "startup_timeout_s": 600.0
+}
