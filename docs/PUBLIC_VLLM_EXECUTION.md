@@ -107,7 +107,7 @@ runtime address や実機固有 ID を保持しません。
 ## Formal 60-run matrix
 
 `tools/run_public_disaster_matrix.py`は同じpublic-by-construction primitiveを使い、
-`configs/public_formal_disaster_v3/manifest.json`に固定した60 runを二つのworker laneで実行します。
+`configs/public_formal_disaster_v3_1/manifest.json`に固定した60 runを二つのworker laneで実行します。
 serverはQwen replica 2、Llama replica 2、Gemma TP2 shared 1の計5 process、6 GPUです。
 
 ```bash
@@ -130,4 +130,4 @@ strict validationの`unverifiable`はerrorとは別のepistemic limitationです
 `valid == true`を必須とし、unverifiableを隠さず件数とdigestでevidenceへ記録します。
 
 条件、seed、介入、対照、観測連鎖は
-`docs/EXPERIMENT_PROTOCOL_PUBLIC_DISASTER_V3.md`に事前登録されています。
+`docs/EXPERIMENT_PROTOCOL_PUBLIC_DISASTER_V3_1.md`に事前登録されています。

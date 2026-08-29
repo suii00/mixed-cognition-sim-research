@@ -1,5 +1,8 @@
 # Public disaster formal protocol v3.0.0
 
+Status: operational attemptsでformal matrix完了前に停止し、v3.1.0へsupersedeされた。
+このprotocolのraw attemptsはformal resultへ混ぜない。
+
 ## Status and scope
 
 この文書は、最初のmodel outputが生成される前に固定するprospective protocolである。
