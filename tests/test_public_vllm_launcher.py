@@ -90,9 +90,21 @@ class PublicVllmContractTests(unittest.TestCase):
             with self.assertRaisesRegex(launcher.PublicVllmError, "exact lock"):
                 launcher.check_installed_runtime(lock)
 
-    def test_contract_only_is_cross_platform_and_does_not_probe_runtime(self):
+    def test_contract_only_does_not_probe_runtime(self):
         output = io.StringIO()
-        with mock.patch.object(launcher.os, "name", "nt"), redirect_stdout(output):
+        with mock.patch.object(
+            launcher,
+            "require_git_head",
+            side_effect=AssertionError("contract-only probed Git state"),
+        ) as require_git_head, mock.patch.object(
+            launcher,
+            "check_installed_runtime",
+            side_effect=AssertionError("contract-only probed the installed runtime"),
+        ) as check_installed_runtime, mock.patch.object(
+            launcher,
+            "query_gpu_rows",
+            side_effect=AssertionError("contract-only probed GPU state"),
+        ) as query_gpu_rows, redirect_stdout(output):
             result = launcher.main([
                 "--config",
                 str(CONFIG_PATH),
@@ -102,6 +114,9 @@ class PublicVllmContractTests(unittest.TestCase):
             ])
         self.assertEqual(result, 0)
         self.assertIn("internally consistent", output.getvalue())
+        require_git_head.assert_not_called()
+        check_installed_runtime.assert_not_called()
+        query_gpu_rows.assert_not_called()
 
 
 class PublicVllmAllocationTests(unittest.TestCase):
