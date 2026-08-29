@@ -1,28 +1,9 @@
-# Mixed-Cognition Social Simulation
+# mixed-cognition-sim
 
-異なる LLM が混在する社会シミュレーションを、再現可能かつ監査可能な
-形で実行・検証・公開するための独立リポジトリです。このリポジトリだけで
-simulation、disaster scenario、parallel transport、metrics、可視化、run 検証を
-実行でき、別リポジトリのコードやデータを参照しません。
+異なるLLMモデルを混在させたマルチエージェントシミュレーション。混合認知集団における創発的行動を研究するためのエンジン。
 
-この設計にはサニタイズ工程がありません。公開設定と実行時接続情報を入力時点で
-分離し、run 成果物は最初から公開可能な値だけで生成します。検証コマンドは失敗を
-報告するだけで、config や raw log を書き換えません。
+エージェントをブロック単位で異なるLLM（Ollama経由）に割り当て、ブロック／モデル情報をエージェント自身には一切開示しない。ブロック間の認知差はモデル重みのみに由来する。プロンプトには数値情報のみを与え、定性評価語・目的示唆を排除することで、行動の自発的組織化を観察する。
 
-## 公開境界
-
-- `configs/` は公開可能な研究条件だけを保持します。endpoint は論理的な
-  `endpoint_id` と任意の `device_slot` で表します。
-- 実 URL は別の runtime-binding ファイルからメモリ上へ読み込みます。binding の
-  値は config snapshot、`run_meta.json`、raw JSONL へコピーされません。
-- public config 内の接続 URL、host 名、GPU 固有 ID、credential-shaped key は実行前に
- 拒否されます。
-- GPU provenance は index、製品名、memory、driver/CUDA version までに限定し、
-  device 固有 ID を取得しません。
-- `runs/` は意図的に Git 管理対象です。新しい run を追加するために snapshot
-  generator や sanitizer を通す必要はありません。
-
-詳細は [Publication boundary](docs/PUBLICATION_BOUNDARY.md) を参照してください。
 
 ## クレジットと系譜
 
@@ -131,12 +112,6 @@ python tools/run_public_disaster_matrix.py --source-git-sha <full-sha> --contrac
 python tools/run_public_disaster_matrix.py --source-git-sha <full-sha> --preflight-only
 python tools/run_public_disaster_matrix.py --source-git-sha <approved-full-sha> --gpu-indices 0,1,2,3,4,5
 ```
-
-launcherは全60 runをignored stagingへ生成し、各runと全体を二重検証します。全件がstrict
-PASS、HTTP retry/failure 0、publication finding 0、runtime-binding残存0の場合だけraw bytesを
-`runs/`へ昇格します。途中失敗したmatrixを部分成果として公開したり、出力をsanitizationして
-成功扱いにしたりしません。実験条件と観測連鎖は
-[Public disaster formal protocol v3.2](docs/EXPERIMENT_PROTOCOL_PUBLIC_DISASTER_V3_2.md) に事前登録しています。
 
 ## 歴史的runの独立再現
 
