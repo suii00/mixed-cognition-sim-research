@@ -10,6 +10,7 @@ from engine.execution_contracts import (
     ABORT_RUN_RESPONSE_FAILURE_POLICY,
     CURRENT_PROMPT_CONTRACT_VERSION,
     CURRENT_TRANSPORT_BEHAVIOR_VERSION,
+    JAPANESE_PROMPT_CONTRACT_VERSION,
     LEGACY_PROMPT_CONTRACT_VERSION,
     LEGACY_TRANSPORT_BEHAVIOR_VERSION,
     RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY,
@@ -300,9 +301,13 @@ def build_effective_config(config: Dict[str, Any]) -> Dict[str, Any]:
                 "phase-response-v2.0.0 requires log_schema_version "
                 f"'{OBSERVABILITY_LOG_SCHEMA_VERSION}'"
             )
-        if prompt_contract_version != CURRENT_PROMPT_CONTRACT_VERSION:
+        if prompt_contract_version not in {
+            CURRENT_PROMPT_CONTRACT_VERSION,
+            JAPANESE_PROMPT_CONTRACT_VERSION,
+        }:
             raise ValueError(
-                "phase-response-v2.0.0 requires the current prompt contract"
+                "phase-response-v2.0.0 requires the current or Japanese "
+                "prompt contract"
             )
         if transport_behavior_version != CURRENT_TRANSPORT_BEHAVIOR_VERSION:
             raise ValueError(

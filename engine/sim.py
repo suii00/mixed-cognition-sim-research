@@ -17,13 +17,14 @@ from engine.disaster import (
     parse_disaster_scenario,
 )
 from engine.execution_contracts import (
+    JAPANESE_PROMPT_CONTRACT_VERSION,
     LEGACY_PROMPT_CONTRACT_VERSION,
     RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY,
     validate_prompt_contract_version,
     validate_response_failure_policy,
     validate_transport_behavior_version,
 )
-from engine import legacy_prompts_v1
+from engine import japanese_prompts_v1, legacy_prompts_v1
 from engine.llm_client import LLMTransportError, call_ollama, call_vllm
 from engine.parallel_transport import (
     LLMResponseSchemaError,
@@ -310,9 +311,18 @@ class Simulation:
                 )
                 prompt = prompt_builder(**common_prompt_args)
             else:
-                prompt_builder = (
-                    build_phase1_prompt if phase == "phase1" else build_phase3_prompt
-                )
+                if self.prompt_contract_version == JAPANESE_PROMPT_CONTRACT_VERSION:
+                    prompt_builder = (
+                        japanese_prompts_v1.build_phase1_prompt
+                        if phase == "phase1"
+                        else japanese_prompts_v1.build_phase3_prompt
+                    )
+                else:
+                    prompt_builder = (
+                        build_phase1_prompt
+                        if phase == "phase1"
+                        else build_phase3_prompt
+                    )
                 prompt = prompt_builder(
                     **common_prompt_args,
                     step=step if self.disaster else None,

@@ -20,6 +20,8 @@ from typing import Any, Dict, Iterable, Optional, Tuple
 from urllib.parse import parse_qsl, unquote_plus, urlsplit
 
 from engine.execution_contracts import (
+    CURRENT_PROMPT_CONTRACT_VERSION,
+    JAPANESE_PROMPT_CONTRACT_VERSION,
     LEGACY_PROMPT_CONTRACT_VERSION,
     validate_prompt_contract_version,
     validate_response_failure_policy,
@@ -427,11 +429,11 @@ def compute_prompt_hash(
 ) -> str:
     root = repo_root or Path(__file__).resolve().parent.parent
     contract_version = validate_prompt_contract_version(prompt_contract_version)
-    filename = (
-        "legacy_prompts_v1.py"
-        if contract_version == LEGACY_PROMPT_CONTRACT_VERSION
-        else "prompts.py"
-    )
+    filename = {
+        CURRENT_PROMPT_CONTRACT_VERSION: "prompts.py",
+        JAPANESE_PROMPT_CONTRACT_VERSION: "japanese_prompts_v1.py",
+        LEGACY_PROMPT_CONTRACT_VERSION: "legacy_prompts_v1.py",
+    }[contract_version]
     return sha256_bytes((root / "engine" / filename).read_bytes())
 
 
