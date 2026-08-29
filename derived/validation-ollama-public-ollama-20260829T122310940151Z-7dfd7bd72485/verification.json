@@ -1,0 +1,18 @@
+{
+  "all_process_groups_stopped": true,
+  "gpu_release_verified": true,
+  "maximum_observed_active_gpu_count": 3,
+  "ollama_server_log_files_created": false,
+  "ollama_version": "0.32.13",
+  "protocol_version": "legacy-reproduction-v1.0.0",
+  "publication_scan_finding_count": 0,
+  "run_id": "public-ollama-20260829T122310940151Z-7dfd7bd72485",
+  "run_tree_sha256": "5a6ffc568cceacfa4df8f8065ab39b5afba7abc4abd99930e9684686150040e7",
+  "runtime_binding_values_persisted": false,
+  "runtime_model_root_persisted": false,
+  "schema_version": "public-ollama-verification-v1.0.0",
+  "selected_gpu_count": 3,
+  "source_git_sha": "391026533677694d5ee00765d555861148124bf3",
+  "strict_unverifiable_count": 5,
+  "strict_validation_passed": true
+}
