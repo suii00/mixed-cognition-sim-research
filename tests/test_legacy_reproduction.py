@@ -125,6 +125,10 @@ class LegacyReproductionTests(unittest.TestCase):
         self.assertIn("OLLAMA_CONTEXT_LENGTH=4096", command)
         self.assertNotIn("sudo", command)
         self.assertNotIn("HF_TOKEN", " ".join(command))
+        probe_environment = ollama_launcher.version_probe_environment(server_home)
+        self.assertEqual(probe_environment["HOME"], str(server_home))
+        self.assertNotEqual(probe_environment["HOME"], str(Path.home()))
+        self.assertNotIn("HF_TOKEN", probe_environment)
         process = mock.Mock()
         with mock.patch.object(Path, "mkdir"):
             with mock.patch.object(

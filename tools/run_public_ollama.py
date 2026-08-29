@@ -150,18 +150,33 @@ def build_endpoint_specs(
     return specs
 
 
+def version_probe_environment(runtime_root: Path) -> dict[str, str]:
+    return {
+        "HOME": str(runtime_root),
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "TMPDIR": str(runtime_root / "tmp"),
+        "XDG_CACHE_HOME": str(runtime_root / "cache"),
+    }
+
+
 def check_ollama_binary() -> None:
     if not OLLAMA_BINARY.is_file():
         raise PublicOllamaError("the pinned Ollama binary is unavailable")
     try:
-        result = subprocess.run(
-            [str(OLLAMA_BINARY), "--version"],
-            check=False,
-            capture_output=True,
-            text=True,
-            timeout=15,
-            env={"PATH": "/usr/local/bin:/usr/bin:/bin"},
-        )
+        with tempfile.TemporaryDirectory(
+            prefix="public-ollama-version-"
+        ) as temporary:
+            runtime_root = Path(temporary)
+            (runtime_root / "tmp").mkdir(exist_ok=False)
+            (runtime_root / "cache").mkdir(exist_ok=False)
+            result = subprocess.run(
+                [str(OLLAMA_BINARY), "--version"],
+                check=False,
+                capture_output=True,
+                text=True,
+                timeout=15,
+                env=version_probe_environment(runtime_root),
+            )
     except (OSError, subprocess.SubprocessError) as error:
         raise PublicOllamaError("the Ollama version probe failed") from error
     combined = f"{result.stdout}\n{result.stderr}"
