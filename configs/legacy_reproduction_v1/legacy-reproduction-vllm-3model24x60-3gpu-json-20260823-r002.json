@@ -1,0 +1,127 @@
+{
+  "agents": {
+    "communication_radius": 100,
+    "edge_policy": "full",
+    "memory_limit": 20,
+    "memory_size": 5,
+    "message_context_size": 3,
+    "message_history_limit": 10
+  },
+  "blocs": [
+    {
+      "backend_version": "0.27.1",
+      "chat_template": "tokenizer_config.json:chat_template:sha256:cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+      "data_parallel_size": 1,
+      "device_slot": "legacy-vllm-3model24x60-3gpu-json-20260823-r002-qwen-device",
+      "dtype": "bfloat16",
+      "endpoint_id": "legacy-vllm-3model24x60-3gpu-json-20260823-r002-qwen",
+      "flashinfer_mode": "disabled",
+      "generation_config": "vllm",
+      "gpu_memory_utilization": 0.9,
+      "llm_overrides": {
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "max_model_len": 4096,
+      "model": "qwen2.5-7b-instruct",
+      "model_digest": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "model_source": "Qwen/Qwen2.5-7B-Instruct",
+      "name": "qwen",
+      "num_agents": 8,
+      "provider": "vllm",
+      "quantization": "none",
+      "tensor_parallel_size": 1,
+      "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28"
+    },
+    {
+      "backend_version": "0.27.1",
+      "chat_template": "tokenizer_config.json:chat_template:sha256:e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+      "data_parallel_size": 1,
+      "device_slot": "legacy-vllm-3model24x60-3gpu-json-20260823-r002-llama-device",
+      "dtype": "bfloat16",
+      "endpoint_id": "legacy-vllm-3model24x60-3gpu-json-20260823-r002-llama",
+      "flashinfer_mode": "disabled",
+      "generation_config": "vllm",
+      "gpu_memory_utilization": 0.9,
+      "llm_overrides": {
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "max_model_len": 4096,
+      "model": "llama-3.1-8b-instruct",
+      "model_digest": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "model_source": "meta-llama/Llama-3.1-8B-Instruct",
+      "name": "llama",
+      "num_agents": 8,
+      "provider": "vllm",
+      "quantization": "none",
+      "tensor_parallel_size": 1,
+      "tokenizer_revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+    },
+    {
+      "backend_version": "0.27.1",
+      "chat_template": "tokenizer_config.json:chat_template:sha256:ecd6ae513fe103f0eb62e8ab5bfa8d0fe45c1074fa398b089c93a7e70c15cfd6",
+      "data_parallel_size": 1,
+      "device_slot": "legacy-vllm-3model24x60-3gpu-json-20260823-r002-gemma-device",
+      "dtype": "bfloat16",
+      "endpoint_id": "legacy-vllm-3model24x60-3gpu-json-20260823-r002-gemma",
+      "flashinfer_mode": "disabled",
+      "generation_config": "vllm",
+      "gpu_memory_utilization": 0.92,
+      "llm_overrides": {
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "max_model_len": 4096,
+      "model": "gemma-2-9b-it",
+      "model_digest": "11c9b309abf73637e4b6f9a3fa1e92e615547819",
+      "model_source": "google/gemma-2-9b-it",
+      "name": "gemma",
+      "num_agents": 8,
+      "provider": "vllm",
+      "quantization": "none",
+      "tensor_parallel_size": 1,
+      "tokenizer_revision": "11c9b309abf73637e4b6f9a3fa1e92e615547819"
+    }
+  ],
+  "llm_defaults": {
+    "max_concurrency": 24,
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "timeout_s": 120
+  },
+  "places": [],
+  "reproduction": {
+    "source_completed_steps": 60,
+    "source_config_sha256": "ba4c25c62d27e97097ac858327b4c3a129d549a0b3fa480c765c158a34a96472",
+    "source_git_sha": "0223cebc34da0b284238f3f74159473c0a5e0b0a",
+    "source_log_schema_version": "1.1.0",
+    "source_prompt_sha256": "f414ab30a963636d80239644c2d3770672c77d5b8bdde027de2eb15a0d08bc3d",
+    "source_protocol_version": "vllm-3model24x60-3gpu-json-r002-v1.0.0",
+    "source_run_id": "vllm-3model24x60-3gpu-json-20260823-r002",
+    "source_status": "completed"
+  },
+  "simulation": {
+    "duration": 60,
+    "execution_mode": "vllm_openai_compatible",
+    "failure_thresholds": {
+      "schema_validation_failures": 0,
+      "syntax_parse_failures": 0,
+      "transport_failures": 0
+    },
+    "half_space_size": 25,
+    "log_schema_version": "2.0.0",
+    "metric_version": "metric-v2.0.0",
+    "prompt_contract_version": "legacy-prompts-v1.0.0",
+    "protocol_version": "legacy-reproduction-v1.0.0",
+    "research_eligible": false,
+    "response_contract_version": "phase-response-v1.0.0",
+    "response_failure_policy": "record_and_continue",
+    "run_name": "legacy-reproduction-vllm-3model24x60-3gpu-json-20260823-r002",
+    "seed": 42,
+    "transport_behavior_version": "legacy-subobject-generation-retry-v1.0.0"
+  }
+}

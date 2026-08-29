@@ -16,6 +16,14 @@ from engine.disaster import (
     contains_warning_identifier,
     parse_disaster_scenario,
 )
+from engine.execution_contracts import (
+    LEGACY_PROMPT_CONTRACT_VERSION,
+    RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY,
+    validate_prompt_contract_version,
+    validate_response_failure_policy,
+    validate_transport_behavior_version,
+)
+from engine import legacy_prompts_v1
 from engine.llm_client import LLMTransportError, call_ollama, call_vllm
 from engine.parallel_transport import (
     LLMResponseSchemaError,
@@ -66,6 +74,15 @@ class Simulation:
         self.run_name = sim_cfg["run_name"]
         self.response_contract_version = validate_response_contract_version(
             sim_cfg.get("response_contract_version")
+        )
+        self.prompt_contract_version = validate_prompt_contract_version(
+            sim_cfg.get("prompt_contract_version")
+        )
+        self.transport_behavior_version = validate_transport_behavior_version(
+            sim_cfg.get("transport_behavior_version")
+        )
+        self.response_failure_policy = validate_response_failure_policy(
+            sim_cfg.get("response_failure_policy")
         )
 
         agent_cfg = self.config["agents"]
@@ -274,32 +291,43 @@ class Simulation:
         requests: List[LLMRequest] = []
         for agent in self._ordered_agents():
             state = snapshot["agents"][agent.agent_id]
-            prompt_builder = (
-                build_phase1_prompt if phase == "phase1" else build_phase3_prompt
-            )
-            prompt = prompt_builder(
-                agent_id=agent.agent_id,
-                x=state["position"][0],
-                y=state["position"][1],
-                half_space_size=self.half_space_size,
-                places=snapshot["places"],
-                place=state["place"],
-                agent_count=state["agent_count"],
-                memories=state["memories"],
-                messages=state["messages"],
-                step=step if self.disaster else None,
-                hazard_rectangles=(
-                    self.disaster.active_hazard_rectangles(step)
-                    if self.disaster
-                    else ()
-                ),
-                refuges=self.disaster.refuges if self.disaster else (),
-                **(
-                    {"response_contract_version": self.response_contract_version}
-                    if phase == "phase3"
-                    else {}
-                ),
-            )
+            common_prompt_args = {
+                "agent_id": agent.agent_id,
+                "x": state["position"][0],
+                "y": state["position"][1],
+                "half_space_size": self.half_space_size,
+                "places": snapshot["places"],
+                "place": state["place"],
+                "agent_count": state["agent_count"],
+                "memories": state["memories"],
+                "messages": state["messages"],
+            }
+            if self.prompt_contract_version == LEGACY_PROMPT_CONTRACT_VERSION:
+                prompt_builder = (
+                    legacy_prompts_v1.build_phase1_prompt
+                    if phase == "phase1"
+                    else legacy_prompts_v1.build_phase3_prompt
+                )
+                prompt = prompt_builder(**common_prompt_args)
+            else:
+                prompt_builder = (
+                    build_phase1_prompt if phase == "phase1" else build_phase3_prompt
+                )
+                prompt = prompt_builder(
+                    **common_prompt_args,
+                    step=step if self.disaster else None,
+                    hazard_rectangles=(
+                        self.disaster.active_hazard_rectangles(step)
+                        if self.disaster
+                        else ()
+                    ),
+                    refuges=self.disaster.refuges if self.disaster else (),
+                    **(
+                        {"response_contract_version": self.response_contract_version}
+                        if phase == "phase3"
+                        else {}
+                    ),
+                )
             requests.append(
                 LLMRequest(
                     request_id=self._request_id(step, phase, agent.agent_id),
@@ -318,6 +346,7 @@ class Simulation:
                     device_slot=agent.device_slot,
                     strict_response_validation=self.strict_response_validation,
                     response_contract_version=self.response_contract_version,
+                    transport_behavior_version=self.transport_behavior_version,
                 )
             )
         return requests
@@ -347,6 +376,7 @@ class Simulation:
                 llm_overrides=copy.deepcopy(request.llm_overrides),
                 telemetry=telemetry,
                 attempt_observer=attempts.append,
+                transport_behavior_version=request.transport_behavior_version,
                 **(
                     {"phase_response_format": phase_response_format}
                     if phase_response_format is not None
@@ -455,7 +485,13 @@ class Simulation:
     def _raise_phase_error(self, results: List[LLMResult]) -> None:
         """Choose and raise any terminal worker error deterministically."""
         selected = None
-        for error_kind in ("unexpected", "transport", "syntax", "schema"):
+        error_kinds = ["unexpected", "transport"]
+        if (
+            self.response_failure_policy
+            != RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY
+        ):
+            error_kinds.extend(("syntax", "schema"))
+        for error_kind in error_kinds:
             candidates = [
                 result for result in results if result.error_kind == error_kind
             ]

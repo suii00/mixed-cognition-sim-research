@@ -1,0 +1,106 @@
+{
+  "authorized_gpu_ceiling": 6,
+  "log_schema_version": "2.0.0",
+  "planned_attempts": 10,
+  "planned_logical_llm_calls": 19106,
+  "prompt_contract_version": "legacy-prompts-v1.0.0",
+  "prompt_sha256": "f414ab30a963636d80239644c2d3770672c77d5b8bdde027de2eb15a0d08bc3d",
+  "protocol_version": "legacy-reproduction-v1.0.0",
+  "response_contract_version": "phase-response-v1.0.0",
+  "rows": [
+    {
+      "config": "configs/legacy_reproduction_v1/legacy-reproduction-vllm-llama1x1-20260823-r001.json",
+      "execution_scope": "authorized_up_to_6_gpus",
+      "logical_llm_calls": 2,
+      "provider": "vllm",
+      "required_gpu_count": 1,
+      "seed": 42,
+      "source_run_id": "vllm-llama1x1-20260823-r001"
+    },
+    {
+      "config": "configs/legacy_reproduction_v1/legacy-reproduction-het12x1-ollama-20260819-r001.json",
+      "execution_scope": "authorized_up_to_6_gpus",
+      "logical_llm_calls": 24,
+      "provider": "ollama",
+      "required_gpu_count": 3,
+      "seed": 42,
+      "source_run_id": "het12x1-ollama-20260819-r001"
+    },
+    {
+      "config": "configs/legacy_reproduction_v1/legacy-reproduction-pilot-het12x60-20260823-s1002-r002.json",
+      "execution_scope": "authorized_up_to_6_gpus",
+      "logical_llm_calls": 1440,
+      "provider": "ollama",
+      "required_gpu_count": 3,
+      "seed": 1002,
+      "source_run_id": "pilot-het12x60-20260823-s1002-r002"
+    },
+    {
+      "config": "configs/legacy_reproduction_v1/legacy-reproduction-vllm-3model3x60-20260823-r004.json",
+      "execution_scope": "authorized_up_to_6_gpus",
+      "logical_llm_calls": 360,
+      "provider": "vllm",
+      "required_gpu_count": 3,
+      "seed": 42,
+      "source_run_id": "vllm-3model3x60-20260823-r004"
+    },
+    {
+      "config": "configs/legacy_reproduction_v1/legacy-reproduction-vllm-3model24x60-3gpu-20260823-r001.json",
+      "execution_scope": "authorized_up_to_6_gpus",
+      "logical_llm_calls": 2880,
+      "provider": "vllm",
+      "required_gpu_count": 3,
+      "seed": 42,
+      "source_run_id": "vllm-3model24x60-3gpu-20260823-r001"
+    },
+    {
+      "config": "configs/legacy_reproduction_v1/legacy-reproduction-vllm-3model24x60-3gpu-json-20260823-r002.json",
+      "execution_scope": "authorized_up_to_6_gpus",
+      "logical_llm_calls": 2880,
+      "provider": "vllm",
+      "required_gpu_count": 3,
+      "seed": 42,
+      "source_run_id": "vllm-3model24x60-3gpu-json-20260823-r002"
+    },
+    {
+      "config": "configs/legacy_reproduction_v1/legacy-reproduction-vllm-3model24x60-7gpu-20260823-r002.json",
+      "execution_scope": "requires_separate_7_gpu_approval",
+      "logical_llm_calls": 2880,
+      "provider": "vllm",
+      "required_gpu_count": 7,
+      "seed": 42,
+      "source_run_id": "vllm-3model24x60-7gpu-20260823-r002"
+    },
+    {
+      "config": "configs/legacy_reproduction_v1/legacy-reproduction-vllm-3model24x60-7gpu-json-20260823-r003.json",
+      "execution_scope": "requires_separate_7_gpu_approval",
+      "logical_llm_calls": 2880,
+      "provider": "vllm",
+      "required_gpu_count": 7,
+      "seed": 42,
+      "source_run_id": "vllm-3model24x60-7gpu-json-20260823-r003"
+    },
+    {
+      "config": "configs/legacy_reproduction_v1/legacy-reproduction-vllm-dual-worker-a-24x60-20260823-r001.json",
+      "execution_scope": "authorized_up_to_6_gpus",
+      "logical_llm_calls": 2880,
+      "provider": "vllm",
+      "required_gpu_count": 3,
+      "seed": 42,
+      "source_run_id": "vllm-dual-worker-a-24x60-20260823-r001"
+    },
+    {
+      "config": "configs/legacy_reproduction_v1/legacy-reproduction-vllm-dual-worker-b-24x60-20260823-r001.json",
+      "execution_scope": "authorized_up_to_6_gpus",
+      "logical_llm_calls": 2880,
+      "provider": "vllm",
+      "required_gpu_count": 3,
+      "seed": 42,
+      "source_run_id": "vllm-dual-worker-b-24x60-20260823-r001"
+    }
+  ],
+  "runnable_attempts_under_current_approval": 8,
+  "runnable_logical_llm_calls_under_current_approval": 13346,
+  "schema_version": "legacy-reproduction-manifest-v1.0.0",
+  "transport_behavior_version": "legacy-subobject-generation-retry-v1.0.0"
+}

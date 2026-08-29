@@ -47,6 +47,9 @@ from engine.disaster import (  # noqa: E402
     parse_disaster_scenario,
 )
 from engine.config import validate_public_config_boundary  # noqa: E402
+from engine.execution_contracts import (  # noqa: E402
+    LEGACY_TRANSPORT_BEHAVIOR_VERSION,
+)
 from engine.world import World  # noqa: E402
 from engine.response_contracts import (  # noqa: E402
     CANONICAL_RESPONSE_CONTRACT_VERSION,
@@ -1558,7 +1561,12 @@ def _check_attempt_records(
         "endpoint_id",
         "device_slot",
     }
+    legacy_transport = (
+        config.get("simulation", {}).get("transport_behavior_version")
+        == LEGACY_TRANSPORT_BEHAVIOR_VERSION
+    )
     observed_keys: List[Tuple[int, int, int]] = []
+    attempts_by_key: Dict[Tuple[int, int, int], List[Record]] = {}
     event_ids = set()
     phase_order = {"phase1": 1, "phase3": 3}
     for line_number, record in records:
@@ -1577,14 +1585,20 @@ def _check_attempt_records(
             continue
         step = record["step"]
         agent_id = record["agent_id"]
-        observed_keys.append((step, phase_order[phase], agent_id))
+        request_key = (step, phase_order[phase], agent_id)
+        if request_key not in attempts_by_key:
+            observed_keys.append(request_key)
+            attempts_by_key[request_key] = []
+        attempts_by_key[request_key].append((line_number, record))
         expected_request_id = (
             f"step-{step:06d}:{phase}:agent-{agent_id:06d}"
         )
         if record.get("request_id") != expected_request_id:
             report.error(f"{filename}:{line_number} request_id mismatch")
+        generation_attempt = record.get("generation_attempt")
         expected_event_id = (
-            f"{meta.get('run_id')}:llm_attempt:{expected_request_id}:generation-1"
+            f"{meta.get('run_id')}:llm_attempt:{expected_request_id}:"
+            f"generation-{generation_attempt}"
         )
         if record.get("event_id") != expected_event_id:
             report.error(f"{filename}:{line_number} event_id mismatch")
@@ -1596,22 +1610,30 @@ def _check_attempt_records(
             report.error(f"{filename}:{line_number} run_id mismatch")
         if record.get("schema_version") != "1.0.0":
             report.error(f"{filename}:{line_number} schema_version mismatch")
-        if record.get("generation_attempt") != 1:
-            report.error(
-                f"{filename}:{line_number} generation_attempt must be 1"
-            )
+        allowed_generations = {1, 2} if legacy_transport else {1}
+        if generation_attempt not in allowed_generations:
+            report.error(f"{filename}:{line_number} generation_attempt is invalid")
         if record.get("http_attempt") != 1:
             report.error(f"{filename}:{line_number} http_attempt must be 1")
         if record.get("transport_status") != "ok":
             report.error(f"{filename}:{line_number} transport_status is not ok")
-        if record.get("parse_status") != "valid":
-            report.error(f"{filename}:{line_number} parse_status is not valid")
-        if record.get("schema_status") != "valid":
-            report.error(f"{filename}:{line_number} schema_status is not valid")
-        if record.get("failure_kind") is not None:
-            report.error(f"{filename}:{line_number} failure_kind is not null")
-        if record.get("error_type") is not None:
-            report.error(f"{filename}:{line_number} error_type is not null")
+        recovered_legacy_attempt = (
+            legacy_transport
+            and generation_attempt == 1
+            and record.get("parse_status") == "invalid"
+            and record.get("schema_status") == "not_checked"
+            and record.get("failure_kind") == "syntax"
+            and record.get("error_type") is None
+        )
+        if not recovered_legacy_attempt:
+            if record.get("parse_status") != "valid":
+                report.error(f"{filename}:{line_number} parse_status is not valid")
+            if record.get("schema_status") != "valid":
+                report.error(f"{filename}:{line_number} schema_status is not valid")
+            if record.get("failure_kind") is not None:
+                report.error(f"{filename}:{line_number} failure_kind is not null")
+            if record.get("error_type") is not None:
+                report.error(f"{filename}:{line_number} error_type is not null")
         status = record.get("http_status")
         if not _is_int(status) or not 200 <= status < 300:
             report.error(f"{filename}:{line_number} HTTP status is not 2xx")
@@ -1679,6 +1701,26 @@ def _check_attempt_records(
                 report.error(
                     f"{filename}:{line_number} {optional_identity} must be string or null"
                 )
+
+    recovered_retry_count = 0
+    for request_key, request_attempts in attempts_by_key.items():
+        generations = [record.get("generation_attempt") for _, record in request_attempts]
+        expected_generations = [1]
+        if legacy_transport and generations == [1, 2]:
+            expected_generations = [1, 2]
+            recovered_retry_count += 1
+            first = request_attempts[0][1]
+            second = request_attempts[1][1]
+            if first.get("parse_status") != "invalid":
+                report.error(f"{filename} legacy retry did not follow an invalid parse")
+            if second.get("parse_status") != "valid":
+                report.error(f"{filename} legacy retry did not recover")
+        if generations != expected_generations:
+            report.error(
+                f"{filename} generation sequence mismatch for request {request_key}"
+            )
+    if legacy_transport and recovered_retry_count != meta.get("generation_retries"):
+        report.error(f"{filename} retry rows differ from generation_retries")
 
     scenario = config.get("scenario")
     communication_none = (
@@ -1802,12 +1844,16 @@ def _check_counters_and_thresholds(
     attempts = meta.get("http_attempts")
     syntax_attempts = meta.get("syntax_parse_attempt_failures")
     syntax_failures = meta.get("syntax_parse_failures")
+    legacy_transport = (
+        config.get("simulation", {}).get("transport_behavior_version")
+        == LEGACY_TRANSPORT_BEHAVIOR_VERSION
+    )
     if all(
         _is_nonnegative_int(value)
         for value in (logical, retries, transport, attempts)
     ):
         if meta.get("log_schema_version") == OBSERVABILITY_LOG_SCHEMA_VERSION:
-            expected_attempts = logical
+            expected_attempts = logical + (retries if legacy_transport else 0)
         else:
             expected_attempts = logical + retries + transport
         if attempts != expected_attempts:
@@ -1821,7 +1867,10 @@ def _check_counters_and_thresholds(
     ):
         expected_syntax_attempts = (
             syntax_failures
-            if meta.get("log_schema_version") == OBSERVABILITY_LOG_SCHEMA_VERSION
+            if (
+                meta.get("log_schema_version") == OBSERVABILITY_LOG_SCHEMA_VERSION
+                and not legacy_transport
+            )
             else retries + syntax_failures
         )
         if syntax_attempts != expected_syntax_attempts:

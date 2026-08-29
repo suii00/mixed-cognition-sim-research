@@ -5,6 +5,11 @@ import json
 import requests
 from typing import Any, Callable, Dict, Optional, Tuple
 
+from engine.execution_contracts import (
+    CURRENT_TRANSPORT_BEHAVIOR_VERSION,
+    LEGACY_TRANSPORT_BEHAVIOR_VERSION,
+    validate_transport_behavior_version,
+)
 from engine.response_contracts import validate_phase_response_format
 
 
@@ -53,6 +58,26 @@ def extract_json(text: str) -> Optional[Dict]:
     except (TypeError, ValueError):
         return None
     return value if isinstance(value, dict) else None
+
+
+def extract_legacy_json(text: str) -> Optional[Dict]:
+    """Reproduce the historical first-balanced-object parser byte-for-byte."""
+    depth = 0
+    start = None
+    for index, character in enumerate(text):
+        if character == "{":
+            if depth == 0:
+                start = index
+            depth += 1
+        elif character == "}":
+            depth -= 1
+            if depth == 0 and start is not None:
+                try:
+                    return json.loads(text[start:index + 1])
+                except json.JSONDecodeError:
+                    start = None
+                    continue
+    return None
 
 
 def _emit(telemetry: Optional[TelemetryCallback], event: str) -> None:
@@ -228,9 +253,11 @@ def _call_chat_once(
     http_response_observer: Optional[HttpResponseObserver],
     attempt_observer: Optional[AttemptObserver],
     backend_name: str,
+    generation_attempt: int = 1,
+    extractor: Callable[[str], Optional[Dict]] = extract_json,
 ) -> Tuple[Optional[Dict], str]:
     attempt: Dict[str, Any] = {
-        "generation_attempt": 1,
+        "generation_attempt": generation_attempt,
         "http_attempt": 1,
         "http_status": None,
         "http_response_body_base64": None,
@@ -313,7 +340,7 @@ def _call_chat_once(
             }
             attempt["usage"] = usage or None
 
-        parsed = extract_json(raw_text)
+        parsed = extractor(raw_text)
         attempt["parse_status"] = "valid" if parsed is not None else "invalid"
         if parsed is None:
             attempt["failure_kind"] = "syntax"
@@ -333,6 +360,66 @@ def _call_chat_once(
             attempt_observer(copy.deepcopy(attempt))
 
 
+def _call_chat(
+    *,
+    url: str,
+    payload: Dict[str, Any],
+    content_path: Tuple[Any, ...],
+    timeout_s: int,
+    telemetry: Optional[TelemetryCallback],
+    response_observer: Optional[ResponseObserver],
+    http_response_observer: Optional[HttpResponseObserver],
+    attempt_observer: Optional[AttemptObserver],
+    backend_name: str,
+    transport_behavior_version: str,
+) -> Tuple[Optional[Dict], str]:
+    behavior = validate_transport_behavior_version(transport_behavior_version)
+    if behavior == CURRENT_TRANSPORT_BEHAVIOR_VERSION:
+        return _call_chat_once(
+            url=url,
+            payload=payload,
+            content_path=content_path,
+            timeout_s=timeout_s,
+            telemetry=telemetry,
+            response_observer=response_observer,
+            http_response_observer=http_response_observer,
+            attempt_observer=attempt_observer,
+            backend_name=backend_name,
+        )
+
+    if behavior != LEGACY_TRANSPORT_BEHAVIOR_VERSION:
+        raise ValueError("unsupported transport behavior")
+    parsed, raw_text = _call_chat_once(
+        url=url,
+        payload=payload,
+        content_path=content_path,
+        timeout_s=timeout_s,
+        telemetry=telemetry,
+        response_observer=response_observer,
+        http_response_observer=http_response_observer,
+        attempt_observer=attempt_observer,
+        backend_name=backend_name,
+        generation_attempt=1,
+        extractor=extract_legacy_json,
+    )
+    if parsed is not None:
+        return parsed, raw_text
+    _emit(telemetry, "generation_retry")
+    return _call_chat_once(
+        url=url,
+        payload=payload,
+        content_path=content_path,
+        timeout_s=timeout_s,
+        telemetry=telemetry,
+        response_observer=response_observer,
+        http_response_observer=http_response_observer,
+        attempt_observer=attempt_observer,
+        backend_name=backend_name,
+        generation_attempt=2,
+        extractor=extract_legacy_json,
+    )
+
+
 def call_ollama(prompt: str, model: str, base_url: str,
                 temperature: float = 0.2, max_tokens: int = 1024,
                 timeout_s: int = 120, llm_overrides: Optional[Dict] = None,
@@ -341,6 +428,7 @@ def call_ollama(prompt: str, model: str, base_url: str,
                 response_observer: Optional[ResponseObserver] = None,
                 http_response_observer: Optional[HttpResponseObserver] = None,
                 attempt_observer: Optional[AttemptObserver] = None,
+                transport_behavior_version: str = CURRENT_TRANSPORT_BEHAVIOR_VERSION,
                 ) -> Tuple[Optional[Dict], str]:
     url = f"{base_url}/api/chat"
     payload = build_ollama_chat_payload(
@@ -352,7 +440,7 @@ def call_ollama(prompt: str, model: str, base_url: str,
         keep_alive=keep_alive,
     )
 
-    return _call_chat_once(
+    return _call_chat(
         url=url,
         payload=payload,
         content_path=("message", "content"),
@@ -362,6 +450,7 @@ def call_ollama(prompt: str, model: str, base_url: str,
         http_response_observer=http_response_observer,
         attempt_observer=attempt_observer,
         backend_name="Ollama",
+        transport_behavior_version=transport_behavior_version,
     )
 
 
@@ -373,6 +462,7 @@ def call_vllm(prompt: str, model: str, base_url: str,
               http_response_observer: Optional[HttpResponseObserver] = None,
               attempt_observer: Optional[AttemptObserver] = None,
               phase_response_format: Optional[Dict[str, Any]] = None,
+              transport_behavior_version: str = CURRENT_TRANSPORT_BEHAVIOR_VERSION,
               ) -> Tuple[Optional[Dict], str]:
     """Call a vLLM OpenAI-compatible chat endpoint exactly once."""
     url = f"{base_url}/v1/chat/completions"
@@ -384,7 +474,7 @@ def call_vllm(prompt: str, model: str, base_url: str,
         llm_overrides=llm_overrides,
         phase_response_format=phase_response_format,
     )
-    return _call_chat_once(
+    return _call_chat(
         url=url,
         payload=payload,
         content_path=("choices", 0, "message", "content"),
@@ -394,4 +484,5 @@ def call_vllm(prompt: str, model: str, base_url: str,
         http_response_observer=http_response_observer,
         attempt_observer=attempt_observer,
         backend_name="vLLM",
+        transport_behavior_version=transport_behavior_version,
     )

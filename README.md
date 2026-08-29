@@ -105,6 +105,35 @@ python main.py \
 `runtime-bindings.local.yaml` として作成してください。credential を URL に埋め込む
 形式は未対応です。
 
+## 歴史的runの独立再現
+
+旧リポジトリの10条件は、旧prompt bytes、seed、モデルdigest、sampling、endpoint
+poolを固定した公開configとして `configs/legacy_reproduction_v1/` に収録しています。
+これは正式v2実験とは分離されたengineering reproductionであり、全configが
+`research_eligible=false`です。
+
+```bash
+python tools/build_legacy_reproduction_matrix.py --check
+python tools/run_legacy_reproduction.py --contract-only
+python tools/run_legacy_reproduction.py \
+  --provider vllm \
+  --preflight-only \
+  --source-git-sha <approved-full-sha> \
+  --gpu-indices 0,1,2,3,4,5
+python tools/run_legacy_reproduction.py \
+  --provider vllm \
+  --execute \
+  --source-git-sha <approved-full-sha> \
+  --gpu-indices 0,1,2,3,4,5
+```
+
+launcherは最大6 GPUを強制します。この許可内では8/10条件を実行可能です。元の
+7 GPU endpoint poolを使う2条件は黙って縮小されず、別の承認があるまで`not_run`
+として残ります。同じsimulation seedはworld状態を再現しますが、旧runはLLM生成seedを
+送っていないため、同一テキストやraw bytesは保証しません。詳細は
+[Historical Run Reproduction Protocol](docs/EXPERIMENT_PROTOCOL_LEGACY_REPRODUCTION_V1.md)
+を参照してください。
+
 ## 新しい実験
 
 1. `docs/EXPERIMENT_PROTOCOL.md` の項目を事前登録し、protocol version を決めます。

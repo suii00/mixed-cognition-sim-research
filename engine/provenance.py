@@ -19,6 +19,12 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, Optional, Tuple
 from urllib.parse import parse_qsl, unquote_plus, urlsplit
 
+from engine.execution_contracts import (
+    LEGACY_PROMPT_CONTRACT_VERSION,
+    validate_prompt_contract_version,
+    validate_response_failure_policy,
+    validate_transport_behavior_version,
+)
 from engine.response_contracts import (
     response_schema_sha256,
     validate_response_contract_version,
@@ -415,9 +421,18 @@ def compute_config_hash(config_snapshot: Dict[str, Any]) -> str:
     return sha256_bytes(canonical_json_bytes(config_snapshot))
 
 
-def compute_prompt_hash(repo_root: Optional[Path] = None) -> str:
+def compute_prompt_hash(
+    repo_root: Optional[Path] = None,
+    prompt_contract_version: Optional[str] = None,
+) -> str:
     root = repo_root or Path(__file__).resolve().parent.parent
-    return sha256_bytes((root / "engine" / "prompts.py").read_bytes())
+    contract_version = validate_prompt_contract_version(prompt_contract_version)
+    filename = (
+        "legacy_prompts_v1.py"
+        if contract_version == LEGACY_PROMPT_CONTRACT_VERSION
+        else "prompts.py"
+    )
+    return sha256_bytes((root / "engine" / filename).read_bytes())
 
 
 def _run_command(args: Iterable[str], cwd: Path, timeout_s: float = 5.0) -> Tuple[bool, str, str]:
@@ -765,9 +780,18 @@ class RunLifecycle:
         _assert_public_provenance_config(config_snapshot)
         validate_credential_free_config(config_snapshot)
         config_hash = compute_config_hash(config_snapshot)
-        prompt_hash = compute_prompt_hash(repo_root)
-        thresholds = _failure_thresholds(config)
         simulation = config.get("simulation", {})
+        prompt_contract_version = validate_prompt_contract_version(
+            simulation.get("prompt_contract_version")
+        )
+        transport_behavior_version = validate_transport_behavior_version(
+            simulation.get("transport_behavior_version")
+        )
+        response_failure_policy = validate_response_failure_policy(
+            simulation.get("response_failure_policy")
+        )
+        prompt_hash = compute_prompt_hash(repo_root, prompt_contract_version)
+        thresholds = _failure_thresholds(config)
         response_contract_version = validate_response_contract_version(
             simulation.get("response_contract_version")
         )
@@ -910,6 +934,9 @@ class RunLifecycle:
             "log_schema_version": log_schema_version,
             "metric_version": simulation.get("metric_version", DEFAULT_METRIC_VERSION),
             "response_contract_version": response_contract_version,
+            "prompt_contract_version": prompt_contract_version,
+            "transport_behavior_version": transport_behavior_version,
+            "response_failure_policy": response_failure_policy,
             "response_schema_sha256": response_schema_digest,
             "response_schema_hash_algorithm": (
                 "sha256-canonical-json-v1"

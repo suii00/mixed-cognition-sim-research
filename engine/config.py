@@ -6,8 +6,20 @@ import yaml
 
 from engine.llm_client import validate_ollama_overrides, validate_vllm_overrides
 from engine.disaster import parse_disaster_scenario
+from engine.execution_contracts import (
+    ABORT_RUN_RESPONSE_FAILURE_POLICY,
+    CURRENT_PROMPT_CONTRACT_VERSION,
+    CURRENT_TRANSPORT_BEHAVIOR_VERSION,
+    LEGACY_PROMPT_CONTRACT_VERSION,
+    LEGACY_TRANSPORT_BEHAVIOR_VERSION,
+    RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY,
+    validate_prompt_contract_version,
+    validate_response_failure_policy,
+    validate_transport_behavior_version,
+)
 from engine.response_contracts import (
     CANONICAL_RESPONSE_CONTRACT_VERSION,
+    LEGACY_RESPONSE_CONTRACT_VERSION,
     validate_response_contract_version,
 )
 
@@ -218,6 +230,61 @@ def build_effective_config(config: Dict[str, Any]) -> Dict[str, Any]:
         if isinstance(simulation, dict)
         else None
     )
+    prompt_contract_version = validate_prompt_contract_version(
+        simulation.get("prompt_contract_version")
+        if isinstance(simulation, dict)
+        else None
+    )
+    transport_behavior_version = validate_transport_behavior_version(
+        simulation.get("transport_behavior_version")
+        if isinstance(simulation, dict)
+        else None
+    )
+    response_failure_policy = validate_response_failure_policy(
+        simulation.get("response_failure_policy")
+        if isinstance(simulation, dict)
+        else None
+    )
+    if isinstance(simulation, dict):
+        simulation["prompt_contract_version"] = prompt_contract_version
+        simulation["transport_behavior_version"] = transport_behavior_version
+        simulation["response_failure_policy"] = response_failure_policy
+
+    legacy_reproduction_requested = any((
+        prompt_contract_version == LEGACY_PROMPT_CONTRACT_VERSION,
+        transport_behavior_version == LEGACY_TRANSPORT_BEHAVIOR_VERSION,
+        response_failure_policy == RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY,
+    ))
+    if legacy_reproduction_requested:
+        if not isinstance(simulation, dict):
+            raise ValueError("legacy reproduction requires simulation configuration")
+        if response_contract_version != LEGACY_RESPONSE_CONTRACT_VERSION:
+            raise ValueError(
+                "legacy reproduction requires phase-response-v1.0.0"
+            )
+        if prompt_contract_version != LEGACY_PROMPT_CONTRACT_VERSION:
+            raise ValueError(
+                "legacy reproduction requires legacy-prompts-v1.0.0"
+            )
+        if transport_behavior_version != LEGACY_TRANSPORT_BEHAVIOR_VERSION:
+            raise ValueError(
+                "legacy reproduction requires the versioned legacy transport behavior"
+            )
+        if response_failure_policy != RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY:
+            raise ValueError(
+                "legacy reproduction requires record_and_continue response failures"
+            )
+        if simulation.get("research_eligible") is not False:
+            raise ValueError("legacy reproduction must set research_eligible to false")
+        protocol_version = simulation.get("protocol_version")
+        if not isinstance(protocol_version, str) or not protocol_version.startswith(
+            "legacy-reproduction-v1"
+        ):
+            raise ValueError(
+                "legacy reproduction requires a legacy-reproduction-v1 protocol"
+            )
+        if "scenario" in effective:
+            raise ValueError("legacy prompt reproduction does not support scenarios")
     if response_contract_version == CANONICAL_RESPONSE_CONTRACT_VERSION:
         if not isinstance(simulation, dict):
             raise ValueError(
@@ -232,6 +299,18 @@ def build_effective_config(config: Dict[str, Any]) -> Dict[str, Any]:
             raise ValueError(
                 "phase-response-v2.0.0 requires log_schema_version "
                 f"'{OBSERVABILITY_LOG_SCHEMA_VERSION}'"
+            )
+        if prompt_contract_version != CURRENT_PROMPT_CONTRACT_VERSION:
+            raise ValueError(
+                "phase-response-v2.0.0 requires the current prompt contract"
+            )
+        if transport_behavior_version != CURRENT_TRANSPORT_BEHAVIOR_VERSION:
+            raise ValueError(
+                "phase-response-v2.0.0 requires the current transport behavior"
+            )
+        if response_failure_policy != ABORT_RUN_RESPONSE_FAILURE_POLICY:
+            raise ValueError(
+                "phase-response-v2.0.0 requires abort_run response failures"
             )
 
     blocs = effective.get("blocs")

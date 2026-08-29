@@ -7,6 +7,10 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from typing import Any, Callable, Dict, Iterable, Optional, Tuple
 
+from engine.execution_contracts import (
+    CURRENT_TRANSPORT_BEHAVIOR_VERSION,
+    validate_transport_behavior_version,
+)
 from engine.llm_client import LLMTransportError, TelemetryCallback
 from engine.response_contracts import (
     LEGACY_RESPONSE_CONTRACT_VERSION,
@@ -39,6 +43,7 @@ class LLMRequest:
     device_slot: Optional[str] = None
     strict_response_validation: bool = False
     response_contract_version: str = LEGACY_RESPONSE_CONTRACT_VERSION
+    transport_behavior_version: str = CURRENT_TRANSPORT_BEHAVIOR_VERSION
 
     def __post_init__(self) -> None:
         if self.phase not in PHASE_ORDER:
@@ -46,6 +51,7 @@ class LLMRequest:
         if self.provider not in {"ollama", "vllm"}:
             raise ValueError(f"unsupported LLM request provider: {self.provider!r}")
         validate_response_contract_version(self.response_contract_version)
+        validate_transport_behavior_version(self.transport_behavior_version)
         object.__setattr__(self, "llm_overrides", copy.deepcopy(self.llm_overrides))
 
 

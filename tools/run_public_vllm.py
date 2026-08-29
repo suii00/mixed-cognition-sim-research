@@ -37,6 +37,11 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from engine.config import endpoint_rows, load_config  # noqa: E402
+from engine.execution_contracts import (  # noqa: E402
+    LEGACY_PROMPT_CONTRACT_VERSION,
+    LEGACY_TRANSPORT_BEHAVIOR_VERSION,
+    RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY,
+)
 from engine.provenance import generate_run_id  # noqa: E402
 from tools.scan_publication import scan_text, scan_tree  # noqa: E402
 from tools.validate_run import validate_run  # noqa: E402
@@ -199,7 +204,12 @@ def check_installed_runtime(value: Mapping[str, Any]) -> dict[str, str]:
     return actual
 
 
-def validate_vllm_config(config: Mapping[str, Any], lock: Mapping[str, Any]) -> None:
+def validate_vllm_config(
+    config: Mapping[str, Any],
+    lock: Mapping[str, Any],
+    *,
+    allow_legacy_reproduction: bool = False,
+) -> None:
     blocs = config.get("blocs")
     if not isinstance(blocs, list) or not blocs:
         raise PublicVllmError("vLLM execution needs at least one bloc")
@@ -231,9 +241,22 @@ def validate_vllm_config(config: Mapping[str, Any], lock: Mapping[str, Any]) -> 
         raise PublicVllmError("simulation config is missing")
     if simulation.get("log_schema_version") != "2.0.0":
         raise PublicVllmError("public vLLM execution requires log schema 2.0.0")
-    if simulation.get("response_contract_version") != "phase-response-v2.0.0":
+    response_contract = simulation.get("response_contract_version")
+    if response_contract == "phase-response-v2.0.0":
+        return
+    expected_legacy = {
+        "response_contract_version": "phase-response-v1.0.0",
+        "prompt_contract_version": LEGACY_PROMPT_CONTRACT_VERSION,
+        "transport_behavior_version": LEGACY_TRANSPORT_BEHAVIOR_VERSION,
+        "response_failure_policy": RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY,
+        "research_eligible": False,
+    }
+    if not allow_legacy_reproduction or any(
+        simulation.get(key) != value for key, value in expected_legacy.items()
+    ):
         raise PublicVllmError(
-            "public vLLM execution requires the phase-aware response contract"
+            "public vLLM execution requires the phase-aware response contract "
+            "unless the explicit legacy-reproduction contract is selected"
         )
 
 
@@ -796,7 +819,11 @@ def run_public_vllm(args: argparse.Namespace) -> tuple[str, Path]:
         config = load_config(str(args.config.resolve()))
     except (OSError, TypeError, ValueError, yaml.YAMLError) as error:
         raise PublicVllmError("public experiment config was rejected") from error
-    validate_vllm_config(config, lock)
+    validate_vllm_config(
+        config,
+        lock,
+        allow_legacy_reproduction=args.allow_legacy_reproduction,
+    )
     if args.contract_only:
         return "contract-only", args.config
     if os.name != "posix":
@@ -951,6 +978,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-initial-memory-mib", type=int, default=512)
     parser.add_argument("--preflight-only", action="store_true")
     parser.add_argument("--contract-only", action="store_true")
+    parser.add_argument("--allow-legacy-reproduction", action="store_true")
     return parser
 
 
