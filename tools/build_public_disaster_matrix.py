@@ -26,11 +26,12 @@ from tools.build_disaster_matrix import (  # noqa: E402
 )
 
 
-PRIOR_OUTPUT_DIR = REPO_ROOT / "configs" / "public_formal_disaster_v3"
-OUTPUT_DIR = REPO_ROOT / "configs" / "public_formal_disaster_v3_1"
+V3_OUTPUT_DIR = REPO_ROOT / "configs" / "public_formal_disaster_v3"
+PRIOR_OUTPUT_DIR = REPO_ROOT / "configs" / "public_formal_disaster_v3_1"
+OUTPUT_DIR = REPO_ROOT / "configs" / "public_formal_disaster_v3_2"
 SEEDS = (3101, 3102, 3103, 3104, 3105)
-PROTOCOL_VERSION = "formal-public-disaster-protocol-v3.1.0"
-MATRIX_SCHEMA_VERSION = "formal-public-disaster-matrix-v1.1.0"
+PROTOCOL_VERSION = "formal-public-disaster-protocol-v3.2.0"
+MATRIX_SCHEMA_VERSION = "formal-public-disaster-matrix-v1.2.0"
 VALIDATION_GATE_VERSION = "public-strict-gate-v1.1.0"
 RESPONSE_CONTRACT_VERSION = CANONICAL_RESPONSE_CONTRACT_VERSION
 LOG_SCHEMA_VERSION = "2.0.0"
@@ -95,7 +96,7 @@ def build_config(composition: str, mode: str, seed: int, slot: str) -> dict:
         response_contract_version=RESPONSE_CONTRACT_VERSION,
         protocol_version=PROTOCOL_VERSION,
     )
-    run_id = f"public-disaster-v3p1-{composition}-{mode}-s{seed}-w{slot}"
+    run_id = f"public-disaster-v3p2-{composition}-{mode}-s{seed}-w{slot}"
     config["simulation"].update({
         "duration": DURATION,
         "log_schema_version": LOG_SCHEMA_VERSION,
@@ -105,7 +106,7 @@ def build_config(composition: str, mode: str, seed: int, slot: str) -> dict:
         "run_id": run_id,
         "run_name": run_id,
     })
-    config["llm_defaults"]["max_tokens"] = 512
+    config["llm_defaults"]["max_tokens"] = 1024
     for bloc in config["blocs"]:
         name = bloc["name"]
         bloc["flashinfer_mode"] = "disabled"

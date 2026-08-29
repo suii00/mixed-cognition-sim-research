@@ -6,6 +6,10 @@
 `EXPERIMENT_PROTOCOL_PUBLIC_DISASTER_V3.md`の観測連鎖、介入、対照、seed、world、prompt、model、
 context、sampling temperature、response contract、log schema、metric、60-run matrixを継承する。
 
+Operational attemptは51 runの個別検証後、Llama responseが512-token ceilingへ到達したため
+matrix完了前にfail closedした。public treeへのpromoteは0であり、v3.1.0 attemptをformal resultへ
+集計しない。このprotocolはv3.2.0へsupersedeされた。
+
 ## Single declared change
 
 v3.0.0のoperational attemptで、Llama Phase 3 responseがHTTP 200を返しながら

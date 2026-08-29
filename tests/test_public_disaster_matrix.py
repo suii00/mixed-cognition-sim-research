@@ -23,6 +23,7 @@ from tools.build_public_disaster_matrix import (
     RESPONSE_CONTRACT_VERSION,
     SEEDS,
     SERVER_LAYOUT,
+    V3_OUTPUT_DIR,
     build_files,
 )
 from tools.public_disaster_matrix_worker import (
@@ -95,7 +96,7 @@ class PublicDisasterMatrixContractTests(unittest.TestCase):
             self.assertEqual(simulation["log_schema_version"], LOG_SCHEMA_VERSION)
             self.assertTrue(simulation["research_eligible"])
             self.assertEqual(simulation["duration"], 60)
-            self.assertEqual(config["llm_defaults"]["max_tokens"], 512)
+            self.assertEqual(config["llm_defaults"]["max_tokens"], 1024)
             self.assertEqual(sum(bloc["num_agents"] for bloc in config["blocs"]), 24)
             self.assertTrue(all(bloc["flashinfer_mode"] == "disabled" for bloc in config["blocs"]))
             self.assertTrue(
@@ -168,22 +169,26 @@ class PublicDisasterMatrixContractTests(unittest.TestCase):
         self.assertEqual(len(matrix_paths), 60)
         self.assertNotIn(OUTPUT_DIR / "manifest.json", paths)
 
-    def test_prior_v3_matrix_remains_hash_complete_and_immutable(self):
-        manifest_path = PRIOR_OUTPUT_DIR / "manifest.json"
-        prior = json.loads(manifest_path.read_text(encoding="utf-8"))
-        self.assertEqual(prior["protocol_version"], "formal-public-disaster-protocol-v3.0.0")
-        self.assertEqual(prior["planned_runs"], 60)
-        self.assertEqual(prior["planned_logical_llm_calls"], 144000)
-        for row in prior["rows"]:
-            payload = (PRIOR_OUTPUT_DIR / row["filename"]).read_bytes()
-            self.assertEqual(hashlib.sha256(payload).hexdigest(), row["sha256"])
+    def test_prior_matrices_remain_hash_complete_and_immutable(self):
+        for directory, protocol_version in (
+            (V3_OUTPUT_DIR, "formal-public-disaster-protocol-v3.0.0"),
+            (PRIOR_OUTPUT_DIR, "formal-public-disaster-protocol-v3.1.0"),
+        ):
+            manifest_path = directory / "manifest.json"
+            prior = json.loads(manifest_path.read_text(encoding="utf-8"))
+            self.assertEqual(prior["protocol_version"], protocol_version)
+            self.assertEqual(prior["planned_runs"], 60)
+            self.assertEqual(prior["planned_logical_llm_calls"], 144000)
+            for row in prior["rows"]:
+                payload = (directory / row["filename"]).read_bytes()
+                self.assertEqual(hashlib.sha256(payload).hexdigest(), row["sha256"])
 
-    def test_v3_1_configs_change_only_declared_amendment_fields(self):
+    def test_v3_2_configs_change_only_declared_amendment_fields(self):
         for row in self.manifest["rows"]:
             current = json.loads(self.files[row["filename"]])
             prior_filename = row["filename"].replace(
+                "public-disaster-v3p2-",
                 "public-disaster-v3p1-",
-                "public-disaster-v3-",
                 1,
             )
             prior = json.loads(

@@ -73,7 +73,7 @@ launcherは全60 runをignored stagingへ生成し、各runと全体を二重検
 PASS、HTTP retry/failure 0、publication finding 0、runtime-binding残存0の場合だけraw bytesを
 `runs/`へ昇格します。途中失敗したmatrixを部分成果として公開したり、出力をsanitizationして
 成功扱いにしたりしません。実験条件と観測連鎖は
-[Public disaster formal protocol v3.1](docs/EXPERIMENT_PROTOCOL_PUBLIC_DISASTER_V3_1.md) に事前登録しています。
+[Public disaster formal protocol v3.2](docs/EXPERIMENT_PROTOCOL_PUBLIC_DISASTER_V3_2.md) に事前登録しています。
 
 ## 補助実行経路: Ollama
 
