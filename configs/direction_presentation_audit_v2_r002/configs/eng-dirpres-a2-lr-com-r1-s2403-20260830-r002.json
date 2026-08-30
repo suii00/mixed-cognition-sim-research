@@ -1,0 +1,103 @@
+{
+  "agents": {
+    "communication_radius": 100,
+    "edge_policy": "full",
+    "memory_limit": 20,
+    "memory_size": 5,
+    "message_context_size": 23,
+    "message_history_limit": 23
+  },
+  "blocs": [
+    {
+      "backend_version": "0.27.1",
+      "chat_template": "tokenizer_config.json:chat_template:sha256:ab5a74b4b8e9bdd9e7a76ae59001de3dcdeef37987baceb26910805822a99f57",
+      "data_parallel_size": 1,
+      "device_slot": "engineering-ja-24a-swallow-device",
+      "dtype": "bfloat16",
+      "endpoint_id": "engineering-ja-24a-swallow-endpoint",
+      "flashinfer_mode": "disabled",
+      "generation_config": "vllm",
+      "gpu_memory_utilization": 0.9,
+      "max_model_len": 4096,
+      "model": "llama-3.1-swallow-8b-instruct-v0.5",
+      "model_digest": "b1f8317099a97e790ec872c1225ca155979b4816",
+      "model_source": "tokyotech-llm/Llama-3.1-Swallow-8B-Instruct-v0.5",
+      "name": "swallow",
+      "num_agents": 8,
+      "provider": "vllm",
+      "quantization": "none",
+      "tensor_parallel_size": 1,
+      "tokenizer_revision": "b1f8317099a97e790ec872c1225ca155979b4816"
+    },
+    {
+      "backend_version": "0.27.1",
+      "chat_template": "tokenizer_config.json:chat_template:sha256:ba03a121d097859c7b5b9cd03af99aafe95275210d2876f642ad9929a150f122",
+      "data_parallel_size": 1,
+      "device_slot": "engineering-ja-24a-elyza-device",
+      "dtype": "bfloat16",
+      "endpoint_id": "engineering-ja-24a-elyza-endpoint",
+      "flashinfer_mode": "disabled",
+      "generation_config": "vllm",
+      "gpu_memory_utilization": 0.9,
+      "max_model_len": 4096,
+      "model": "llama-3-elyza-jp-8b",
+      "model_digest": "e6c316496ee7d9a11710c50229e8cb39b6b0a4a3",
+      "model_source": "elyza/Llama-3-ELYZA-JP-8B",
+      "name": "elyza",
+      "num_agents": 8,
+      "provider": "vllm",
+      "quantization": "none",
+      "tensor_parallel_size": 1,
+      "tokenizer_revision": "e6c316496ee7d9a11710c50229e8cb39b6b0a4a3"
+    },
+    {
+      "backend_version": "0.27.1",
+      "chat_template": "tokenizer_config.json:chat_template:sha256:cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+      "data_parallel_size": 1,
+      "device_slot": "engineering-ja-24a-qwen-device",
+      "dtype": "bfloat16",
+      "endpoint_id": "engineering-ja-24a-qwen-endpoint",
+      "flashinfer_mode": "disabled",
+      "generation_config": "vllm",
+      "gpu_memory_utilization": 0.9,
+      "max_model_len": 4096,
+      "model": "qwen2.5-7b-instruct",
+      "model_digest": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "model_source": "Qwen/Qwen2.5-7B-Instruct",
+      "name": "qwen",
+      "num_agents": 8,
+      "provider": "vllm",
+      "quantization": "none",
+      "tensor_parallel_size": 1,
+      "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28"
+    }
+  ],
+  "llm_defaults": {
+    "max_concurrency": 24,
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "timeout_s": 120
+  },
+  "places": [],
+  "simulation": {
+    "duration": 10,
+    "execution_mode": "vllm_openai_compatible",
+    "failure_thresholds": {
+      "schema_validation_failures": 0,
+      "syntax_parse_failures": 0,
+      "transport_failures": 0
+    },
+    "half_space_size": 25,
+    "log_schema_version": "2.0.0",
+    "metric_version": "direction-presentation-communication-audit-metric-v1.0.0",
+    "prompt_contract_version": "japanese-compact-lr-prompts-v2.0.0",
+    "protocol_version": "engineering-direction-presentation-communication-audit-v2.0.0",
+    "research_eligible": false,
+    "response_contract_version": "phase-response-compact-lr-v1.0.0",
+    "response_failure_policy": "abort_run",
+    "run_id": "eng-dirpres-a2-lr-com-r1-s2403-20260830-r002",
+    "run_name": "eng-dirpres-a2-lr-com-r1-s2403-20260830-r002",
+    "seed": 2403,
+    "transport_behavior_version": "single-generation-strict-json-v2.0.0"
+  }
+}

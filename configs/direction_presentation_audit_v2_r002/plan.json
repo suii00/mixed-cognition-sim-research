@@ -1,0 +1,103 @@
+{
+  "schema_version": "direction-presentation-audit-plan-v2.0.0",
+  "audit_id": "engineering-direction-presentation-communication-audit-v2-r002-20260830",
+  "created_at": "2026-08-30",
+  "protocol_version": "engineering-direction-presentation-communication-audit-v2.0.0",
+  "metric_version": "direction-presentation-communication-audit-metric-v1.0.0",
+  "research_eligible": false,
+  "source": {
+    "base_config": "configs/directional_amplification_audit_v1/configs/eng-diramp-a1-c23-r2-s2403-20260830-r001.json",
+    "base_config_sha256": "848d0a2d8b448f9ce9146216700dc33b4dd64a41b4669b01637cbc1c7948b961",
+    "source_run_id": "eng-diramp-a1-c23-r2-s2403-20260830-r001",
+    "source_git_sha": "ae7bba426a27fccabf0df2e332507cb8383c10ca",
+    "source_raw_manifest_sha256": "85acfac4b3b6aca86552e70ab0a68236dad901119e46136a59384e0f9a14f74c"
+  },
+  "run_identity": {
+    "prefix": "eng-dirpres-a2",
+    "date_tag": "20260830",
+    "replicate_id": "r002",
+    "factor_order": ["presentation", "delivery", "rotation", "seed", "date", "replicate"]
+  },
+  "frozen": {
+    "seed": 2403,
+    "duration": 10,
+    "expected_agents": 24,
+    "expected_calls_per_run": 480,
+    "expected_total_runs": 12,
+    "expected_total_calls": 5760,
+    "temperature": 0.0,
+    "max_tokens": 256,
+    "transport_behavior_version": "single-generation-strict-json-v2.0.0",
+    "response_failure_policy": "abort_run",
+    "communication_radius": 100,
+    "message_history_limit": 23,
+    "message_context_size": 23,
+    "memory_limit": 20,
+    "memory_size": 5
+  },
+  "presentation_conditions": [
+    {
+      "condition_id": "lr",
+      "horizontal_order": ["left", "right"],
+      "prompt_contract_version": "japanese-compact-lr-prompts-v2.0.0",
+      "prompt_source_sha256": "ba36c0dff31b610e4a37e28cabafb15acc09eb943c59e5e4ae187f1c3db50690",
+      "response_contract_version": "phase-response-compact-lr-v1.0.0",
+      "response_schema_sha256": "410c02878e9139bd42de36764b7e6769e0c21c6a3201f5d5991f3e9507f860e2"
+    },
+    {
+      "condition_id": "rl",
+      "horizontal_order": ["right", "left"],
+      "prompt_contract_version": "japanese-compact-rl-prompts-v2.0.0",
+      "prompt_source_sha256": "12ce95c4dc4dff4a816cb1dbe9df5712d564f874cbd7e312c7fce8c062de1628",
+      "response_contract_version": "phase-response-compact-rl-v1.0.0",
+      "response_schema_sha256": "8e73100db3c723c3dbf9d8e10646251f3a047770a81fb07d8b59be3befd3e0f5"
+    }
+  ],
+  "delivery_conditions": [
+    {
+      "condition_id": "com",
+      "edge_policy": "full",
+      "phase1_generation": true,
+      "message_delivery": true
+    },
+    {
+      "condition_id": "iso",
+      "edge_policy": "none",
+      "phase1_generation": true,
+      "message_delivery": false
+    }
+  ],
+  "rotations": [
+    {
+      "rotation_id": "r0",
+      "bloc_order": ["qwen", "swallow", "elyza"]
+    },
+    {
+      "rotation_id": "r1",
+      "bloc_order": ["swallow", "elyza", "qwen"]
+    },
+    {
+      "rotation_id": "r2",
+      "bloc_order": ["elyza", "qwen", "swallow"]
+    }
+  ],
+  "decision_rules": {
+    "minimum_absolute_right_rate_difference": 0.1,
+    "minimum_supporting_rotations": 2,
+    "presentation_robust_right_rate_minimum": 0.75,
+    "cascade_minimum_share": 0.75,
+    "cascade_consecutive_steps": 3,
+    "maximum_total_contract_failures": 0
+  },
+  "analysis_restrictions": [
+    "Reasoning is schema-constrained to the empty string and is not analyzed.",
+    "Authored Phase 1 output is separated from delivered exposure.",
+    "Delivery is exposure, not reuse or adoption.",
+    "The presentation intervention swaps left and right order in both prompt text and the structured decoder schema.",
+    "Agent-step rows and model-to-agent-ID rotations are not independent experimental replicates.",
+    "This single-seed engineering audit supports diagnostics, not population inference.",
+    "The r002 batch writes run and launcher-evidence artifacts outside the source checkout; every primary cell must record git_dirty=false.",
+    "All twelve cells, including null, negative, aborted, and contradictory outcomes, are retained.",
+    "This audit cannot be promoted or relabeled as research eligible."
+  ]
+}
