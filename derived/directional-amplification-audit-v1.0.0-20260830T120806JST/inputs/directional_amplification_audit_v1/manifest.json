@@ -1,0 +1,137 @@
+{
+  "schema_version": "directional-amplification-audit-manifest-v1.0.0",
+  "audit_id": "engineering-directional-amplification-audit-v1-20260830",
+  "plan_path": "configs/directional_amplification_audit_v1/plan.json",
+  "plan_sha256": "18960f50cac14a87ed611d7c9be04fe33296f44db0c632beb5282a05cde330d4",
+  "base_config_path": "derived/fullscale-retrieval-v1.0.0-20260830T045959JST/inputs/engineering_ja_qwen25_swallow05_elyza8b_24a60s_s2403_r001.json",
+  "base_config_sha256": "2ff2361804c65ed7af8dad070d6d1541c5d2c794e33f1a2e6754cc6ab1132d40",
+  "protocol_version": "engineering-directional-amplification-audit-v1.0.0",
+  "metric_version": "directional-amplification-audit-metric-v1.0.0",
+  "paired_control_sha256": "56deeb482d6258645f5055c58f95416421bfc964d05166bbb1946444ae106cb3",
+  "initial_state_input_sha256": "825a26506cc5e485111a34fdcf8650385d1a1a01d0c27edd9659a9829f610ad5",
+  "expected_total_runs": 6,
+  "expected_total_llm_calls": 2880,
+  "research_eligible": false,
+  "rows": [
+    {
+      "ordinal": 0,
+      "cell_id": "c03-r0",
+      "context_condition_id": "c03",
+      "rotation_id": "r0",
+      "bloc_order_low_to_high_agent_id": [
+        "qwen",
+        "swallow",
+        "elyza"
+      ],
+      "high_agent_id_bloc": "elyza",
+      "run_id": "eng-diramp-a1-c03-r0-s2403-20260830-r001",
+      "config_path": "configs/eng-diramp-a1-c03-r0-s2403-20260830-r001.json",
+      "config_sha256": "8efe7ca38c5e5100e5a9c7239808e07c23241209c5bbef4eb76ec640aec58745",
+      "paired_control_sha256": "56deeb482d6258645f5055c58f95416421bfc964d05166bbb1946444ae106cb3",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 1,
+      "cell_id": "c03-r1",
+      "context_condition_id": "c03",
+      "rotation_id": "r1",
+      "bloc_order_low_to_high_agent_id": [
+        "swallow",
+        "elyza",
+        "qwen"
+      ],
+      "high_agent_id_bloc": "qwen",
+      "run_id": "eng-diramp-a1-c03-r1-s2403-20260830-r001",
+      "config_path": "configs/eng-diramp-a1-c03-r1-s2403-20260830-r001.json",
+      "config_sha256": "4feae5f4f5036137e41aac14254694ab4a390691a18172110bdf3b5bcd54ed4d",
+      "paired_control_sha256": "56deeb482d6258645f5055c58f95416421bfc964d05166bbb1946444ae106cb3",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 2,
+      "cell_id": "c03-r2",
+      "context_condition_id": "c03",
+      "rotation_id": "r2",
+      "bloc_order_low_to_high_agent_id": [
+        "elyza",
+        "qwen",
+        "swallow"
+      ],
+      "high_agent_id_bloc": "swallow",
+      "run_id": "eng-diramp-a1-c03-r2-s2403-20260830-r001",
+      "config_path": "configs/eng-diramp-a1-c03-r2-s2403-20260830-r001.json",
+      "config_sha256": "bc593b652f3c606bcffb86b244f62640ea78309796d253d553dc4ef21103b105",
+      "paired_control_sha256": "56deeb482d6258645f5055c58f95416421bfc964d05166bbb1946444ae106cb3",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 3,
+      "cell_id": "c23-r0",
+      "context_condition_id": "c23",
+      "rotation_id": "r0",
+      "bloc_order_low_to_high_agent_id": [
+        "qwen",
+        "swallow",
+        "elyza"
+      ],
+      "high_agent_id_bloc": "elyza",
+      "run_id": "eng-diramp-a1-c23-r0-s2403-20260830-r001",
+      "config_path": "configs/eng-diramp-a1-c23-r0-s2403-20260830-r001.json",
+      "config_sha256": "bb716ea553dd4eb392b321eff277e8aec734572cbf729b3eed6936c964916d68",
+      "paired_control_sha256": "56deeb482d6258645f5055c58f95416421bfc964d05166bbb1946444ae106cb3",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 4,
+      "cell_id": "c23-r1",
+      "context_condition_id": "c23",
+      "rotation_id": "r1",
+      "bloc_order_low_to_high_agent_id": [
+        "swallow",
+        "elyza",
+        "qwen"
+      ],
+      "high_agent_id_bloc": "qwen",
+      "run_id": "eng-diramp-a1-c23-r1-s2403-20260830-r001",
+      "config_path": "configs/eng-diramp-a1-c23-r1-s2403-20260830-r001.json",
+      "config_sha256": "508d43c2157760764e659545dff2a9db1dcc2908f351e52e932659f9f3b96e8a",
+      "paired_control_sha256": "56deeb482d6258645f5055c58f95416421bfc964d05166bbb1946444ae106cb3",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 5,
+      "cell_id": "c23-r2",
+      "context_condition_id": "c23",
+      "rotation_id": "r2",
+      "bloc_order_low_to_high_agent_id": [
+        "elyza",
+        "qwen",
+        "swallow"
+      ],
+      "high_agent_id_bloc": "swallow",
+      "run_id": "eng-diramp-a1-c23-r2-s2403-20260830-r001",
+      "config_path": "configs/eng-diramp-a1-c23-r2-s2403-20260830-r001.json",
+      "config_sha256": "848d0a2d8b448f9ce9146216700dc33b4dd64a41b4669b01637cbc1c7948b961",
+      "paired_control_sha256": "56deeb482d6258645f5055c58f95416421bfc964d05166bbb1946444ae106cb3",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    }
+  ]
+}

@@ -10,6 +10,10 @@ from tools.directional_amplification_core import (
     json_bytes,
     load_and_validate_plan,
 )
+from tools.directional_amplification_incomplete_metric import (
+    _all_threshold_outcome,
+    _minimum_support_outcome,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -152,6 +156,16 @@ class DirectionalAmplificationAuditTests(unittest.TestCase):
             onset,
             {"direction": "right", "start_step": 4, "confirmed_step": 6},
         )
+
+    def test_incomplete_all_cell_rule_can_fail_but_not_pass_early(self):
+        self.assertEqual(_all_threshold_outcome([0.8, 0.9], 3, 0.75), "indeterminate")
+        self.assertEqual(_all_threshold_outcome([0.8, 0.7], 3, 0.75), "failed")
+        self.assertEqual(_all_threshold_outcome([0.8, 0.9, 1.0], 3, 0.75), "passed")
+
+    def test_incomplete_minimum_support_rule_uses_remaining_upper_bound(self):
+        self.assertEqual(_minimum_support_outcome(0, 2, 3, 2), "failed")
+        self.assertEqual(_minimum_support_outcome(1, 2, 3, 2), "indeterminate")
+        self.assertEqual(_minimum_support_outcome(2, 2, 3, 2), "passed")
 
 
 if __name__ == "__main__":

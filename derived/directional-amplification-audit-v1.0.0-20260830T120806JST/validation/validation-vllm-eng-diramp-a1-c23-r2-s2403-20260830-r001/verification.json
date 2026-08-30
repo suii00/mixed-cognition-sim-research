@@ -1,0 +1,29 @@
+{
+  "all_process_groups_stopped": true,
+  "flashinfer_mode": "installed-but-disabled-before-import",
+  "gpu_release_verified": true,
+  "max_model_len_values": [
+    4096
+  ],
+  "maximum_observed_active_gpu_count": 3,
+  "metric_version": "directional-amplification-audit-metric-v1.0.0",
+  "model_sources": [
+    "Qwen/Qwen2.5-7B-Instruct",
+    "elyza/Llama-3-ELYZA-JP-8B",
+    "tokyotech-llm/Llama-3.1-Swallow-8B-Instruct-v0.5"
+  ],
+  "protocol_version": "engineering-directional-amplification-audit-v1.0.0",
+  "publication_scan_finding_count": 0,
+  "response_contract_version": "phase-response-v2.0.0",
+  "run_id": "eng-diramp-a1-c23-r2-s2403-20260830-r001",
+  "run_tree_sha256": "d80330ca80e51df0d0ce8327dea38a352eaba033b52a4a14c08aaa1db80fc240",
+  "runtime_binding_values_persisted": false,
+  "runtime_lock_sha256": "787155a3e6bda400a06e465751f3904b63b96bd2397b8b2a53b5add2937822aa",
+  "schema_version": "public-vllm-verification-v1.0.0",
+  "selected_gpu_count": 3,
+  "server_startup": "sequential-under-shared-deadline",
+  "source_git_sha": "ae7bba426a27fccabf0df2e332507cb8383c10ca",
+  "strict_unverifiable_count": 5,
+  "strict_validation_passed": true,
+  "vllm_server_log_files_created": false
+}

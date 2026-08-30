@@ -1,0 +1,128 @@
+{
+  "schema_version": "directional-amplification-retrieval-v1.0.0",
+  "retrieved_at": "2026-08-30T12:08:06+09:00",
+  "audit_id": "engineering-directional-amplification-audit-v1-20260830",
+  "protocol_version": "engineering-directional-amplification-audit-v1.0.0",
+  "metric_version": "directional-amplification-audit-metric-v1.0.0",
+  "research_eligible": false,
+  "source": {
+    "git_sha": "ae7bba426a27fccabf0df2e332507cb8383c10ca",
+    "git_dirty": false,
+    "source_bundle": {
+      "repository_relative_path": "output/source-bundles/20260830T112006JST/directional-amplification-audit-ae7bba4.bundle",
+      "sha256": "ef28631724b44d0db604f8aed1d43b46dbb0d620a480322f8677cac4f6963f61",
+      "bytes": 1267590
+    }
+  },
+  "frozen_inputs": {
+    "plan_sha256": "18960f50cac14a87ed611d7c9be04fe33296f44db0c632beb5282a05cde330d4",
+    "paired_control_sha256": "56deeb482d6258645f5055c58f95416421bfc964d05166bbb1946444ae106cb3",
+    "initial_state_input_sha256": "825a26506cc5e485111a34fdcf8650385d1a1a01d0c27edd9659a9829f610ad5",
+    "copied_input_files": 8,
+    "copied_input_mismatches": 0
+  },
+  "transfer_verification": {
+    "remote_files": 56,
+    "local_files": 56,
+    "missing_files": 0,
+    "extra_files": 0,
+    "changed_files": 0,
+    "all_files_byte_exact": true,
+    "forensic_copy_repository_relative_path": "output_directional-amplification-audit-v1-retrieved-20260830T120806JST"
+  },
+  "execution_verification": {
+    "execution_environment_class": "remote-gpu-host",
+    "selected_gpu_count": 3,
+    "source_checkout_clean_before_and_after": true,
+    "gpu_release_verified": true,
+    "all_process_groups_stopped": true,
+    "publication_scan_finding_count": 0,
+    "runtime_binding_values_persisted": false,
+    "vllm_server_log_files_created": false
+  },
+  "runs": [
+    {
+      "run_id": "eng-diramp-a1-c03-r0-s2403-20260830-r001",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "d9c1b362d836cf24e20ea7df6a91a58a813b4e31c8faf61f310a13a60746e267",
+      "tracked_run_path": "runs/output_eng-diramp-a1-c03-r0-s2403-20260830-r001"
+    },
+    {
+      "run_id": "eng-diramp-a1-c03-r1-s2403-20260830-r001",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "12db21ac367f638c17213e3bc0beee797dd35319a1f629fa8f92a4da1b8ad430",
+      "tracked_run_path": "runs/output_eng-diramp-a1-c03-r1-s2403-20260830-r001"
+    },
+    {
+      "run_id": "eng-diramp-a1-c03-r2-s2403-20260830-r001",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "0c6adf79e9769f37414dbbc1f8ccd6522ad385bb408a00cbb768cb078c1c25a2",
+      "tracked_run_path": "runs/output_eng-diramp-a1-c03-r2-s2403-20260830-r001"
+    },
+    {
+      "run_id": "eng-diramp-a1-c23-r0-s2403-20260830-r001",
+      "status": "aborted",
+      "completed_steps": 7,
+      "logical_llm_calls": 384,
+      "strict_validation_passed": false,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "f94fbaa29044f867d920b2941b0561ecf9a875ce3dbb4d2ae3f32bfde320ccb5",
+      "forensic_run_path": "output_directional-amplification-audit-v1-retrieved-20260830T120806JST/runs/output_eng-diramp-a1-c23-r0-s2403-20260830-r001",
+      "disposition": "preserved byte-exact but not promoted to the tracked completed-run tree"
+    },
+    {
+      "run_id": "eng-diramp-a1-c23-r1-s2403-20260830-r001",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "a5614f93b414615e868ffc638709a9aba2ec2bac7bed50ec33613ad31bebea8e",
+      "tracked_run_path": "runs/output_eng-diramp-a1-c23-r1-s2403-20260830-r001"
+    },
+    {
+      "run_id": "eng-diramp-a1-c23-r2-s2403-20260830-r001",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "d80330ca80e51df0d0ce8327dea38a352eaba033b52a4a14c08aaa1db80fc240",
+      "tracked_run_path": "runs/output_eng-diramp-a1-c23-r2-s2403-20260830-r001"
+    }
+  ],
+  "aggregate": {
+    "expected_runs": 6,
+    "observed_runs": 6,
+    "completed_runs": 5,
+    "aborted_runs": 1,
+    "logical_llm_calls": 2784,
+    "http_attempts": 2784,
+    "generation_retries": 0,
+    "transport_failures": 0,
+    "syntax_parse_attempt_failures": 1,
+    "syntax_parse_failures": 1,
+    "schema_validation_failures": 0
+  },
+  "analysis": {
+    "complete_metric_disposition": "refused because one pre-registered run was not completed",
+    "complete_metric_output_created": false,
+    "diagnostic_tool": "tools/directional_amplification_incomplete_metric.py",
+    "diagnostic_tool_sha256": "f111dc3431c1bef9aa43ad159a764025d0f41c4ab81dd353b815dd149bf595ff",
+    "diagnostic_result": "derived/directional-amplification-audit-v1.0.0-20260830T120806JST/incomplete_result.json",
+    "diagnostic_result_sha256": "a2417764d17e5170002258386eefe400a49ed90c2240bb64cf579e94d253a37c",
+    "partial_aborted_cell_actions_compared": false
+  }
+}
