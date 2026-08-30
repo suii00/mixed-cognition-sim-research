@@ -1,0 +1,230 @@
+{
+  "schema_version": "direction-presentation-retrieval-v2.0.0",
+  "retrieved_at": "2026-08-30T18:05:20+09:00",
+  "audit_id": "engineering-direction-presentation-communication-audit-v2-r002-20260830",
+  "protocol_version": "engineering-direction-presentation-communication-audit-v2.0.0",
+  "metric_version": "direction-presentation-communication-audit-metric-v1.0.0",
+  "research_eligible": false,
+  "source": {
+    "git_sha": "9486ec0cb11d758aa2bd53c04541699ed7f0f0ac",
+    "git_dirty": false,
+    "source_bundle": {
+      "repository_relative_path": "output/source-bundles/20260830T154328JST/direction-presentation-audit-v2-r002-9486ec0.bundle",
+      "sha256": "e5b9efb2f8cd96a6542f0d3ea848ae70578e531b0618456d7faf28379947ae10",
+      "bytes": 1872499,
+      "complete_history": true
+    }
+  },
+  "frozen_inputs": {
+    "plan_sha256": "29294fc241cf9cf2822d5726990011c9f268f5abf25adcea1e93a02e5f9b936d",
+    "manifest_sha256": "1af8a47d1d4fe0dd242585a861e612c7c0292fd99b0789ee2e122e1e2358a61a",
+    "config_count": 12,
+    "contract_only_checks_passed": 12,
+    "related_tests_passed": 12
+  },
+  "transfer_verification": {
+    "archive_sha256": "4f5e4437614721540b8df4ac6ceec5dcd02eed7771170e43f3bcfca3adc14a47",
+    "archive_bytes": 1121135,
+    "archive_entries": 141,
+    "unsafe_archive_entries": 0,
+    "remote_local_archive_match": true,
+    "promoted_raw_files": 84,
+    "promoted_raw_hash_mismatches": 0,
+    "forensic_copy_repository_relative_path": "output_direction-presentation-audit-v2-r002-retrieved-20260830T175922JST"
+  },
+  "execution_verification": {
+    "execution_environment_class": "remote-gpu-host",
+    "selected_gpu_count": 3,
+    "source_checkout_clean_before_and_after": true,
+    "all_run_metadata_git_clean": true,
+    "gpu_release_verified": true,
+    "all_process_groups_stopped": true,
+    "publication_scan_finding_count": 0,
+    "runtime_binding_values_persisted": false,
+    "vllm_server_log_files_created": false,
+    "strict_unverifiable_count_per_run": 5
+  },
+  "runs": [
+    {
+      "run_id": "eng-dirpres-a2-lr-com-r0-s2403-20260830-r002",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "git_dirty": false,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "fdc1df09ea20988156d820ce124d9383335402f6b2302aeb55b450009a49286b",
+      "tracked_run_path": "runs/output_eng-dirpres-a2-lr-com-r0-s2403-20260830-r002"
+    },
+    {
+      "run_id": "eng-dirpres-a2-lr-com-r1-s2403-20260830-r002",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "git_dirty": false,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "0b235e35ce8412c1fbb6ee16a48bc83b5eec96a166472719b8c63abbdaac3794",
+      "tracked_run_path": "runs/output_eng-dirpres-a2-lr-com-r1-s2403-20260830-r002"
+    },
+    {
+      "run_id": "eng-dirpres-a2-lr-com-r2-s2403-20260830-r002",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "git_dirty": false,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "bd3b7931bda967d922d9db301ad5da371e2390fa0663d6990b4ffbfa15074265",
+      "tracked_run_path": "runs/output_eng-dirpres-a2-lr-com-r2-s2403-20260830-r002"
+    },
+    {
+      "run_id": "eng-dirpres-a2-lr-iso-r0-s2403-20260830-r002",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "git_dirty": false,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "65c6c08f5512f6bf6b5db0ba87d154bdbf3ed32594fb16f378adb6767df99d2f",
+      "tracked_run_path": "runs/output_eng-dirpres-a2-lr-iso-r0-s2403-20260830-r002"
+    },
+    {
+      "run_id": "eng-dirpres-a2-lr-iso-r1-s2403-20260830-r002",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "git_dirty": false,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "95fff3e4418f8e3010c33d7b924d65f892f6d44e38935037aa4ec74b14a7e60f",
+      "tracked_run_path": "runs/output_eng-dirpres-a2-lr-iso-r1-s2403-20260830-r002"
+    },
+    {
+      "run_id": "eng-dirpres-a2-lr-iso-r2-s2403-20260830-r002",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "git_dirty": false,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "aff5cc40e1f5ec63f8824239be7e0390bd9f85b349651e6bc7217b63fc8fad8f",
+      "tracked_run_path": "runs/output_eng-dirpres-a2-lr-iso-r2-s2403-20260830-r002"
+    },
+    {
+      "run_id": "eng-dirpres-a2-rl-com-r0-s2403-20260830-r002",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "git_dirty": false,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "6ff370796559e8003bd9dcc878119ffd05e0ee6d5646043490cde3943634f612",
+      "tracked_run_path": "runs/output_eng-dirpres-a2-rl-com-r0-s2403-20260830-r002"
+    },
+    {
+      "run_id": "eng-dirpres-a2-rl-com-r1-s2403-20260830-r002",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "git_dirty": false,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "c25602a62f6564616c7fadbe532dee0ef86feb1883247d91619b4705e56c0775",
+      "tracked_run_path": "runs/output_eng-dirpres-a2-rl-com-r1-s2403-20260830-r002"
+    },
+    {
+      "run_id": "eng-dirpres-a2-rl-com-r2-s2403-20260830-r002",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "git_dirty": false,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "5008acec0ea1d14019f8e577c8c5b875dae825fda89586145f78813e0ddf9fa2",
+      "tracked_run_path": "runs/output_eng-dirpres-a2-rl-com-r2-s2403-20260830-r002"
+    },
+    {
+      "run_id": "eng-dirpres-a2-rl-iso-r0-s2403-20260830-r002",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "git_dirty": false,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "b70960f05dd749b57d66384be7106713311d2c0b0a969d5092a6392a9826aea5",
+      "tracked_run_path": "runs/output_eng-dirpres-a2-rl-iso-r0-s2403-20260830-r002"
+    },
+    {
+      "run_id": "eng-dirpres-a2-rl-iso-r1-s2403-20260830-r002",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "git_dirty": false,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "c974557991fdc46c679387b16ae7f1a4001c1beb9dce12741e8088908c0f351b",
+      "tracked_run_path": "runs/output_eng-dirpres-a2-rl-iso-r1-s2403-20260830-r002"
+    },
+    {
+      "run_id": "eng-dirpres-a2-rl-iso-r2-s2403-20260830-r002",
+      "status": "completed",
+      "completed_steps": 10,
+      "logical_llm_calls": 480,
+      "git_dirty": false,
+      "strict_validation_passed": true,
+      "publication_scan_finding_count": 0,
+      "run_tree_sha256": "a7172b3ff4e66afd4db794485b8c9665225af19d62939aab463bea961f83ccaa",
+      "tracked_run_path": "runs/output_eng-dirpres-a2-rl-iso-r2-s2403-20260830-r002"
+    }
+  ],
+  "aggregate": {
+    "expected_runs": 12,
+    "observed_runs": 12,
+    "completed_runs": 12,
+    "aborted_runs": 0,
+    "completed_steps": 120,
+    "logical_llm_calls": 5760,
+    "http_attempts": 5760,
+    "phase1_rows": 2880,
+    "action_rows": 2880,
+    "authored_nonempty_message_rows": 2494,
+    "delivered_message_rows": 1402,
+    "generation_retries": 0,
+    "transport_failures": 0,
+    "syntax_parse_attempt_failures": 0,
+    "syntax_parse_failures": 0,
+    "schema_validation_failures": 0,
+    "total_contract_failures": 0
+  },
+  "analysis": {
+    "complete_metric_output_created": true,
+    "result_path": "derived/direction-presentation-audit-v2.0.0-r002-20260830T175922JST/result.json",
+    "result_sha256": "c10a9853079ad2747bcdc00ef3760692748e7efe7d2c1f72766c80e5d440dda9",
+    "local_recomputation_byte_exact": true,
+    "metric_tool_sha256": "eee888e4fd092452d82b7927ef91a586d66868801f282d16c37a7be6ec6d1c68",
+    "metric_core_sha256": "f20545d33081e99b49b72013bfcba58e80994bb1a6bcdf3113eaf1cdbdaf9bba",
+    "decision_rules": {
+      "presentation_sensitivity_by_delivery": {
+        "com": false,
+        "iso": true
+      },
+      "communication_sensitivity_by_presentation": {
+        "lr": true,
+        "rl": true
+      },
+      "presentation_communication_interaction": true,
+      "presentation_robust_right_pattern": false,
+      "zero_contract_failures": true
+    }
+  },
+  "excluded_prior_batch": {
+    "replicate_id": "r001",
+    "disposition": "preserved as negative engineering evidence and excluded from the complete metric",
+    "reason": "runs 2 through 12 recorded git_dirty=true because prior untracked run and evidence directories shared the source checkout",
+    "complete_metric_refused": true,
+    "forensic_copy_repository_relative_path": "output_direction-presentation-audit-v2-retrieved-20260830T153700JST",
+    "archive_sha256": "192da78114f802a501f950d6267d20435ca02f3eae7f6af29b299d3abc5bb26e",
+    "archive_bytes": 1104754
+  }
+}

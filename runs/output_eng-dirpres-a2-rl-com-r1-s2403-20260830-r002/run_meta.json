@@ -1,0 +1,310 @@
+{
+  "run_id": "eng-dirpres-a2-rl-com-r1-s2403-20260830-r002",
+  "run_name": "eng-dirpres-a2-rl-com-r1-s2403-20260830-r002",
+  "protocol_version": "engineering-direction-presentation-communication-audit-v2.0.0",
+  "log_schema_version": "2.0.0",
+  "metric_version": "direction-presentation-communication-audit-metric-v1.0.0",
+  "response_contract_version": "phase-response-compact-rl-v1.0.0",
+  "prompt_contract_version": "japanese-compact-rl-prompts-v2.0.0",
+  "transport_behavior_version": "single-generation-strict-json-v2.0.0",
+  "response_failure_policy": "abort_run",
+  "response_schema_sha256": "8e73100db3c723c3dbf9d8e10646251f3a047770a81fb07d8b59be3befd3e0f5",
+  "response_schema_hash_algorithm": "sha256-canonical-json-v1",
+  "vllm_transport_contract_version": "vllm-openai-compatible-transport-v1.3.0",
+  "start_time_utc": "2026-08-30T08:36:42.396819+00:00",
+  "end_time_utc": "2026-08-30T08:37:19.247077+00:00",
+  "start_time": "2026-08-30T08:36:42.396819+00:00",
+  "end_time": "2026-08-30T08:37:19.247077+00:00",
+  "status": "completed",
+  "aborted": false,
+  "abort_reason": null,
+  "failure_step": null,
+  "failure_phase": null,
+  "failure_agent_id": null,
+  "failure_exception_type": null,
+  "expected_steps": 10,
+  "completed_steps": 10,
+  "expected_agents": 24,
+  "observed_agents": 24,
+  "logical_llm_calls": 480,
+  "http_attempts": 480,
+  "generation_retries": 0,
+  "transport_failures": 0,
+  "syntax_parse_attempt_failures": 0,
+  "syntax_parse_failures": 0,
+  "schema_validation_failures": 0,
+  "schema_validation_supported": true,
+  "terminal_record_schema_version": "1.0.0",
+  "failure_thresholds": {
+    "transport_failures": 0,
+    "syntax_parse_failures": 0,
+    "schema_validation_failures": 0
+  },
+  "git_sha": "9486ec0cb11d758aa2bd53c04541699ed7f0f0ac",
+  "git_dirty": false,
+  "git_probe_status": "available",
+  "git_probe_errors": [],
+  "config": {
+    "agents": {
+      "communication_radius": 100,
+      "edge_policy": "full",
+      "memory_limit": 20,
+      "memory_size": 5,
+      "message_context_size": 23,
+      "message_history_limit": 23
+    },
+    "blocs": [
+      {
+        "backend_version": "0.27.1",
+        "chat_template": "tokenizer_config.json:chat_template:sha256:ab5a74b4b8e9bdd9e7a76ae59001de3dcdeef37987baceb26910805822a99f57",
+        "data_parallel_size": 1,
+        "device_slot": "engineering-ja-24a-swallow-device",
+        "dtype": "bfloat16",
+        "endpoint_id": "engineering-ja-24a-swallow-endpoint",
+        "flashinfer_mode": "disabled",
+        "generation_config": "vllm",
+        "gpu_memory_utilization": 0.9,
+        "llm_overrides": {},
+        "max_model_len": 4096,
+        "model": "llama-3.1-swallow-8b-instruct-v0.5",
+        "model_digest": "b1f8317099a97e790ec872c1225ca155979b4816",
+        "model_source": "tokyotech-llm/Llama-3.1-Swallow-8B-Instruct-v0.5",
+        "name": "swallow",
+        "num_agents": 8,
+        "provider": "vllm",
+        "quantization": "none",
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "b1f8317099a97e790ec872c1225ca155979b4816"
+      },
+      {
+        "backend_version": "0.27.1",
+        "chat_template": "tokenizer_config.json:chat_template:sha256:ba03a121d097859c7b5b9cd03af99aafe95275210d2876f642ad9929a150f122",
+        "data_parallel_size": 1,
+        "device_slot": "engineering-ja-24a-elyza-device",
+        "dtype": "bfloat16",
+        "endpoint_id": "engineering-ja-24a-elyza-endpoint",
+        "flashinfer_mode": "disabled",
+        "generation_config": "vllm",
+        "gpu_memory_utilization": 0.9,
+        "llm_overrides": {},
+        "max_model_len": 4096,
+        "model": "llama-3-elyza-jp-8b",
+        "model_digest": "e6c316496ee7d9a11710c50229e8cb39b6b0a4a3",
+        "model_source": "elyza/Llama-3-ELYZA-JP-8B",
+        "name": "elyza",
+        "num_agents": 8,
+        "provider": "vllm",
+        "quantization": "none",
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "e6c316496ee7d9a11710c50229e8cb39b6b0a4a3"
+      },
+      {
+        "backend_version": "0.27.1",
+        "chat_template": "tokenizer_config.json:chat_template:sha256:cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+        "data_parallel_size": 1,
+        "device_slot": "engineering-ja-24a-qwen-device",
+        "dtype": "bfloat16",
+        "endpoint_id": "engineering-ja-24a-qwen-endpoint",
+        "flashinfer_mode": "disabled",
+        "generation_config": "vllm",
+        "gpu_memory_utilization": 0.9,
+        "llm_overrides": {},
+        "max_model_len": 4096,
+        "model": "qwen2.5-7b-instruct",
+        "model_digest": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "model_source": "Qwen/Qwen2.5-7B-Instruct",
+        "name": "qwen",
+        "num_agents": 8,
+        "provider": "vllm",
+        "quantization": "none",
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28"
+      }
+    ],
+    "llm_defaults": {
+      "max_concurrency": 24,
+      "max_tokens": 256,
+      "temperature": 0.0,
+      "timeout_s": 120
+    },
+    "places": [],
+    "simulation": {
+      "duration": 10,
+      "execution_mode": "vllm_openai_compatible",
+      "failure_thresholds": {
+        "schema_validation_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "half_space_size": 25,
+      "log_schema_version": "2.0.0",
+      "metric_version": "direction-presentation-communication-audit-metric-v1.0.0",
+      "prompt_contract_version": "japanese-compact-rl-prompts-v2.0.0",
+      "protocol_version": "engineering-direction-presentation-communication-audit-v2.0.0",
+      "research_eligible": false,
+      "response_contract_version": "phase-response-compact-rl-v1.0.0",
+      "response_failure_policy": "abort_run",
+      "run_id": "eng-dirpres-a2-rl-com-r1-s2403-20260830-r002",
+      "run_name": "eng-dirpres-a2-rl-com-r1-s2403-20260830-r002",
+      "seed": 2403,
+      "transport_behavior_version": "single-generation-strict-json-v2.0.0"
+    }
+  },
+  "config_hash": "17330c5b2ea0d591d3030941f37c0a72d4a026393cad5c9183fde464b77d00dc",
+  "config_hash_algorithm": "sha256-canonical-json-v1",
+  "prompt_hash": "12ce95c4dc4dff4a816cb1dbe9df5712d564f874cbd7e312c7fce8c062de1628",
+  "prompt_hash_algorithm": "sha256-file-bytes",
+  "execution_identity_policy": "logical-endpoints-only-v1",
+  "os": "Linux",
+  "platform": "Linux-5.15.0-187-generic-x86_64-with-glibc2.35",
+  "runtime_probe_errors": [],
+  "python_version": "3.12.14 (main, Aug 14 2026, 15:34:45) [Clang 22.1.3 ]",
+  "dependencies": {
+    "requests": "2.34.2",
+    "PyYAML": "6.0.3",
+    "matplotlib": null,
+    "Pillow": "12.3.0",
+    "huggingface-hub": "1.28.0",
+    "pydantic": "2.13.4",
+    "tokenizers": "0.22.2",
+    "torch": "2.13.0+cu132",
+    "transformers": "5.15.1",
+    "vllm": "0.27.1",
+    "flashinfer-python": "0.6.16.post3"
+  },
+  "dependencies_probe_status": "partial",
+  "dependencies_probe_errors": [
+    "matplotlib:version_unavailable"
+  ],
+  "gpu_info": {
+    "status": "available",
+    "error": null,
+    "driver_version": "595.84",
+    "cuda_version": "13.2",
+    "cuda_probe_status": "available",
+    "cuda_probe_error": null,
+    "malformed_device_rows": 0,
+    "devices": [
+      {
+        "index": "0",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "1",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "2",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "3",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "4",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "5",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "6",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "7",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      }
+    ]
+  },
+  "models": [
+    {
+      "bloc": "swallow",
+      "provider": "vllm",
+      "model": "llama-3.1-swallow-8b-instruct-v0.5",
+      "model_digest": "b1f8317099a97e790ec872c1225ca155979b4816",
+      "quantization": "none",
+      "chat_template_hash": "01d48f97d7f30fbfa2b7766971617d3163ed4665aede9ddeaf1558f6e29450ac",
+      "detail_source": "config",
+      "endpoint_id": "engineering-ja-24a-swallow-endpoint",
+      "device_slot": "engineering-ja-24a-swallow-device",
+      "endpoint_assignment_policy": null
+    },
+    {
+      "bloc": "elyza",
+      "provider": "vllm",
+      "model": "llama-3-elyza-jp-8b",
+      "model_digest": "e6c316496ee7d9a11710c50229e8cb39b6b0a4a3",
+      "quantization": "none",
+      "chat_template_hash": "2b642dce6c467fd6ff9db28a3dae08d432ef2777c78d6e008acc5d948554a324",
+      "detail_source": "config",
+      "endpoint_id": "engineering-ja-24a-elyza-endpoint",
+      "device_slot": "engineering-ja-24a-elyza-device",
+      "endpoint_assignment_policy": null
+    },
+    {
+      "bloc": "qwen",
+      "provider": "vllm",
+      "model": "qwen2.5-7b-instruct",
+      "model_digest": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "quantization": "none",
+      "chat_template_hash": "cd5892af132b18331c83ad51a14becf7e165c3ad9124d6f00507af540fe08aef",
+      "detail_source": "config",
+      "endpoint_id": "engineering-ja-24a-qwen-endpoint",
+      "device_slot": "engineering-ja-24a-qwen-device",
+      "endpoint_assignment_policy": null
+    }
+  ],
+  "raw_manifest": {
+    "algorithm": "sha256",
+    "files": {
+      "phase1_raw.jsonl": {
+        "sha256": "7e4875004616b0f572df389e891d11c7f1f25a14334120a811d0a9e61194e78c",
+        "bytes": 61936,
+        "lines": 240
+      },
+      "messages.jsonl": {
+        "sha256": "519547361cd61804fdd900f09920a5dc21c663a627a49e7d33aceabbb7a2a44f",
+        "bytes": 62389,
+        "lines": 233
+      },
+      "memory_reasoning.jsonl": {
+        "sha256": "829c09d072d162e064eaa672101032717bd686ee837bc88f81a0f4ef7a028b35",
+        "bytes": 49336,
+        "lines": 240
+      },
+      "parse_errors.jsonl": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "lines": 0
+      },
+      "llm_attempts.jsonl": {
+        "sha256": "25d478e9a23225cd2f47ef7f765b7ca1e676366d23228cbceda297562195bc89",
+        "bytes": 1397028,
+        "lines": 480
+      },
+      "termination.jsonl": {
+        "sha256": "24736808c42a9dbe7f0397205445aff8f4bae41068f6ce9574183fb4c5ba2539",
+        "bytes": 385,
+        "lines": 1
+      }
+    }
+  },
+  "raw_manifest_status": "available",
+  "raw_manifest_error": null,
+  "output_directory": "output_eng-dirpres-a2-rl-com-r1-s2403-20260830-r002",
+  "seed": 2403,
+  "total_llm_calls": 480,
+  "parse_errors": 0,
+  "parse_error_rate": 0.0
+}
