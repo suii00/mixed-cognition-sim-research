@@ -113,6 +113,11 @@ python tools/run_public_disaster_matrix.py --source-git-sha <full-sha> --contrac
 python tools/run_public_disaster_matrix.py --source-git-sha <full-sha> --preflight-only
 python tools/run_public_disaster_matrix.py --source-git-sha <approved-full-sha> --gpu-indices 0,1,2,3,4,5
 ```
+launcherは全60 runをignored stagingへ生成し、各runと全体を二重検証します。全件がstrict
+PASS、HTTP retry/failure 0、publication finding 0、runtime-binding残存0の場合だけraw bytesを
+`runs/`へ昇格します。途中失敗したmatrixを部分成果として公開したり、出力をsanitizationして
+成功扱いにしたりしません。実験条件と観測連鎖は
+[Public disaster formal protocol v3.2](docs/EXPERIMENT_PROTOCOL_PUBLIC_DISASTER_V3_2.md) に事前登録しています。
 
 ## 歴史的runの独立再現
 
