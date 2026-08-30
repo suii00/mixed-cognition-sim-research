@@ -10,6 +10,8 @@ from engine.execution_contracts import (
     ABORT_RUN_RESPONSE_FAILURE_POLICY,
     CURRENT_PROMPT_CONTRACT_VERSION,
     CURRENT_TRANSPORT_BEHAVIOR_VERSION,
+    JAPANESE_COMPACT_LR_PROMPT_CONTRACT_VERSION,
+    JAPANESE_COMPACT_RL_PROMPT_CONTRACT_VERSION,
     JAPANESE_PROMPT_CONTRACT_VERSION,
     LEGACY_PROMPT_CONTRACT_VERSION,
     LEGACY_TRANSPORT_BEHAVIOR_VERSION,
@@ -20,6 +22,9 @@ from engine.execution_contracts import (
 )
 from engine.response_contracts import (
     CANONICAL_RESPONSE_CONTRACT_VERSION,
+    COMPACT_LR_RESPONSE_CONTRACT_VERSION,
+    COMPACT_RESPONSE_CONTRACT_VERSIONS,
+    COMPACT_RL_RESPONSE_CONTRACT_VERSION,
     LEGACY_RESPONSE_CONTRACT_VERSION,
     validate_response_contract_version,
 )
@@ -35,7 +40,7 @@ from engine.provenance import (
 
 DEFAULT_MAX_CONCURRENCY = 1
 DEFAULT_EDGE_POLICY = "full"
-EDGE_POLICIES = frozenset({"full", "within_bloc_only"})
+EDGE_POLICIES = frozenset({"full", "none", "within_bloc_only"})
 ENDPOINT_ASSIGNMENT_POLICY = "round_robin_by_bloc_ordinal_v1"
 PUBLIC_ENDPOINT_KEYS = frozenset({"endpoint_id", "device_slot"})
 RUNTIME_BINDING_KEYS = frozenset({"base_url"})
@@ -317,6 +322,42 @@ def build_effective_config(config: Dict[str, Any]) -> Dict[str, Any]:
             raise ValueError(
                 "phase-response-v2.0.0 requires abort_run response failures"
             )
+    if response_contract_version in COMPACT_RESPONSE_CONTRACT_VERSIONS:
+        if not isinstance(simulation, dict):
+            raise ValueError(
+                "compact response contracts require simulation configuration"
+            )
+        protocol_version = simulation.get("protocol_version")
+        if not isinstance(protocol_version, str) or not protocol_version:
+            raise ValueError(
+                "compact response contracts require an explicit protocol_version"
+            )
+        if simulation.get("log_schema_version") != OBSERVABILITY_LOG_SCHEMA_VERSION:
+            raise ValueError(
+                "compact response contracts require log_schema_version "
+                f"'{OBSERVABILITY_LOG_SCHEMA_VERSION}'"
+            )
+        expected_prompt_contract = {
+            COMPACT_LR_RESPONSE_CONTRACT_VERSION: (
+                JAPANESE_COMPACT_LR_PROMPT_CONTRACT_VERSION
+            ),
+            COMPACT_RL_RESPONSE_CONTRACT_VERSION: (
+                JAPANESE_COMPACT_RL_PROMPT_CONTRACT_VERSION
+            ),
+        }[response_contract_version]
+        if prompt_contract_version != expected_prompt_contract:
+            raise ValueError(
+                f"{response_contract_version} requires "
+                f"{expected_prompt_contract}"
+            )
+        if transport_behavior_version != CURRENT_TRANSPORT_BEHAVIOR_VERSION:
+            raise ValueError(
+                "compact response contracts require the current transport behavior"
+            )
+        if response_failure_policy != ABORT_RUN_RESPONSE_FAILURE_POLICY:
+            raise ValueError(
+                "compact response contracts require abort_run response failures"
+            )
 
     blocs = effective.get("blocs")
     if isinstance(blocs, list):
@@ -334,15 +375,15 @@ def build_effective_config(config: Dict[str, Any]) -> Dict[str, Any]:
                 bloc["llm_overrides"] = validate_vllm_overrides(
                     bloc.get("llm_overrides")
                 )
-            if response_contract_version == CANONICAL_RESPONSE_CONTRACT_VERSION:
+            if response_contract_version != LEGACY_RESPONSE_CONTRACT_VERSION:
                 if provider != "vllm":
                     raise ValueError(
-                        "phase-response-v2.0.0 requires provider 'vllm' "
+                        "structured response contracts require provider 'vllm' "
                         f"for blocs[{bloc_index}]"
                     )
                 if "response_format" in bloc.get("llm_overrides", {}):
                     raise ValueError(
-                        "phase-response-v2.0.0 owns phase-specific "
+                        "the selected response contract owns phase-specific "
                         f"response_format for blocs[{bloc_index}]"
                     )
     if "scenario" in effective:

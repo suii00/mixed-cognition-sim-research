@@ -1,0 +1,353 @@
+{
+  "schema_version": "direction-presentation-audit-manifest-v2.0.0",
+  "audit_id": "engineering-direction-presentation-communication-audit-v2-20260830",
+  "plan_path": "configs/direction_presentation_audit_v2/plan.json",
+  "plan_sha256": "03804c70fe84c3d4c705b737e1a6e97d66ddefa6265278f0e0b8f9271b71e442",
+  "base_config_path": "configs/directional_amplification_audit_v1/configs/eng-diramp-a1-c23-r2-s2403-20260830-r001.json",
+  "base_config_sha256": "848d0a2d8b448f9ce9146216700dc33b4dd64a41b4669b01637cbc1c7948b961",
+  "protocol_version": "engineering-direction-presentation-communication-audit-v2.0.0",
+  "metric_version": "direction-presentation-communication-audit-metric-v1.0.0",
+  "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+  "initial_state_input_sha256": "eaad09f6eea19cb17d7c15c66e2ee1c7ed24fa3f962a4c0bad6b682ef947eb7a",
+  "expected_total_runs": 12,
+  "expected_total_llm_calls": 5760,
+  "research_eligible": false,
+  "rows": [
+    {
+      "ordinal": 0,
+      "cell_id": "lr-com-r0",
+      "presentation_id": "lr",
+      "delivery_id": "com",
+      "rotation_id": "r0",
+      "horizontal_order": [
+        "left",
+        "right"
+      ],
+      "edge_policy": "full",
+      "message_delivery": true,
+      "prompt_contract_version": "japanese-compact-lr-prompts-v2.0.0",
+      "response_contract_version": "phase-response-compact-lr-v1.0.0",
+      "bloc_order_low_to_high_agent_id": [
+        "qwen",
+        "swallow",
+        "elyza"
+      ],
+      "run_id": "eng-dirpres-a2-lr-com-r0-s2403-20260830-r001",
+      "config_path": "configs/eng-dirpres-a2-lr-com-r0-s2403-20260830-r001.json",
+      "config_sha256": "0e142372532b19070d1f21475ad01c9d534d6df7231d61825135df48fc584221",
+      "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 1,
+      "cell_id": "lr-com-r1",
+      "presentation_id": "lr",
+      "delivery_id": "com",
+      "rotation_id": "r1",
+      "horizontal_order": [
+        "left",
+        "right"
+      ],
+      "edge_policy": "full",
+      "message_delivery": true,
+      "prompt_contract_version": "japanese-compact-lr-prompts-v2.0.0",
+      "response_contract_version": "phase-response-compact-lr-v1.0.0",
+      "bloc_order_low_to_high_agent_id": [
+        "swallow",
+        "elyza",
+        "qwen"
+      ],
+      "run_id": "eng-dirpres-a2-lr-com-r1-s2403-20260830-r001",
+      "config_path": "configs/eng-dirpres-a2-lr-com-r1-s2403-20260830-r001.json",
+      "config_sha256": "69e890791551192186dce44993e26232d668171d988b40aa41ed5a7117932ed3",
+      "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 2,
+      "cell_id": "lr-com-r2",
+      "presentation_id": "lr",
+      "delivery_id": "com",
+      "rotation_id": "r2",
+      "horizontal_order": [
+        "left",
+        "right"
+      ],
+      "edge_policy": "full",
+      "message_delivery": true,
+      "prompt_contract_version": "japanese-compact-lr-prompts-v2.0.0",
+      "response_contract_version": "phase-response-compact-lr-v1.0.0",
+      "bloc_order_low_to_high_agent_id": [
+        "elyza",
+        "qwen",
+        "swallow"
+      ],
+      "run_id": "eng-dirpres-a2-lr-com-r2-s2403-20260830-r001",
+      "config_path": "configs/eng-dirpres-a2-lr-com-r2-s2403-20260830-r001.json",
+      "config_sha256": "971b7935bab61aa598bd4ad7707f180155cf47acd6a25fd8262fb12fe87f5e0d",
+      "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 3,
+      "cell_id": "lr-iso-r0",
+      "presentation_id": "lr",
+      "delivery_id": "iso",
+      "rotation_id": "r0",
+      "horizontal_order": [
+        "left",
+        "right"
+      ],
+      "edge_policy": "none",
+      "message_delivery": false,
+      "prompt_contract_version": "japanese-compact-lr-prompts-v2.0.0",
+      "response_contract_version": "phase-response-compact-lr-v1.0.0",
+      "bloc_order_low_to_high_agent_id": [
+        "qwen",
+        "swallow",
+        "elyza"
+      ],
+      "run_id": "eng-dirpres-a2-lr-iso-r0-s2403-20260830-r001",
+      "config_path": "configs/eng-dirpres-a2-lr-iso-r0-s2403-20260830-r001.json",
+      "config_sha256": "89c344a19c8161b36f1dd6c0fc834ef1d40c19d75109d7555749f4e817df6ef4",
+      "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 4,
+      "cell_id": "lr-iso-r1",
+      "presentation_id": "lr",
+      "delivery_id": "iso",
+      "rotation_id": "r1",
+      "horizontal_order": [
+        "left",
+        "right"
+      ],
+      "edge_policy": "none",
+      "message_delivery": false,
+      "prompt_contract_version": "japanese-compact-lr-prompts-v2.0.0",
+      "response_contract_version": "phase-response-compact-lr-v1.0.0",
+      "bloc_order_low_to_high_agent_id": [
+        "swallow",
+        "elyza",
+        "qwen"
+      ],
+      "run_id": "eng-dirpres-a2-lr-iso-r1-s2403-20260830-r001",
+      "config_path": "configs/eng-dirpres-a2-lr-iso-r1-s2403-20260830-r001.json",
+      "config_sha256": "4402d129a9cb1b6ff613019b418898076f9c68cd2e8f734e80372411c9268195",
+      "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 5,
+      "cell_id": "lr-iso-r2",
+      "presentation_id": "lr",
+      "delivery_id": "iso",
+      "rotation_id": "r2",
+      "horizontal_order": [
+        "left",
+        "right"
+      ],
+      "edge_policy": "none",
+      "message_delivery": false,
+      "prompt_contract_version": "japanese-compact-lr-prompts-v2.0.0",
+      "response_contract_version": "phase-response-compact-lr-v1.0.0",
+      "bloc_order_low_to_high_agent_id": [
+        "elyza",
+        "qwen",
+        "swallow"
+      ],
+      "run_id": "eng-dirpres-a2-lr-iso-r2-s2403-20260830-r001",
+      "config_path": "configs/eng-dirpres-a2-lr-iso-r2-s2403-20260830-r001.json",
+      "config_sha256": "785517ecf0f020ea2db7ddb0bfbe55c893bfd269d7340f36c7d19ead11c1cc4a",
+      "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 6,
+      "cell_id": "rl-com-r0",
+      "presentation_id": "rl",
+      "delivery_id": "com",
+      "rotation_id": "r0",
+      "horizontal_order": [
+        "right",
+        "left"
+      ],
+      "edge_policy": "full",
+      "message_delivery": true,
+      "prompt_contract_version": "japanese-compact-rl-prompts-v2.0.0",
+      "response_contract_version": "phase-response-compact-rl-v1.0.0",
+      "bloc_order_low_to_high_agent_id": [
+        "qwen",
+        "swallow",
+        "elyza"
+      ],
+      "run_id": "eng-dirpres-a2-rl-com-r0-s2403-20260830-r001",
+      "config_path": "configs/eng-dirpres-a2-rl-com-r0-s2403-20260830-r001.json",
+      "config_sha256": "c65fb5ecae4c7985fbbc072370294635287157ac105a03551acb31fae21ad90e",
+      "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 7,
+      "cell_id": "rl-com-r1",
+      "presentation_id": "rl",
+      "delivery_id": "com",
+      "rotation_id": "r1",
+      "horizontal_order": [
+        "right",
+        "left"
+      ],
+      "edge_policy": "full",
+      "message_delivery": true,
+      "prompt_contract_version": "japanese-compact-rl-prompts-v2.0.0",
+      "response_contract_version": "phase-response-compact-rl-v1.0.0",
+      "bloc_order_low_to_high_agent_id": [
+        "swallow",
+        "elyza",
+        "qwen"
+      ],
+      "run_id": "eng-dirpres-a2-rl-com-r1-s2403-20260830-r001",
+      "config_path": "configs/eng-dirpres-a2-rl-com-r1-s2403-20260830-r001.json",
+      "config_sha256": "563fe4c892639f4632d4644f0fe275fa5707e961683993945a5cc363e7ed129e",
+      "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 8,
+      "cell_id": "rl-com-r2",
+      "presentation_id": "rl",
+      "delivery_id": "com",
+      "rotation_id": "r2",
+      "horizontal_order": [
+        "right",
+        "left"
+      ],
+      "edge_policy": "full",
+      "message_delivery": true,
+      "prompt_contract_version": "japanese-compact-rl-prompts-v2.0.0",
+      "response_contract_version": "phase-response-compact-rl-v1.0.0",
+      "bloc_order_low_to_high_agent_id": [
+        "elyza",
+        "qwen",
+        "swallow"
+      ],
+      "run_id": "eng-dirpres-a2-rl-com-r2-s2403-20260830-r001",
+      "config_path": "configs/eng-dirpres-a2-rl-com-r2-s2403-20260830-r001.json",
+      "config_sha256": "3483f79d9b51222717c2e6cdce9e789f3574dbf9311974665450c168fb63ab19",
+      "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 9,
+      "cell_id": "rl-iso-r0",
+      "presentation_id": "rl",
+      "delivery_id": "iso",
+      "rotation_id": "r0",
+      "horizontal_order": [
+        "right",
+        "left"
+      ],
+      "edge_policy": "none",
+      "message_delivery": false,
+      "prompt_contract_version": "japanese-compact-rl-prompts-v2.0.0",
+      "response_contract_version": "phase-response-compact-rl-v1.0.0",
+      "bloc_order_low_to_high_agent_id": [
+        "qwen",
+        "swallow",
+        "elyza"
+      ],
+      "run_id": "eng-dirpres-a2-rl-iso-r0-s2403-20260830-r001",
+      "config_path": "configs/eng-dirpres-a2-rl-iso-r0-s2403-20260830-r001.json",
+      "config_sha256": "9fa599f3575bc896228b246c7f90fffd95f326744de2b15e34597d4eaf1afa98",
+      "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 10,
+      "cell_id": "rl-iso-r1",
+      "presentation_id": "rl",
+      "delivery_id": "iso",
+      "rotation_id": "r1",
+      "horizontal_order": [
+        "right",
+        "left"
+      ],
+      "edge_policy": "none",
+      "message_delivery": false,
+      "prompt_contract_version": "japanese-compact-rl-prompts-v2.0.0",
+      "response_contract_version": "phase-response-compact-rl-v1.0.0",
+      "bloc_order_low_to_high_agent_id": [
+        "swallow",
+        "elyza",
+        "qwen"
+      ],
+      "run_id": "eng-dirpres-a2-rl-iso-r1-s2403-20260830-r001",
+      "config_path": "configs/eng-dirpres-a2-rl-iso-r1-s2403-20260830-r001.json",
+      "config_sha256": "3368b2eebed9c164ef44f6fc3f0cc10906b7f34dbd9c083c1311c212fd10f539",
+      "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    },
+    {
+      "ordinal": 11,
+      "cell_id": "rl-iso-r2",
+      "presentation_id": "rl",
+      "delivery_id": "iso",
+      "rotation_id": "r2",
+      "horizontal_order": [
+        "right",
+        "left"
+      ],
+      "edge_policy": "none",
+      "message_delivery": false,
+      "prompt_contract_version": "japanese-compact-rl-prompts-v2.0.0",
+      "response_contract_version": "phase-response-compact-rl-v1.0.0",
+      "bloc_order_low_to_high_agent_id": [
+        "elyza",
+        "qwen",
+        "swallow"
+      ],
+      "run_id": "eng-dirpres-a2-rl-iso-r2-s2403-20260830-r001",
+      "config_path": "configs/eng-dirpres-a2-rl-iso-r2-s2403-20260830-r001.json",
+      "config_sha256": "45645170668b4765b91adfeb56b768c54c79bb9e1d88e8943f54b5c98c95d7a2",
+      "paired_control_sha256": "2fbd72868687601198f0a12f770f65f45dec39fbe9fc1d7226058f605120f2cb",
+      "expected_steps": 10,
+      "expected_agents": 24,
+      "expected_llm_calls": 480,
+      "research_eligible": false
+    }
+  ]
+}

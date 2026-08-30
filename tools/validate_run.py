@@ -52,9 +52,7 @@ from engine.execution_contracts import (  # noqa: E402
 )
 from engine.world import World  # noqa: E402
 from engine.response_contracts import (  # noqa: E402
-    CANONICAL_RESPONSE_CONTRACT_VERSION,
     LEGACY_RESPONSE_CONTRACT_VERSION,
-    PHASE_AWARE_VLLM_TRANSPORT_CONTRACT_VERSION,
     response_schema_sha256,
     validate_parsed_response,
     validate_response_contract_version,
@@ -370,7 +368,7 @@ def _check_config(
 
     recorded_contract_version = meta.get("response_contract_version")
     if recorded_contract_version is None:
-        if response_contract_version == CANONICAL_RESPONSE_CONTRACT_VERSION:
+        if response_contract_version != LEGACY_RESPONSE_CONTRACT_VERSION:
             report.error("run_meta.json is missing response_contract_version")
     elif recorded_contract_version != response_contract_version:
         report.error("response_contract_version differs from config snapshot")
@@ -380,7 +378,7 @@ def _check_config(
         isinstance(bloc, dict) and bloc.get("provider", "ollama") == "vllm"
         for bloc in blocs
     )
-    if response_contract_version == CANONICAL_RESPONSE_CONTRACT_VERSION:
+    if response_contract_version != LEGACY_RESPONSE_CONTRACT_VERSION:
         if not _is_nonempty_string(simulation.get("protocol_version")):
             report.error(
                 "phase-response-v2.0.0 requires an explicit protocol_version"
@@ -401,10 +399,10 @@ def _check_config(
             report.error("unsupported or missing response_schema_hash_algorithm")
         if (
             meta.get("vllm_transport_contract_version")
-            != PHASE_AWARE_VLLM_TRANSPORT_CONTRACT_VERSION
+            != vllm_transport_contract_version(response_contract_version)
         ):
             report.error(
-                "vllm_transport_contract_version must be the phase-aware v1.2.0 contract"
+                "vllm_transport_contract_version differs from the response contract"
             )
     elif recorded_contract_version is not None:
         if meta.get("response_schema_sha256") is not None:
@@ -452,10 +450,10 @@ def _check_config(
             )
             continue
         derived_agents += count
-        if response_contract_version == CANONICAL_RESPONSE_CONTRACT_VERSION:
+        if response_contract_version != LEGACY_RESPONSE_CONTRACT_VERSION:
             if bloc.get("provider") != "vllm":
                 report.error(
-                    f"config.blocs[{index}] must use vllm under phase-response-v2.0.0"
+                    f"config.blocs[{index}] must use vllm under a structured contract"
                 )
             overrides = bloc.get("llm_overrides", {})
             if isinstance(overrides, dict) and "response_format" in overrides:
@@ -1039,7 +1037,7 @@ def _check_primary_records(
                 )
             if (
                 response_contract_version
-                == CANONICAL_RESPONSE_CONTRACT_VERSION
+                != LEGACY_RESPONSE_CONTRACT_VERSION
                 and isinstance(record.get("parsed"), dict)
             ):
                 try:
@@ -1100,7 +1098,7 @@ def _check_primary_records(
                 )
             if (
                 response_contract_version
-                == CANONICAL_RESPONSE_CONTRACT_VERSION
+                != LEGACY_RESPONSE_CONTRACT_VERSION
             ):
                 parsed = {
                     key: record.get(key)
@@ -1227,11 +1225,13 @@ def _check_messages(
                 world = World(simulation["half_space_size"], places)
                 communication_radius = agents_config["communication_radius"]
                 edge_policy = agents_config.get("edge_policy", "full")
-                if edge_policy not in {"full", "within_bloc_only"}:
+                if edge_policy not in {"full", "none", "within_bloc_only"}:
                     raise ValueError("invalid agents.edge_policy")
                 reconstructed: Dict[Tuple[int, int], List[int]] = {}
                 for step in range(1, expected_steps + 1):
                     for sender_id in range(expected_agents):
+                        if edge_policy == "none":
+                            continue
                         parsed = phase1_by_key[(step, sender_id)].get("parsed")
                         if not isinstance(parsed, dict):
                             continue

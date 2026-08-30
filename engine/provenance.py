@@ -21,6 +21,8 @@ from urllib.parse import parse_qsl, unquote_plus, urlsplit
 
 from engine.execution_contracts import (
     CURRENT_PROMPT_CONTRACT_VERSION,
+    JAPANESE_COMPACT_LR_PROMPT_CONTRACT_VERSION,
+    JAPANESE_COMPACT_RL_PROMPT_CONTRACT_VERSION,
     JAPANESE_PROMPT_CONTRACT_VERSION,
     LEGACY_PROMPT_CONTRACT_VERSION,
     validate_prompt_contract_version,
@@ -431,6 +433,12 @@ def compute_prompt_hash(
     contract_version = validate_prompt_contract_version(prompt_contract_version)
     filename = {
         CURRENT_PROMPT_CONTRACT_VERSION: "prompts.py",
+        JAPANESE_COMPACT_LR_PROMPT_CONTRACT_VERSION: (
+            "japanese_compact_lr_prompts_v2.py"
+        ),
+        JAPANESE_COMPACT_RL_PROMPT_CONTRACT_VERSION: (
+            "japanese_compact_rl_prompts_v2.py"
+        ),
         JAPANESE_PROMPT_CONTRACT_VERSION: "japanese_prompts_v1.py",
         LEGACY_PROMPT_CONTRACT_VERSION: "legacy_prompts_v1.py",
     }[contract_version]

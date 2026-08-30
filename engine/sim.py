@@ -17,6 +17,8 @@ from engine.disaster import (
     parse_disaster_scenario,
 )
 from engine.execution_contracts import (
+    JAPANESE_COMPACT_LR_PROMPT_CONTRACT_VERSION,
+    JAPANESE_COMPACT_RL_PROMPT_CONTRACT_VERSION,
     JAPANESE_PROMPT_CONTRACT_VERSION,
     LEGACY_PROMPT_CONTRACT_VERSION,
     RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY,
@@ -24,7 +26,12 @@ from engine.execution_contracts import (
     validate_response_failure_policy,
     validate_transport_behavior_version,
 )
-from engine import japanese_prompts_v1, legacy_prompts_v1
+from engine import (
+    japanese_compact_lr_prompts_v2,
+    japanese_compact_rl_prompts_v2,
+    japanese_prompts_v1,
+    legacy_prompts_v1,
+)
 from engine.llm_client import LLMTransportError, call_ollama, call_vllm
 from engine.parallel_transport import (
     LLMResponseSchemaError,
@@ -247,6 +254,8 @@ class Simulation:
         )
 
     def _can_communicate(self, a1: Agent, a2: Agent) -> bool:
+        if self.edge_policy == "none":
+            return False
         if self.edge_policy == "within_bloc_only" and a1.bloc != a2.bloc:
             return False
         return self._can_communicate_positions(a1.position, a2.position)
@@ -316,6 +325,24 @@ class Simulation:
                         japanese_prompts_v1.build_phase1_prompt
                         if phase == "phase1"
                         else japanese_prompts_v1.build_phase3_prompt
+                    )
+                elif (
+                    self.prompt_contract_version
+                    == JAPANESE_COMPACT_LR_PROMPT_CONTRACT_VERSION
+                ):
+                    prompt_builder = (
+                        japanese_compact_lr_prompts_v2.build_phase1_prompt
+                        if phase == "phase1"
+                        else japanese_compact_lr_prompts_v2.build_phase3_prompt
+                    )
+                elif (
+                    self.prompt_contract_version
+                    == JAPANESE_COMPACT_RL_PROMPT_CONTRACT_VERSION
+                ):
+                    prompt_builder = (
+                        japanese_compact_rl_prompts_v2.build_phase1_prompt
+                        if phase == "phase1"
+                        else japanese_compact_rl_prompts_v2.build_phase3_prompt
                     )
                 else:
                     prompt_builder = (
@@ -726,7 +753,11 @@ class Simulation:
 
         # Phase 2: canonical delivery using only step-start positions.
         step_positions = phase1_snapshot["positions"]
-        for sender in (ordered_agents if phase1_results else []):
+        for sender in (
+            ordered_agents
+            if phase1_results and self.edge_policy != "none"
+            else []
+        ):
             self.run_lifecycle.set_context(step, "phase2", sender.agent_id)
             parsed = phase1_by_agent[sender.agent_id].parsed
             if parsed is None:

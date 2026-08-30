@@ -43,6 +43,10 @@ from engine.execution_contracts import (  # noqa: E402
     RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY,
 )
 from engine.provenance import generate_run_id  # noqa: E402
+from engine.response_contracts import (  # noqa: E402
+    CANONICAL_RESPONSE_CONTRACT_VERSION,
+    COMPACT_RESPONSE_CONTRACT_VERSIONS,
+)
 from tools.scan_publication import scan_text, scan_tree  # noqa: E402
 from tools.validate_run import validate_run  # noqa: E402
 
@@ -244,7 +248,10 @@ def validate_vllm_config(
     if simulation.get("log_schema_version") != "2.0.0":
         raise PublicVllmError("public vLLM execution requires log schema 2.0.0")
     response_contract = simulation.get("response_contract_version")
-    if response_contract == "phase-response-v2.0.0":
+    if response_contract in {
+        CANONICAL_RESPONSE_CONTRACT_VERSION,
+        *COMPACT_RESPONSE_CONTRACT_VERSIONS,
+    }:
         return
     expected_legacy = {
         "response_contract_version": "phase-response-v1.0.0",

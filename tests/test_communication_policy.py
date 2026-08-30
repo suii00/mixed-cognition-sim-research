@@ -90,7 +90,7 @@ class CommunicationPolicyTests(unittest.TestCase):
             "full",
         )
         self.assertEqual(omitted, original)
-        for policy in ("full", "within_bloc_only"):
+        for policy in ("full", "none", "within_bloc_only"):
             effective = build_effective_config(
                 communication_config(f"explicit-{policy}", policy)
             )
@@ -154,6 +154,20 @@ class CommunicationPolicyTests(unittest.TestCase):
         )
         self.assertTrue(validate_run(full.output_dir, strict=True).valid)
         self.assertTrue(validate_run(within.output_dir, strict=True).valid)
+
+    def test_none_keeps_phase1_generation_but_suppresses_every_delivery(self):
+        suppressed = self.run_fixture("policy-none", "none")
+        run_dir = Path(suppressed.output_dir)
+        phase1_rows = read_jsonl(run_dir / "phase1_raw.jsonl")
+        message_rows = read_jsonl(run_dir / "messages.jsonl")
+        self.assertEqual(len(phase1_rows), 6)
+        self.assertEqual(message_rows, [])
+        self.assertEqual(suppressed.total_llm_calls, 12)
+        self.assertTrue(
+            all(agent.received_messages == [] for agent in suppressed.agents)
+        )
+        report = validate_run(run_dir, strict=True)
+        self.assertTrue(report.valid, report.errors)
 
     @staticmethod
     def rewrite_messages(run_dir: Path, rows: list[dict]) -> None:

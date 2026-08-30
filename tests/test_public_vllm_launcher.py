@@ -16,6 +16,13 @@ from tools import run_public_vllm as launcher
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = REPO_ROOT / "configs" / "public_vllm_smoke_3model.json"
 LOCK_PATH = REPO_ROOT / "runtime" / "vllm-runtime-lock.json"
+COMPACT_CONFIG_PATH = (
+    REPO_ROOT
+    / "configs"
+    / "direction_presentation_audit_v2"
+    / "configs"
+    / "eng-dirpres-a2-rl-iso-r2-s2403-20260830-r001.json"
+)
 
 
 def gpu_row(index: int, used: int = 1) -> launcher.GpuRow:
@@ -127,6 +134,15 @@ class PublicVllmContractTests(unittest.TestCase):
         require_git_head.assert_not_called()
         check_installed_runtime.assert_not_called()
         query_gpu_rows.assert_not_called()
+
+    def test_launcher_accepts_versioned_compact_phase_contract(self):
+        lock = launcher._load_json_object(LOCK_PATH)
+        config = load_config(str(COMPACT_CONFIG_PATH))
+        launcher.validate_vllm_config(config, lock)
+        self.assertEqual(
+            config["simulation"]["response_contract_version"],
+            "phase-response-compact-rl-v1.0.0",
+        )
 
 
 class PublicVllmAllocationTests(unittest.TestCase):
