@@ -1,0 +1,84 @@
+{
+  "batch_id": "refuge-layout-study-v1-20260909T162300Z",
+  "configs": {
+    "refuge-layout-study-v1-20260909T162300Z-edge-d120-s6301.json": {
+      "bytes": 5643,
+      "sha256": "dd37842e91e07d744111ad0a3b6461923b2b46b9dca4cce812c13ef0ce5a9522"
+    },
+    "refuge-layout-study-v1-20260909T162300Z-edge-d60-s6301.json": {
+      "bytes": 5640,
+      "sha256": "5ebaf45aa89a376e10f50939a52be3f65e04ea60a4bbed7c3ed0e47510656cea"
+    },
+    "refuge-layout-study-v1-20260909T162300Z-inset-d120-s6301.json": {
+      "bytes": 5641,
+      "sha256": "90e5c239bd10f49fb5ae4a703d40028aab02bbeba1a0bf5de0297524f683eb66"
+    },
+    "refuge-layout-study-v1-20260909T162300Z-inset-d60-s6301.json": {
+      "bytes": 5638,
+      "sha256": "8c2e770f30915d380316c95237684f349a44647a2647379d9f7d1393b0930268"
+    }
+  },
+  "created_at_utc": "2026-09-09T16:54:15.743939+00:00",
+  "implementations": {
+    "docs/DISASTER_METRIC_V2_SPEC.md": {
+      "bytes": 8553,
+      "sha256": "cd0ca4fec67d945a2b878fe5c0c7e49391e9bacf10a3f7aa0a142f7962cbf711"
+    },
+    "docs/EXPERIMENT_PROTOCOL_REFUGE_LAYOUT_STUDY_V1.md": {
+      "bytes": 15465,
+      "sha256": "1c82f4bd24dbd9591a91fbc7d39b8cbd14ba2a0048faf60f54b1e4d90dc0e04f"
+    },
+    "docs/REFUGE_LAYOUT_STUDY_METRIC_V1_SPEC.md": {
+      "bytes": 6958,
+      "sha256": "98fe0001bdbd64395f196f727c45ac2ee946b4e3bd43cb53ceb8165aea71e700"
+    },
+    "engine/config.py": {
+      "bytes": 20246,
+      "sha256": "c63ea0a44ee8ad1e0633a8d62a9c6d817db33776fb80215bd92b3d1fd9ccb3ec"
+    },
+    "engine/disaster.py": {
+      "bytes": 13540,
+      "sha256": "4876ff0b827b181508a59f6608d57a36d780cffa8cface563640a0f4b080b4a5"
+    },
+    "engine/provenance.py": {
+      "bytes": 48238,
+      "sha256": "9feb46a16d8cc5aacbc2a6bf42fb33024b2c974322cd1c1789f47dc86c96ff27"
+    },
+    "engine/world.py": {
+      "bytes": 3742,
+      "sha256": "bb51bc18c9222441cd2505e3afde7bf345dd84961e8cc714d63ba2665b5ab9aa"
+    },
+    "tools/artifact_boundaries.py": {
+      "bytes": 1636,
+      "sha256": "af1065c9dd2ff8ab4dbe7de9f0f7c2ec287e7ca6cdd145989de384b3fd2bf913"
+    },
+    "tools/build_disaster_matrix.py": {
+      "bytes": 9477,
+      "sha256": "c2ad9142e7a2b3071607d5152f159a9a16a5a66dfb0fce3cde417bf74141cc83"
+    },
+    "tools/build_refuge_layout_study.py": {
+      "bytes": 11588,
+      "sha256": "456bcb165a459c6907bd266dd85ef3f356f8752ff6bb471774f5a55ad91e53f5"
+    },
+    "tools/plot_refuge_layout_geometry.py": {
+      "bytes": 13209,
+      "sha256": "8930eb1fd6f52f3ad02770eb38b7f04cd4e48ce43028c5db04edc725b7d2ed58"
+    },
+    "tools/scan_publication.py": {
+      "bytes": 10385,
+      "sha256": "4b99cde5575d3464f6259f36c8f7f6097fd8803c21b492739d25cef7b7c64f54"
+    }
+  },
+  "llm_observations": false,
+  "plot_version": "refuge-layout-study-geometry-v1.0.0",
+  "protocol_version": "refuge-layout-study-v1.0.0",
+  "raw_inputs_read": false,
+  "raw_modified": false,
+  "source_manifest_sha256": "e8d76a2eaa314c7daec25c171090c7dd088c66342d20387418936b3a8ad08666",
+  "source_state": {
+    "git_dirty": false,
+    "git_probe_errors": [],
+    "git_probe_status": "available",
+    "git_sha": "a5f1421818bbbed15fa810b0906fddcc991fa885"
+  }
+}

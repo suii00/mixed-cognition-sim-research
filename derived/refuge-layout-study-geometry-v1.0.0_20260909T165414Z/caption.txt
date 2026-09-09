@@ -1,0 +1,4 @@
+Geometric bounds only: d is the shortest Manhattan distance to a refuge cell; one cardinal move costs one step.
+Counts use all 2,121 common eligible cells and assume shortest-path choices. Hazard does not block movement.
+Markers reconstruct the 24 initial positions from the public config and seed 6301; compare them with raw starts after execution.
+No LLM outputs or trajectories are used. This is not an observed arrival rate, understanding score, or evacuation guarantee.

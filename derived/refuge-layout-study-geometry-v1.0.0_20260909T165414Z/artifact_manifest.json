@@ -1,0 +1,26 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "caption.txt": {
+      "bytes": 475,
+      "sha256": "6249159e022e5422ade7c41f9675af92c68ba85f2768c51db41a5d601b8a1726"
+    },
+    "geometry.json": {
+      "bytes": 494290,
+      "sha256": "43e81b3401551938271610f3be557ce46c5b662849b4241758566fa414bac00e"
+    },
+    "geometry.png": {
+      "bytes": 203243,
+      "sha256": "afc31abb15aa015056933f0c734b01b1f12e79ccd1c37ead1dc6fae375941f6d"
+    },
+    "geometry.svg": {
+      "bytes": 93466,
+      "sha256": "08ebf88376f56543a0e1c1210d1def8744d4f20ebb6f2543c2f3f29ff2371545"
+    },
+    "input_manifest.json": {
+      "bytes": 3149,
+      "sha256": "12ba96b5b1a8525297730664677ad6e728faea10c85b6cc204cca41766255d88"
+    }
+  },
+  "plot_version": "refuge-layout-study-geometry-v1.0.0"
+}
