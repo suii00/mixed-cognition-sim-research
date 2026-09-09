@@ -1,0 +1,518 @@
+{
+  "all_frozen_source_inputs_unchanged": true,
+  "all_input_trees_unchanged": true,
+  "batch_id": "refuge-layout-study-v1-20260909T162300Z",
+  "checker_sha256": "4c0ce17b57c751daa5b3e7e044dfa6cb51a4a9016718c286b5b6bc265db09121",
+  "config_manifest_sha256": "e8d76a2eaa314c7daec25c171090c7dd088c66342d20387418936b3a8ad08666",
+  "counts": {
+    "analysis_jsonl_rows": 10920,
+    "frozen_source_checks": 59,
+    "geometry_cell_distances_rederived": 4242,
+    "manifest_members": 57,
+    "matched_initial_agent_positions": 96,
+    "publication_scanned_trees": 10,
+    "raw_line_references": 120931,
+    "raw_row_equalities": 26624,
+    "replay_frames_rederived": 724,
+    "strict_validated_runs": 4
+  },
+  "created_at_utc": "2026-09-09T18:11:50.806898+00:00",
+  "geometry_reconstruction_matches_raw_starts": true,
+  "inference_source_sha": "a5f1421818bbbed15fa810b0906fddcc991fa885",
+  "initial_positions_and_model_assignment_equal": true,
+  "input_trees": [
+    {
+      "files": {
+        "llm_attempts.jsonl": {
+          "bytes": 8561492,
+          "lines": 2880,
+          "sha256": "fef254f8fd2b83323403954eb23413512c4980f600bfd924669f7ef45604c926"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 347557,
+          "lines": 1440,
+          "sha256": "6a8b8a844b65532009cce21f197695f94cbcfa088214f5ead8ee4c9305e6d091"
+        },
+        "messages.jsonl": {
+          "bytes": 308534,
+          "lines": 1438,
+          "sha256": "0782030b78f8adadacdfd443aaf7a39debb5ebd0282e03394963afea67c93fe6"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 417488,
+          "lines": 1440,
+          "sha256": "e29e256970edc3beff356d80f61a6ed97ff20284c921bc702643db4b6def659f"
+        },
+        "positions.jsonl": {
+          "bytes": 449496,
+          "lines": 1464,
+          "sha256": "1b8d96db8f957ce5cd2115e59c26fe34a8a6578235089b1fb2ba3c7079807073"
+        },
+        "run_meta.json": {
+          "bytes": 13155,
+          "lines": 423,
+          "sha256": "17758e6455ec1ea5e2036e5e423a446d18d319a01170131b6b80969058e70d25"
+        },
+        "termination.jsonl": {
+          "bytes": 405,
+          "lines": 1,
+          "sha256": "a8de34fd64b17a853bacc93aad323238a3fa4004a2d9b8d448538927d13991df"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2408,
+          "lines": 7,
+          "sha256": "6b9925073216e97b2b4ad2e27e92d95db8f1ebd666f165d3da7e8d1d83fea7f1"
+        },
+        "world_events.jsonl": {
+          "bytes": 14063,
+          "lines": 61,
+          "sha256": "fc2758026f8fee81e9d9498d5a55d479dba78bc370cca8082f8c6887b7c45d50"
+        }
+      },
+      "name": "output_refuge-layout-study-v1-20260909T162300Z-edge-d60-s6301"
+    },
+    {
+      "files": {
+        "llm_attempts.jsonl": {
+          "bytes": 8571316,
+          "lines": 2880,
+          "sha256": "38dc7f0f07ebf16854de6655fe56bf5ba328c266b1db6ced34ed1ea70e03915e"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 349967,
+          "lines": 1440,
+          "sha256": "887adfa93a52133c8f78abc6d9636fc4a9f0322607749e5ac1151214483d2b1a"
+        },
+        "messages.jsonl": {
+          "bytes": 308136,
+          "lines": 1440,
+          "sha256": "a92366a52c272eaf165c5516ac19387fb1f345c15e42174c7caaa30e9019bd78"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 413936,
+          "lines": 1440,
+          "sha256": "6b10e7cf03f085b739d8286e307baa693b5f47ebf9a2f542f28ebffe612dd239"
+        },
+        "positions.jsonl": {
+          "bytes": 450330,
+          "lines": 1464,
+          "sha256": "2d2c9e0de6475a43aa03a00a6873d758952854c30d01722e99d2f11762b8abfe"
+        },
+        "run_meta.json": {
+          "bytes": 13156,
+          "lines": 423,
+          "sha256": "77184489bfa352e8e6e7e13b21d288486b866185ac5e5861ac666709081de94b"
+        },
+        "termination.jsonl": {
+          "bytes": 407,
+          "lines": 1,
+          "sha256": "ea7f1d934a3146726b77c73c7aa73c7a64aabd1925d314db9c2c3c113074d247"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2407,
+          "lines": 7,
+          "sha256": "99b714634966b47628dd9ed2f6ba0fb997f2e6f1cdcb0f7df1129081a5bb5139"
+        },
+        "world_events.jsonl": {
+          "bytes": 14124,
+          "lines": 61,
+          "sha256": "1734839b187427038e0b741a1d1f92f7bc423d6bd973c11a29a7f1f75973046e"
+        }
+      },
+      "name": "output_refuge-layout-study-v1-20260909T162300Z-inset-d60-s6301"
+    },
+    {
+      "files": {
+        "llm_attempts.jsonl": {
+          "bytes": 17472954,
+          "lines": 5760,
+          "sha256": "1524f93b6de546fc9a9dbf876238a731557d7590c7c9aa7bf201ca8b628e11ec"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 753859,
+          "lines": 2880,
+          "sha256": "7dcf6e2b30eda9d87338a93ffe467fc17bd03da9adbd3ec99fd6261b8da10fb4"
+        },
+        "messages.jsonl": {
+          "bytes": 658786,
+          "lines": 2862,
+          "sha256": "6b7e8d6b66edb8ef3c1ee84ff68af057da775d769114b7831a60a5d06a887eed"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 913462,
+          "lines": 2880,
+          "sha256": "dd400f6561b51c5d522f743678ef58cc2aa1db02c4ec7cdaeba6cc81ec4a466d"
+        },
+        "positions.jsonl": {
+          "bytes": 897753,
+          "lines": 2904,
+          "sha256": "856d1e63136c4a3359bed7e08d1dc23ab3a1a41911ff5927286132513a4cd384"
+        },
+        "run_meta.json": {
+          "bytes": 13166,
+          "lines": 423,
+          "sha256": "fb48ccd2f6d743c043899ef50d8df0804b16aebfd74deab5c2037ed7aa02eb3e"
+        },
+        "termination.jsonl": {
+          "bytes": 410,
+          "lines": 1,
+          "sha256": "b08d17c91c5d556eac14a6aa3dc04617f9f8cb22d9b470e158a38e7db489242a"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2414,
+          "lines": 7,
+          "sha256": "93e8dcdd60fc4acb332cc5fb4b3daa8cbe405179414b4e552efc65c934f7888d"
+        },
+        "world_events.jsonl": {
+          "bytes": 28606,
+          "lines": 121,
+          "sha256": "80ee78d9247be9e548f56bfa0298c36f467cee1d0753c6dca0d43c187ee0b15a"
+        }
+      },
+      "name": "output_refuge-layout-study-v1-20260909T162300Z-inset-d120-s6301"
+    },
+    {
+      "files": {
+        "llm_attempts.jsonl": {
+          "bytes": 17418986,
+          "lines": 5760,
+          "sha256": "da090a82980a60600730b137a2a4ea668ddeaf8048bb5faed8f90a3d96080687"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 734797,
+          "lines": 2880,
+          "sha256": "1953f0dfacd6d597b38faef09b36bc962db72deae2a8603fad06488c9b5189b6"
+        },
+        "messages.jsonl": {
+          "bytes": 654917,
+          "lines": 2845,
+          "sha256": "92c00559874c1d28565879878e64d74a5c3022f2264d3de5819554b3bc3137a8"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 926358,
+          "lines": 2880,
+          "sha256": "0345c1b514e4cd6d984689c400230230c263ef2432e055f6619a6ca6f13fc798"
+        },
+        "positions.jsonl": {
+          "bytes": 895549,
+          "lines": 2904,
+          "sha256": "5441893e5c0d6ff230b799f2fadce7834bc16b60ff01b83694f4f0bb9c23f4e0"
+        },
+        "run_meta.json": {
+          "bytes": 13165,
+          "lines": 423,
+          "sha256": "749fcaf906c8a7808e3f6d3db74c2229ee6c7fca42d5c8bc9357fc077ecec77c"
+        },
+        "termination.jsonl": {
+          "bytes": 408,
+          "lines": 1,
+          "sha256": "1abeabbf1f14109b72e8cd4108182e86e28cddc788812f5c8d707fefdd12105f"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2415,
+          "lines": 7,
+          "sha256": "b7197530e1730e827745619f4222d5a67463a74088acadde852888e8bdfb8a46"
+        },
+        "world_events.jsonl": {
+          "bytes": 28485,
+          "lines": 121,
+          "sha256": "fcf6c9d48d797ae780261386ad54a2858550f3a0745d31797227e1ebe3a78ccc"
+        }
+      },
+      "name": "output_refuge-layout-study-v1-20260909T162300Z-edge-d120-s6301"
+    },
+    {
+      "files": {
+        "agent_checkpoints.jsonl": {
+          "bytes": 218681,
+          "lines": 144,
+          "sha256": "db39732f9513431748d12f2545b38ee2af4e0fe24f40c0022fa5dc11f29c552d"
+        },
+        "agent_steps.jsonl": {
+          "bytes": 10435145,
+          "lines": 8736,
+          "sha256": "e1b7a693f950091b1732c98bb43252a226cbed1327b9d7afffb7965ef0c19536"
+        },
+        "analysis_meta.json": {
+          "bytes": 2767,
+          "lines": 79,
+          "sha256": "1fb6ab587f81c7dc86e55f1ed8b80a3e710852cca5a83e134a00090f49cffdd2"
+        },
+        "derived_manifest.json": {
+          "bytes": 1370,
+          "lines": 46,
+          "sha256": "3bd46b780e9c0416fd97966a1766a6cd123ecb3f2a7a8ce95aacb9a110df2490"
+        },
+        "example.json": {
+          "bytes": 103,
+          "lines": 4,
+          "sha256": "4d4c2cc78a68d44cdfd9d2a410b2dad8480284710694598db2db81eb53dbe221"
+        },
+        "report.md": {
+          "bytes": 1312,
+          "lines": 23,
+          "sha256": "479848b805d750d799fa7e61c827d1973294331ed54501abdd3a832f6a108c91"
+        },
+        "summary.json": {
+          "bytes": 35227,
+          "lines": 977,
+          "sha256": "49bb75ebe811daeaa8c37740a5b1775eef0810256d372b2d19ff2a1e42ad6297"
+        },
+        "warning_agents.jsonl": {
+          "bytes": 141874,
+          "lines": 96,
+          "sha256": "0d4f19c31198a661f0673e16312e69c9210969a5ae861fd9a498c1ac24181674"
+        },
+        "warning_outputs.jsonl": {
+          "bytes": 3892197,
+          "lines": 1944,
+          "sha256": "e37e08f98411c07e9f2cb8bf659a255ad26d9168cb780238a9f605392a6d55ea"
+        }
+      },
+      "name": "refuge-layout-study-metric-v1.0.0_20260909T180637Z"
+    },
+    {
+      "files": {
+        "artifact_manifest.json": {
+          "bytes": 778,
+          "lines": 26,
+          "sha256": "11b073032bb33397a3a4e84c4b46dd6d95a0da981191da9875a582d1d9de9c5e"
+        },
+        "caption.txt": {
+          "bytes": 475,
+          "lines": 4,
+          "sha256": "6249159e022e5422ade7c41f9675af92c68ba85f2768c51db41a5d601b8a1726"
+        },
+        "geometry.json": {
+          "bytes": 494290,
+          "lines": 30224,
+          "sha256": "43e81b3401551938271610f3be557ce46c5b662849b4241758566fa414bac00e"
+        },
+        "geometry.png": {
+          "bytes": 203243,
+          "lines": 543,
+          "sha256": "afc31abb15aa015056933f0c734b01b1f12e79ccd1c37ead1dc6fae375941f6d"
+        },
+        "geometry.svg": {
+          "bytes": 93466,
+          "lines": 1466,
+          "sha256": "08ebf88376f56543a0e1c1210d1def8744d4f20ebb6f2543c2f3f29ff2371545"
+        },
+        "input_manifest.json": {
+          "bytes": 3149,
+          "lines": 84,
+          "sha256": "12ba96b5b1a8525297730664677ad6e728faea10c85b6cc204cca41766255d88"
+        }
+      },
+      "name": "refuge-layout-study-geometry-v1.0.0_20260909T165414Z"
+    },
+    {
+      "files": {
+        "input_manifest.json": {
+          "bytes": 8202,
+          "lines": 1,
+          "sha256": "3077c492a3aae879135b4aab898b483fc823a672083ea8a4706105357e771ef2"
+        },
+        "replay.html": {
+          "bytes": 3683004,
+          "lines": 40,
+          "sha256": "199e0a218c7a4f6d41341c151bec68c00d8e51b9c9538141d2f46785eb204f6f"
+        },
+        "summary.png": {
+          "bytes": 397389,
+          "lines": 1540,
+          "sha256": "a6055767e8af92df30ffa2145491bf21605bcdc10483aa14484056bf6c21b54d"
+        }
+      },
+      "name": "disaster-run-replay-v1.0.0_20260909T180820Z_edge-d60-s6301"
+    },
+    {
+      "files": {
+        "input_manifest.json": {
+          "bytes": 8201,
+          "lines": 1,
+          "sha256": "950f0cff1be0df7f8990ff5cd639aa78d1aa1032e7a90f2cb8da79b81257b916"
+        },
+        "replay.html": {
+          "bytes": 3674592,
+          "lines": 40,
+          "sha256": "99777b0a2b51b3249a9bbb96e21ff6b8ee5d16787370ccc44ac0abb5b6bab42d"
+        },
+        "summary.png": {
+          "bytes": 401044,
+          "lines": 1602,
+          "sha256": "ea33e2a16e74b849f02f7788cd81667ebe8f5add08060f1447a5f12a572f8910"
+        }
+      },
+      "name": "disaster-run-replay-v1.0.0_20260909T180820Z_inset-d60-s6301"
+    },
+    {
+      "files": {
+        "input_manifest.json": {
+          "bytes": 8207,
+          "lines": 1,
+          "sha256": "f415644c98bcd382ec6d4cbb4f79da001accbc587089b2d2806834797ee9f6b4"
+        },
+        "replay.html": {
+          "bytes": 7651577,
+          "lines": 40,
+          "sha256": "12953ffdaff58e22236165eec7446945b91b5cf507c88e6fa70e73b198f13895"
+        },
+        "summary.png": {
+          "bytes": 408185,
+          "lines": 1715,
+          "sha256": "3f302d767aa47573ee4e26d61fdb874d26e5c8413ca912fb0e3b61e52641c764"
+        }
+      },
+      "name": "disaster-run-replay-v1.0.0_20260909T180820Z_inset-d120-s6301"
+    },
+    {
+      "files": {
+        "input_manifest.json": {
+          "bytes": 8208,
+          "lines": 1,
+          "sha256": "e61d1de716ced54e1f88283f60ea8a37a8dd7052bdc65f1a00cb6e6f9322810a"
+        },
+        "replay.html": {
+          "bytes": 7656702,
+          "lines": 40,
+          "sha256": "599b2fa4bbdf67a0586a4417ee9c18a222042d01a2e7c0c5bd932dd72d096e66"
+        },
+        "summary.png": {
+          "bytes": 398402,
+          "lines": 1519,
+          "sha256": "26c3fd1b42069fbeaf5c4b5d818de6294629865aec8353fdf622d9c2a91b6e0f"
+        }
+      },
+      "name": "disaster-run-replay-v1.0.0_20260909T180820Z_edge-d120-s6301"
+    }
+  ],
+  "llm_outputs_executed": false,
+  "metric_version": "refuge-layout-study-metric-v1.0.0",
+  "omissions": [
+    "Browser interaction and rendered HTML visual QA were blocked by browser URL policy.",
+    "PNG/SVG contents are hash-verified here; visual QA is a separate check.",
+    "This check recomputes geometry and replay frames and resolves all analysis references; it does not independently rederive every aggregate analysis metric.",
+    "Runtime binding identities and external signatures are not independently attested by this local check."
+  ],
+  "passed": true,
+  "protocol_version": "refuge-layout-study-v1.0.0",
+  "raw_or_derived_inputs_modified": false,
+  "runs": [
+    {
+      "completed_steps": 60,
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 2880,
+        "logical_llm_calls": 2880,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "expected_steps": 60,
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-edge-d60-s6301",
+      "status": "completed",
+      "strict_unverifiable": [
+        "dependency versions unavailable: matplotlib",
+        "complete dependency environment: one or more package versions were unavailable",
+        "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+        "cryptographic authenticity: raw_manifest hashes are not externally signed",
+        "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+      ],
+      "strict_valid": true
+    },
+    {
+      "completed_steps": 60,
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 2880,
+        "logical_llm_calls": 2880,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "expected_steps": 60,
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-inset-d60-s6301",
+      "status": "completed",
+      "strict_unverifiable": [
+        "dependency versions unavailable: matplotlib",
+        "complete dependency environment: one or more package versions were unavailable",
+        "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+        "cryptographic authenticity: raw_manifest hashes are not externally signed",
+        "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+      ],
+      "strict_valid": true
+    },
+    {
+      "completed_steps": 120,
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 5760,
+        "logical_llm_calls": 5760,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "expected_steps": 120,
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-inset-d120-s6301",
+      "status": "completed",
+      "strict_unverifiable": [
+        "dependency versions unavailable: matplotlib",
+        "complete dependency environment: one or more package versions were unavailable",
+        "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+        "cryptographic authenticity: raw_manifest hashes are not externally signed",
+        "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+      ],
+      "strict_valid": true
+    },
+    {
+      "completed_steps": 120,
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 5760,
+        "logical_llm_calls": 5760,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "expected_steps": 120,
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-edge-d120-s6301",
+      "status": "completed",
+      "strict_unverifiable": [
+        "dependency versions unavailable: matplotlib",
+        "complete dependency environment: one or more package versions were unavailable",
+        "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+        "cryptographic authenticity: raw_manifest hashes are not externally signed",
+        "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+      ],
+      "strict_valid": true
+    }
+  ],
+  "study_metric_spec_sha256": "98fe0001bdbd64395f196f727c45ac2ee946b4e3bd43cb53ceb8165aea71e700",
+  "verification_version": "refuge-layout-study-verification-v1.0.0",
+  "warning_metric_spec_sha256": "cd0ca4fec67d945a2b878fe5c0c7e49391e9bacf10a3f7aa0a142f7962cbf711"
+}

@@ -1,0 +1,46 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "agent_checkpoints.jsonl": {
+      "bytes": 218681,
+      "lines": 144,
+      "sha256": "db39732f9513431748d12f2545b38ee2af4e0fe24f40c0022fa5dc11f29c552d"
+    },
+    "agent_steps.jsonl": {
+      "bytes": 10435145,
+      "lines": 8736,
+      "sha256": "e1b7a693f950091b1732c98bb43252a226cbed1327b9d7afffb7965ef0c19536"
+    },
+    "analysis_meta.json": {
+      "bytes": 2767,
+      "lines": 79,
+      "sha256": "1fb6ab587f81c7dc86e55f1ed8b80a3e710852cca5a83e134a00090f49cffdd2"
+    },
+    "example.json": {
+      "bytes": 103,
+      "lines": 4,
+      "sha256": "4d4c2cc78a68d44cdfd9d2a410b2dad8480284710694598db2db81eb53dbe221"
+    },
+    "report.md": {
+      "bytes": 1312,
+      "lines": 23,
+      "sha256": "479848b805d750d799fa7e61c827d1973294331ed54501abdd3a832f6a108c91"
+    },
+    "summary.json": {
+      "bytes": 35227,
+      "lines": 977,
+      "sha256": "49bb75ebe811daeaa8c37740a5b1775eef0810256d372b2d19ff2a1e42ad6297"
+    },
+    "warning_agents.jsonl": {
+      "bytes": 141874,
+      "lines": 96,
+      "sha256": "0d4f19c31198a661f0673e16312e69c9210969a5ae861fd9a498c1ac24181674"
+    },
+    "warning_outputs.jsonl": {
+      "bytes": 3892197,
+      "lines": 1944,
+      "sha256": "e37e08f98411c07e9f2cb8bf659a255ad26d9168cb780238a9f605392a6d55ea"
+    }
+  },
+  "metric_version": "refuge-layout-study-metric-v1.0.0"
+}

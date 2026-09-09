@@ -4,7 +4,7 @@
 守りたいのは、災害時にも情報を共有し、人や社会が状況を確かめて行動を調整できる機能です。
 本研究でいう「メタ安全保障」は、その前提となるAI間の情報伝達と行動の連鎖を検証可能にするという研究目的です。現実の安全性向上を実証したという意味ではありません。
 
-**次の追加実験（実行前に固定）:** [24体の混成集団による避難所配置・時間の比較](docs/EXPERIMENT_PROTOCOL_REFUGE_LAYOUT_STUDY_V1.md)。Qwen・Llama・Gemma各8体で、まず端配置／中央寄り配置を60 steps、その後それぞれ120 stepsで実行します。[計測仕様](docs/REFUGE_LAYOUT_STUDY_METRIC_V1_SPEC.md)を事前に固定し、初期位置・モデル割当・初期警報受信者をそろえます。120-step run自身の60→120 stepの変化を、独立した60-step runとの比較から区別します。1 seedの記述的追試であり、人数を独立な反復数として扱いません。
+**2026-09-10 混成24体の追加実験:** [避難所配置・60/120 stepの観測結果と4本のreplay](docs/RESULTS_REFUGE_LAYOUT_STUDY_20260910.md)。Qwen・Llama・Gemma各8体が同居する全4 runが完走しました（17,280 calls、失敗・再試行0）。[事前protocol](docs/EXPERIMENT_PROTOCOL_REFUGE_LAYOUT_STUDY_V1.md)と[計測仕様](docs/REFUGE_LAYOUT_STUDY_METRIC_V1_SPEC.md)を固定し、初期位置・モデル割当・初期警報受信者をそろえました。独立60-step runの期間内到達は端0/24体、中央寄り1/24体。120-step run自身の60→120 stepでは、端0→0体、中央寄り2→3体でした。終点での避難所内在所、警報IDの後続再使用は全条件で0です。原本JSONL・全条件の集計・図・検証記録を収録しています。1 seedの記述的観測であり、24体を独立な反復数として扱いません。
 
 エージェントをブロック単位で異なるLLMに割り当て、ブロック／モデル情報をエージェント向けプロンプトに含めません。実験ごとにworld・prompt・sampling・通信条件を定め、model artifact、tokenizer、chat template、推論実装を記録して出力と行動を比較します。望ましい結論へ誘導する役割や報酬は与えず、条件と生ログから観測をたどれるようにします。
 

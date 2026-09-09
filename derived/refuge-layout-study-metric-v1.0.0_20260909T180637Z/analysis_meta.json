@@ -1,0 +1,79 @@
+{
+  "implementation_manifests": {
+    "docs/DISASTER_METRIC_V2_SPEC.md": {
+      "bytes": 8553,
+      "lines": 203,
+      "sha256": "cd0ca4fec67d945a2b878fe5c0c7e49391e9bacf10a3f7aa0a142f7962cbf711"
+    },
+    "docs/EXPERIMENT_PROTOCOL_REFUGE_LAYOUT_STUDY_V1.md": {
+      "bytes": 15465,
+      "lines": 210,
+      "sha256": "1c82f4bd24dbd9591a91fbc7d39b8cbd14ba2a0048faf60f54b1e4d90dc0e04f"
+    },
+    "docs/REFUGE_LAYOUT_STUDY_METRIC_V1_SPEC.md": {
+      "bytes": 6958,
+      "lines": 116,
+      "sha256": "98fe0001bdbd64395f196f727c45ac2ee946b4e3bd43cb53ceb8165aea71e700"
+    },
+    "engine/disaster.py": {
+      "bytes": 13540,
+      "lines": 385,
+      "sha256": "4876ff0b827b181508a59f6608d57a36d780cffa8cface563640a0f4b080b4a5"
+    },
+    "tools/analyze_refuge_layout_study.py": {
+      "bytes": 27301,
+      "lines": 415,
+      "sha256": "c14bbdcbfd0f32f143481e938c9bdf46ab50135812b520051ead74def43b5a53"
+    },
+    "tools/artifact_boundaries.py": {
+      "bytes": 1636,
+      "lines": 52,
+      "sha256": "af1065c9dd2ff8ab4dbe7de9f0f7c2ec287e7ca6cdd145989de384b3fd2bf913"
+    },
+    "tools/build_refuge_layout_study.py": {
+      "bytes": 11588,
+      "lines": 274,
+      "sha256": "456bcb165a459c6907bd266dd85ef3f356f8752ff6bb471774f5a55ad91e53f5"
+    },
+    "tools/disaster_metric_v2_core.py": {
+      "bytes": 45055,
+      "lines": 1150,
+      "sha256": "d9aaa83fbd15fb66013b04e4379a85f2bc5d8e2210847d9384911e03453b2682"
+    },
+    "tools/run_disaster_behavior_pilot.py": {
+      "bytes": 20180,
+      "lines": 408,
+      "sha256": "dea9318e9d3d2ca42cd6d5e5fb7fb3c19b94800ecd791694a703f9abaa04ab11"
+    },
+    "tools/run_public_vllm.py": {
+      "bytes": 38826,
+      "lines": 1057,
+      "sha256": "886392b84efe450016c3bd1a72ef1d9d9fc129afad831982efbdea28d976aef1"
+    },
+    "tools/scan_publication.py": {
+      "bytes": 10385,
+      "lines": 274,
+      "sha256": "4b99cde5575d3464f6259f36c8f7f6097fd8803c21b492739d25cef7b7c64f54"
+    },
+    "tools/validate_run.py": {
+      "bytes": 89429,
+      "lines": 2412,
+      "sha256": "9339eee74929538c9f5e56949ae02fd20ec44f4972b37d8cb63886c558fa758c"
+    }
+  },
+  "inference_source_commits": [
+    "a5f1421818bbbed15fa810b0906fddcc991fa885"
+  ],
+  "input_scan_passed": true,
+  "manifest_sha256": "e8d76a2eaa314c7daec25c171090c7dd088c66342d20387418936b3a8ad08666",
+  "metric_spec_sha256": "98fe0001bdbd64395f196f727c45ac2ee946b4e3bd43cb53ceb8165aea71e700",
+  "metric_version": "refuge-layout-study-metric-v1.0.0",
+  "raw_modified": false,
+  "source_state": {
+    "git_dirty": false,
+    "git_probe_errors": [],
+    "git_probe_status": "available",
+    "git_sha": "d6fa9ad6c2b4ecb539eb488de356c49bbb75ef88"
+  },
+  "warning_metric_spec_sha256": "cd0ca4fec67d945a2b878fe5c0c7e49391e9bacf10a3f7aa0a142f7962cbf711"
+}

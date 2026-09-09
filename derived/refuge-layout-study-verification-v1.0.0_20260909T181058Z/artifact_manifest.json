@@ -1,0 +1,11 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "verification.json": {
+      "bytes": 19088,
+      "lines": 518,
+      "sha256": "da4656a1b8ff3f7d4d8d6e1e9b3ac4c8059703fdde9e95f6c5f5f504373a7860"
+    }
+  },
+  "verification_version": "refuge-layout-study-verification-v1.0.0"
+}

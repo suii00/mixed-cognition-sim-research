@@ -1,0 +1,11 @@
+{
+  "audit_version": "refuge-layout-study-independent-v1.0.0",
+  "files": {
+    "observations.json": {
+      "bytes": 22071018,
+      "lines": 616828,
+      "sha256": "cd710a55ca8cedd69f26dde98bd35b6741d22494c6b5aa8ee0bdd700f45cc71e"
+    }
+  },
+  "independent_script_sha256": "20e62d5af80117b3a067d9f26e5ffef104db72aaff412cb8ddc1cef8f2290bbe"
+}

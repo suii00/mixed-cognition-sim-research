@@ -1,0 +1,977 @@
+{
+  "batch_id": "refuge-layout-study-v1-20260909T162300Z",
+  "comparison_eligible_run_count": 4,
+  "example": null,
+  "example_absence_reason": "no_eligible_cross_model_exact_id_delivery_in_60_step_runs",
+  "formal_eligible": false,
+  "independent_horizon_pairs": [
+    {
+      "first_prefix_difference": {
+        "agent_id": 6,
+        "phase": "phase1",
+        "step": 1
+      },
+      "layout": "edge",
+      "prefix60_equal": false,
+      "run_ids": [
+        "refuge-layout-study-v1-20260909T162300Z-edge-d60-s6301",
+        "refuge-layout-study-v1-20260909T162300Z-edge-d120-s6301"
+      ],
+      "seed": 6301
+    },
+    {
+      "first_prefix_difference": {
+        "agent_id": 2,
+        "phase": "phase3",
+        "step": 1
+      },
+      "layout": "inset",
+      "prefix60_equal": false,
+      "run_ids": [
+        "refuge-layout-study-v1-20260909T162300Z-inset-d60-s6301",
+        "refuge-layout-study-v1-20260909T162300Z-inset-d120-s6301"
+      ],
+      "seed": 6301
+    }
+  ],
+  "layout_pairs": [
+    {
+      "comparisons": [
+        {
+          "checkpoint": 60,
+          "edge": {
+            "agent_count": 24,
+            "arrived_agent_count": 0,
+            "blocked_moves": 265,
+            "checkpoint": 60,
+            "cross_model_delivery_edges": 4426,
+            "cross_model_exact_id_delivery_edges": 0,
+            "exact_id_delivery_edges": 0,
+            "final_refuge_occupancy": 0,
+            "hazard_agent_steps": 628,
+            "later_reuse_outputs": 0,
+            "mean_final_distance": 24.166666666666668,
+            "mean_initial_distance": 27.875,
+            "message_delivery_edges": 7026,
+            "move": 1181,
+            "official_exposed_agents": 6,
+            "official_exposure_events": 6,
+            "relay_exposed_agents": 0,
+            "relay_exposure_events": 0,
+            "stay": 259,
+            "warning_exposed_agents": 6,
+            "warning_reused_agents": 0
+          },
+          "inset": {
+            "agent_count": 24,
+            "arrived_agent_count": 1,
+            "blocked_moves": 335,
+            "checkpoint": 60,
+            "cross_model_delivery_edges": 3980,
+            "cross_model_exact_id_delivery_edges": 0,
+            "exact_id_delivery_edges": 0,
+            "final_refuge_occupancy": 0,
+            "hazard_agent_steps": 670,
+            "later_reuse_outputs": 0,
+            "mean_final_distance": 18.708333333333332,
+            "mean_initial_distance": 16.125,
+            "message_delivery_edges": 7408,
+            "move": 1352,
+            "official_exposed_agents": 6,
+            "official_exposure_events": 6,
+            "relay_exposed_agents": 0,
+            "relay_exposure_events": 0,
+            "stay": 88,
+            "warning_exposed_agents": 6,
+            "warning_reused_agents": 0
+          },
+          "inset_minus_edge": {
+            "arrived_agent_count": 1,
+            "final_refuge_occupancy": 0,
+            "hazard_agent_steps": 42,
+            "mean_final_distance": -5.458333333333336
+          }
+        }
+      ],
+      "duration": 60,
+      "eligible": true,
+      "initial_positions_and_assignment_equal": true,
+      "run_ids": [
+        "refuge-layout-study-v1-20260909T162300Z-edge-d60-s6301",
+        "refuge-layout-study-v1-20260909T162300Z-inset-d60-s6301"
+      ],
+      "seed": 6301
+    },
+    {
+      "comparisons": [
+        {
+          "checkpoint": 60,
+          "edge": {
+            "agent_count": 24,
+            "arrived_agent_count": 0,
+            "blocked_moves": 309,
+            "checkpoint": 60,
+            "cross_model_delivery_edges": 3354,
+            "cross_model_exact_id_delivery_edges": 0,
+            "exact_id_delivery_edges": 0,
+            "final_refuge_occupancy": 0,
+            "hazard_agent_steps": 625,
+            "later_reuse_outputs": 0,
+            "mean_final_distance": 23.916666666666668,
+            "mean_initial_distance": 27.875,
+            "message_delivery_edges": 6508,
+            "move": 1389,
+            "official_exposed_agents": 6,
+            "official_exposure_events": 6,
+            "relay_exposed_agents": 0,
+            "relay_exposure_events": 0,
+            "stay": 51,
+            "warning_exposed_agents": 6,
+            "warning_reused_agents": 0
+          },
+          "inset": {
+            "agent_count": 24,
+            "arrived_agent_count": 2,
+            "blocked_moves": 220,
+            "checkpoint": 60,
+            "cross_model_delivery_edges": 4128,
+            "cross_model_exact_id_delivery_edges": 0,
+            "exact_id_delivery_edges": 0,
+            "final_refuge_occupancy": 0,
+            "hazard_agent_steps": 621,
+            "later_reuse_outputs": 0,
+            "mean_final_distance": 19.916666666666668,
+            "mean_initial_distance": 16.125,
+            "message_delivery_edges": 7030,
+            "move": 1355,
+            "official_exposed_agents": 6,
+            "official_exposure_events": 6,
+            "relay_exposed_agents": 0,
+            "relay_exposure_events": 0,
+            "stay": 85,
+            "warning_exposed_agents": 6,
+            "warning_reused_agents": 0
+          },
+          "inset_minus_edge": {
+            "arrived_agent_count": 2,
+            "final_refuge_occupancy": 0,
+            "hazard_agent_steps": -4,
+            "mean_final_distance": -4.0
+          }
+        },
+        {
+          "checkpoint": 120,
+          "edge": {
+            "agent_count": 24,
+            "arrived_agent_count": 0,
+            "blocked_moves": 1228,
+            "checkpoint": 120,
+            "cross_model_delivery_edges": 6482,
+            "cross_model_exact_id_delivery_edges": 0,
+            "exact_id_delivery_edges": 0,
+            "final_refuge_occupancy": 0,
+            "hazard_agent_steps": 1525,
+            "later_reuse_outputs": 0,
+            "mean_final_distance": 23.916666666666668,
+            "mean_initial_distance": 27.875,
+            "message_delivery_edges": 13454,
+            "move": 2751,
+            "official_exposed_agents": 6,
+            "official_exposure_events": 6,
+            "relay_exposed_agents": 0,
+            "relay_exposure_events": 0,
+            "stay": 129,
+            "warning_exposed_agents": 6,
+            "warning_reused_agents": 0
+          },
+          "inset": {
+            "agent_count": 24,
+            "arrived_agent_count": 3,
+            "blocked_moves": 928,
+            "checkpoint": 120,
+            "cross_model_delivery_edges": 9680,
+            "cross_model_exact_id_delivery_edges": 0,
+            "exact_id_delivery_edges": 0,
+            "final_refuge_occupancy": 0,
+            "hazard_agent_steps": 1514,
+            "later_reuse_outputs": 0,
+            "mean_final_distance": 22.291666666666668,
+            "mean_initial_distance": 16.125,
+            "message_delivery_edges": 15504,
+            "move": 2743,
+            "official_exposed_agents": 6,
+            "official_exposure_events": 6,
+            "relay_exposed_agents": 0,
+            "relay_exposure_events": 0,
+            "stay": 137,
+            "warning_exposed_agents": 6,
+            "warning_reused_agents": 0
+          },
+          "inset_minus_edge": {
+            "arrived_agent_count": 3,
+            "final_refuge_occupancy": 0,
+            "hazard_agent_steps": -11,
+            "mean_final_distance": -1.625
+          }
+        }
+      ],
+      "duration": 120,
+      "eligible": true,
+      "initial_positions_and_assignment_equal": true,
+      "run_ids": [
+        "refuge-layout-study-v1-20260909T162300Z-edge-d120-s6301",
+        "refuge-layout-study-v1-20260909T162300Z-inset-d120-s6301"
+      ],
+      "seed": 6301
+    }
+  ],
+  "metric_version": "refuge-layout-study-metric-v1.0.0",
+  "planned_run_count": 4,
+  "research_eligible": false,
+  "runs": [
+    {
+      "calls": 2880,
+      "checkpoints": [
+        {
+          "agent_count": 24,
+          "arrived_agent_count": 0,
+          "blocked_moves": 265,
+          "checkpoint": 60,
+          "cross_model_delivery_edges": 4426,
+          "cross_model_exact_id_delivery_edges": 0,
+          "exact_id_delivery_edges": 0,
+          "final_refuge_occupancy": 0,
+          "hazard_agent_steps": 628,
+          "later_reuse_outputs": 0,
+          "mean_final_distance": 24.166666666666668,
+          "mean_initial_distance": 27.875,
+          "message_delivery_edges": 7026,
+          "move": 1181,
+          "official_exposed_agents": 6,
+          "official_exposure_events": 6,
+          "relay_exposed_agents": 0,
+          "relay_exposure_events": 0,
+          "stay": 259,
+          "warning_exposed_agents": 6,
+          "warning_reused_agents": 0
+        }
+      ],
+      "composition": "mixed",
+      "config_sha256": "5ebaf45aa89a376e10f50939a52be3f65e04ea60a4bbed7c3ed0e47510656cea",
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 2880,
+        "logical_llm_calls": 2880,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "duration": 60,
+      "eligible": true,
+      "layout": "edge",
+      "raw_file_manifests": {
+        "llm_attempts.jsonl": {
+          "bytes": 8561492,
+          "lines": 2880,
+          "sha256": "fef254f8fd2b83323403954eb23413512c4980f600bfd924669f7ef45604c926"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 347557,
+          "lines": 1440,
+          "sha256": "6a8b8a844b65532009cce21f197695f94cbcfa088214f5ead8ee4c9305e6d091"
+        },
+        "messages.jsonl": {
+          "bytes": 308534,
+          "lines": 1438,
+          "sha256": "0782030b78f8adadacdfd443aaf7a39debb5ebd0282e03394963afea67c93fe6"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 417488,
+          "lines": 1440,
+          "sha256": "e29e256970edc3beff356d80f61a6ed97ff20284c921bc702643db4b6def659f"
+        },
+        "positions.jsonl": {
+          "bytes": 449496,
+          "lines": 1464,
+          "sha256": "1b8d96db8f957ce5cd2115e59c26fe34a8a6578235089b1fb2ba3c7079807073"
+        },
+        "run_meta.json": {
+          "bytes": 13155,
+          "lines": 423,
+          "sha256": "17758e6455ec1ea5e2036e5e423a446d18d319a01170131b6b80969058e70d25"
+        },
+        "termination.jsonl": {
+          "bytes": 405,
+          "lines": 1,
+          "sha256": "a8de34fd64b17a853bacc93aad323238a3fa4004a2d9b8d448538927d13991df"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2408,
+          "lines": 7,
+          "sha256": "6b9925073216e97b2b4ad2e27e92d95db8f1ebd666f165d3da7e8d1d83fea7f1"
+        },
+        "world_events.jsonl": {
+          "bytes": 14063,
+          "lines": 61,
+          "sha256": "fc2758026f8fee81e9d9498d5a55d479dba78bc370cca8082f8c6887b7c45d50"
+        }
+      },
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-edge-d60-s6301",
+      "seed": 6301,
+      "source_dirty": false,
+      "source_sha": "a5f1421818bbbed15fa810b0906fddcc991fa885",
+      "status": "completed",
+      "strict_validation": {
+        "errors": [],
+        "unverifiable": [
+          "dependency versions unavailable: matplotlib",
+          "complete dependency environment: one or more package versions were unavailable",
+          "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+          "cryptographic authenticity: raw_manifest hashes are not externally signed",
+          "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+        ],
+        "valid": true
+      },
+      "warning_summary": {
+        "agent_count": 24,
+        "agents_with_first_eligible_output_count": 6,
+        "all_exact_id_relay_exposure_edge_count": 0,
+        "causal_parent_inferred": false,
+        "communication_mode": "free_text",
+        "dangerous_area_residence_steps_total": 628,
+        "eligible_warning_output_count": 306,
+        "evacuation_success_count": 0,
+        "exact_id_carrier_delivered_message_count": 0,
+        "exact_id_carrier_generated_not_delivered_count": 0,
+        "exact_id_carrier_output_count": 0,
+        "fact_status_totals": {
+          "shared_context": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 612
+          },
+          "warning_specific": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 1224
+          }
+        },
+        "later_step_exact_id_reuse_output_count": 0,
+        "metric_version": "disaster-metric-v2.0.0",
+        "post_exposure_exact_id_relay_exposure_edge_count": 0,
+        "post_exposure_refuge_distance_decrease_agent_count": 5,
+        "same_step_post_exposure_exact_id_carrier_count": 0,
+        "schema_version": "disaster-metric-v2-summary-v1.0.0",
+        "source_run_id": "refuge-layout-study-v1-20260909T162300Z-edge-d60-s6301",
+        "unattributed_exact_id_carrier_output_count": 0,
+        "warning_exposed_agent_count": 6,
+        "warning_reuse_right_censored_count": 6,
+        "warning_reused_agent_count": 0
+      }
+    },
+    {
+      "calls": 2880,
+      "checkpoints": [
+        {
+          "agent_count": 24,
+          "arrived_agent_count": 1,
+          "blocked_moves": 335,
+          "checkpoint": 60,
+          "cross_model_delivery_edges": 3980,
+          "cross_model_exact_id_delivery_edges": 0,
+          "exact_id_delivery_edges": 0,
+          "final_refuge_occupancy": 0,
+          "hazard_agent_steps": 670,
+          "later_reuse_outputs": 0,
+          "mean_final_distance": 18.708333333333332,
+          "mean_initial_distance": 16.125,
+          "message_delivery_edges": 7408,
+          "move": 1352,
+          "official_exposed_agents": 6,
+          "official_exposure_events": 6,
+          "relay_exposed_agents": 0,
+          "relay_exposure_events": 0,
+          "stay": 88,
+          "warning_exposed_agents": 6,
+          "warning_reused_agents": 0
+        }
+      ],
+      "composition": "mixed",
+      "config_sha256": "8c2e770f30915d380316c95237684f349a44647a2647379d9f7d1393b0930268",
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 2880,
+        "logical_llm_calls": 2880,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "duration": 60,
+      "eligible": true,
+      "layout": "inset",
+      "raw_file_manifests": {
+        "llm_attempts.jsonl": {
+          "bytes": 8571316,
+          "lines": 2880,
+          "sha256": "38dc7f0f07ebf16854de6655fe56bf5ba328c266b1db6ced34ed1ea70e03915e"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 349967,
+          "lines": 1440,
+          "sha256": "887adfa93a52133c8f78abc6d9636fc4a9f0322607749e5ac1151214483d2b1a"
+        },
+        "messages.jsonl": {
+          "bytes": 308136,
+          "lines": 1440,
+          "sha256": "a92366a52c272eaf165c5516ac19387fb1f345c15e42174c7caaa30e9019bd78"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 413936,
+          "lines": 1440,
+          "sha256": "6b10e7cf03f085b739d8286e307baa693b5f47ebf9a2f542f28ebffe612dd239"
+        },
+        "positions.jsonl": {
+          "bytes": 450330,
+          "lines": 1464,
+          "sha256": "2d2c9e0de6475a43aa03a00a6873d758952854c30d01722e99d2f11762b8abfe"
+        },
+        "run_meta.json": {
+          "bytes": 13156,
+          "lines": 423,
+          "sha256": "77184489bfa352e8e6e7e13b21d288486b866185ac5e5861ac666709081de94b"
+        },
+        "termination.jsonl": {
+          "bytes": 407,
+          "lines": 1,
+          "sha256": "ea7f1d934a3146726b77c73c7aa73c7a64aabd1925d314db9c2c3c113074d247"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2407,
+          "lines": 7,
+          "sha256": "99b714634966b47628dd9ed2f6ba0fb997f2e6f1cdcb0f7df1129081a5bb5139"
+        },
+        "world_events.jsonl": {
+          "bytes": 14124,
+          "lines": 61,
+          "sha256": "1734839b187427038e0b741a1d1f92f7bc423d6bd973c11a29a7f1f75973046e"
+        }
+      },
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-inset-d60-s6301",
+      "seed": 6301,
+      "source_dirty": false,
+      "source_sha": "a5f1421818bbbed15fa810b0906fddcc991fa885",
+      "status": "completed",
+      "strict_validation": {
+        "errors": [],
+        "unverifiable": [
+          "dependency versions unavailable: matplotlib",
+          "complete dependency environment: one or more package versions were unavailable",
+          "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+          "cryptographic authenticity: raw_manifest hashes are not externally signed",
+          "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+        ],
+        "valid": true
+      },
+      "warning_summary": {
+        "agent_count": 24,
+        "agents_with_first_eligible_output_count": 6,
+        "all_exact_id_relay_exposure_edge_count": 0,
+        "causal_parent_inferred": false,
+        "communication_mode": "free_text",
+        "dangerous_area_residence_steps_total": 670,
+        "eligible_warning_output_count": 306,
+        "evacuation_success_count": 0,
+        "exact_id_carrier_delivered_message_count": 0,
+        "exact_id_carrier_generated_not_delivered_count": 0,
+        "exact_id_carrier_output_count": 0,
+        "fact_status_totals": {
+          "shared_context": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 612
+          },
+          "warning_specific": {
+            "match": 1,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 1223
+          }
+        },
+        "later_step_exact_id_reuse_output_count": 0,
+        "metric_version": "disaster-metric-v2.0.0",
+        "post_exposure_exact_id_relay_exposure_edge_count": 0,
+        "post_exposure_refuge_distance_decrease_agent_count": 5,
+        "same_step_post_exposure_exact_id_carrier_count": 0,
+        "schema_version": "disaster-metric-v2-summary-v1.0.0",
+        "source_run_id": "refuge-layout-study-v1-20260909T162300Z-inset-d60-s6301",
+        "unattributed_exact_id_carrier_output_count": 0,
+        "warning_exposed_agent_count": 6,
+        "warning_reuse_right_censored_count": 6,
+        "warning_reused_agent_count": 0
+      }
+    },
+    {
+      "calls": 5760,
+      "checkpoints": [
+        {
+          "agent_count": 24,
+          "arrived_agent_count": 2,
+          "blocked_moves": 220,
+          "checkpoint": 60,
+          "cross_model_delivery_edges": 4128,
+          "cross_model_exact_id_delivery_edges": 0,
+          "exact_id_delivery_edges": 0,
+          "final_refuge_occupancy": 0,
+          "hazard_agent_steps": 621,
+          "later_reuse_outputs": 0,
+          "mean_final_distance": 19.916666666666668,
+          "mean_initial_distance": 16.125,
+          "message_delivery_edges": 7030,
+          "move": 1355,
+          "official_exposed_agents": 6,
+          "official_exposure_events": 6,
+          "relay_exposed_agents": 0,
+          "relay_exposure_events": 0,
+          "stay": 85,
+          "warning_exposed_agents": 6,
+          "warning_reused_agents": 0
+        },
+        {
+          "agent_count": 24,
+          "arrived_agent_count": 3,
+          "blocked_moves": 928,
+          "checkpoint": 120,
+          "cross_model_delivery_edges": 9680,
+          "cross_model_exact_id_delivery_edges": 0,
+          "exact_id_delivery_edges": 0,
+          "final_refuge_occupancy": 0,
+          "hazard_agent_steps": 1514,
+          "later_reuse_outputs": 0,
+          "mean_final_distance": 22.291666666666668,
+          "mean_initial_distance": 16.125,
+          "message_delivery_edges": 15504,
+          "move": 2743,
+          "official_exposed_agents": 6,
+          "official_exposure_events": 6,
+          "relay_exposed_agents": 0,
+          "relay_exposure_events": 0,
+          "stay": 137,
+          "warning_exposed_agents": 6,
+          "warning_reused_agents": 0
+        }
+      ],
+      "composition": "mixed",
+      "config_sha256": "90e5c239bd10f49fb5ae4a703d40028aab02bbeba1a0bf5de0297524f683eb66",
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 5760,
+        "logical_llm_calls": 5760,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "duration": 120,
+      "eligible": true,
+      "layout": "inset",
+      "raw_file_manifests": {
+        "llm_attempts.jsonl": {
+          "bytes": 17472954,
+          "lines": 5760,
+          "sha256": "1524f93b6de546fc9a9dbf876238a731557d7590c7c9aa7bf201ca8b628e11ec"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 753859,
+          "lines": 2880,
+          "sha256": "7dcf6e2b30eda9d87338a93ffe467fc17bd03da9adbd3ec99fd6261b8da10fb4"
+        },
+        "messages.jsonl": {
+          "bytes": 658786,
+          "lines": 2862,
+          "sha256": "6b7e8d6b66edb8ef3c1ee84ff68af057da775d769114b7831a60a5d06a887eed"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 913462,
+          "lines": 2880,
+          "sha256": "dd400f6561b51c5d522f743678ef58cc2aa1db02c4ec7cdaeba6cc81ec4a466d"
+        },
+        "positions.jsonl": {
+          "bytes": 897753,
+          "lines": 2904,
+          "sha256": "856d1e63136c4a3359bed7e08d1dc23ab3a1a41911ff5927286132513a4cd384"
+        },
+        "run_meta.json": {
+          "bytes": 13166,
+          "lines": 423,
+          "sha256": "fb48ccd2f6d743c043899ef50d8df0804b16aebfd74deab5c2037ed7aa02eb3e"
+        },
+        "termination.jsonl": {
+          "bytes": 410,
+          "lines": 1,
+          "sha256": "b08d17c91c5d556eac14a6aa3dc04617f9f8cb22d9b470e158a38e7db489242a"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2414,
+          "lines": 7,
+          "sha256": "93e8dcdd60fc4acb332cc5fb4b3daa8cbe405179414b4e552efc65c934f7888d"
+        },
+        "world_events.jsonl": {
+          "bytes": 28606,
+          "lines": 121,
+          "sha256": "80ee78d9247be9e548f56bfa0298c36f467cee1d0753c6dca0d43c187ee0b15a"
+        }
+      },
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-inset-d120-s6301",
+      "seed": 6301,
+      "source_dirty": false,
+      "source_sha": "a5f1421818bbbed15fa810b0906fddcc991fa885",
+      "status": "completed",
+      "strict_validation": {
+        "errors": [],
+        "unverifiable": [
+          "dependency versions unavailable: matplotlib",
+          "complete dependency environment: one or more package versions were unavailable",
+          "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+          "cryptographic authenticity: raw_manifest hashes are not externally signed",
+          "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+        ],
+        "valid": true
+      },
+      "warning_summary": {
+        "agent_count": 24,
+        "agents_with_first_eligible_output_count": 6,
+        "all_exact_id_relay_exposure_edge_count": 0,
+        "causal_parent_inferred": false,
+        "communication_mode": "free_text",
+        "dangerous_area_residence_steps_total": 1514,
+        "eligible_warning_output_count": 666,
+        "evacuation_success_count": 0,
+        "exact_id_carrier_delivered_message_count": 0,
+        "exact_id_carrier_generated_not_delivered_count": 0,
+        "exact_id_carrier_output_count": 0,
+        "fact_status_totals": {
+          "shared_context": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 1332
+          },
+          "warning_specific": {
+            "match": 1,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 2663
+          }
+        },
+        "later_step_exact_id_reuse_output_count": 0,
+        "metric_version": "disaster-metric-v2.0.0",
+        "post_exposure_exact_id_relay_exposure_edge_count": 0,
+        "post_exposure_refuge_distance_decrease_agent_count": 5,
+        "same_step_post_exposure_exact_id_carrier_count": 0,
+        "schema_version": "disaster-metric-v2-summary-v1.0.0",
+        "source_run_id": "refuge-layout-study-v1-20260909T162300Z-inset-d120-s6301",
+        "unattributed_exact_id_carrier_output_count": 0,
+        "warning_exposed_agent_count": 6,
+        "warning_reuse_right_censored_count": 6,
+        "warning_reused_agent_count": 0
+      }
+    },
+    {
+      "calls": 5760,
+      "checkpoints": [
+        {
+          "agent_count": 24,
+          "arrived_agent_count": 0,
+          "blocked_moves": 309,
+          "checkpoint": 60,
+          "cross_model_delivery_edges": 3354,
+          "cross_model_exact_id_delivery_edges": 0,
+          "exact_id_delivery_edges": 0,
+          "final_refuge_occupancy": 0,
+          "hazard_agent_steps": 625,
+          "later_reuse_outputs": 0,
+          "mean_final_distance": 23.916666666666668,
+          "mean_initial_distance": 27.875,
+          "message_delivery_edges": 6508,
+          "move": 1389,
+          "official_exposed_agents": 6,
+          "official_exposure_events": 6,
+          "relay_exposed_agents": 0,
+          "relay_exposure_events": 0,
+          "stay": 51,
+          "warning_exposed_agents": 6,
+          "warning_reused_agents": 0
+        },
+        {
+          "agent_count": 24,
+          "arrived_agent_count": 0,
+          "blocked_moves": 1228,
+          "checkpoint": 120,
+          "cross_model_delivery_edges": 6482,
+          "cross_model_exact_id_delivery_edges": 0,
+          "exact_id_delivery_edges": 0,
+          "final_refuge_occupancy": 0,
+          "hazard_agent_steps": 1525,
+          "later_reuse_outputs": 0,
+          "mean_final_distance": 23.916666666666668,
+          "mean_initial_distance": 27.875,
+          "message_delivery_edges": 13454,
+          "move": 2751,
+          "official_exposed_agents": 6,
+          "official_exposure_events": 6,
+          "relay_exposed_agents": 0,
+          "relay_exposure_events": 0,
+          "stay": 129,
+          "warning_exposed_agents": 6,
+          "warning_reused_agents": 0
+        }
+      ],
+      "composition": "mixed",
+      "config_sha256": "dd37842e91e07d744111ad0a3b6461923b2b46b9dca4cce812c13ef0ce5a9522",
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 5760,
+        "logical_llm_calls": 5760,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "duration": 120,
+      "eligible": true,
+      "layout": "edge",
+      "raw_file_manifests": {
+        "llm_attempts.jsonl": {
+          "bytes": 17418986,
+          "lines": 5760,
+          "sha256": "da090a82980a60600730b137a2a4ea668ddeaf8048bb5faed8f90a3d96080687"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 734797,
+          "lines": 2880,
+          "sha256": "1953f0dfacd6d597b38faef09b36bc962db72deae2a8603fad06488c9b5189b6"
+        },
+        "messages.jsonl": {
+          "bytes": 654917,
+          "lines": 2845,
+          "sha256": "92c00559874c1d28565879878e64d74a5c3022f2264d3de5819554b3bc3137a8"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 926358,
+          "lines": 2880,
+          "sha256": "0345c1b514e4cd6d984689c400230230c263ef2432e055f6619a6ca6f13fc798"
+        },
+        "positions.jsonl": {
+          "bytes": 895549,
+          "lines": 2904,
+          "sha256": "5441893e5c0d6ff230b799f2fadce7834bc16b60ff01b83694f4f0bb9c23f4e0"
+        },
+        "run_meta.json": {
+          "bytes": 13165,
+          "lines": 423,
+          "sha256": "749fcaf906c8a7808e3f6d3db74c2229ee6c7fca42d5c8bc9357fc077ecec77c"
+        },
+        "termination.jsonl": {
+          "bytes": 408,
+          "lines": 1,
+          "sha256": "1abeabbf1f14109b72e8cd4108182e86e28cddc788812f5c8d707fefdd12105f"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2415,
+          "lines": 7,
+          "sha256": "b7197530e1730e827745619f4222d5a67463a74088acadde852888e8bdfb8a46"
+        },
+        "world_events.jsonl": {
+          "bytes": 28485,
+          "lines": 121,
+          "sha256": "fcf6c9d48d797ae780261386ad54a2858550f3a0745d31797227e1ebe3a78ccc"
+        }
+      },
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-edge-d120-s6301",
+      "seed": 6301,
+      "source_dirty": false,
+      "source_sha": "a5f1421818bbbed15fa810b0906fddcc991fa885",
+      "status": "completed",
+      "strict_validation": {
+        "errors": [],
+        "unverifiable": [
+          "dependency versions unavailable: matplotlib",
+          "complete dependency environment: one or more package versions were unavailable",
+          "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+          "cryptographic authenticity: raw_manifest hashes are not externally signed",
+          "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+        ],
+        "valid": true
+      },
+      "warning_summary": {
+        "agent_count": 24,
+        "agents_with_first_eligible_output_count": 6,
+        "all_exact_id_relay_exposure_edge_count": 0,
+        "causal_parent_inferred": false,
+        "communication_mode": "free_text",
+        "dangerous_area_residence_steps_total": 1525,
+        "eligible_warning_output_count": 666,
+        "evacuation_success_count": 0,
+        "exact_id_carrier_delivered_message_count": 0,
+        "exact_id_carrier_generated_not_delivered_count": 0,
+        "exact_id_carrier_output_count": 0,
+        "fact_status_totals": {
+          "shared_context": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 1332
+          },
+          "warning_specific": {
+            "match": 2,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 2662
+          }
+        },
+        "later_step_exact_id_reuse_output_count": 0,
+        "metric_version": "disaster-metric-v2.0.0",
+        "post_exposure_exact_id_relay_exposure_edge_count": 0,
+        "post_exposure_refuge_distance_decrease_agent_count": 6,
+        "same_step_post_exposure_exact_id_carrier_count": 0,
+        "schema_version": "disaster-metric-v2-summary-v1.0.0",
+        "source_run_id": "refuge-layout-study-v1-20260909T162300Z-edge-d120-s6301",
+        "unattributed_exact_id_carrier_output_count": 0,
+        "warning_exposed_agent_count": 6,
+        "warning_reuse_right_censored_count": 6,
+        "warning_reused_agent_count": 0
+      }
+    }
+  ],
+  "within_120_extensions": [
+    {
+      "checkpoint120": {
+        "agent_count": 24,
+        "arrived_agent_count": 0,
+        "blocked_moves": 1228,
+        "checkpoint": 120,
+        "cross_model_delivery_edges": 6482,
+        "cross_model_exact_id_delivery_edges": 0,
+        "exact_id_delivery_edges": 0,
+        "final_refuge_occupancy": 0,
+        "hazard_agent_steps": 1525,
+        "later_reuse_outputs": 0,
+        "mean_final_distance": 23.916666666666668,
+        "mean_initial_distance": 27.875,
+        "message_delivery_edges": 13454,
+        "move": 2751,
+        "official_exposed_agents": 6,
+        "official_exposure_events": 6,
+        "relay_exposed_agents": 0,
+        "relay_exposure_events": 0,
+        "stay": 129,
+        "warning_exposed_agents": 6,
+        "warning_reused_agents": 0
+      },
+      "checkpoint60": {
+        "agent_count": 24,
+        "arrived_agent_count": 0,
+        "blocked_moves": 309,
+        "checkpoint": 60,
+        "cross_model_delivery_edges": 3354,
+        "cross_model_exact_id_delivery_edges": 0,
+        "exact_id_delivery_edges": 0,
+        "final_refuge_occupancy": 0,
+        "hazard_agent_steps": 625,
+        "later_reuse_outputs": 0,
+        "mean_final_distance": 23.916666666666668,
+        "mean_initial_distance": 27.875,
+        "message_delivery_edges": 6508,
+        "move": 1389,
+        "official_exposed_agents": 6,
+        "official_exposure_events": 6,
+        "relay_exposed_agents": 0,
+        "relay_exposure_events": 0,
+        "stay": 51,
+        "warning_exposed_agents": 6,
+        "warning_reused_agents": 0
+      },
+      "first_arrivals_steps61_to120": 0,
+      "layout": "edge",
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-edge-d120-s6301",
+      "seed": 6301
+    },
+    {
+      "checkpoint120": {
+        "agent_count": 24,
+        "arrived_agent_count": 3,
+        "blocked_moves": 928,
+        "checkpoint": 120,
+        "cross_model_delivery_edges": 9680,
+        "cross_model_exact_id_delivery_edges": 0,
+        "exact_id_delivery_edges": 0,
+        "final_refuge_occupancy": 0,
+        "hazard_agent_steps": 1514,
+        "later_reuse_outputs": 0,
+        "mean_final_distance": 22.291666666666668,
+        "mean_initial_distance": 16.125,
+        "message_delivery_edges": 15504,
+        "move": 2743,
+        "official_exposed_agents": 6,
+        "official_exposure_events": 6,
+        "relay_exposed_agents": 0,
+        "relay_exposure_events": 0,
+        "stay": 137,
+        "warning_exposed_agents": 6,
+        "warning_reused_agents": 0
+      },
+      "checkpoint60": {
+        "agent_count": 24,
+        "arrived_agent_count": 2,
+        "blocked_moves": 220,
+        "checkpoint": 60,
+        "cross_model_delivery_edges": 4128,
+        "cross_model_exact_id_delivery_edges": 0,
+        "exact_id_delivery_edges": 0,
+        "final_refuge_occupancy": 0,
+        "hazard_agent_steps": 621,
+        "later_reuse_outputs": 0,
+        "mean_final_distance": 19.916666666666668,
+        "mean_initial_distance": 16.125,
+        "message_delivery_edges": 7030,
+        "move": 1355,
+        "official_exposed_agents": 6,
+        "official_exposure_events": 6,
+        "relay_exposed_agents": 0,
+        "relay_exposure_events": 0,
+        "stay": 85,
+        "warning_exposed_agents": 6,
+        "warning_reused_agents": 0
+      },
+      "first_arrivals_steps61_to120": 1,
+      "layout": "inset",
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-inset-d120-s6301",
+      "seed": 6301
+    }
+  ]
+}
