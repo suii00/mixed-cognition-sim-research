@@ -1,0 +1,180 @@
+{
+  "agent_count": 24,
+  "agents_per_model": 8,
+  "analysis_class": "prospective-descriptive-layout-followup",
+  "attempt_set_policy": "retain-all-started-attempts-and-not-started-statuses-v1.0.0",
+  "batch_id": "refuge-layout-study-v1-20260909T162300Z",
+  "batch_id_timestamp": "20260909T162300Z",
+  "common_initial_eligible_cell_count": 2121,
+  "communication_modes": [
+    "free_text"
+  ],
+  "compositions": [
+    "mixed"
+  ],
+  "durations": [
+    60,
+    120
+  ],
+  "formal_eligible": false,
+  "freeze_policy": "clean-source-commit-before-model-requests-v1.0.0",
+  "layouts": [
+    "edge",
+    "inset"
+  ],
+  "log_schema_version": "2.0.0",
+  "max_concurrency": 24,
+  "max_tokens": 1024,
+  "maximum_gpu_count": 4,
+  "metric_spec_sha256": "cd0ca4fec67d945a2b878fe5c0c7e49391e9bacf10a3f7aa0a142f7962cbf711",
+  "metric_version": "disaster-metric-v2.0.0",
+  "models": [
+    "qwen",
+    "llama",
+    "gemma"
+  ],
+  "official_recipient_ids": [
+    1,
+    5,
+    9,
+    13,
+    17,
+    21
+  ],
+  "planned_gpu_count": 4,
+  "planned_http_attempts": 17280,
+  "planned_logical_llm_calls": 17280,
+  "planned_runs": 4,
+  "prompt_contract_version": "bounded-prompts-v3.0.0",
+  "protocol_version": "refuge-layout-study-v1.0.0",
+  "research_eligible": false,
+  "response_contract_version": "phase-response-v3.0.0",
+  "response_failure_policy": "abort_run",
+  "rows": [
+    {
+      "agent_count": 24,
+      "communication_mode": "free_text",
+      "composition": "mixed",
+      "duration": 60,
+      "expected_http_attempts": 2880,
+      "expected_logical_llm_calls": 2880,
+      "filename": "refuge-layout-study-v1-20260909T162300Z-edge-d60-s6301.json",
+      "layout": "edge",
+      "model_names": [
+        "qwen",
+        "llama",
+        "gemma"
+      ],
+      "ordinal": 1,
+      "research_eligible": false,
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-edge-d60-s6301",
+      "seed": 6301,
+      "sha256": "5ebaf45aa89a376e10f50939a52be3f65e04ea60a4bbed7c3ed0e47510656cea"
+    },
+    {
+      "agent_count": 24,
+      "communication_mode": "free_text",
+      "composition": "mixed",
+      "duration": 60,
+      "expected_http_attempts": 2880,
+      "expected_logical_llm_calls": 2880,
+      "filename": "refuge-layout-study-v1-20260909T162300Z-inset-d60-s6301.json",
+      "layout": "inset",
+      "model_names": [
+        "qwen",
+        "llama",
+        "gemma"
+      ],
+      "ordinal": 2,
+      "research_eligible": false,
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-inset-d60-s6301",
+      "seed": 6301,
+      "sha256": "8c2e770f30915d380316c95237684f349a44647a2647379d9f7d1393b0930268"
+    },
+    {
+      "agent_count": 24,
+      "communication_mode": "free_text",
+      "composition": "mixed",
+      "duration": 120,
+      "expected_http_attempts": 5760,
+      "expected_logical_llm_calls": 5760,
+      "filename": "refuge-layout-study-v1-20260909T162300Z-inset-d120-s6301.json",
+      "layout": "inset",
+      "model_names": [
+        "qwen",
+        "llama",
+        "gemma"
+      ],
+      "ordinal": 3,
+      "research_eligible": false,
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-inset-d120-s6301",
+      "seed": 6301,
+      "sha256": "90e5c239bd10f49fb5ae4a703d40028aab02bbeba1a0bf5de0297524f683eb66"
+    },
+    {
+      "agent_count": 24,
+      "communication_mode": "free_text",
+      "composition": "mixed",
+      "duration": 120,
+      "expected_http_attempts": 5760,
+      "expected_logical_llm_calls": 5760,
+      "filename": "refuge-layout-study-v1-20260909T162300Z-edge-d120-s6301.json",
+      "layout": "edge",
+      "model_names": [
+        "qwen",
+        "llama",
+        "gemma"
+      ],
+      "ordinal": 4,
+      "research_eligible": false,
+      "run_id": "refuge-layout-study-v1-20260909T162300Z-edge-d120-s6301",
+      "seed": 6301,
+      "sha256": "dd37842e91e07d744111ad0a3b6461923b2b46b9dca4cce812c13ef0ce5a9522"
+    }
+  ],
+  "run_order_policy": "duration60-edge-inset-duration120-inset-edge-v1.0.0",
+  "schema_probe_http_attempts": 9,
+  "schema_version": "refuge-layout-study-manifest-v1.0.0",
+  "seeds": [
+    6301
+  ],
+  "server_layout": [
+    {
+      "gpu_ordinals": [
+        0
+      ],
+      "logical_endpoint_ids": [
+        "refuge-qwen"
+      ],
+      "model_name": "qwen",
+      "server_id": "refuge-qwen",
+      "tensor_parallel_size": 1
+    },
+    {
+      "gpu_ordinals": [
+        1
+      ],
+      "logical_endpoint_ids": [
+        "refuge-llama"
+      ],
+      "model_name": "llama",
+      "server_id": "refuge-llama",
+      "tensor_parallel_size": 1
+    },
+    {
+      "gpu_ordinals": [
+        2,
+        3
+      ],
+      "logical_endpoint_ids": [
+        "refuge-gemma"
+      ],
+      "model_name": "gemma",
+      "server_id": "refuge-gemma",
+      "tensor_parallel_size": 2
+    }
+  ],
+  "total_http_attempt_cap": 17289,
+  "transport_behavior_version": "single-generation-strict-json-no-redirect-v3.0.0",
+  "wall_time_limit_seconds": 10800
+}
