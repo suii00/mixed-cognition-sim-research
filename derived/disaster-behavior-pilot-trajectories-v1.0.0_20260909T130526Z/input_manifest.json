@@ -1,0 +1,364 @@
+{
+  "analysis_class": "descriptive-recorded-position-plot",
+  "artifacts": {
+    "caption.txt": {
+      "bytes": 544,
+      "sha256": "32f3422d355a65c1c0d0981ff5dd775f85a6c93e3f6edc34f64b1345d743c3ce"
+    },
+    "trajectories.png": {
+      "bytes": 252613,
+      "sha256": "1b4e7d3852a2c7c118f8bf32b314e517eba5dd857dfa0b696d83daa291401bd0"
+    },
+    "trajectories.svg": {
+      "bytes": 151734,
+      "sha256": "88fda69d8624897f2b51a790bdd3fb65ac5b8f636b50641f5d25f1a187552897"
+    }
+  },
+  "batch_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z",
+  "caption": "All six frozen runs; four agents per panel, 60 steps. Axes and colors are shared.\nS/E mark initial/final positions; open circles/diamonds mark post-movement steps 10/30.\nAgent 1 (red) is the designated initial warning recipient at step 10. Hazard shading shows the two declared stages;\nrefuge outlines show fixed geometry. Lines join recorded positions; a move command can yield no displacement at a boundary.\nTrajectories describe this fixed interface and seeds; they do not establish warning adoption, model intent, or a causal model effect.",
+  "created_at_utc": "2026-09-09T13:05:38.912571+00:00",
+  "metric_version": "disaster-metric-v2.0.0",
+  "plot_implementation_sha256": "7da9003f1c2ff32c16ba626d2faff71eb36192ba3d1835a0ca7d872115802d6f",
+  "plot_version": "disaster-behavior-pilot-trajectories-v1.0.0",
+  "protocol_version": "disaster-llm-behavior-pilot-v1.0.0",
+  "runs": [
+    {
+      "config_sha256": "a8e29b875368a89e1f62bf24e902ba40e34cb9f78678ac27c62e96d1de93add8",
+      "files": {
+        "llm_attempts.jsonl": {
+          "bytes": 1407352,
+          "sha256": "c3a134507c35ac03b58f65001d72c701a4b85aa58d89c8400a0d7b2301e1b074"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 49529,
+          "sha256": "1d5193f72719d8f7189ba7771b10b063a76ef46a8eec4a5527630042436c913c"
+        },
+        "messages.jsonl": {
+          "bytes": 8465,
+          "sha256": "1a7d9ab8e054718469fc779d4eb3b4e2422ea96c833883e8991a3a9ad7c6c1a7"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 73692,
+          "sha256": "8e5806439097aa50a40a903303c10b10bf96cf8ca3faf5536ef731b554f082ad"
+        },
+        "positions.jsonl": {
+          "bytes": 75947,
+          "sha256": "34abc1fb3f019c5d482c0b8327c6606ca9b7cdbb6f49db2d191a26c0d4b22ce3"
+        },
+        "run_meta.json": {
+          "bytes": 9968,
+          "sha256": "985582f8ea639c9f6c28ddcc0e38a9987b7a76c7c1bea52fb375a4f1e1e411ce"
+        },
+        "termination.jsonl": {
+          "bytes": 413,
+          "sha256": "d27acbff8258186c84a1a2ecc2f46d2e9fc1e32a674c9789b872fd59cac8bc97"
+        },
+        "warning_events.jsonl": {
+          "bytes": 1095,
+          "sha256": "7b75c40768c1d450e77a8ff8b97b22c4d87b1c19c2b63713d492f73d524438f0"
+        },
+        "world_events.jsonl": {
+          "bytes": 14307,
+          "sha256": "9cb77c8cf275ef8a26c055062dbe398881a5458efecace22460811bc779cc64c"
+        }
+      },
+      "model_name": "qwen",
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201",
+      "seed": 6201,
+      "source_git_sha": "625380e7f96dc498a796c1e858f2d5d02d17c2a1",
+      "strict_unverifiable": [
+        "dependency versions unavailable: matplotlib",
+        "complete dependency environment: one or more package versions were unavailable",
+        "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+        "cryptographic authenticity: raw_manifest hashes are not externally signed",
+        "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+      ]
+    },
+    {
+      "config_sha256": "46b2417f39499cf454f016b7ef8d9cc25d830efd53d5a08cf5a5eef8ff8c286c",
+      "files": {
+        "llm_attempts.jsonl": {
+          "bytes": 1477406,
+          "sha256": "ebe3759ef3a779238d3e5754107d99e8cf79b5d61ea0e5f7a7c6db1519a92524"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 62956,
+          "sha256": "51b1122b2146bb0ad6655cf55bf83ff86f0e274a620f0870efdc5a6e6e9a537e"
+        },
+        "messages.jsonl": {
+          "bytes": 36236,
+          "sha256": "3cecee38a650fd05651be4d2ba2dba918989cfaf5f58aa056863e855c0fbc805"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 80782,
+          "sha256": "bba9790f472c2bbaf45dc61d724b6735f9a0d25da3648f8a50adbce4218be82e"
+        },
+        "positions.jsonl": {
+          "bytes": 76873,
+          "sha256": "6d9f751ef105d4b3367bd08c775f2191d05903232d12482b76821ea83a2939bf"
+        },
+        "run_meta.json": {
+          "bytes": 9993,
+          "sha256": "821c395db14346a04d67183129317c0deb9aaccec530607c3a44a79591f5508f"
+        },
+        "termination.jsonl": {
+          "bytes": 415,
+          "sha256": "0297e8f68f3dd2eac29140cbaba3677f3ae95f01d12a5eade7ab7b42caf62aa6"
+        },
+        "warning_events.jsonl": {
+          "bytes": 1097,
+          "sha256": "398931248f364966da8ff458318ec677597e601a0f29caf6a020928f43fb3069"
+        },
+        "world_events.jsonl": {
+          "bytes": 14368,
+          "sha256": "d7e9255f15112cf0e280bc4df8e331ac088b38b858aff6deb955470e85adb80a"
+        }
+      },
+      "model_name": "llama",
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201",
+      "seed": 6201,
+      "source_git_sha": "625380e7f96dc498a796c1e858f2d5d02d17c2a1",
+      "strict_unverifiable": [
+        "dependency versions unavailable: matplotlib",
+        "complete dependency environment: one or more package versions were unavailable",
+        "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+        "cryptographic authenticity: raw_manifest hashes are not externally signed",
+        "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+      ]
+    },
+    {
+      "config_sha256": "80ab991f1c12c815b52765bf0242038760e9259350f82f04ac87d53408ec3cac",
+      "files": {
+        "llm_attempts.jsonl": {
+          "bytes": 1379840,
+          "sha256": "2c49ed8486ae003b82582fb63fbaca6900dd70dc76ccabd4d9e611f636cbf5ee"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 45253,
+          "sha256": "478b9c71243b1456e5f2397dfa8c06382c5b9bc722bd815dd803705119ecf67e"
+        },
+        "messages.jsonl": {
+          "bytes": 26843,
+          "sha256": "7049459bc8fab5e64d899e1f06a4e34135ecd8ef433fb7dd2c75253ccdc74c82"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 64450,
+          "sha256": "d54061f176c342293fa189d7cc443838a1378c878f687e7bfcbe62b0aa305994"
+        },
+        "positions.jsonl": {
+          "bytes": 74921,
+          "sha256": "b0668a29f504d3011ccfb90645422f0e94fe887d45386d19b5cc6731246e3d72"
+        },
+        "run_meta.json": {
+          "bytes": 10007,
+          "sha256": "d4a9e6b61201ad96d33b0cc3674d4b29afe0704c2ea1836518ed000210060041"
+        },
+        "termination.jsonl": {
+          "bytes": 415,
+          "sha256": "230ad60ff8ddbc776b1418ecf4102067150a83a00196f60411ea4e6bdaa34df7"
+        },
+        "warning_events.jsonl": {
+          "bytes": 1097,
+          "sha256": "f01cefdb36b7e9cb80ebe4466d1ba3ad8a50380994bdd73e50fcc0986569b62b"
+        },
+        "world_events.jsonl": {
+          "bytes": 14368,
+          "sha256": "9fa92e9f9dfc7250738f63c9656982f7b70a62f62378352f02ffff3a8bd3bbe5"
+        }
+      },
+      "model_name": "gemma",
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201",
+      "seed": 6201,
+      "source_git_sha": "625380e7f96dc498a796c1e858f2d5d02d17c2a1",
+      "strict_unverifiable": [
+        "dependency versions unavailable: matplotlib",
+        "complete dependency environment: one or more package versions were unavailable",
+        "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+        "cryptographic authenticity: raw_manifest hashes are not externally signed",
+        "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+      ]
+    },
+    {
+      "config_sha256": "d62a11fb5d495cfec330373353e53e736d8339f5c10666d00c842f44193533e0",
+      "files": {
+        "llm_attempts.jsonl": {
+          "bytes": 1394002,
+          "sha256": "c0b25264f6618d794e940fbddb4cf8c1894e9a1eead1b6865d6ff911f44c0f42"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 48371,
+          "sha256": "9538e5eea4e6d84ed52b1aa9fd114e616fcd3a4aacb6c635c1dac89981027821"
+        },
+        "messages.jsonl": {
+          "bytes": 20451,
+          "sha256": "ec2fd3e2427f8919364d5d7b1c691b03160287df3e5a534dd450dc4fec095d8a"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 66826,
+          "sha256": "f19cd14617ca38688572864a4f6886f7388f799345efc07ec36879e065936c0e"
+        },
+        "positions.jsonl": {
+          "bytes": 74951,
+          "sha256": "dd31352ccc20f1b40607f145bd6982a0b300a16b720c35f12964008b19b3c3be"
+        },
+        "run_meta.json": {
+          "bytes": 10007,
+          "sha256": "28cee3934d551287f045e75a64a28d31946b0b629034a81be34c72f9c98e9f69"
+        },
+        "termination.jsonl": {
+          "bytes": 415,
+          "sha256": "075bb5d5b9fea04a9bc3be6450d99c2930b2dcc4e98db224f873d58a003fdc5e"
+        },
+        "warning_events.jsonl": {
+          "bytes": 1097,
+          "sha256": "ab0f2b4560c073f68af95417a485286fc74ee11f1b8ce5203cb4a194a9fd2f13"
+        },
+        "world_events.jsonl": {
+          "bytes": 14368,
+          "sha256": "1ad91229fd528e02cd561bb2fe313844ad741cef0ed6de30478baa0ced303e8f"
+        }
+      },
+      "model_name": "gemma",
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6202",
+      "seed": 6202,
+      "source_git_sha": "625380e7f96dc498a796c1e858f2d5d02d17c2a1",
+      "strict_unverifiable": [
+        "dependency versions unavailable: matplotlib",
+        "complete dependency environment: one or more package versions were unavailable",
+        "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+        "cryptographic authenticity: raw_manifest hashes are not externally signed",
+        "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+      ]
+    },
+    {
+      "config_sha256": "c16d9818659daed6dd4be1c81f3c5d47b7de928df5768678d84b3b96ac043749",
+      "files": {
+        "llm_attempts.jsonl": {
+          "bytes": 1483162,
+          "sha256": "73f2419c05e9c0fa0ab36a37e579e5a3d6fd8b97842479803e4c005bf1befe95"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 61114,
+          "sha256": "17a814085dc56c326eb5de5b21f13ee90f6701e10c50e56923ff6e10f20b100f"
+        },
+        "messages.jsonl": {
+          "bytes": 40947,
+          "sha256": "c1fe4cdc0760ddc2c0c9e4b472802c263c6f5b6673c1c85caf41b39a37595b25"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 88026,
+          "sha256": "bf22f117ad5f48ffc5c7add2827507c547c5aaec4c5ed87a62f21eb5681ac762"
+        },
+        "positions.jsonl": {
+          "bytes": 76945,
+          "sha256": "188f8fbe2361ddb574efa8aeddf0fea7da587d2e89c024b772236b806d4e0119"
+        },
+        "run_meta.json": {
+          "bytes": 9993,
+          "sha256": "e25ae243089b295176e777d255c337ac614d06142e763c11ffa364d2d5cb11ea"
+        },
+        "termination.jsonl": {
+          "bytes": 415,
+          "sha256": "70ca9cab6718236a93571d712c8fcf94d73509cec39c08212009817f02dc7591"
+        },
+        "warning_events.jsonl": {
+          "bytes": 1097,
+          "sha256": "cf1c61c40f6f2ef575afb24fa36850e63f8312036aa930746d13406dbda1f33c"
+        },
+        "world_events.jsonl": {
+          "bytes": 14368,
+          "sha256": "d9f27c5b731f65addb7989b346979a16909ba5080c0a7375264b840817fc4a81"
+        }
+      },
+      "model_name": "llama",
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6202",
+      "seed": 6202,
+      "source_git_sha": "625380e7f96dc498a796c1e858f2d5d02d17c2a1",
+      "strict_unverifiable": [
+        "dependency versions unavailable: matplotlib",
+        "complete dependency environment: one or more package versions were unavailable",
+        "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+        "cryptographic authenticity: raw_manifest hashes are not externally signed",
+        "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+      ]
+    },
+    {
+      "config_sha256": "257edfc52054dc9d692644ece4eb5d4d1f2459be0ccc4dcaa742d9d60476e3dd",
+      "files": {
+        "llm_attempts.jsonl": {
+          "bytes": 1412094,
+          "sha256": "6c008243b525d00eb6fa21471fa00c8b89b3402fc0f0223e29c47038e6ff2499"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 50655,
+          "sha256": "839d08734fe9430fc8c05d25b8c841ce2f0675202f5b13a182a8d3c30075eee3"
+        },
+        "messages.jsonl": {
+          "bytes": 34806,
+          "sha256": "a2c4d262c8a10c5e40bdeb9462812b878acf10f944af8dca7d71759e3afcdc09"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 74460,
+          "sha256": "742487833ed31e1cea0f5cf139ee36f9bc051e1f779a69bcdfa3a23ae1ed7458"
+        },
+        "positions.jsonl": {
+          "bytes": 75898,
+          "sha256": "b818f02c308e4fdc96669ee11fecc69ad75e38138d231fecb55966181fa8981d"
+        },
+        "run_meta.json": {
+          "bytes": 9970,
+          "sha256": "be6a784c16f4863f343bd64fceb203ecd748e347151f280e8085be3d56fa6d70"
+        },
+        "termination.jsonl": {
+          "bytes": 413,
+          "sha256": "46310f05b1c70fe5ca2e5e5985c1e5f07d9ccf1c322759f690e3a817436adc76"
+        },
+        "warning_events.jsonl": {
+          "bytes": 1095,
+          "sha256": "465235ebfebb4227454bdb055477fc9bb96eb3dc3f5839f859a18f040bffefe7"
+        },
+        "world_events.jsonl": {
+          "bytes": 14307,
+          "sha256": "d52d775b6ee5a9165d011deccbafd5029e568ae274e9311192a55aa09b251b5d"
+        }
+      },
+      "model_name": "qwen",
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6202",
+      "seed": 6202,
+      "source_git_sha": "625380e7f96dc498a796c1e858f2d5d02d17c2a1",
+      "strict_unverifiable": [
+        "dependency versions unavailable: matplotlib",
+        "complete dependency environment: one or more package versions were unavailable",
+        "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+        "cryptographic authenticity: raw_manifest hashes are not externally signed",
+        "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+      ]
+    }
+  ],
+  "source_manifest_sha256": "a757f4c3c70ae9ce43da90a1fb52ce91eff77cbaa97a1a0a1eb541e4a3bdbcdf",
+  "strict_validator_sha256": "9339eee74929538c9f5e56949ae02fd20ec44f4972b37d8cb63886c558fa758c"
+}

@@ -6,9 +6,9 @@
 
 エージェントをブロック単位で異なるLLMに割り当て、ブロック／モデル情報をエージェント向けプロンプトに含めません。実験ごとにworld・prompt・sampling・通信条件を定め、model artifact、tokenizer、chat template、推論実装を記録して出力と行動を比較します。望ましい結論へ誘導する役割や報酬は与えず、条件と生ログから観測をたどれるようにします。
 
-**2026-09-09 事前登録:** [災害下のLLM行動比較・小規模追加実験](docs/EXPERIMENT_PROTOCOL_DISASTER_BEHAVIOR_PILOT_V1.md)。
-Qwen・Llama・Gemma × 新しい2 seed、各4 agents・60 stepsの計6 runを固定しました。
-全runの完了／中断／未開始と、行動差の一例、避難所到達・警報IDの後続再使用がない結果も記録します。実行・解析結果は後続の報告に分け、この事前登録だけで完走や行動差を主張しません。
+**2026-09-09 追加実験:** [災害下のLLM行動比較・6 runの観測結果](docs/RESULTS_DISASTER_BEHAVIOR_PILOT_20260909.md)。
+[事前登録](docs/EXPERIMENT_PROTOCOL_DISASTER_BEHAVIOR_PILOT_V1.md)したQwen・Llama・Gemma × 2 seed、各4 agents・60 stepsの全6 runが完走しました（2,880 calls、失敗・再試行0）。
+事前規則の例ではQwenが左、Llama/Gemmaが右を選択しました。警報IDの後続再使用は露出した6 agent-run中3件、避難所到達は全24 agent-runで0です。生ログ・集計・全軌跡図・検証記録を収録し、初期世界の一致と分岐後の入力差、出力上の再使用と行動への採用を区別して報告しています。少数runの記述的観測であり、モデルの優劣や実災害での有効性は示しません。
 
 https://github.com/user-attachments/assets/e4de5be5-a67b-48d8-8d20-2f84854d4cf9
 

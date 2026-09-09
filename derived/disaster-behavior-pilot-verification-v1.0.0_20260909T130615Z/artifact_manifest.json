@@ -1,0 +1,15 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "checks.json": {
+      "bytes": 2714,
+      "lines": 56,
+      "sha256": "3f838459f2ba8162becc32c85eae970ab283bf8264770459f86c11e9530d0d88"
+    },
+    "offline-ingest-verification.json": {
+      "bytes": 2014,
+      "lines": 1,
+      "sha256": "7d7a5aac160dd90cb9958e3046ec8c2a20b60baa18d71f2decff23da96a37928"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "independent-analyzer-comparison-20260909T131600Z.json": {
+      "bytes": 2296,
+      "lines": 60,
+      "sha256": "6c1c9684301e9ab1f10cbd15e04d9769ade9be38a93d51b62e1c6d888431853c"
+    }
+  }
+}

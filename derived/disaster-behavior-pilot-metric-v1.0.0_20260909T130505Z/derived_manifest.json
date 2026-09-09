@@ -1,0 +1,41 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "agents.jsonl": {
+      "bytes": 443004,
+      "lines": 24,
+      "sha256": "31e24e735fdf6a9d43a476a177ef59befc196de99bb1f8354106cfb0c8f4ea98"
+    },
+    "analysis_meta.json": {
+      "bytes": 39486,
+      "lines": 970,
+      "sha256": "72ebbd923f0e1c1a48b35fea8fba6f241695687aa13d5a2eece6cfe7ba6e478b"
+    },
+    "example.json": {
+      "bytes": 33476,
+      "lines": 744,
+      "sha256": "c823dd8d9902bdba5bcb190a2223a9af2f8dac1b9e922d236d55d6a420f4c2c5"
+    },
+    "report.md": {
+      "bytes": 3159,
+      "lines": 59,
+      "sha256": "452bf5c10256cdc225468359c1f8f4207115964141abbda0916927f68be9963a"
+    },
+    "summary.json": {
+      "bytes": 2631088,
+      "lines": 56971,
+      "sha256": "a49f48daa8f995e222a8fd1483f96972fff961be27d6f0bbf07c3afa8c111a3c"
+    },
+    "warning_agents.jsonl": {
+      "bytes": 33967,
+      "lines": 24,
+      "sha256": "962fc3b18140f7becc7a4bb0fd7a62531d44f139dccc2d9599d6f0b2e0b0bfe3"
+    },
+    "warning_outputs.jsonl": {
+      "bytes": 542840,
+      "lines": 306,
+      "sha256": "9b461a9f3cfbac65ba8b459dbb780d3c639dc93a9a9735859537bf9571356330"
+    }
+  },
+  "schema_version": "disaster-behavior-pilot-metric-v1.0.0"
+}

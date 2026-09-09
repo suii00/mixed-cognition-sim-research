@@ -1,0 +1,60 @@
+{
+  "analyzer_file_sha256": {
+    "agents.jsonl": "31e24e735fdf6a9d43a476a177ef59befc196de99bb1f8354106cfb0c8f4ea98",
+    "example.json": "c823dd8d9902bdba5bcb190a2223a9af2f8dac1b9e922d236d55d6a420f4c2c5",
+    "summary.json": "a49f48daa8f995e222a8fd1483f96972fff961be27d6f0bbf07c3afa8c111a3c",
+    "warning_agents.jsonl": "962fc3b18140f7becc7a4bb0fd7a62531d44f139dccc2d9599d6f0b2e0b0bfe3",
+    "warning_outputs.jsonl": "9b461a9f3cfbac65ba8b459dbb780d3c639dc93a9a9735859537bf9571356330"
+  },
+  "assertion_count": 16903,
+  "assertions_by_group": {
+    "action_windows": 48,
+    "agent_geometry": 360,
+    "artifact_consistency": 355,
+    "example": 23,
+    "hazard_totals": 12,
+    "identity": 25,
+    "integrity": 5,
+    "raw_references": 10686,
+    "warning_agents": 432,
+    "warning_outputs": 4897,
+    "warning_summary": 60
+  },
+  "batch_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z",
+  "comparison_script_sha256": "608d7d9d3b3fc98d6851c9349f7ac56d960d5cfcebfa928284210adc77e50030",
+  "coverage": {
+    "action_windows": 12,
+    "agent_rows": 24,
+    "example_model_rows": 3,
+    "runs": 6,
+    "warning_agent_rows": 24,
+    "warning_output_rows": 306
+  },
+  "created_at_utc": "2026-09-09T13:09:23.676276+00:00",
+  "independent_arithmetic_created_before_analyzer_comparison": true,
+  "independent_field_groups": [
+    "move_stay_and_four_direction_counts",
+    "hazard_geometry_and_residence",
+    "refuge_distances_and_arrival",
+    "final_refuge_and_evacuation_suffix",
+    "warning_exposure",
+    "later_exact_id_reuse",
+    "message_delivery_and_raw_references",
+    "fixed_example_and_original_outputs"
+  ],
+  "independent_result_sha256": "37cf9d8de863109ab3016b5083478272c837af30c394108b4a23416b9d50c5ef",
+  "independent_script_sha256": "0d2cc489fa6835187c84d39dbc1dee9ac69ae2281bfa51271213b2be8bc18d93",
+  "mismatch_count": 0,
+  "mismatches": [],
+  "not_independently_recomputed": [
+    "surface_fact_classification_and_fidelity_totals",
+    "strict_validator_results",
+    "runtime_execution_attestations"
+  ],
+  "ok": true,
+  "raw_modified": false,
+  "schema_version": "independent-pilot-analyzer-comparison-v1.0.0",
+  "source_modified": false,
+  "source_sha": "625380e7f96dc498a796c1e858f2d5d02d17c2a1",
+  "surface_fact_fields_checked_for_artifact_consistency_only": true
+}

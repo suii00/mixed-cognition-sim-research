@@ -1,0 +1,744 @@
+{
+  "absence_reason": null,
+  "example": {
+    "agent_id": 0,
+    "context_limitation": "Trajectories, messages, memory and input histories may already differ. Matching positions do not establish identical model inputs; no causal model effect or internal cognition is inferred.",
+    "first_output_disagreement_at_or_before_selected_phase3": {
+      "agent_id": 0,
+      "phase": "phase1",
+      "step": 1
+    },
+    "models": [
+      {
+        "model_name": "qwen",
+        "phase1": {
+          "raw_row": {
+            "agent_id": 0,
+            "bloc": "qwen",
+            "model": "qwen2.5-7b-instruct",
+            "parsed": {
+              "message": "Hazard level is clear, heading towards refuge-west. Be cautious and follow.",
+              "reasoning": ""
+            },
+            "raw_output": "{\"message\": \"Hazard level is clear, heading towards refuge-west. Be cautious and follow.\", \"reasoning\": \"\"}",
+            "step": 10
+          },
+          "reference": {
+            "file": "phase1_raw.jsonl",
+            "line_bytes": 328,
+            "line_number": 37,
+            "line_sha256": "abba5e84d37a6c3c7b9342e1851d0747aafa07932a01f254cc9a5dc6171f7709",
+            "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201"
+          }
+        },
+        "phase3_action": {
+          "raw_row": {
+            "action": "move",
+            "agent_id": 0,
+            "bloc": "qwen",
+            "direction": "left",
+            "memory": "Move into refuge-west area.",
+            "model": "qwen2.5-7b-instruct",
+            "position": [
+              -3,
+              8
+            ],
+            "reasoning": "",
+            "step": 10
+          },
+          "reference": {
+            "file": "memory_reasoning.jsonl",
+            "line_bytes": 194,
+            "line_number": 37,
+            "line_sha256": "3793b790b455f63c1a59278ddfe3334dfc8dfcb342f3a9bcd6d26d8ed1faa21e",
+            "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201"
+          }
+        },
+        "phase3_attempts": [
+          {
+            "raw_row": {
+              "agent_id": 0,
+              "device_slot": "followup-qwen-tp1",
+              "endpoint_id": "followup-qwen",
+              "envelope": {
+                "choices": [
+                  {
+                    "finish_reason": "stop",
+                    "index": 0,
+                    "logprobs": null,
+                    "message": {
+                      "annotations": null,
+                      "audio": null,
+                      "content": "{\"action\": \"move\", \"direction\": \"left\", \"memory\": \"Move into refuge-west area.\", \"reasoning\": \"\"}",
+                      "function_call": null,
+                      "reasoning": null,
+                      "refusal": null,
+                      "role": "assistant"
+                    },
+                    "routed_experts": null,
+                    "stop_reason": null,
+                    "token_ids": null
+                  }
+                ],
+                "created": 1788957881,
+                "ec_transfer_params": null,
+                "id": "chatcmpl-863c03444bb62012",
+                "kv_transfer_params": null,
+                "metrics": null,
+                "model": "qwen2.5-7b-instruct",
+                "object": "chat.completion",
+                "prompt_logprobs": null,
+                "prompt_text": null,
+                "prompt_token_ids": null,
+                "service_tier": null,
+                "system_fingerprint": "vllm-0.27.1-06b68205",
+                "usage": {
+                  "completion_tokens": 29,
+                  "prompt_tokens": 359,
+                  "prompt_tokens_details": null,
+                  "total_tokens": 388
+                }
+              },
+              "error_type": null,
+              "event_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201:llm_attempt:step-000010:phase3:agent-000000:generation-1",
+              "failure_kind": null,
+              "finish_reason": "stop",
+              "generation_attempt": 1,
+              "http_attempt": 1,
+              "http_response_body_base64": "eyJpZCI6ImNoYXRjbXBsLTg2M2MwMzQ0NGJiNjIwMTIiLCJvYmplY3QiOiJjaGF0LmNvbXBsZXRpb24iLCJjcmVhdGVkIjoxNzg4OTU3ODgxLCJtb2RlbCI6InF3ZW4yLjUtN2ItaW5zdHJ1Y3QiLCJjaG9pY2VzIjpbeyJpbmRleCI6MCwibWVzc2FnZSI6eyJyb2xlIjoiYXNzaXN0YW50IiwiY29udGVudCI6IntcImFjdGlvblwiOiBcIm1vdmVcIiwgXCJkaXJlY3Rpb25cIjogXCJsZWZ0XCIsIFwibWVtb3J5XCI6IFwiTW92ZSBpbnRvIHJlZnVnZS13ZXN0IGFyZWEuXCIsIFwicmVhc29uaW5nXCI6IFwiXCJ9IiwicmVmdXNhbCI6bnVsbCwiYW5ub3RhdGlvbnMiOm51bGwsImF1ZGlvIjpudWxsLCJmdW5jdGlvbl9jYWxsIjpudWxsLCJyZWFzb25pbmciOm51bGx9LCJsb2dwcm9icyI6bnVsbCwiZmluaXNoX3JlYXNvbiI6InN0b3AiLCJzdG9wX3JlYXNvbiI6bnVsbCwidG9rZW5faWRzIjpudWxsLCJyb3V0ZWRfZXhwZXJ0cyI6bnVsbH1dLCJzZXJ2aWNlX3RpZXIiOm51bGwsInN5c3RlbV9maW5nZXJwcmludCI6InZsbG0tMC4yNy4xLTA2YjY4MjA1IiwidXNhZ2UiOnsicHJvbXB0X3Rva2VucyI6MzU5LCJ0b3RhbF90b2tlbnMiOjM4OCwiY29tcGxldGlvbl90b2tlbnMiOjI5LCJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOm51bGx9LCJwcm9tcHRfbG9ncHJvYnMiOm51bGwsInByb21wdF90b2tlbl9pZHMiOm51bGwsInByb21wdF90ZXh0IjpudWxsLCJrdl90cmFuc2Zlcl9wYXJhbXMiOm51bGwsImVjX3RyYW5zZmVyX3BhcmFtcyI6bnVsbCwibWV0cmljcyI6bnVsbH0=",
+              "http_response_bytes": 773,
+              "http_response_sha256": "b09514f38de22feaab101aacf14c4529b53f30b702b3f1a8bb2cdef4ff0d21ba",
+              "http_status": 200,
+              "model": "qwen2.5-7b-instruct",
+              "parse_status": "valid",
+              "phase": "phase3",
+              "provider": "vllm",
+              "raw_output": "{\"action\": \"move\", \"direction\": \"left\", \"memory\": \"Move into refuge-west area.\", \"reasoning\": \"\"}",
+              "request_id": "step-000010:phase3:agent-000000",
+              "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201",
+              "schema_status": "valid",
+              "schema_version": "1.0.0",
+              "step": 10,
+              "transport_status": "ok",
+              "usage": {
+                "completion_tokens": 29,
+                "prompt_tokens": 359,
+                "prompt_tokens_details": null,
+                "total_tokens": 388
+              }
+            },
+            "reference": {
+              "file": "llm_attempts.jsonl",
+              "line_bytes": 2927,
+              "line_number": 77,
+              "line_sha256": "54a5a35a167255ac1aa171a8cc833932a3879fd826772ea824bb30f3eba67e64",
+              "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201"
+            }
+          }
+        ],
+        "position_after": {
+          "raw_row": {
+            "agent_id": 0,
+            "bloc": "qwen",
+            "event_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201:position:000010:post_movement:agent-000000",
+            "hazardous": false,
+            "model": "qwen2.5-7b-instruct",
+            "phase": "post_movement",
+            "position": [
+              -4,
+              8
+            ],
+            "refuge_id": null,
+            "shortest_refuge_distance": 24,
+            "step": 10
+          },
+          "reference": {
+            "file": "positions.jsonl",
+            "line_bytes": 311,
+            "line_number": 41,
+            "line_sha256": "b02a9362d050b67a364b3dd875478381697fd6d7ab821c48f820daf99b98655f",
+            "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201"
+          }
+        },
+        "position_before": {
+          "raw_row": {
+            "agent_id": 0,
+            "bloc": "qwen",
+            "event_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201:position:000009:post_movement:agent-000000",
+            "hazardous": false,
+            "model": "qwen2.5-7b-instruct",
+            "phase": "post_movement",
+            "position": [
+              -3,
+              8
+            ],
+            "refuge_id": null,
+            "shortest_refuge_distance": 25,
+            "step": 9
+          },
+          "reference": {
+            "file": "positions.jsonl",
+            "line_bytes": 310,
+            "line_number": 37,
+            "line_sha256": "9884a1706c04f85bd88932ad6a3523357394c070cf6caff0f62401b62e9578cb",
+            "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201"
+          }
+        },
+        "provenance": {
+          "public_config_file": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201.json",
+          "public_config_sha256": "a8e29b875368a89e1f62bf24e902ba40e34cb9f78678ac27c62e96d1de93add8",
+          "raw_manifest": {
+            "algorithm": "sha256",
+            "files": {
+              "llm_attempts.jsonl": {
+                "bytes": 1407352,
+                "lines": 480,
+                "sha256": "c3a134507c35ac03b58f65001d72c701a4b85aa58d89c8400a0d7b2301e1b074"
+              },
+              "memory_reasoning.jsonl": {
+                "bytes": 49529,
+                "lines": 240,
+                "sha256": "1d5193f72719d8f7189ba7771b10b063a76ef46a8eec4a5527630042436c913c"
+              },
+              "messages.jsonl": {
+                "bytes": 8465,
+                "lines": 40,
+                "sha256": "1a7d9ab8e054718469fc779d4eb3b4e2422ea96c833883e8991a3a9ad7c6c1a7"
+              },
+              "parse_errors.jsonl": {
+                "bytes": 0,
+                "lines": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              "phase1_raw.jsonl": {
+                "bytes": 73692,
+                "lines": 240,
+                "sha256": "8e5806439097aa50a40a903303c10b10bf96cf8ca3faf5536ef731b554f082ad"
+              },
+              "positions.jsonl": {
+                "bytes": 75947,
+                "lines": 244,
+                "sha256": "34abc1fb3f019c5d482c0b8327c6606ca9b7cdbb6f49db2d191a26c0d4b22ce3"
+              },
+              "termination.jsonl": {
+                "bytes": 413,
+                "lines": 1,
+                "sha256": "d27acbff8258186c84a1a2ecc2f46d2e9fc1e32a674c9789b872fd59cac8bc97"
+              },
+              "warning_events.jsonl": {
+                "bytes": 1095,
+                "lines": 2,
+                "sha256": "7b75c40768c1d450e77a8ff8b97b22c4d87b1c19c2b63713d492f73d524438f0"
+              },
+              "world_events.jsonl": {
+                "bytes": 14307,
+                "lines": 61,
+                "sha256": "9cb77c8cf275ef8a26c055062dbe398881a5458efecace22460811bc779cc64c"
+              }
+            }
+          },
+          "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201",
+          "run_meta_sha256": "985582f8ea639c9f6c28ddcc0e38a9987b7a76c7c1bea52fb375a4f1e1e411ce",
+          "source_config_sha256": "2b6e93936a539e220cb70ed00ece9cafd46d87fad0bf238d1841197814238a4c",
+          "source_git_dirty": false,
+          "source_git_sha": "625380e7f96dc498a796c1e858f2d5d02d17c2a1",
+          "source_log_schema_version": "2.0.0",
+          "source_metric_version": "disaster-metric-v2.0.0",
+          "source_prompt_contract_version": "bounded-prompts-v3.0.0",
+          "source_protocol_version": "disaster-llm-behavior-pilot-v1.0.0",
+          "source_response_contract_version": "phase-response-v3.0.0"
+        },
+        "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201",
+        "warning_exposures_through_step": []
+      },
+      {
+        "model_name": "llama",
+        "phase1": {
+          "raw_row": {
+            "agent_id": 0,
+            "bloc": "llama",
+            "model": "llama-3.1-8b-instruct",
+            "parsed": {
+              "message": "I'm at (14, 8), heading east, near refuge-east.",
+              "reasoning": ""
+            },
+            "raw_output": "{\"message\": \"I'm at (14, 8), heading east, near refuge-east.\", \"reasoning\": \"\"}",
+            "step": 10
+          },
+          "reference": {
+            "file": "phase1_raw.jsonl",
+            "line_bytes": 275,
+            "line_number": 37,
+            "line_sha256": "58b30e4714acb27954645e3135ccac81516ac92956ae10d99ad3ee3e80344d51",
+            "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201"
+          }
+        },
+        "phase3_action": {
+          "raw_row": {
+            "action": "move",
+            "agent_id": 0,
+            "bloc": "llama",
+            "direction": "right",
+            "memory": "Continued moving right from previous positions, current position is (14, 8)",
+            "model": "llama-3.1-8b-instruct",
+            "position": [
+              14,
+              8
+            ],
+            "reasoning": "",
+            "step": 10
+          },
+          "reference": {
+            "file": "memory_reasoning.jsonl",
+            "line_bytes": 246,
+            "line_number": 37,
+            "line_sha256": "0e88a5493d81c5eb6ad12c18b61957e971e70023f69f0f7af74ab4a73ecdd97f",
+            "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201"
+          }
+        },
+        "phase3_attempts": [
+          {
+            "raw_row": {
+              "agent_id": 0,
+              "device_slot": "followup-llama-tp1",
+              "endpoint_id": "followup-llama",
+              "envelope": {
+                "choices": [
+                  {
+                    "finish_reason": "stop",
+                    "index": 0,
+                    "logprobs": null,
+                    "message": {
+                      "annotations": null,
+                      "audio": null,
+                      "content": "{\n  \"action\": \"move\",\n  \"direction\": \"right\",\n  \"memory\": \"Continued moving right from previous positions, current position is (14, 8)\",\n  \"reasoning\": \"\"\n}",
+                      "function_call": null,
+                      "reasoning": null,
+                      "refusal": null,
+                      "role": "assistant"
+                    },
+                    "routed_experts": null,
+                    "stop_reason": null,
+                    "token_ids": null
+                  }
+                ],
+                "created": 1788958007,
+                "ec_transfer_params": null,
+                "id": "chatcmpl-8093ce03685ffefa",
+                "kv_transfer_params": null,
+                "metrics": null,
+                "model": "llama-3.1-8b-instruct",
+                "object": "chat.completion",
+                "prompt_logprobs": null,
+                "prompt_text": null,
+                "prompt_token_ids": null,
+                "service_tier": null,
+                "system_fingerprint": "vllm-0.27.1-0109e372",
+                "usage": {
+                  "completion_tokens": 45,
+                  "prompt_tokens": 341,
+                  "prompt_tokens_details": null,
+                  "total_tokens": 386
+                }
+              },
+              "error_type": null,
+              "event_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201:llm_attempt:step-000010:phase3:agent-000000:generation-1",
+              "failure_kind": null,
+              "finish_reason": "stop",
+              "generation_attempt": 1,
+              "http_attempt": 1,
+              "http_response_body_base64": "eyJpZCI6ImNoYXRjbXBsLTgwOTNjZTAzNjg1ZmZlZmEiLCJvYmplY3QiOiJjaGF0LmNvbXBsZXRpb24iLCJjcmVhdGVkIjoxNzg4OTU4MDA3LCJtb2RlbCI6ImxsYW1hLTMuMS04Yi1pbnN0cnVjdCIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50Ijoie1xuICBcImFjdGlvblwiOiBcIm1vdmVcIixcbiAgXCJkaXJlY3Rpb25cIjogXCJyaWdodFwiLFxuICBcIm1lbW9yeVwiOiBcIkNvbnRpbnVlZCBtb3ZpbmcgcmlnaHQgZnJvbSBwcmV2aW91cyBwb3NpdGlvbnMsIGN1cnJlbnQgcG9zaXRpb24gaXMgKDE0LCA4KVwiLFxuICBcInJlYXNvbmluZ1wiOiBcIlwiXG59IiwicmVmdXNhbCI6bnVsbCwiYW5ub3RhdGlvbnMiOm51bGwsImF1ZGlvIjpudWxsLCJmdW5jdGlvbl9jYWxsIjpudWxsLCJyZWFzb25pbmciOm51bGx9LCJsb2dwcm9icyI6bnVsbCwiZmluaXNoX3JlYXNvbiI6InN0b3AiLCJzdG9wX3JlYXNvbiI6bnVsbCwidG9rZW5faWRzIjpudWxsLCJyb3V0ZWRfZXhwZXJ0cyI6bnVsbH1dLCJzZXJ2aWNlX3RpZXIiOm51bGwsInN5c3RlbV9maW5nZXJwcmludCI6InZsbG0tMC4yNy4xLTAxMDllMzcyIiwidXNhZ2UiOnsicHJvbXB0X3Rva2VucyI6MzQxLCJ0b3RhbF90b2tlbnMiOjM4NiwiY29tcGxldGlvbl90b2tlbnMiOjQ1LCJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOm51bGx9LCJwcm9tcHRfbG9ncHJvYnMiOm51bGwsInByb21wdF90b2tlbl9pZHMiOm51bGwsInByb21wdF90ZXh0IjpudWxsLCJrdl90cmFuc2Zlcl9wYXJhbXMiOm51bGwsImVjX3RyYW5zZmVyX3BhcmFtcyI6bnVsbCwibWV0cmljcyI6bnVsbH0=",
+              "http_response_bytes": 839,
+              "http_response_sha256": "16ae9446bc1310b831011789016ba24e07ccf8b10d19afa06342044518f70c60",
+              "http_status": 200,
+              "model": "llama-3.1-8b-instruct",
+              "parse_status": "valid",
+              "phase": "phase3",
+              "provider": "vllm",
+              "raw_output": "{\n  \"action\": \"move\",\n  \"direction\": \"right\",\n  \"memory\": \"Continued moving right from previous positions, current position is (14, 8)\",\n  \"reasoning\": \"\"\n}",
+              "request_id": "step-000010:phase3:agent-000000",
+              "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201",
+              "schema_status": "valid",
+              "schema_version": "1.0.0",
+              "step": 10,
+              "transport_status": "ok",
+              "usage": {
+                "completion_tokens": 45,
+                "prompt_tokens": 341,
+                "prompt_tokens_details": null,
+                "total_tokens": 386
+              }
+            },
+            "reference": {
+              "file": "llm_attempts.jsonl",
+              "line_bytes": 3151,
+              "line_number": 77,
+              "line_sha256": "656fe5e739305f8dc38c379e96f8a62774e383368b85ac63eac5e7961832e0f4",
+              "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201"
+            }
+          }
+        ],
+        "position_after": {
+          "raw_row": {
+            "agent_id": 0,
+            "bloc": "llama",
+            "event_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201:position:000010:post_movement:agent-000000",
+            "hazardous": false,
+            "model": "llama-3.1-8b-instruct",
+            "phase": "post_movement",
+            "position": [
+              15,
+              8
+            ],
+            "refuge_id": null,
+            "shortest_refuge_distance": 13,
+            "step": 10
+          },
+          "reference": {
+            "file": "positions.jsonl",
+            "line_bytes": 315,
+            "line_number": 41,
+            "line_sha256": "3478f3827bd1a2677d578f5102c768a037f88de85355e57f6309b40caf3b3450",
+            "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201"
+          }
+        },
+        "position_before": {
+          "raw_row": {
+            "agent_id": 0,
+            "bloc": "llama",
+            "event_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201:position:000009:post_movement:agent-000000",
+            "hazardous": false,
+            "model": "llama-3.1-8b-instruct",
+            "phase": "post_movement",
+            "position": [
+              14,
+              8
+            ],
+            "refuge_id": null,
+            "shortest_refuge_distance": 14,
+            "step": 9
+          },
+          "reference": {
+            "file": "positions.jsonl",
+            "line_bytes": 314,
+            "line_number": 37,
+            "line_sha256": "62ba38e5091e631335a93fd0d06d0c5b486c3dff47a75ae6f5651be5a9e07fea",
+            "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201"
+          }
+        },
+        "provenance": {
+          "public_config_file": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201.json",
+          "public_config_sha256": "46b2417f39499cf454f016b7ef8d9cc25d830efd53d5a08cf5a5eef8ff8c286c",
+          "raw_manifest": {
+            "algorithm": "sha256",
+            "files": {
+              "llm_attempts.jsonl": {
+                "bytes": 1477406,
+                "lines": 480,
+                "sha256": "ebe3759ef3a779238d3e5754107d99e8cf79b5d61ea0e5f7a7c6db1519a92524"
+              },
+              "memory_reasoning.jsonl": {
+                "bytes": 62956,
+                "lines": 240,
+                "sha256": "51b1122b2146bb0ad6655cf55bf83ff86f0e274a620f0870efdc5a6e6e9a537e"
+              },
+              "messages.jsonl": {
+                "bytes": 36236,
+                "lines": 161,
+                "sha256": "3cecee38a650fd05651be4d2ba2dba918989cfaf5f58aa056863e855c0fbc805"
+              },
+              "parse_errors.jsonl": {
+                "bytes": 0,
+                "lines": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              "phase1_raw.jsonl": {
+                "bytes": 80782,
+                "lines": 240,
+                "sha256": "bba9790f472c2bbaf45dc61d724b6735f9a0d25da3648f8a50adbce4218be82e"
+              },
+              "positions.jsonl": {
+                "bytes": 76873,
+                "lines": 244,
+                "sha256": "6d9f751ef105d4b3367bd08c775f2191d05903232d12482b76821ea83a2939bf"
+              },
+              "termination.jsonl": {
+                "bytes": 415,
+                "lines": 1,
+                "sha256": "0297e8f68f3dd2eac29140cbaba3677f3ae95f01d12a5eade7ab7b42caf62aa6"
+              },
+              "warning_events.jsonl": {
+                "bytes": 1097,
+                "lines": 2,
+                "sha256": "398931248f364966da8ff458318ec677597e601a0f29caf6a020928f43fb3069"
+              },
+              "world_events.jsonl": {
+                "bytes": 14368,
+                "lines": 61,
+                "sha256": "d7e9255f15112cf0e280bc4df8e331ac088b38b858aff6deb955470e85adb80a"
+              }
+            }
+          },
+          "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201",
+          "run_meta_sha256": "821c395db14346a04d67183129317c0deb9aaccec530607c3a44a79591f5508f",
+          "source_config_sha256": "5ea0b8997aae411316edab779dc0e82c8ca98139b586f62a239d0ca95e9225ba",
+          "source_git_dirty": false,
+          "source_git_sha": "625380e7f96dc498a796c1e858f2d5d02d17c2a1",
+          "source_log_schema_version": "2.0.0",
+          "source_metric_version": "disaster-metric-v2.0.0",
+          "source_prompt_contract_version": "bounded-prompts-v3.0.0",
+          "source_protocol_version": "disaster-llm-behavior-pilot-v1.0.0",
+          "source_response_contract_version": "phase-response-v3.0.0"
+        },
+        "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201",
+        "warning_exposures_through_step": []
+      },
+      {
+        "model_name": "gemma",
+        "phase1": {
+          "raw_row": {
+            "agent_id": 0,
+            "bloc": "gemma",
+            "model": "gemma-2-9b-it",
+            "parsed": {
+              "message": "Current cell safe. Refuge rectangles: refuge-west: x=-23..-18, y=18..23; refuge-east: x=18..23, y=18..23",
+              "reasoning": ""
+            },
+            "raw_output": "{\"message\": \"Current cell safe. Refuge rectangles: refuge-west: x=-23..-18, y=18..23; refuge-east: x=18..23, y=18..23\", \"reasoning\": \"\"}",
+            "step": 10
+          },
+          "reference": {
+            "file": "phase1_raw.jsonl",
+            "line_bytes": 381,
+            "line_number": 37,
+            "line_sha256": "07b6912553191bbc5bb1c85f0e8127ba855b93d6e0ac82964014c7f739c50db6",
+            "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201"
+          }
+        },
+        "phase3_action": {
+          "raw_row": {
+            "action": "move",
+            "agent_id": 0,
+            "bloc": "gemma",
+            "direction": "right",
+            "memory": "",
+            "model": "gemma-2-9b-it",
+            "position": [
+              14,
+              8
+            ],
+            "reasoning": "",
+            "step": 10
+          },
+          "reference": {
+            "file": "memory_reasoning.jsonl",
+            "line_bytes": 163,
+            "line_number": 37,
+            "line_sha256": "23e3b6f78f670e24b49bbbd108a953b624fd4f34618d5f9ba81a35081f953b4d",
+            "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201"
+          }
+        },
+        "phase3_attempts": [
+          {
+            "raw_row": {
+              "agent_id": 0,
+              "device_slot": "followup-gemma-tp2",
+              "endpoint_id": "followup-gemma",
+              "envelope": {
+                "choices": [
+                  {
+                    "finish_reason": "stop",
+                    "index": 0,
+                    "logprobs": null,
+                    "message": {
+                      "annotations": null,
+                      "audio": null,
+                      "content": "{\"action\": \"move\", \"direction\": \"right\", \"memory\": \"\", \"reasoning\": \"\"}",
+                      "function_call": null,
+                      "reasoning": null,
+                      "refusal": null,
+                      "role": "assistant"
+                    },
+                    "routed_experts": null,
+                    "stop_reason": null,
+                    "token_ids": null
+                  }
+                ],
+                "created": 1788958212,
+                "ec_transfer_params": null,
+                "id": "chatcmpl-8feeaec988086aed",
+                "kv_transfer_params": null,
+                "metrics": null,
+                "model": "gemma-2-9b-it",
+                "object": "chat.completion",
+                "prompt_logprobs": null,
+                "prompt_text": null,
+                "prompt_token_ids": null,
+                "service_tier": null,
+                "system_fingerprint": "vllm-0.27.1-tp2-e7fa519b",
+                "usage": {
+                  "completion_tokens": 22,
+                  "prompt_tokens": 249,
+                  "prompt_tokens_details": null,
+                  "total_tokens": 271
+                }
+              },
+              "error_type": null,
+              "event_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201:llm_attempt:step-000010:phase3:agent-000000:generation-1",
+              "failure_kind": null,
+              "finish_reason": "stop",
+              "generation_attempt": 1,
+              "http_attempt": 1,
+              "http_response_body_base64": "eyJpZCI6ImNoYXRjbXBsLThmZWVhZWM5ODgwODZhZWQiLCJvYmplY3QiOiJjaGF0LmNvbXBsZXRpb24iLCJjcmVhdGVkIjoxNzg4OTU4MjEyLCJtb2RlbCI6ImdlbW1hLTItOWItaXQiLCJjaG9pY2VzIjpbeyJpbmRleCI6MCwibWVzc2FnZSI6eyJyb2xlIjoiYXNzaXN0YW50IiwiY29udGVudCI6IntcImFjdGlvblwiOiBcIm1vdmVcIiwgXCJkaXJlY3Rpb25cIjogXCJyaWdodFwiLCBcIm1lbW9yeVwiOiBcIlwiLCBcInJlYXNvbmluZ1wiOiBcIlwifSIsInJlZnVzYWwiOm51bGwsImFubm90YXRpb25zIjpudWxsLCJhdWRpbyI6bnVsbCwiZnVuY3Rpb25fY2FsbCI6bnVsbCwicmVhc29uaW5nIjpudWxsfSwibG9ncHJvYnMiOm51bGwsImZpbmlzaF9yZWFzb24iOiJzdG9wIiwic3RvcF9yZWFzb24iOm51bGwsInRva2VuX2lkcyI6bnVsbCwicm91dGVkX2V4cGVydHMiOm51bGx9XSwic2VydmljZV90aWVyIjpudWxsLCJzeXN0ZW1fZmluZ2VycHJpbnQiOiJ2bGxtLTAuMjcuMS10cDItZTdmYTUxOWIiLCJ1c2FnZSI6eyJwcm9tcHRfdG9rZW5zIjoyNDksInRvdGFsX3Rva2VucyI6MjcxLCJjb21wbGV0aW9uX3Rva2VucyI6MjIsInByb21wdF90b2tlbnNfZGV0YWlscyI6bnVsbH0sInByb21wdF9sb2dwcm9icyI6bnVsbCwicHJvbXB0X3Rva2VuX2lkcyI6bnVsbCwicHJvbXB0X3RleHQiOm51bGwsImt2X3RyYW5zZmVyX3BhcmFtcyI6bnVsbCwiZWNfdHJhbnNmZXJfcGFyYW1zIjpudWxsLCJtZXRyaWNzIjpudWxsfQ==",
+              "http_response_bytes": 745,
+              "http_response_sha256": "55a49bbe7b1da535a355eed2c50571775e1333e3657044bf28a0176dbc06516d",
+              "http_status": 200,
+              "model": "gemma-2-9b-it",
+              "parse_status": "valid",
+              "phase": "phase3",
+              "provider": "vllm",
+              "raw_output": "{\"action\": \"move\", \"direction\": \"right\", \"memory\": \"\", \"reasoning\": \"\"}",
+              "request_id": "step-000010:phase3:agent-000000",
+              "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201",
+              "schema_status": "valid",
+              "schema_version": "1.0.0",
+              "step": 10,
+              "transport_status": "ok",
+              "usage": {
+                "completion_tokens": 22,
+                "prompt_tokens": 249,
+                "prompt_tokens_details": null,
+                "total_tokens": 271
+              }
+            },
+            "reference": {
+              "file": "llm_attempts.jsonl",
+              "line_bytes": 2835,
+              "line_number": 77,
+              "line_sha256": "610190eddae3a75187f44bb60829a42cdb7398ecaf0319a1e3874cbf811ad297",
+              "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201"
+            }
+          }
+        ],
+        "position_after": {
+          "raw_row": {
+            "agent_id": 0,
+            "bloc": "gemma",
+            "event_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201:position:000010:post_movement:agent-000000",
+            "hazardous": false,
+            "model": "gemma-2-9b-it",
+            "phase": "post_movement",
+            "position": [
+              15,
+              8
+            ],
+            "refuge_id": null,
+            "shortest_refuge_distance": 13,
+            "step": 10
+          },
+          "reference": {
+            "file": "positions.jsonl",
+            "line_bytes": 307,
+            "line_number": 41,
+            "line_sha256": "cb3af54cf1b7df443f6f29dd7b25f46fe68cce2fee13a5031750c37c6a8922dd",
+            "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201"
+          }
+        },
+        "position_before": {
+          "raw_row": {
+            "agent_id": 0,
+            "bloc": "gemma",
+            "event_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201:position:000009:post_movement:agent-000000",
+            "hazardous": false,
+            "model": "gemma-2-9b-it",
+            "phase": "post_movement",
+            "position": [
+              14,
+              8
+            ],
+            "refuge_id": null,
+            "shortest_refuge_distance": 14,
+            "step": 9
+          },
+          "reference": {
+            "file": "positions.jsonl",
+            "line_bytes": 306,
+            "line_number": 37,
+            "line_sha256": "b7b065ec0d786920c1b3d29e653f2740dbc923314eb405687f02e872d83c9a29",
+            "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201"
+          }
+        },
+        "provenance": {
+          "public_config_file": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201.json",
+          "public_config_sha256": "80ab991f1c12c815b52765bf0242038760e9259350f82f04ac87d53408ec3cac",
+          "raw_manifest": {
+            "algorithm": "sha256",
+            "files": {
+              "llm_attempts.jsonl": {
+                "bytes": 1379840,
+                "lines": 480,
+                "sha256": "2c49ed8486ae003b82582fb63fbaca6900dd70dc76ccabd4d9e611f636cbf5ee"
+              },
+              "memory_reasoning.jsonl": {
+                "bytes": 45253,
+                "lines": 240,
+                "sha256": "478b9c71243b1456e5f2397dfa8c06382c5b9bc722bd815dd803705119ecf67e"
+              },
+              "messages.jsonl": {
+                "bytes": 26843,
+                "lines": 158,
+                "sha256": "7049459bc8fab5e64d899e1f06a4e34135ecd8ef433fb7dd2c75253ccdc74c82"
+              },
+              "parse_errors.jsonl": {
+                "bytes": 0,
+                "lines": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              "phase1_raw.jsonl": {
+                "bytes": 64450,
+                "lines": 240,
+                "sha256": "d54061f176c342293fa189d7cc443838a1378c878f687e7bfcbe62b0aa305994"
+              },
+              "positions.jsonl": {
+                "bytes": 74921,
+                "lines": 244,
+                "sha256": "b0668a29f504d3011ccfb90645422f0e94fe887d45386d19b5cc6731246e3d72"
+              },
+              "termination.jsonl": {
+                "bytes": 415,
+                "lines": 1,
+                "sha256": "230ad60ff8ddbc776b1418ecf4102067150a83a00196f60411ea4e6bdaa34df7"
+              },
+              "warning_events.jsonl": {
+                "bytes": 1097,
+                "lines": 2,
+                "sha256": "f01cefdb36b7e9cb80ebe4466d1ba3ad8a50380994bdd73e50fcc0986569b62b"
+              },
+              "world_events.jsonl": {
+                "bytes": 14368,
+                "lines": 61,
+                "sha256": "9fa92e9f9dfc7250738f63c9656982f7b70a62f62378352f02ffff3a8bd3bbe5"
+              }
+            }
+          },
+          "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201",
+          "run_meta_sha256": "d4a9e6b61201ad96d33b0cc3674d4b29afe0704c2ea1836518ed000210060041",
+          "source_config_sha256": "f4dbcf110711f2f79ab5769a8910a01c54376958681b3856c608d284fc0f8230",
+          "source_git_dirty": false,
+          "source_git_sha": "625380e7f96dc498a796c1e858f2d5d02d17c2a1",
+          "source_log_schema_version": "2.0.0",
+          "source_metric_version": "disaster-metric-v2.0.0",
+          "source_prompt_contract_version": "bounded-prompts-v3.0.0",
+          "source_protocol_version": "disaster-llm-behavior-pilot-v1.0.0",
+          "source_response_contract_version": "phase-response-v3.0.0"
+        },
+        "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201",
+        "warning_exposures_through_step": []
+      }
+    ],
+    "pre_action_positions_equal": false,
+    "seed": 6201,
+    "selection_rule": "first-seed-step-ge10-agent-action-direction-divergence",
+    "step": 10
+  }
+}

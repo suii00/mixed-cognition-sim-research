@@ -1,0 +1,56 @@
+{
+  "analysis_manifest": {
+    "bytes": 1206,
+    "lines": 41,
+    "sha256": "71211eb81cdc90e20276820113a541cf786d98fb3c638389f1fdbd1af6b785b4"
+  },
+  "analysis_source_state": {
+    "git_dirty": false,
+    "git_probe_errors": [],
+    "git_probe_status": "available",
+    "git_sha": "db0c6fd99607198a1ee8e723c9853d4f10b5acc2"
+  },
+  "checks": {
+    "analysis_artifact_manifest": true,
+    "analysis_implementation_hashes": true,
+    "figure_visually_inspected": true,
+    "plot_artifact_manifest": true,
+    "plot_raw_references": true,
+    "raw_tree_hashes_unchanged_after_ingest_analysis_plot": true,
+    "received_complete_batch_and_probe_verified": true,
+    "same_seed_initial_positions_equal": true
+  },
+  "created_at_utc": "2026-09-09T13:06:49.702726+00:00",
+  "evidence_archive_sha256": "187316d8d32878a543cdd2fa2ab4c18882b50a672c1e83ad93e7966f0ac468de",
+  "final_verifier_sha256": "5da898a235959a3533ed57efe4dac8d78361b55f63d6af88489f334ccab64b4f",
+  "inference_source_sha": "625380e7f96dc498a796c1e858f2d5d02d17c2a1",
+  "initial_source_tests": {
+    "command": "py -3.12 -m pytest -q --basetemp .tmp/neutral-pilot-checks-20260909T1214Z -p no:cacheprovider --tb=short",
+    "elapsed_seconds": 124.6,
+    "passed": 341,
+    "subtests_passed": 98
+  },
+  "local_analysis_environment": {
+    "PyYAML": "6.0.3",
+    "class": "windows-local-cpu-analysis",
+    "matplotlib": "3.11.1",
+    "python": "3.12.10"
+  },
+  "offline_ingest_verifier_sha256": "b47f0100a046a917f2ca47cd3b6bcee496b573b5f6bdb41755a61672e4d3d77c",
+  "plot_manifest": {
+    "bytes": 16137,
+    "lines": 364,
+    "sha256": "507f1ef794afa646b2e533198bfb2e20d19b0dc9a04c912d805bd86f99101fd0"
+  },
+  "run_tree_sha256": {
+    "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201": "5e27c5b8dd11c42192f7734078d21fdc9d47af15fedd680b39faf8765638d5fa",
+    "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6202": "b0a295b543d31407aabc50c76b27c17005dd3b13cea95b65309d130eca5b2398",
+    "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201": "8fe25dce0db142bc5e13cb6e0c7a3a117fc577873d5ac8beb4c898183fafbb03",
+    "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6202": "3ecf92cb5d4a51e725449e325283fdf461293f32d2f2dbd9a9e0e08b9fd0a0a2",
+    "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201": "39d4a739e1bc251ed6aecce9edacda672186961cba8b4b857b9b286a4ce20d23",
+    "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6202": "eb368e496509e3190647a80fc974493e7aac61025a94dbdaac308612588fc956"
+  },
+  "schema_version": "disaster-behavior-pilot-final-verification-v1.0.0",
+  "source_bundle_sha256": "6986a45a6bf98b5aff896634ea4be636d491a8f2a67140e685f498e5012267d3",
+  "verified_jsonl_line_reference_count": 8034
+}

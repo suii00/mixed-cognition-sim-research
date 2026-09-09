@@ -1,0 +1,5 @@
+All six frozen runs; four agents per panel, 60 steps. Axes and colors are shared.
+S/E mark initial/final positions; open circles/diamonds mark post-movement steps 10/30.
+Agent 1 (red) is the designated initial warning recipient at step 10. Hazard shading shows the two declared stages;
+refuge outlines show fixed geometry. Lines join recorded positions; a move command can yield no displacement at a boundary.
+Trajectories describe this fixed interface and seeds; they do not establish warning adoption, model intent, or a causal model effect.
