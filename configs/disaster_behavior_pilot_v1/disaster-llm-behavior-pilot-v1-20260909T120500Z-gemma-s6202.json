@@ -1,0 +1,131 @@
+{
+  "agents": {
+    "communication_radius": 12,
+    "edge_policy": "full",
+    "memory_limit": 20,
+    "memory_size": 5,
+    "message_context_size": 5,
+    "message_history_limit": 20
+  },
+  "blocs": [
+    {
+      "backend_version": "0.27.1",
+      "chat_template": "tokenizer_config.json:chat_template:sha256:ecd6ae513fe103f0eb62e8ab5bfa8d0fe45c1074fa398b089c93a7e70c15cfd6",
+      "data_parallel_size": 1,
+      "device_slot": "followup-gemma-tp2",
+      "dtype": "bfloat16",
+      "endpoint_id": "followup-gemma",
+      "flashinfer_mode": "disabled",
+      "generation_config": "vllm",
+      "gpu_memory_utilization": 0.92,
+      "llm_overrides": {},
+      "max_model_len": 4096,
+      "model": "gemma-2-9b-it",
+      "model_digest": "11c9b309abf73637e4b6f9a3fa1e92e615547819",
+      "model_source": "google/gemma-2-9b-it",
+      "name": "gemma",
+      "num_agents": 4,
+      "provider": "vllm",
+      "quantization": "none",
+      "tensor_parallel_size": 2,
+      "tokenizer_revision": "11c9b309abf73637e4b6f9a3fa1e92e615547819",
+      "use_flashinfer_sampler": false
+    }
+  ],
+  "llm_defaults": {
+    "max_concurrency": 4,
+    "max_tokens": 1024,
+    "temperature": 0.0,
+    "timeout_s": 120
+  },
+  "places": [],
+  "scenario": {
+    "communication_mode": "free_text",
+    "hazard": {
+      "hazard_id": "inundation-zone-1",
+      "stages": [
+        {
+          "rectangles": [
+            {
+              "x_max": 25,
+              "x_min": -25,
+              "y_max": -8,
+              "y_min": -25
+            }
+          ],
+          "start_step": 10
+        },
+        {
+          "rectangles": [
+            {
+              "x_max": 25,
+              "x_min": -25,
+              "y_max": 0,
+              "y_min": -25
+            }
+          ],
+          "start_step": 30
+        }
+      ]
+    },
+    "initial_eligible_rectangles": [
+      {
+        "x_max": 25,
+        "x_min": -25,
+        "y_max": 17,
+        "y_min": -25
+      }
+    ],
+    "official_warning": {
+      "initial_recipient_ids": [
+        1
+      ],
+      "issue_step": 10,
+      "warning_id": "warning-inundation-1"
+    },
+    "refuges": [
+      {
+        "rectangle": {
+          "x_max": -18,
+          "x_min": -23,
+          "y_max": 23,
+          "y_min": 18
+        },
+        "refuge_id": "refuge-west"
+      },
+      {
+        "rectangle": {
+          "x_max": 23,
+          "x_min": 18,
+          "y_max": 23,
+          "y_min": 18
+        },
+        "refuge_id": "refuge-east"
+      }
+    ],
+    "schema_version": "disaster-scenario-v1.0.0",
+    "type": "disaster_v1"
+  },
+  "simulation": {
+    "duration": 60,
+    "execution_mode": "vllm_openai_compatible",
+    "failure_thresholds": {
+      "schema_validation_failures": 0,
+      "syntax_parse_failures": 0,
+      "transport_failures": 0
+    },
+    "half_space_size": 25,
+    "log_schema_version": "2.0.0",
+    "metric_spec_sha256": "cd0ca4fec67d945a2b878fe5c0c7e49391e9bacf10a3f7aa0a142f7962cbf711",
+    "metric_version": "disaster-metric-v2.0.0",
+    "prompt_contract_version": "bounded-prompts-v3.0.0",
+    "protocol_version": "disaster-llm-behavior-pilot-v1.0.0",
+    "research_eligible": false,
+    "response_contract_version": "phase-response-v3.0.0",
+    "response_failure_policy": "abort_run",
+    "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6202",
+    "run_name": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6202",
+    "seed": 6202,
+    "transport_behavior_version": "single-generation-strict-json-no-redirect-v3.0.0"
+  }
+}

@@ -17,13 +17,14 @@ from engine.disaster import (
     parse_disaster_scenario,
 )
 from engine.execution_contracts import (
+    BOUNDED_PROMPT_CONTRACT_VERSION,
     LEGACY_PROMPT_CONTRACT_VERSION,
     RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY,
     validate_prompt_contract_version,
     validate_response_failure_policy,
     validate_transport_behavior_version,
 )
-from engine import legacy_prompts_v1
+from engine import legacy_prompts_v1, prompts_v3
 from engine.llm_client import LLMTransportError, call_ollama, call_vllm
 from engine.parallel_transport import (
     LLMResponseSchemaError,
@@ -310,9 +311,18 @@ class Simulation:
                 )
                 prompt = prompt_builder(**common_prompt_args)
             else:
-                prompt_builder = (
-                    build_phase1_prompt if phase == "phase1" else build_phase3_prompt
-                )
+                if self.prompt_contract_version == BOUNDED_PROMPT_CONTRACT_VERSION:
+                    prompt_builder = (
+                        prompts_v3.build_phase1_prompt
+                        if phase == "phase1"
+                        else prompts_v3.build_phase3_prompt
+                    )
+                else:
+                    prompt_builder = (
+                        build_phase1_prompt
+                        if phase == "phase1"
+                        else build_phase3_prompt
+                    )
                 prompt = prompt_builder(
                     **common_prompt_args,
                     step=step if self.disaster else None,
@@ -325,6 +335,8 @@ class Simulation:
                     **(
                         {"response_contract_version": self.response_contract_version}
                         if phase == "phase3"
+                        and self.prompt_contract_version
+                        != BOUNDED_PROMPT_CONTRACT_VERSION
                         else {}
                     ),
                 )
@@ -362,7 +374,7 @@ class Simulation:
         )
         if phase_response_format is not None and request.provider != "vllm":
             raise ValueError(
-                "phase-response-v2.0.0 requires the vLLM provider"
+                f"{request.response_contract_version} requires the vLLM provider"
             )
         attempts: List[Dict[str, Any]] = []
         try:

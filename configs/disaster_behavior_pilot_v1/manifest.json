@@ -1,0 +1,158 @@
+{
+  "agent_count": 4,
+  "analysis_class": "prospective-descriptive-followup",
+  "attempt_set_policy": "retain-all-started-attempts-and-not-started-statuses-v1.0.0",
+  "batch_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z",
+  "communication_modes": [
+    "free_text"
+  ],
+  "duration": 60,
+  "formal_eligible": false,
+  "frozen_at_utc": "20260909T120500Z",
+  "log_schema_version": "2.0.0",
+  "max_concurrency": 4,
+  "max_tokens": 1024,
+  "maximum_gpu_count": 4,
+  "metric_spec_sha256": "cd0ca4fec67d945a2b878fe5c0c7e49391e9bacf10a3f7aa0a142f7962cbf711",
+  "metric_version": "disaster-metric-v2.0.0",
+  "models": [
+    "qwen",
+    "llama",
+    "gemma"
+  ],
+  "planned_gpu_count": 4,
+  "planned_http_attempts": 2880,
+  "planned_logical_llm_calls": 2880,
+  "planned_runs": 6,
+  "prompt_contract_version": "bounded-prompts-v3.0.0",
+  "protocol_version": "disaster-llm-behavior-pilot-v1.0.0",
+  "research_eligible": false,
+  "response_contract_version": "phase-response-v3.0.0",
+  "response_failure_policy": "abort_run",
+  "rows": [
+    {
+      "communication_mode": "free_text",
+      "composition": "qwen_only",
+      "expected_http_attempts": 480,
+      "expected_logical_llm_calls": 480,
+      "filename": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201.json",
+      "model_name": "qwen",
+      "ordinal": 1,
+      "research_eligible": false,
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201",
+      "seed": 6201,
+      "sha256": "a8e29b875368a89e1f62bf24e902ba40e34cb9f78678ac27c62e96d1de93add8"
+    },
+    {
+      "communication_mode": "free_text",
+      "composition": "llama_only",
+      "expected_http_attempts": 480,
+      "expected_logical_llm_calls": 480,
+      "filename": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201.json",
+      "model_name": "llama",
+      "ordinal": 2,
+      "research_eligible": false,
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6201",
+      "seed": 6201,
+      "sha256": "46b2417f39499cf454f016b7ef8d9cc25d830efd53d5a08cf5a5eef8ff8c286c"
+    },
+    {
+      "communication_mode": "free_text",
+      "composition": "gemma_only",
+      "expected_http_attempts": 480,
+      "expected_logical_llm_calls": 480,
+      "filename": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201.json",
+      "model_name": "gemma",
+      "ordinal": 3,
+      "research_eligible": false,
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6201",
+      "seed": 6201,
+      "sha256": "80ab991f1c12c815b52765bf0242038760e9259350f82f04ac87d53408ec3cac"
+    },
+    {
+      "communication_mode": "free_text",
+      "composition": "gemma_only",
+      "expected_http_attempts": 480,
+      "expected_logical_llm_calls": 480,
+      "filename": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6202.json",
+      "model_name": "gemma",
+      "ordinal": 4,
+      "research_eligible": false,
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-gemma-s6202",
+      "seed": 6202,
+      "sha256": "d62a11fb5d495cfec330373353e53e736d8339f5c10666d00c842f44193533e0"
+    },
+    {
+      "communication_mode": "free_text",
+      "composition": "llama_only",
+      "expected_http_attempts": 480,
+      "expected_logical_llm_calls": 480,
+      "filename": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6202.json",
+      "model_name": "llama",
+      "ordinal": 5,
+      "research_eligible": false,
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-llama-s6202",
+      "seed": 6202,
+      "sha256": "c16d9818659daed6dd4be1c81f3c5d47b7de928df5768678d84b3b96ac043749"
+    },
+    {
+      "communication_mode": "free_text",
+      "composition": "qwen_only",
+      "expected_http_attempts": 480,
+      "expected_logical_llm_calls": 480,
+      "filename": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6202.json",
+      "model_name": "qwen",
+      "ordinal": 6,
+      "research_eligible": false,
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6202",
+      "seed": 6202,
+      "sha256": "257edfc52054dc9d692644ece4eb5d4d1f2459be0ccc4dcaa742d9d60476e3dd"
+    }
+  ],
+  "run_order_policy": "seed6201-forward-seed6202-reverse-v1.0.0",
+  "schema_probe_http_attempts": 9,
+  "schema_version": "disaster-llm-behavior-pilot-manifest-v1.0.0",
+  "seeds": [
+    6201,
+    6202
+  ],
+  "server_layout": [
+    {
+      "gpu_ordinals": [
+        0
+      ],
+      "logical_endpoint_ids": [
+        "followup-qwen"
+      ],
+      "model_name": "qwen",
+      "server_id": "followup-qwen",
+      "tensor_parallel_size": 1
+    },
+    {
+      "gpu_ordinals": [
+        1
+      ],
+      "logical_endpoint_ids": [
+        "followup-llama"
+      ],
+      "model_name": "llama",
+      "server_id": "followup-llama",
+      "tensor_parallel_size": 1
+    },
+    {
+      "gpu_ordinals": [
+        2,
+        3
+      ],
+      "logical_endpoint_ids": [
+        "followup-gemma"
+      ],
+      "model_name": "gemma",
+      "server_id": "followup-gemma",
+      "tensor_parallel_size": 2
+    }
+  ],
+  "total_http_attempt_cap": 2889,
+  "transport_behavior_version": "single-generation-strict-json-no-redirect-v3.0.0",
+  "wall_time_limit_seconds": 3600
+}

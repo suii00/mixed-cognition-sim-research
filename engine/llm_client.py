@@ -3,11 +3,13 @@ import copy
 import hashlib
 import json
 import requests
+import threading
 from typing import Any, Callable, Dict, Optional, Tuple
 
 from engine.execution_contracts import (
     CURRENT_TRANSPORT_BEHAVIOR_VERSION,
     LEGACY_TRANSPORT_BEHAVIOR_VERSION,
+    NO_REDIRECT_TRANSPORT_BEHAVIOR_VERSION,
     validate_transport_behavior_version,
 )
 from engine.response_contracts import validate_phase_response_format
@@ -30,6 +32,17 @@ VLLM_ALLOWED_OVERRIDES = frozenset({
     "top_k",
     "top_p",
 })
+
+_DIRECT_HTTP_STATE = threading.local()
+
+
+def _direct_http_session() -> requests.Session:
+    session = getattr(_DIRECT_HTTP_STATE, "session", None)
+    if session is None:
+        session = requests.Session()
+        session.trust_env = False
+        _DIRECT_HTTP_STATE.session = session
+    return session
 
 
 def validate_ollama_overrides(llm_overrides: Optional[Dict]) -> Dict[str, Any]:
@@ -92,14 +105,28 @@ def _post_once(
     telemetry: Optional[TelemetryCallback],
     http_response_observer: Optional[HttpResponseObserver] = None,
     backend_name: str = "LLM backend",
+    allow_redirects: Optional[bool] = None,
 ):
     _emit(telemetry, "http_attempt")
     try:
-        response = requests.post(url, json=payload, timeout=timeout_s)
+        request_options = {"json": payload, "timeout": timeout_s}
+        if allow_redirects is not None:
+            request_options["allow_redirects"] = allow_redirects
+        post = (
+            _direct_http_session().post
+            if allow_redirects is False
+            else requests.post
+        )
+        response = post(url, **request_options)
         if http_response_observer is not None:
             http_response_observer(
                 int(response.status_code),
                 bytes(response.content),
+            )
+        if allow_redirects is False and not 200 <= int(response.status_code) < 300:
+            _emit(telemetry, "transport_failure")
+            raise LLMTransportError(
+                f"{backend_name} returned a non-success HTTP status"
             )
         response.raise_for_status()
         return response
@@ -255,6 +282,7 @@ def _call_chat_once(
     backend_name: str,
     generation_attempt: int = 1,
     extractor: Callable[[str], Optional[Dict]] = extract_json,
+    allow_redirects: Optional[bool] = None,
 ) -> Tuple[Optional[Dict], str]:
     attempt: Dict[str, Any] = {
         "generation_attempt": generation_attempt,
@@ -297,6 +325,7 @@ def _call_chat_once(
             telemetry,
             observe_http,
             backend_name,
+            allow_redirects,
         )
         envelope = _decode_response(
             response,
@@ -374,7 +403,10 @@ def _call_chat(
     transport_behavior_version: str,
 ) -> Tuple[Optional[Dict], str]:
     behavior = validate_transport_behavior_version(transport_behavior_version)
-    if behavior == CURRENT_TRANSPORT_BEHAVIOR_VERSION:
+    if behavior in {
+        CURRENT_TRANSPORT_BEHAVIOR_VERSION,
+        NO_REDIRECT_TRANSPORT_BEHAVIOR_VERSION,
+    }:
         return _call_chat_once(
             url=url,
             payload=payload,
@@ -385,6 +417,11 @@ def _call_chat(
             http_response_observer=http_response_observer,
             attempt_observer=attempt_observer,
             backend_name=backend_name,
+            allow_redirects=(
+                False
+                if behavior == NO_REDIRECT_TRANSPORT_BEHAVIOR_VERSION
+                else None
+            ),
         )
 
     if behavior != LEGACY_TRANSPORT_BEHAVIOR_VERSION:

@@ -48,13 +48,18 @@ from engine.disaster import (  # noqa: E402
 )
 from engine.config import validate_public_config_boundary  # noqa: E402
 from engine.execution_contracts import (  # noqa: E402
+    ABORT_RUN_RESPONSE_FAILURE_POLICY,
+    BOUNDED_PROMPT_CONTRACT_VERSION,
+    CURRENT_TRANSPORT_BEHAVIOR_VERSION,
     LEGACY_TRANSPORT_BEHAVIOR_VERSION,
+    NO_REDIRECT_TRANSPORT_BEHAVIOR_VERSION,
 )
 from engine.world import World  # noqa: E402
 from engine.response_contracts import (  # noqa: E402
-    CANONICAL_RESPONSE_CONTRACT_VERSION,
+    BOUNDED_RESPONSE_CONTRACT_VERSION,
     LEGACY_RESPONSE_CONTRACT_VERSION,
     PHASE_AWARE_VLLM_TRANSPORT_CONTRACT_VERSION,
+    STRUCTURED_RESPONSE_CONTRACT_VERSIONS,
     response_schema_sha256,
     validate_parsed_response,
     validate_response_contract_version,
@@ -370,7 +375,7 @@ def _check_config(
 
     recorded_contract_version = meta.get("response_contract_version")
     if recorded_contract_version is None:
-        if response_contract_version == CANONICAL_RESPONSE_CONTRACT_VERSION:
+        if response_contract_version in STRUCTURED_RESPONSE_CONTRACT_VERSIONS:
             report.error("run_meta.json is missing response_contract_version")
     elif recorded_contract_version != response_contract_version:
         report.error("response_contract_version differs from config snapshot")
@@ -380,18 +385,18 @@ def _check_config(
         isinstance(bloc, dict) and bloc.get("provider", "ollama") == "vllm"
         for bloc in blocs
     )
-    if response_contract_version == CANONICAL_RESPONSE_CONTRACT_VERSION:
+    if response_contract_version in STRUCTURED_RESPONSE_CONTRACT_VERSIONS:
         if not _is_nonempty_string(simulation.get("protocol_version")):
             report.error(
-                "phase-response-v2.0.0 requires an explicit protocol_version"
+                f"{response_contract_version} requires an explicit protocol_version"
             )
         if simulation.get("log_schema_version") != OBSERVABILITY_LOG_SCHEMA_VERSION:
             report.error(
-                "phase-response-v2.0.0 config must select log schema 2.0.0"
+                f"{response_contract_version} config must select log schema 2.0.0"
             )
         if meta.get("log_schema_version") != OBSERVABILITY_LOG_SCHEMA_VERSION:
             report.error(
-                "phase-response-v2.0.0 metadata must record log schema 2.0.0"
+                f"{response_contract_version} metadata must record log schema 2.0.0"
             )
         if meta.get("response_schema_sha256") != expected_schema_hash:
             report.error(
@@ -406,6 +411,23 @@ def _check_config(
             report.error(
                 "vllm_transport_contract_version must be the phase-aware v1.2.0 contract"
             )
+        if response_contract_version == BOUNDED_RESPONSE_CONTRACT_VERSION:
+            expected_execution_contracts = {
+                "prompt_contract_version": BOUNDED_PROMPT_CONTRACT_VERSION,
+                "transport_behavior_version": NO_REDIRECT_TRANSPORT_BEHAVIOR_VERSION,
+                "response_failure_policy": ABORT_RUN_RESPONSE_FAILURE_POLICY,
+            }
+            for key, expected in expected_execution_contracts.items():
+                if simulation.get(key) != expected:
+                    report.error(
+                        f"{response_contract_version} config must select "
+                        f"{key}={expected!r}"
+                    )
+                if meta.get(key) != expected:
+                    report.error(
+                        f"{response_contract_version} metadata must record "
+                        f"{key}={expected!r}"
+                    )
     elif recorded_contract_version is not None:
         if meta.get("response_schema_sha256") is not None:
             report.error("legacy response contract must not record a schema hash")
@@ -452,10 +474,11 @@ def _check_config(
             )
             continue
         derived_agents += count
-        if response_contract_version == CANONICAL_RESPONSE_CONTRACT_VERSION:
+        if response_contract_version in STRUCTURED_RESPONSE_CONTRACT_VERSIONS:
             if bloc.get("provider") != "vllm":
                 report.error(
-                    f"config.blocs[{index}] must use vllm under phase-response-v2.0.0"
+                    f"config.blocs[{index}] must use vllm under "
+                    f"{response_contract_version}"
                 )
             overrides = bloc.get("llm_overrides", {})
             if isinstance(overrides, dict) and "response_format" in overrides:
@@ -1039,7 +1062,7 @@ def _check_primary_records(
                 )
             if (
                 response_contract_version
-                == CANONICAL_RESPONSE_CONTRACT_VERSION
+                in STRUCTURED_RESPONSE_CONTRACT_VERSIONS
                 and isinstance(record.get("parsed"), dict)
             ):
                 try:
@@ -1100,7 +1123,7 @@ def _check_primary_records(
                 )
             if (
                 response_contract_version
-                == CANONICAL_RESPONSE_CONTRACT_VERSION
+                in STRUCTURED_RESPONSE_CONTRACT_VERSIONS
             ):
                 parsed = {
                     key: record.get(key)

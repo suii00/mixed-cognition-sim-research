@@ -12,6 +12,7 @@ from engine.parallel_transport import LLMRequest, TransportOutcome
 from engine.sim import Simulation
 from tests.test_disaster_scenario import scenario_config
 from tools.validate_run import validate_run
+from tools.disaster_metric_v2_core import prepare_run_analysis
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -232,6 +233,43 @@ class DisasterSimulationTests(unittest.TestCase):
         )
         self.assertIn('"warning_id":"warning-1"', recipient_prompt)
         self.assertEqual(validate_run(output, strict=True).errors, [])
+
+    def test_completed_schema2_runs_feed_metric_v2_without_schema_mocking(self):
+        spec_path = REPO_ROOT / "docs" / "DISASTER_METRIC_V2_SPEC.md"
+        spec_sha = hashlib.sha256(spec_path.read_bytes()).hexdigest()
+        for mode, exposed_count in (
+            ("free_text", 3),
+            ("structured_warning", 3),
+            ("communication_none", 0),
+        ):
+            with self.subTest(mode=mode):
+                _simulation, _transport, output = self.run_mode(mode)
+                before = {
+                    path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                    for path in output.iterdir()
+                    if path.is_file()
+                }
+                prepared = prepare_run_analysis(
+                    output,
+                    spec_sha,
+                    require_declared_metric=False,
+                )
+                after = {
+                    path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                    for path in output.iterdir()
+                    if path.is_file()
+                }
+                summary = json.loads(prepared.files["summary.json"])
+                analysis_meta = json.loads(
+                    prepared.files["analysis_meta.json"]
+                )
+                self.assertEqual(
+                    summary["warning_exposed_agent_count"], exposed_count
+                )
+                self.assertFalse(
+                    analysis_meta["source_declared_metric_matches_analysis"]
+                )
+                self.assertEqual(after, before)
 
 
 if __name__ == "__main__":

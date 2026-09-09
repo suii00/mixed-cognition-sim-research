@@ -1,10 +1,14 @@
 import copy
 import json
+import threading
 import unittest
+from concurrent.futures import ThreadPoolExecutor
 from unittest import mock
 
 import requests
 
+import engine.llm_client as llm_client
+from engine.execution_contracts import NO_REDIRECT_TRANSPORT_BEHAVIOR_VERSION
 from engine.llm_client import (
     LLMTransportError,
     build_vllm_chat_payload,
@@ -181,6 +185,78 @@ class VllmTransportTests(unittest.TestCase):
             },
             timeout=9,
         )
+
+    def test_no_redirect_v3_uses_direct_session_and_disables_redirects(self):
+        response = FakeResponse(envelope('{"message":"ok"}'))
+        direct_session = mock.Mock()
+        direct_session.post.return_value = response
+        with mock.patch(
+            "engine.llm_client._direct_http_session",
+            return_value=direct_session,
+        ), mock.patch(
+            "engine.llm_client.requests.post"
+        ) as ambient_post:
+            parsed, _raw = call_vllm(
+                prompt="exact prompt",
+                model="llama-3.1-8b-instruct",
+                base_url="http://127.0.0.1:8001",
+                transport_behavior_version=NO_REDIRECT_TRANSPORT_BEHAVIOR_VERSION,
+            )
+        self.assertEqual(parsed, {"message": "ok"})
+        ambient_post.assert_not_called()
+        direct_session.post.assert_called_once()
+        self.assertIs(
+            direct_session.post.call_args.kwargs["allow_redirects"], False
+        )
+
+    def test_direct_sessions_are_proxy_free_and_thread_local(self):
+        barrier = threading.Barrier(2)
+
+        def facts(_index):
+            session = llm_client._direct_http_session()
+            barrier.wait(timeout=5)
+            return id(session), session.trust_env
+
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            observed = list(executor.map(facts, range(2)))
+        self.assertEqual(len({session_id for session_id, _trust in observed}), 2)
+        self.assertTrue(all(trust is False for _session_id, trust in observed))
+
+    def test_no_redirect_v3_treats_3xx_as_one_terminal_attempt(self):
+        response = FakeResponse(
+            {"redirect": "blocked"},
+            status_code=307,
+            body=b'{"redirect":"blocked"}',
+        )
+        events = []
+        exchanges = []
+        direct_session = mock.Mock()
+        direct_session.post.return_value = response
+        with mock.patch(
+            "engine.llm_client._direct_http_session",
+            return_value=direct_session,
+        ):
+            with self.assertRaisesRegex(LLMTransportError, "non-success"):
+                call_vllm(
+                    prompt="prompt",
+                    model="model",
+                    base_url="http://127.0.0.1:8001",
+                    transport_behavior_version=(
+                        NO_REDIRECT_TRANSPORT_BEHAVIOR_VERSION
+                    ),
+                    telemetry=lambda event, amount: events.extend(
+                        [event] * amount
+                    ),
+                    http_response_observer=lambda status, body: exchanges.append(
+                        (status, body)
+                    ),
+                )
+        self.assertEqual(direct_session.post.call_count, 1)
+        self.assertIs(
+            direct_session.post.call_args.kwargs["allow_redirects"], False
+        )
+        self.assertEqual(exchanges, [(307, response.content)])
+        self.assertEqual(events, ["http_attempt", "transport_failure"])
 
     def test_invalid_json_is_not_retried(self):
         events = []

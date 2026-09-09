@@ -8,18 +8,21 @@ from engine.llm_client import validate_ollama_overrides, validate_vllm_overrides
 from engine.disaster import parse_disaster_scenario
 from engine.execution_contracts import (
     ABORT_RUN_RESPONSE_FAILURE_POLICY,
+    BOUNDED_PROMPT_CONTRACT_VERSION,
     CURRENT_PROMPT_CONTRACT_VERSION,
     CURRENT_TRANSPORT_BEHAVIOR_VERSION,
     LEGACY_PROMPT_CONTRACT_VERSION,
     LEGACY_TRANSPORT_BEHAVIOR_VERSION,
+    NO_REDIRECT_TRANSPORT_BEHAVIOR_VERSION,
     RECORD_AND_CONTINUE_RESPONSE_FAILURE_POLICY,
     validate_prompt_contract_version,
     validate_response_failure_policy,
     validate_transport_behavior_version,
 )
 from engine.response_contracts import (
-    CANONICAL_RESPONSE_CONTRACT_VERSION,
+    BOUNDED_RESPONSE_CONTRACT_VERSION,
     LEGACY_RESPONSE_CONTRACT_VERSION,
+    STRUCTURED_RESPONSE_CONTRACT_VERSIONS,
     validate_response_contract_version,
 )
 
@@ -285,33 +288,57 @@ def build_effective_config(config: Dict[str, Any]) -> Dict[str, Any]:
             )
         if "scenario" in effective:
             raise ValueError("legacy prompt reproduction does not support scenarios")
-    if response_contract_version == CANONICAL_RESPONSE_CONTRACT_VERSION:
+    if response_contract_version in STRUCTURED_RESPONSE_CONTRACT_VERSIONS:
+        contract_label = response_contract_version
         if not isinstance(simulation, dict):
             raise ValueError(
-                "phase-response-v2.0.0 requires simulation configuration"
+                f"{contract_label} requires simulation configuration"
             )
         protocol_version = simulation.get("protocol_version")
         if not isinstance(protocol_version, str) or not protocol_version:
             raise ValueError(
-                "phase-response-v2.0.0 requires an explicit protocol_version"
+                f"{contract_label} requires an explicit protocol_version"
             )
         if simulation.get("log_schema_version") != OBSERVABILITY_LOG_SCHEMA_VERSION:
             raise ValueError(
-                "phase-response-v2.0.0 requires log_schema_version "
+                f"{contract_label} requires log_schema_version "
                 f"'{OBSERVABILITY_LOG_SCHEMA_VERSION}'"
             )
-        if prompt_contract_version != CURRENT_PROMPT_CONTRACT_VERSION:
-            raise ValueError(
-                "phase-response-v2.0.0 requires the current prompt contract"
+        expected_prompt_contract = (
+            BOUNDED_PROMPT_CONTRACT_VERSION
+            if response_contract_version == BOUNDED_RESPONSE_CONTRACT_VERSION
+            else CURRENT_PROMPT_CONTRACT_VERSION
+        )
+        if prompt_contract_version != expected_prompt_contract:
+            prompt_label = (
+                "the bounded prompt contract"
+                if response_contract_version == BOUNDED_RESPONSE_CONTRACT_VERSION
+                else "the current prompt contract"
             )
-        if transport_behavior_version != CURRENT_TRANSPORT_BEHAVIOR_VERSION:
             raise ValueError(
-                "phase-response-v2.0.0 requires the current transport behavior"
+                f"{contract_label} requires {prompt_label}"
+            )
+        expected_transport_behavior = (
+            NO_REDIRECT_TRANSPORT_BEHAVIOR_VERSION
+            if response_contract_version == BOUNDED_RESPONSE_CONTRACT_VERSION
+            else CURRENT_TRANSPORT_BEHAVIOR_VERSION
+        )
+        if transport_behavior_version != expected_transport_behavior:
+            raise ValueError(
+                f"{contract_label} requires transport_behavior_version="
+                f"{expected_transport_behavior!r}"
             )
         if response_failure_policy != ABORT_RUN_RESPONSE_FAILURE_POLICY:
             raise ValueError(
-                "phase-response-v2.0.0 requires abort_run response failures"
+                f"{contract_label} requires abort_run response failures"
             )
+    if (
+        prompt_contract_version == BOUNDED_PROMPT_CONTRACT_VERSION
+        and response_contract_version != BOUNDED_RESPONSE_CONTRACT_VERSION
+    ):
+        raise ValueError(
+            "bounded-prompts-v3.0.0 requires phase-response-v3.0.0"
+        )
 
     blocs = effective.get("blocs")
     if isinstance(blocs, list):
@@ -329,15 +356,15 @@ def build_effective_config(config: Dict[str, Any]) -> Dict[str, Any]:
                 bloc["llm_overrides"] = validate_vllm_overrides(
                     bloc.get("llm_overrides")
                 )
-            if response_contract_version == CANONICAL_RESPONSE_CONTRACT_VERSION:
+            if response_contract_version in STRUCTURED_RESPONSE_CONTRACT_VERSIONS:
                 if provider != "vllm":
                     raise ValueError(
-                        "phase-response-v2.0.0 requires provider 'vllm' "
+                        f"{response_contract_version} requires provider 'vllm' "
                         f"for blocs[{bloc_index}]"
                     )
                 if "response_format" in bloc.get("llm_overrides", {}):
                     raise ValueError(
-                        "phase-response-v2.0.0 owns phase-specific "
+                        f"{response_contract_version} owns phase-specific "
                         f"response_format for blocs[{bloc_index}]"
                     )
     if "scenario" in effective:
