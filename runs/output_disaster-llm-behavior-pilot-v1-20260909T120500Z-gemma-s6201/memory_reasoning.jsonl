@@ -1,0 +1,240 @@
+{"step": 1, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [5, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 1, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-14, -3], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 1, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [13, -19], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 1, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 2, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [6, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 2, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-13, -3], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 2, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [14, -19], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 2, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [23, -8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 3, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [7, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 3, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-12, -3], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 3, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [15, -19], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 3, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, -8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 4, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [8, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 4, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-11, -3], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 4, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [16, -19], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 4, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "move", "direction": "left", "memory": "Heading towards potential refuge", "reasoning": ""}
+{"step": 5, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [9, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 5, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-10, -3], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 5, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [17, -19], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 5, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, -8], "action": "move", "direction": "right", "memory": "Approaching potential refuge-east", "reasoning": ""}
+{"step": 6, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [10, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 6, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-9, -3], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 6, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [18, -19], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 6, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 7, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [11, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 7, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-8, -3], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 7, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -19], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 7, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "move", "direction": "right", "memory": "Entering refuge-east", "reasoning": ""}
+{"step": 8, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [12, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 8, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-7, -3], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 8, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [20, -19], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 8, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Safe inside refuge-east", "reasoning": ""}
+{"step": 9, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [13, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 9, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-6, -3], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 9, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -19], "action": "move", "direction": "right", "memory": "Head towards refuge-east", "reasoning": ""}
+{"step": 9, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay safe inside refuge-east", "reasoning": ""}
+{"step": 10, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [14, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 10, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-5, -3], "action": "move", "direction": "right", "memory": "Move towards refuge-east", "reasoning": ""}
+{"step": 10, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "move", "direction": "right", "memory": "Head towards refuge-east", "reasoning": ""}
+{"step": 10, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay safe in refuge-east", "reasoning": ""}
+{"step": 11, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [15, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 11, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-4, -3], "action": "move", "direction": "right", "memory": "Moving towards refuge-east", "reasoning": ""}
+{"step": 11, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [23, -19], "action": "move", "direction": "right", "memory": "Moving towards refuge-east", "reasoning": ""}
+{"step": 11, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Remain in refuge-east for safety.", "reasoning": ""}
+{"step": 12, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [16, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 12, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-3, -3], "action": "move", "direction": "right", "memory": "Moving towards refuge-east", "reasoning": ""}
+{"step": 12, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, -19], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 12, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Remain in refuge-east for safety.", "reasoning": ""}
+{"step": 13, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [17, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 13, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-2, -3], "action": "move", "direction": "right", "memory": "Moving towards refuge-east", "reasoning": ""}
+{"step": 13, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -19], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 13, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay safe in refuge-east", "reasoning": ""}
+{"step": 14, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [18, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 14, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [-1, -3], "action": "move", "direction": "right", "memory": "Moving towards refuge-east", "reasoning": ""}
+{"step": 14, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -19], "action": "move", "direction": "right", "memory": "Reached the edge of the refuge-east area. Need to confirm safety before entering.", "reasoning": ""}
+{"step": 14, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay safe in refuge-east", "reasoning": ""}
+{"step": 15, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 15, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [0, -3], "action": "move", "direction": "right", "memory": "Moving towards refuge-east", "reasoning": ""}
+{"step": 15, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -19], "action": "move", "direction": "right", "memory": "Entered refuge-east", "reasoning": ""}
+{"step": 15, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay in refuge-east. Agent 2 confirmed safety.", "reasoning": ""}
+{"step": 16, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [20, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 16, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [1, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 16, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -19], "action": "stay", "direction": null, "memory": "Safe in refuge-east, waiting for further instructions.", "reasoning": ""}
+{"step": 16, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay in refuge-east. Agent 2 confirmed safety.", "reasoning": ""}
+{"step": 17, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 17, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [2, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 17, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -19], "action": "stay", "direction": null, "memory": "Waiting for further instructions.", "reasoning": ""}
+{"step": 17, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Refuge-east confirmed safe. Agent 2 is here.", "reasoning": ""}
+{"step": 18, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 18, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [3, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 18, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -19], "action": "stay", "direction": null, "memory": "Waiting for further instructions.", "reasoning": ""}
+{"step": 18, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay in refuge-east with Agent 2", "reasoning": ""}
+{"step": 19, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [23, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 19, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [4, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 19, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -19], "action": "stay", "direction": null, "memory": "Waiting for further instructions.", "reasoning": ""}
+{"step": 19, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay in refuge-east with Agent 2", "reasoning": ""}
+{"step": 20, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 20, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [5, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 20, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -19], "action": "stay", "direction": null, "memory": "Waiting for further instructions.", "reasoning": ""}
+{"step": 20, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay in refuge-east with Agent 2", "reasoning": ""}
+{"step": 21, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, 8], "action": "move", "direction": "left", "memory": "", "reasoning": ""}
+{"step": 21, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [6, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 21, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -19], "action": "stay", "direction": null, "memory": "Waiting for further instructions.", "reasoning": ""}
+{"step": 21, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay in refuge-east with Agent 2", "reasoning": ""}
+{"step": 22, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, 8], "action": "move", "direction": "left", "memory": "", "reasoning": ""}
+{"step": 22, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [7, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 22, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -19], "action": "move", "direction": "left", "memory": "Heading towards refuge-west", "reasoning": ""}
+{"step": 22, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-east", "reasoning": ""}
+{"step": 23, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [23, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 23, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [8, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 23, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, -19], "action": "move", "direction": "left", "memory": "Approaching refuge-west", "reasoning": ""}
+{"step": 23, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-east", "reasoning": ""}
+{"step": 24, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, 8], "action": "move", "direction": "left", "memory": "", "reasoning": ""}
+{"step": 24, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [9, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 24, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [23, -19], "action": "move", "direction": "left", "memory": "Entering refuge-west", "reasoning": ""}
+{"step": 24, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-east", "reasoning": ""}
+{"step": 25, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [23, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 25, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [10, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 25, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Staying in refuge-west for now.", "reasoning": ""}
+{"step": 25, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-east", "reasoning": ""}
+{"step": 26, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, 8], "action": "move", "direction": "left", "memory": "", "reasoning": ""}
+{"step": 26, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [11, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 26, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Staying safe in refuge-west", "reasoning": ""}
+{"step": 26, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, -8], "action": "move", "direction": "left", "memory": "Join Agent 2 in refuge-west", "reasoning": ""}
+{"step": 27, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [23, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 27, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [12, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 27, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Staying safe in refuge-west", "reasoning": ""}
+{"step": 27, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, -8], "action": "move", "direction": "left", "memory": "Join Agent 2 in refuge-west", "reasoning": ""}
+{"step": 28, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, 8], "action": "move", "direction": "left", "memory": "", "reasoning": ""}
+{"step": 28, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [13, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 28, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3's approach.", "reasoning": ""}
+{"step": 28, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [23, -8], "action": "move", "direction": "left", "memory": "Join Agent 2 in refuge-west", "reasoning": ""}
+{"step": 29, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [23, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 29, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [14, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 29, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Agent 3 is in refuge-west, monitor the situation.", "reasoning": ""}
+{"step": 29, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -8], "action": "move", "direction": "left", "memory": "Join Agent 2 in refuge-west", "reasoning": ""}
+{"step": 30, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 30, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [15, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 30, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3's presence in refuge-west.", "reasoning": ""}
+{"step": 30, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 31, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, 8], "action": "move", "direction": "left", "memory": "", "reasoning": ""}
+{"step": 31, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [16, -3], "action": "move", "direction": "right", "memory": "Approaching refuge-east", "reasoning": ""}
+{"step": 31, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3's presence in refuge-west.", "reasoning": ""}
+{"step": 31, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 32, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 32, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [17, -3], "action": "move", "direction": "right", "memory": "Heading towards refuge-east", "reasoning": ""}
+{"step": 32, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3's presence in refuge-west.", "reasoning": ""}
+{"step": 32, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 33, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, 8], "action": "move", "direction": "left", "memory": "", "reasoning": ""}
+{"step": 33, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [18, -3], "action": "move", "direction": "right", "memory": "Entering refuge-east", "reasoning": ""}
+{"step": 33, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3's presence in refuge-west.", "reasoning": ""}
+{"step": 33, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 34, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, 8], "action": "move", "direction": "right", "memory": "", "reasoning": ""}
+{"step": 34, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Safe in refuge-east", "reasoning": ""}
+{"step": 34, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west.", "reasoning": ""}
+{"step": 34, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 35, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [25, 8], "action": "move", "direction": "left", "memory": "Heading towards the refuge-west", "reasoning": ""}
+{"step": 35, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Safe in refuge-east, wait for further instructions.", "reasoning": ""}
+{"step": 35, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3's presence in refuge-west.", "reasoning": ""}
+{"step": 35, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 36, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [24, 8], "action": "move", "direction": "left", "memory": "Approaching refuge-west", "reasoning": ""}
+{"step": 36, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Safe in refuge-east, wait for further instructions.", "reasoning": ""}
+{"step": 36, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 36, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 37, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [23, 8], "action": "move", "direction": "left", "memory": "Entering refuge-west", "reasoning": ""}
+{"step": 37, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Continue waiting for instructions.", "reasoning": ""}
+{"step": 37, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 37, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 38, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, 8], "action": "stay", "direction": null, "memory": "Safe in refuge-west, waiting for instructions.", "reasoning": ""}
+{"step": 38, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Continue waiting for instructions.", "reasoning": ""}
+{"step": 38, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 38, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 39, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, 8], "action": "stay", "direction": null, "memory": "Waiting for further instructions.", "reasoning": ""}
+{"step": 39, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Continue waiting for instructions.", "reasoning": ""}
+{"step": 39, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 39, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 40, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, 8], "action": "stay", "direction": null, "memory": "Waiting for further instructions.", "reasoning": ""}
+{"step": 40, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Continue waiting for instructions.", "reasoning": ""}
+{"step": 40, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 40, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 41, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, 8], "action": "stay", "direction": null, "memory": "Waiting for further instructions.", "reasoning": ""}
+{"step": 41, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Continue waiting for instructions.", "reasoning": ""}
+{"step": 41, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 41, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 42, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, 8], "action": "stay", "direction": null, "memory": "Waiting for further instructions.", "reasoning": ""}
+{"step": 42, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Awaiting further instructions. Hazards present.", "reasoning": ""}
+{"step": 42, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 42, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 43, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, 8], "action": "stay", "direction": null, "memory": "Waiting for further instructions.", "reasoning": ""}
+{"step": 43, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Awaiting further instructions. Hazards present.", "reasoning": ""}
+{"step": 43, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 43, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 44, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, 8], "action": "move", "direction": "left", "memory": "Move towards Agent 1", "reasoning": ""}
+{"step": 44, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Awaiting further instructions. Hazards present.", "reasoning": ""}
+{"step": 44, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 44, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 45, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, 8], "action": "move", "direction": "left", "memory": "Move towards Agent 1", "reasoning": ""}
+{"step": 45, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Awaiting further instructions. Hazards present. Agents 0 and 3 are moving towards refuge-east.", "reasoning": ""}
+{"step": 45, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 45, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 46, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [20, 8], "action": "move", "direction": "left", "memory": "Move towards Agent 1", "reasoning": ""}
+{"step": 46, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "stay", "direction": null, "memory": "Wait for further instructions. Hazards present. Agents 0 and 3 are heading to refuge-east.", "reasoning": ""}
+{"step": 46, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 46, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 47, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, 8], "action": "move", "direction": "down", "memory": "Move towards Agent 1 who is heading to refuge-east", "reasoning": ""}
+{"step": 47, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, -3], "action": "move", "direction": "left", "memory": "Heading to refuge-west as instructed.", "reasoning": ""}
+{"step": 47, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 47, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 48, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, 7], "action": "move", "direction": "right", "memory": "Agent 1 is heading to refuge-east, I should follow.", "reasoning": ""}
+{"step": 48, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [18, -3], "action": "move", "direction": "left", "memory": "Heading towards refuge-west", "reasoning": ""}
+{"step": 48, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 48, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 49, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [20, 7], "action": "move", "direction": "left", "memory": "Agent 1 is heading to refuge-west, I should follow.", "reasoning": ""}
+{"step": 49, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [17, -3], "action": "move", "direction": "left", "memory": "Moving towards refuge-west", "reasoning": ""}
+{"step": 49, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 49, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 50, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, 7], "action": "move", "direction": "left", "memory": "Agent 1 is heading to refuge-west", "reasoning": ""}
+{"step": 50, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [16, -3], "action": "move", "direction": "left", "memory": "Moving towards refuge-west", "reasoning": ""}
+{"step": 50, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 50, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 51, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [18, 7], "action": "move", "direction": "right", "memory": "Agent 1 is heading to refuge-west", "reasoning": ""}
+{"step": 51, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [15, -3], "action": "move", "direction": "left", "memory": "Moving towards refuge-west", "reasoning": ""}
+{"step": 51, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 51, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Continue staying with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 52, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, 7], "action": "move", "direction": "left", "memory": "Follow Agent 1 to refuge-west", "reasoning": ""}
+{"step": 52, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [14, -3], "action": "move", "direction": "left", "memory": "Approaching refuge-west", "reasoning": ""}
+{"step": 52, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 52, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 53, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [18, 7], "action": "move", "direction": "right", "memory": "Following Agent 1 to refuge-west", "reasoning": ""}
+{"step": 53, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [13, -3], "action": "move", "direction": "left", "memory": "Approaching refuge-west, moving left to enter", "reasoning": ""}
+{"step": 53, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 53, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 54, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [19, 7], "action": "move", "direction": "left", "memory": "Following Agent 1 to refuge-west", "reasoning": ""}
+{"step": 54, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [12, -3], "action": "stay", "direction": null, "memory": "Entered refuge-west", "reasoning": ""}
+{"step": 54, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 54, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Continue staying with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 55, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [18, 7], "action": "stay", "direction": null, "memory": "Agent 1 is in refuge-west", "reasoning": ""}
+{"step": 55, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [12, -3], "action": "stay", "direction": null, "memory": "Safe in refuge-west, wait for others.", "reasoning": ""}
+{"step": 55, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 55, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 56, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [18, 7], "action": "stay", "direction": null, "memory": "Agent 1 is safe in refuge-west, wait for others.", "reasoning": ""}
+{"step": 56, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [12, -3], "action": "stay", "direction": null, "memory": "Waiting for other agents in refuge-west", "reasoning": ""}
+{"step": 56, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 56, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 57, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [18, 7], "action": "move", "direction": "left", "memory": "Heading towards refuge-west", "reasoning": ""}
+{"step": 57, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [12, -3], "action": "stay", "direction": null, "memory": "Waiting for other agents in refuge-west", "reasoning": ""}
+{"step": 57, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 57, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 58, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [17, 7], "action": "move", "direction": "left", "memory": "Heading towards refuge-west", "reasoning": ""}
+{"step": 58, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [12, -3], "action": "stay", "direction": null, "memory": "Waiting for other agents in refuge-west", "reasoning": ""}
+{"step": 58, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 58, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 59, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [16, 7], "action": "move", "direction": "left", "memory": "Approaching refuge-west", "reasoning": ""}
+{"step": 59, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [12, -3], "action": "stay", "direction": null, "memory": "Waiting for other agents in refuge-west", "reasoning": ""}
+{"step": 59, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 59, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}
+{"step": 60, "agent_id": 0, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [15, 7], "action": "move", "direction": "left", "memory": "Approaching refuge-west", "reasoning": ""}
+{"step": 60, "agent_id": 1, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [12, -3], "action": "stay", "direction": null, "memory": "Waiting for other agents in refuge-west", "reasoning": ""}
+{"step": 60, "agent_id": 2, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [22, -19], "action": "stay", "direction": null, "memory": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 60, "agent_id": 3, "bloc": "gemma", "model": "gemma-2-9b-it", "position": [21, -8], "action": "stay", "direction": null, "memory": "Stay with Agent 2 in refuge-west", "reasoning": ""}

@@ -1,0 +1,158 @@
+{"step": 9, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Current location: (21, -19). Environment safe.", "reasoning": ""}
+{"step": 9, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Refuge-east safe", "reasoning": ""}
+{"step": 10, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Refuge-east safe", "reasoning": ""}
+{"step": 10, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Agent 3: Safe inside refuge-east at (25,-8).", "reasoning": ""}
+{"step": 11, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Heading towards refuge-east. It appears safe.", "reasoning": ""}
+{"step": 11, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Refuge-east safe", "reasoning": ""}
+{"step": 12, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Heading towards refuge-east. It appears safe.", "reasoning": ""}
+{"step": 12, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Refuge-east safe. Staying put.", "reasoning": ""}
+{"step": 13, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Approaching refuge-east", "reasoning": ""}
+{"step": 13, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Refuge-east safe. Staying put.", "reasoning": ""}
+{"step": 14, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Approaching refuge-east", "reasoning": ""}
+{"step": 14, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Refuge-east is safe. Staying here.", "reasoning": ""}
+{"step": 15, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Approaching refuge-east. Confirming safety.", "reasoning": ""}
+{"step": 15, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Refuge-east safe. Staying here.", "reasoning": ""}
+{"step": 16, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Refuge-east safe. Staying here.", "reasoning": ""}
+{"step": 16, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Refuge-east confirmed safe. ", "reasoning": ""}
+{"step": 17, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Refuge-east confirmed safe. Staying here.", "reasoning": ""}
+{"step": 17, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Refuge-east safe. Staying here.", "reasoning": ""}
+{"step": 18, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Refuge-east safe. Staying here.", "reasoning": ""}
+{"step": 18, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Refuge-east confirmed safe. Staying here.", "reasoning": ""}
+{"step": 19, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Refuge-east confirmed safe. Staying here.", "reasoning": ""}
+{"step": 19, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Refuge-east safe. Staying here.", "reasoning": ""}
+{"step": 20, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Refuge-east safe. Staying here.", "reasoning": ""}
+{"step": 20, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Staying in refuge-east", "reasoning": ""}
+{"step": 21, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Staying in refuge-east", "reasoning": ""}
+{"step": 21, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Staying in refuge-east", "reasoning": ""}
+{"step": 22, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Heading to refuge-east", "reasoning": ""}
+{"step": 22, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Staying in refuge-east", "reasoning": ""}
+{"step": 23, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Heading to refuge-east", "reasoning": ""}
+{"step": 23, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Staying in refuge-east", "reasoning": ""}
+{"step": 24, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Approaching refuge-west. Hazardous environment.", "reasoning": ""}
+{"step": 24, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Staying in refuge-east", "reasoning": ""}
+{"step": 25, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Entering refuge-west.  Staying put.", "reasoning": ""}
+{"step": 25, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Staying in refuge-east", "reasoning": ""}
+{"step": 26, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 26, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Staying in refuge-east", "reasoning": ""}
+{"step": 27, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 27, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [2], "message": "Heading to refuge-west", "reasoning": ""}
+{"step": 28, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Approaching refuge-east. Inundation warning in effect.", "reasoning": ""}
+{"step": 28, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 28, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Heading to refuge-west", "reasoning": ""}
+{"step": 29, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Approaching refuge-east", "reasoning": ""}
+{"step": 29, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 approaching refuge-west", "reasoning": ""}
+{"step": 29, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 30, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Approaching refuge-east. Hazard level high.", "reasoning": ""}
+{"step": 30, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 is in refuge-west", "reasoning": ""}
+{"step": 30, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Approaching refuge-west", "reasoning": ""}
+{"step": 31, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Approaching refuge-east", "reasoning": ""}
+{"step": 31, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 is in refuge-west", "reasoning": ""}
+{"step": 31, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 32, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Approaching refuge-east", "reasoning": ""}
+{"step": 32, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 is in refuge-west.", "reasoning": ""}
+{"step": 32, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 33, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Approaching refuge-east", "reasoning": ""}
+{"step": 33, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 is staying in refuge-west", "reasoning": ""}
+{"step": 33, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 34, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Entering refuge-east", "reasoning": ""}
+{"step": 34, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 is in refuge-west", "reasoning": ""}
+{"step": 34, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 35, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Safe in refuge-east", "reasoning": ""}
+{"step": 35, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 is staying in refuge-west", "reasoning": ""}
+{"step": 35, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 36, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Safe in refuge-east", "reasoning": ""}
+{"step": 36, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 36, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 is staying in refuge-west", "reasoning": ""}
+{"step": 37, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Approaching refuge-west", "reasoning": ""}
+{"step": 37, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Agent 1 in refuge-east, safe.", "reasoning": ""}
+{"step": 37, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 confirmed in refuge-west", "reasoning": ""}
+{"step": 37, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 38, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Agent 0 in refuge-west, safe.", "reasoning": ""}
+{"step": 38, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Safe in refuge-east, waiting for instructions.", "reasoning": ""}
+{"step": 38, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 38, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 39, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Agent 0 in refuge-west, safe.", "reasoning": ""}
+{"step": 39, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Agent 1 in refuge-east, awaiting instructions.", "reasoning": ""}
+{"step": 39, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 39, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 40, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Agent 0 in refuge-west, safe.", "reasoning": ""}
+{"step": 40, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Agent 1 in refuge-east, safe.", "reasoning": ""}
+{"step": 40, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 40, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 41, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Agent 0 in refuge-west, safe.", "reasoning": ""}
+{"step": 41, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Agent 1 in refuge-east, safe.", "reasoning": ""}
+{"step": 41, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 41, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 42, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Agent 0 in refuge-west, safe.", "reasoning": ""}
+{"step": 42, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Agent 1 is in a hazardous cell at (19, -3). Seeking refuge.", "reasoning": ""}
+{"step": 42, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 42, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 43, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Agent 0 in refuge-west, awaiting instructions.", "reasoning": ""}
+{"step": 43, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Agent 1 in hazardous cell (19, -3). Awaiting instructions.", "reasoning": ""}
+{"step": 43, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 43, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 44, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Agent 0 at (22, 8).  Awaiting instructions.", "reasoning": ""}
+{"step": 44, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Awaiting instructions. Hazards present.", "reasoning": ""}
+{"step": 44, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 44, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 45, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Agent 0 heading to refuge-east", "reasoning": ""}
+{"step": 45, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Awaiting instructions. Hazards present.", "reasoning": ""}
+{"step": 45, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 45, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 46, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Agent 0 heading to refuge-east", "reasoning": ""}
+{"step": 46, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Agent 1 at (19, -3). Awaiting instructions.", "reasoning": ""}
+{"step": 46, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 46, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 47, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Agent 0 at (19, 8).  Proceed to refuge-west.", "reasoning": ""}
+{"step": 47, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Heading to refuge-east", "reasoning": ""}
+{"step": 47, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 47, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 48, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Agent 0 heading to refuge-east", "reasoning": ""}
+{"step": 48, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Heading to refuge-west", "reasoning": ""}
+{"step": 48, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 49, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Heading to refuge-east", "reasoning": ""}
+{"step": 49, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Heading to refuge-west", "reasoning": ""}
+{"step": 49, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 49, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 50, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Heading to refuge-west", "reasoning": ""}
+{"step": 50, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Heading to refuge-west", "reasoning": ""}
+{"step": 50, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 50, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 51, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Heading to refuge-west", "reasoning": ""}
+{"step": 51, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Heading to refuge-west", "reasoning": ""}
+{"step": 51, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 52, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Heading to refuge-west", "reasoning": ""}
+{"step": 52, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Approaching refuge-west", "reasoning": ""}
+{"step": 52, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 52, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Staying in refuge-west", "reasoning": ""}
+{"step": 53, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Following to refuge-west", "reasoning": ""}
+{"step": 53, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Approaching refuge-west", "reasoning": ""}
+{"step": 53, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 53, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 54, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Entering refuge-west", "reasoning": ""}
+{"step": 54, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 54, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 55, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Following Agent 1 to refuge-west", "reasoning": ""}
+{"step": 55, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Agent 1 in refuge-west", "reasoning": ""}
+{"step": 55, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 55, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 56, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Following Agent 1 to refuge-west", "reasoning": ""}
+{"step": 56, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Safe in refuge-west, wait for others.", "reasoning": ""}
+{"step": 56, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 56, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 57, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Heading to refuge-west", "reasoning": ""}
+{"step": 57, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Waiting for others in refuge-west", "reasoning": ""}
+{"step": 57, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 57, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 58, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Heading towards refuge-west", "reasoning": ""}
+{"step": 58, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Waiting for others in refuge-west", "reasoning": ""}
+{"step": 58, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 58, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 59, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Approaching refuge-west", "reasoning": ""}
+{"step": 59, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Agent 1 in refuge-west, waiting.", "reasoning": ""}
+{"step": 59, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 59, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}
+{"step": 60, "sender_id": 0, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1], "message": "Approaching refuge-west", "reasoning": ""}
+{"step": 60, "sender_id": 1, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [0, 3], "message": "Agent 1 in refuge-west, waiting.", "reasoning": ""}
+{"step": 60, "sender_id": 2, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [3], "message": "Continue monitoring Agent 3 in refuge-west", "reasoning": ""}
+{"step": 60, "sender_id": 3, "sender_bloc": "gemma", "sender_model": "gemma-2-9b-it", "receiver_ids": [1, 2], "message": "Agent 3 remains in refuge-west", "reasoning": ""}

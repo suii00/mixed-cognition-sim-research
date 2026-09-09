@@ -1,0 +1,325 @@
+{
+  "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201",
+  "run_name": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201",
+  "protocol_version": "disaster-llm-behavior-pilot-v1.0.0",
+  "log_schema_version": "2.0.0",
+  "metric_version": "disaster-metric-v2.0.0",
+  "response_contract_version": "phase-response-v3.0.0",
+  "prompt_contract_version": "bounded-prompts-v3.0.0",
+  "transport_behavior_version": "single-generation-strict-json-no-redirect-v3.0.0",
+  "response_failure_policy": "abort_run",
+  "response_schema_sha256": "b5c4011a7c64bf7c5556ed8bdb20a6942b3318e295adaa86dcc109301951698e",
+  "response_schema_hash_algorithm": "sha256-canonical-json-v1",
+  "vllm_transport_contract_version": "vllm-openai-compatible-transport-v1.2.0",
+  "start_time_utc": "2026-09-09T12:44:23.724669+00:00",
+  "end_time_utc": "2026-09-09T12:46:15.369654+00:00",
+  "start_time": "2026-09-09T12:44:23.724669+00:00",
+  "end_time": "2026-09-09T12:46:15.369654+00:00",
+  "status": "completed",
+  "aborted": false,
+  "abort_reason": null,
+  "failure_step": null,
+  "failure_phase": null,
+  "failure_agent_id": null,
+  "failure_exception_type": null,
+  "expected_steps": 60,
+  "completed_steps": 60,
+  "expected_agents": 4,
+  "observed_agents": 4,
+  "logical_llm_calls": 480,
+  "http_attempts": 480,
+  "generation_retries": 0,
+  "transport_failures": 0,
+  "syntax_parse_attempt_failures": 0,
+  "syntax_parse_failures": 0,
+  "schema_validation_failures": 0,
+  "schema_validation_supported": true,
+  "terminal_record_schema_version": "1.0.0",
+  "failure_thresholds": {
+    "transport_failures": 0,
+    "syntax_parse_failures": 0,
+    "schema_validation_failures": 0
+  },
+  "git_sha": "625380e7f96dc498a796c1e858f2d5d02d17c2a1",
+  "git_dirty": false,
+  "git_probe_status": "available",
+  "git_probe_errors": [],
+  "config": {
+    "agents": {
+      "communication_radius": 12,
+      "edge_policy": "full",
+      "memory_limit": 20,
+      "memory_size": 5,
+      "message_context_size": 5,
+      "message_history_limit": 20
+    },
+    "blocs": [
+      {
+        "backend_version": "0.27.1",
+        "chat_template": "tokenizer_config.json:chat_template:sha256:cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+        "data_parallel_size": 1,
+        "device_slot": "followup-qwen-tp1",
+        "dtype": "bfloat16",
+        "endpoint_id": "followup-qwen",
+        "flashinfer_mode": "disabled",
+        "generation_config": "vllm",
+        "gpu_memory_utilization": 0.9,
+        "llm_overrides": {},
+        "max_model_len": 4096,
+        "model": "qwen2.5-7b-instruct",
+        "model_digest": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "model_source": "Qwen/Qwen2.5-7B-Instruct",
+        "name": "qwen",
+        "num_agents": 4,
+        "provider": "vllm",
+        "quantization": "none",
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28"
+      }
+    ],
+    "llm_defaults": {
+      "max_concurrency": 4,
+      "max_tokens": 1024,
+      "temperature": 0.0,
+      "timeout_s": 120
+    },
+    "places": [],
+    "scenario": {
+      "communication_mode": "free_text",
+      "hazard": {
+        "hazard_id": "inundation-zone-1",
+        "stages": [
+          {
+            "rectangles": [
+              {
+                "x_max": 25,
+                "x_min": -25,
+                "y_max": -8,
+                "y_min": -25
+              }
+            ],
+            "start_step": 10
+          },
+          {
+            "rectangles": [
+              {
+                "x_max": 25,
+                "x_min": -25,
+                "y_max": 0,
+                "y_min": -25
+              }
+            ],
+            "start_step": 30
+          }
+        ]
+      },
+      "initial_eligible_rectangles": [
+        {
+          "x_max": 25,
+          "x_min": -25,
+          "y_max": 17,
+          "y_min": -25
+        }
+      ],
+      "official_warning": {
+        "initial_recipient_ids": [
+          1
+        ],
+        "issue_step": 10,
+        "warning_id": "warning-inundation-1"
+      },
+      "refuges": [
+        {
+          "rectangle": {
+            "x_max": -18,
+            "x_min": -23,
+            "y_max": 23,
+            "y_min": 18
+          },
+          "refuge_id": "refuge-west"
+        },
+        {
+          "rectangle": {
+            "x_max": 23,
+            "x_min": 18,
+            "y_max": 23,
+            "y_min": 18
+          },
+          "refuge_id": "refuge-east"
+        }
+      ],
+      "schema_version": "disaster-scenario-v1.0.0",
+      "type": "disaster_v1"
+    },
+    "simulation": {
+      "duration": 60,
+      "execution_mode": "vllm_openai_compatible",
+      "failure_thresholds": {
+        "schema_validation_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "half_space_size": 25,
+      "log_schema_version": "2.0.0",
+      "metric_spec_sha256": "cd0ca4fec67d945a2b878fe5c0c7e49391e9bacf10a3f7aa0a142f7962cbf711",
+      "metric_version": "disaster-metric-v2.0.0",
+      "prompt_contract_version": "bounded-prompts-v3.0.0",
+      "protocol_version": "disaster-llm-behavior-pilot-v1.0.0",
+      "research_eligible": false,
+      "response_contract_version": "phase-response-v3.0.0",
+      "response_failure_policy": "abort_run",
+      "run_id": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201",
+      "run_name": "disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201",
+      "seed": 6201,
+      "transport_behavior_version": "single-generation-strict-json-no-redirect-v3.0.0"
+    }
+  },
+  "config_hash": "2b6e93936a539e220cb70ed00ece9cafd46d87fad0bf238d1841197814238a4c",
+  "config_hash_algorithm": "sha256-canonical-json-v1",
+  "prompt_hash": "a2c1a15c9f71c0e844e2c4173dbf7b13aa4be4bcaced1aff81a4c946dcbe6f0f",
+  "prompt_hash_algorithm": "sha256-file-bytes",
+  "execution_identity_policy": "logical-endpoints-only-v1",
+  "os": "Linux",
+  "platform": "Linux-5.15.0-187-generic-x86_64-with-glibc2.35",
+  "runtime_probe_errors": [],
+  "python_version": "3.12.14 (main, Aug 14 2026, 15:34:45) [Clang 22.1.3 ]",
+  "dependencies": {
+    "requests": "2.34.2",
+    "PyYAML": "6.0.3",
+    "matplotlib": null,
+    "Pillow": "12.3.0",
+    "huggingface-hub": "1.28.0",
+    "pydantic": "2.13.4",
+    "tokenizers": "0.22.2",
+    "torch": "2.13.0+cu132",
+    "transformers": "5.15.1",
+    "vllm": "0.27.1",
+    "flashinfer-python": "0.6.16.post3"
+  },
+  "dependencies_probe_status": "partial",
+  "dependencies_probe_errors": [
+    "matplotlib:version_unavailable"
+  ],
+  "gpu_info": {
+    "status": "available",
+    "error": null,
+    "driver_version": "595.84",
+    "cuda_version": "13.2",
+    "cuda_probe_status": "available",
+    "cuda_probe_error": null,
+    "malformed_device_rows": 0,
+    "devices": [
+      {
+        "index": "0",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "1",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "2",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "3",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "4",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "5",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "6",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      },
+      {
+        "index": "7",
+        "name": "NVIDIA RTX A5000",
+        "memory_total_mib": "24564"
+      }
+    ]
+  },
+  "models": [
+    {
+      "bloc": "qwen",
+      "provider": "vllm",
+      "model": "qwen2.5-7b-instruct",
+      "model_digest": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "quantization": "none",
+      "chat_template_hash": "cd5892af132b18331c83ad51a14becf7e165c3ad9124d6f00507af540fe08aef",
+      "detail_source": "config",
+      "endpoint_id": "followup-qwen",
+      "device_slot": "followup-qwen-tp1",
+      "endpoint_assignment_policy": null
+    }
+  ],
+  "raw_manifest": {
+    "algorithm": "sha256",
+    "files": {
+      "phase1_raw.jsonl": {
+        "sha256": "8e5806439097aa50a40a903303c10b10bf96cf8ca3faf5536ef731b554f082ad",
+        "bytes": 73692,
+        "lines": 240
+      },
+      "messages.jsonl": {
+        "sha256": "1a7d9ab8e054718469fc779d4eb3b4e2422ea96c833883e8991a3a9ad7c6c1a7",
+        "bytes": 8465,
+        "lines": 40
+      },
+      "memory_reasoning.jsonl": {
+        "sha256": "1d5193f72719d8f7189ba7771b10b063a76ef46a8eec4a5527630042436c913c",
+        "bytes": 49529,
+        "lines": 240
+      },
+      "parse_errors.jsonl": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "lines": 0
+      },
+      "llm_attempts.jsonl": {
+        "sha256": "c3a134507c35ac03b58f65001d72c701a4b85aa58d89c8400a0d7b2301e1b074",
+        "bytes": 1407352,
+        "lines": 480
+      },
+      "termination.jsonl": {
+        "sha256": "d27acbff8258186c84a1a2ecc2f46d2e9fc1e32a674c9789b872fd59cac8bc97",
+        "bytes": 413,
+        "lines": 1
+      },
+      "world_events.jsonl": {
+        "sha256": "9cb77c8cf275ef8a26c055062dbe398881a5458efecace22460811bc779cc64c",
+        "bytes": 14307,
+        "lines": 61
+      },
+      "positions.jsonl": {
+        "sha256": "34abc1fb3f019c5d482c0b8327c6606ca9b7cdbb6f49db2d191a26c0d4b22ce3",
+        "bytes": 75947,
+        "lines": 244
+      },
+      "warning_events.jsonl": {
+        "sha256": "7b75c40768c1d450e77a8ff8b97b22c4d87b1c19c2b63713d492f73d524438f0",
+        "bytes": 1095,
+        "lines": 2
+      }
+    }
+  },
+  "raw_manifest_status": "available",
+  "raw_manifest_error": null,
+  "output_directory": "output_disaster-llm-behavior-pilot-v1-20260909T120500Z-qwen-s6201",
+  "seed": 6201,
+  "total_llm_calls": 480,
+  "parse_errors": 0,
+  "parse_error_rate": 0.0
+}
