@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import copy
 import hashlib
 import json
 import math
@@ -52,9 +53,21 @@ from engine.execution_contracts import (  # noqa: E402
     BOUNDED_PROMPT_CONTRACT_VERSION,
     CURRENT_TRANSPORT_BEHAVIOR_VERSION,
     LEGACY_TRANSPORT_BEHAVIOR_VERSION,
+    LEGACY_PROMPT_CONTRACT_VERSION,
     NO_REDIRECT_TRANSPORT_BEHAVIOR_VERSION,
 )
+from engine import legacy_prompts_v1, prompts, prompts_v3  # noqa: E402
 from engine.world import World  # noqa: E402
+from engine.message_selection import (  # noqa: E402
+    MESSAGE_PRESENTATION_VERSION,
+    PROMPT_INPUTS_FILE,
+    RECENT_MESSAGE_SELECTION_POLICY,
+    RETAIN_OFFICIAL_WARNING_SELECTION_POLICY,
+    validate_input_observability_version,
+    validate_message_selection_policy,
+    validate_retention_limits,
+)
+from engine.prompts import format_messages_section  # noqa: E402
 from engine.response_contracts import (  # noqa: E402
     BOUNDED_RESPONSE_CONTRACT_VERSION,
     LEGACY_RESPONSE_CONTRACT_VERSION,
@@ -364,6 +377,29 @@ def _check_config(
     if not isinstance(blocs, list):
         report.error("config.blocs must be an array")
         return config
+
+    try:
+        input_version = validate_input_observability_version(
+            simulation.get("input_observability_version")
+        )
+        agents = config.get("agents", {})
+        selection_policy = validate_message_selection_policy(
+            agents.get("message_selection_policy", RECENT_MESSAGE_SELECTION_POLICY)
+        )
+        validate_retention_limits(
+            selection_policy,
+            agents.get("message_history_limit"),
+            agents.get("message_context_size"),
+        )
+        if input_version is not None:
+            if meta.get("input_observability_version") != input_version:
+                report.error("input_observability_version differs from config snapshot")
+            if meta.get("log_schema_version") != OBSERVABILITY_LOG_SCHEMA_VERSION:
+                report.error("input observability requires log schema 2.0.0")
+        elif meta.get("input_observability_version") is not None:
+            report.error("input_observability_version differs from config snapshot")
+    except (ValueError, AttributeError) as error:
+        report.error(f"invalid message selection/input observability config: {error}")
 
     try:
         response_contract_version = validate_response_contract_version(
@@ -792,6 +828,11 @@ def _check_manifest(
     required_files = raw_jsonl_files_for_schema(
         meta.get("log_schema_version"),
         has_disaster=isinstance(config, dict) and "scenario" in config,
+        input_observability_version=(
+            config.get("simulation", {}).get("input_observability_version")
+            if isinstance(config, dict) and isinstance(config.get("simulation"), dict)
+            else None
+        ),
     )
     required = set(required_files)
     recorded = set(files)
@@ -1767,6 +1808,235 @@ def _check_attempt_records(
         )
 
 
+def _check_prompt_input_records(
+    records: Dict[str, Sequence[Record]],
+    expected_steps: int,
+    expected_agents: int,
+    config: Dict[str, Any],
+    meta: Dict[str, Any],
+    report: ValidationReport,
+) -> None:
+    """Check prepared request evidence against receipts without running an LLM."""
+    filename = PROMPT_INPUTS_FILE
+    required = {
+        "schema_version", "event_id", "run_id", "request_id", "step", "phase",
+        "agent_id", "message_selection_policy", "messages", "prompt", "prompt_sha256",
+    }
+    agents = config.get("agents", {})
+    try:
+        policy = validate_message_selection_policy(
+            agents.get("message_selection_policy", RECENT_MESSAGE_SELECTION_POLICY)
+        )
+        history_limit = agents.get("message_history_limit")
+        context_size = agents.get("message_context_size")
+        if not _is_int(history_limit) or not _is_int(context_size):
+            raise ValueError("message history/context sizes must be integers")
+        validate_retention_limits(policy, history_limit, context_size)
+    except (ValueError, AttributeError) as error:
+        report.error(f"{filename} cannot reconstruct inputs: {error}")
+        return
+
+    communication_none = config.get("scenario", {}).get("communication_mode") == "communication_none"
+    phases = ("phase3",) if communication_none else ("phase1", "phase3")
+    expected_keys = [
+        (step, phase, agent_id)
+        for step in range(1, expected_steps + 1)
+        for phase in phases
+        for agent_id in range(expected_agents)
+    ]
+    observed_keys = []
+    by_key = {}
+    for line_number, row in records[filename]:
+        prefix = f"{filename}:{line_number}"
+        if set(row) != required:
+            report.error(f"{prefix} fields differ from {MESSAGE_PRESENTATION_VERSION}")
+        if not _valid_step_agent(row, expected_steps, expected_agents):
+            report.error(f"{prefix} has invalid step or agent_id")
+            continue
+        phase = row.get("phase")
+        if phase not in phases:
+            report.error(f"{prefix} has invalid phase")
+            continue
+        step, agent_id = row["step"], row["agent_id"]
+        request_id = f"step-{step:06d}:{phase}:agent-{agent_id:06d}"
+        key = (step, phase, agent_id)
+        observed_keys.append(key)
+        if key in by_key:
+            report.error(f"{prefix} duplicates a prepared request")
+        by_key[key] = (line_number, row)
+        for field, expected in {
+            "schema_version": MESSAGE_PRESENTATION_VERSION,
+            "run_id": meta.get("run_id"),
+            "request_id": request_id,
+            "event_id": f"{meta.get('run_id')}:prompt_input:{request_id}",
+            "message_selection_policy": policy,
+        }.items():
+            if row.get(field) != expected:
+                report.error(f"{prefix} {field} mismatch")
+        prompt = row.get("prompt")
+        if not isinstance(prompt, str):
+            report.error(f"{prefix} prompt must be a string")
+        elif row.get("prompt_sha256") != hashlib.sha256(prompt.encode("utf-8")).hexdigest():
+            report.error(f"{prefix} prompt SHA-256 mismatch")
+        if not isinstance(row.get("messages"), list):
+            report.error(f"{prefix} messages must be an array")
+    if observed_keys != expected_keys:
+        report.error(f"{filename} request coverage/order mismatch")
+    if len(records[filename]) != meta.get("logical_llm_calls"):
+        report.error(f"{filename} row count differs from logical_llm_calls")
+    attempt_keys = {
+        (row.get("step"), row.get("phase"), row.get("agent_id"))
+        for _, row in records.get("llm_attempts.jsonl", [])
+        if _valid_step_agent(row, expected_steps, expected_agents)
+        and row.get("phase") in phases
+    }
+    if set(observed_keys) != attempt_keys:
+        report.error(f"{filename} prepared requests differ from attempt requests")
+
+    # This reconstructs delivery and selection independently of Agent methods.
+    histories = {agent_id: [] for agent_id in range(expected_agents)}
+    retained = {}
+    official_by_step = {}
+    issued = {}
+    for _, event in records.get("warning_events.jsonl", []):
+        if event.get("event_type") == "warning_issued":
+            issued[event.get("warning_id")] = event
+        if event.get("event_type") == "warning_exposure" and event.get("source_type") == "official":
+            step, recipient = event.get("step"), event.get("recipient_id")
+            issue = issued.get(event.get("warning_id"))
+            if _is_int(step) and _is_int(recipient) and recipient in histories and issue:
+                official_by_step.setdefault(step, []).append((recipient, {
+                    "source_type": "official_warning",
+                    "warning_id": event["warning_id"],
+                    "payload": copy.deepcopy(issue.get("payload")),
+                    "step": step,
+                }))
+    peers_by_step = {}
+    for _, message in records["messages.jsonl"]:
+        if _is_int(message.get("step")):
+            peers_by_step.setdefault(message["step"], []).append(message)
+
+    simulation_config = config.get("simulation", {})
+    prompt_contract = simulation_config.get("prompt_contract_version")
+    prompt_module = (
+        legacy_prompts_v1 if prompt_contract == LEGACY_PROMPT_CONTRACT_VERSION
+        else prompts_v3 if prompt_contract == BOUNDED_PROMPT_CONTRACT_VERSION
+        else prompts
+    )
+    memory_limit, memory_size = agents.get("memory_limit"), agents.get("memory_size")
+    memory_histories = {agent_id: [] for agent_id in histories}
+    memory_outputs = {
+        (row["step"], row["agent_id"]): row
+        for _, row in records["memory_reasoning.jsonl"]
+        if _valid_step_agent(row, expected_steps, expected_agents)
+    }
+    try:
+        if not _is_int(memory_limit) or not _is_int(memory_size):
+            raise ValueError("memory limit/size must be integers")
+        scenario = (
+            parse_disaster_scenario(
+                config["scenario"],
+                half_space_size=simulation_config.get("half_space_size"),
+                duration=expected_steps,
+                total_agents=expected_agents,
+            ) if "scenario" in config else None
+        )
+        world = World(simulation_config["half_space_size"], config["places"], disaster=scenario)
+    except (KeyError, TypeError, ValueError) as error:
+        report.error(f"{filename} cannot reconstruct prompts: {error}")
+        return
+
+    def append_message(agent_id: int, value: Dict[str, Any]) -> None:
+        histories[agent_id].append(value)
+        if len(histories[agent_id]) > history_limit:
+            histories[agent_id] = histories[agent_id][-history_limit:]
+
+    for step in range(1, expected_steps + 1):
+        positions = {
+            agent_id: memory_outputs.get((step, agent_id), {}).get("position")
+            for agent_id in histories
+        }
+        positions_valid = all(
+            isinstance(position, list) and len(position) == 2
+            and all(_is_int(coordinate) for coordinate in position)
+            for position in positions.values()
+        )
+        if not positions_valid:
+            report.error(f"{filename} cannot reconstruct positions at step {step}")
+        for agent_id, warning in official_by_step.get(step, []):
+            append_message(agent_id, warning)
+            retained[agent_id] = warning
+        for phase in phases:
+            if phase == "phase3":
+                for message in peers_by_step.get(step, []):
+                    receivers = message.get("receiver_ids")
+                    if not isinstance(receivers, list):
+                        continue
+                    for agent_id in receivers:
+                        if not _is_int(agent_id) or agent_id not in histories:
+                            continue
+                        append_message(agent_id, {
+                            "sender_id": message.get("sender_id"),
+                            "message": message.get("message"),
+                            "step": step,
+                        })
+            for agent_id in histories:
+                selection = histories[agent_id][-context_size:]
+                if policy == RETAIN_OFFICIAL_WARNING_SELECTION_POLICY and agent_id in retained:
+                    peers = [row for row in histories[agent_id] if "sender_id" in row]
+                    peer_slots = context_size - 1
+                    selection = [retained[agent_id]] + (peers[-peer_slots:] if peer_slots else [])
+                item = by_key.get((step, phase, agent_id))
+                if item is None:
+                    continue
+                line_number, row = item
+                if row.get("messages") != selection:
+                    report.error(f"{filename}:{line_number} messages differ from receipt/selection reconstruction")
+                try:
+                    section = format_messages_section(selection)
+                except (KeyError, TypeError, ValueError):
+                    report.error(f"{filename}:{line_number} reconstructed messages cannot be formatted")
+                    continue
+                if section and isinstance(row.get("prompt"), str) and section not in row["prompt"]:
+                    report.error(f"{filename}:{line_number} selected messages absent from prompt")
+                if positions_valid:
+                    x, y = positions[agent_id]
+                    place = world.get_place_for(x, y)
+                    prompt_args = {
+                        "agent_id": agent_id, "x": x, "y": y,
+                        "half_space_size": simulation_config["half_space_size"],
+                        "places": world.places, "place": place,
+                        "agent_count": sum(
+                            1 for position in positions.values()
+                            if place is not None and place.contains(*position)
+                        ),
+                        "memories": memory_histories[agent_id][-memory_size:],
+                        "messages": selection,
+                    }
+                    if prompt_module is not legacy_prompts_v1:
+                        prompt_args.update({
+                            "step": step if scenario else None,
+                            "hazard_rectangles": scenario.active_hazard_rectangles(step) if scenario else (),
+                            "refuges": scenario.refuges if scenario else (),
+                        })
+                        if phase == "phase3" and prompt_module is not prompts_v3:
+                            prompt_args["response_contract_version"] = validate_response_contract_version(
+                                simulation_config.get("response_contract_version")
+                            )
+                    builder = (
+                        prompt_module.build_phase1_prompt if phase == "phase1"
+                        else prompt_module.build_phase3_prompt
+                    )
+                    if row.get("prompt") != builder(**prompt_args):
+                        report.error(f"{filename}:{line_number} prompt differs from full input reconstruction")
+        for agent_id in histories:
+            memory = memory_outputs.get((step, agent_id), {}).get("memory")
+            if memory:
+                memory_histories[agent_id].append(memory)
+                if len(memory_histories[agent_id]) > memory_limit:
+                    memory_histories[agent_id] = memory_histories[agent_id][-memory_limit:]
+
+
 def _check_termination_record(
     records: Sequence[Record],
     meta: Dict[str, Any],
@@ -2200,6 +2470,7 @@ def _check_jsonl_and_counts(
     required_files = raw_jsonl_files_for_schema(
         meta.get("log_schema_version"),
         has_disaster="scenario" in config,
+        input_observability_version=config.get("simulation", {}).get("input_observability_version"),
     )
     records = {
         filename: _read_jsonl(run_dir / filename, report)
@@ -2274,6 +2545,10 @@ def _check_jsonl_and_counts(
         )
     if isinstance(scenario_config, dict):
         _check_disaster_records(records, meta, config, labels, report)
+    if PROMPT_INPUTS_FILE in records:
+        _check_prompt_input_records(
+            records, expected_steps, expected_agents, config, meta, report
+        )
 
     observed_ids = {
         agent_id for _, agent_id in phase1_keys | memory_keys

@@ -32,6 +32,14 @@ from engine.response_contracts import (
     validate_response_contract_version,
     vllm_transport_contract_version,
 )
+from engine.message_selection import (
+    MESSAGE_PRESENTATION_VERSION,
+    PROMPT_INPUTS_FILE,
+    RECENT_MESSAGE_SELECTION_POLICY,
+    validate_input_observability_version,
+    validate_message_selection_policy,
+    validate_retention_limits,
+)
 
 
 LEGACY_LOG_SCHEMA_VERSION = "1.0.0"
@@ -668,6 +676,7 @@ def file_manifest(path: Path) -> Dict[str, Any]:
 def raw_jsonl_files_for_schema(
     schema_version: str,
     has_disaster: bool = False,
+    input_observability_version: str | None = None,
 ) -> Tuple[str, ...]:
     if schema_version in {
         LEGACY_LOG_SCHEMA_VERSION,
@@ -677,10 +686,15 @@ def raw_jsonl_files_for_schema(
     if schema_version == DISASTER_LOG_SCHEMA_VERSION:
         return DISASTER_RAW_JSONL_FILES
     if schema_version == OBSERVABILITY_LOG_SCHEMA_VERSION:
-        return (
+        files = (
             OBSERVABILITY_DISASTER_RAW_JSONL_FILES
             if has_disaster
             else OBSERVABILITY_RAW_JSONL_FILES
+        )
+        return files + (
+            (PROMPT_INPUTS_FILE,)
+            if input_observability_version == MESSAGE_PRESENTATION_VERSION
+            else ()
         )
     return RAW_JSONL_FILES
 
@@ -783,6 +797,18 @@ class RunLifecycle:
         validate_credential_free_config(config_snapshot)
         config_hash = compute_config_hash(config_snapshot)
         simulation = config.get("simulation", {})
+        input_observability_version = validate_input_observability_version(
+            simulation.get("input_observability_version")
+        )
+        agents_config = config.get("agents", {})
+        message_selection_policy = validate_message_selection_policy(
+            agents_config.get("message_selection_policy", RECENT_MESSAGE_SELECTION_POLICY)
+        )
+        validate_retention_limits(
+            message_selection_policy,
+            agents_config.get("message_history_limit"),
+            agents_config.get("message_context_size"),
+        )
         prompt_contract_version = validate_prompt_contract_version(
             simulation.get("prompt_contract_version")
         )
@@ -837,9 +863,15 @@ class RunLifecycle:
                 "simulation.log_schema_version may only opt in to "
                 f"{OBSERVABILITY_LOG_SCHEMA_VERSION}"
             )
+        if (
+            input_observability_version is not None
+            and log_schema_version != OBSERVABILITY_LOG_SCHEMA_VERSION
+        ):
+            raise ValueError("input observability requires log_schema_version '2.0.0'")
         raw_jsonl_files = raw_jsonl_files_for_schema(
             log_schema_version,
             has_disaster="scenario" in config,
+            input_observability_version=input_observability_version,
         )
 
         # Capture source state before the run directory itself exists, so an
@@ -1008,6 +1040,8 @@ class RunLifecycle:
             "parse_errors": 0,
             "parse_error_rate": 0.0,
         }
+        if input_observability_version is not None:
+            meta["input_observability_version"] = input_observability_version
 
         lifecycle = cls(
             output_dir=output_dir,

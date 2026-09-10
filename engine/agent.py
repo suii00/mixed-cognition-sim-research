@@ -1,6 +1,13 @@
 from typing import List, Dict, Tuple, Optional
 from typing import Any
-from collections import deque
+import copy
+
+from engine.message_selection import (
+    RECENT_MESSAGE_SELECTION_POLICY,
+    RETAIN_OFFICIAL_WARNING_SELECTION_POLICY,
+    validate_message_selection_policy,
+    validate_retention_limits,
+)
 
 
 class Agent:
@@ -11,7 +18,8 @@ class Agent:
                  llm_overrides: Optional[Dict] = None,
                  provider: str = "ollama",
                  endpoint_id: Optional[str] = None,
-                 device_slot: Optional[str] = None):
+                 device_slot: Optional[str] = None,
+                 message_selection_policy: str = RECENT_MESSAGE_SELECTION_POLICY):
         self.agent_id = agent_id
         self.bloc = bloc
         self.model = model
@@ -24,9 +32,16 @@ class Agent:
         self.memory_size = memory_size
         self.message_history_limit = message_history_limit
         self.message_context_size = message_context_size
+        self.message_selection_policy = validate_message_selection_policy(
+            message_selection_policy
+        )
+        validate_retention_limits(
+            self.message_selection_policy, message_history_limit, message_context_size
+        )
         self.llm_overrides = llm_overrides or {}
         self.memories: List[str] = []
         self.received_messages: List[Dict] = []
+        self._retained_official_warning: Optional[Dict] = None
 
     def add_memory(self, memory_text: str) -> None:
         self.memories.append(memory_text)
@@ -51,14 +66,31 @@ class Agent:
         payload: str | Dict[str, Any],
         step: int,
     ) -> None:
-        self.received_messages.append({
+        warning = {
             "source_type": "official_warning",
             "warning_id": warning_id,
             "payload": payload,
             "step": step,
-        })
+        }
+        self.received_messages.append(copy.deepcopy(warning))
+        if self.message_selection_policy == RETAIN_OFFICIAL_WARNING_SELECTION_POLICY:
+            # Only this trusted delivery API can populate the retained slot.
+            # Retaining a copy neither creates nor repeats a receipt event.
+            self._retained_official_warning = copy.deepcopy(warning)
         if len(self.received_messages) > self.message_history_limit:
             self.received_messages = self.received_messages[-self.message_history_limit:]
 
     def get_recent_messages(self) -> List[Dict]:
+        if (
+            self.message_selection_policy == RETAIN_OFFICIAL_WARNING_SELECTION_POLICY
+            and self._retained_official_warning is not None
+        ):
+            peer_slots = self.message_context_size - 1
+            peers = [
+                message for message in self.received_messages
+                if "sender_id" in message
+            ]
+            return [copy.deepcopy(self._retained_official_warning)] + (
+                peers[-peer_slots:] if peer_slots else []
+            )
         return self.received_messages[-self.message_context_size:]

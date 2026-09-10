@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
-"""Run the frozen four-run mixed-model refuge layout study behind a nine-request gate."""
+"""Run six frozen warning-retention runs behind a nine-request engineering gate."""
 from __future__ import annotations
 
 import argparse
-import base64
 import hashlib
 import json
 import os
 from pathlib import Path
-import re
 import subprocess
 import sys
 import tempfile
@@ -18,13 +16,13 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from engine.config import endpoint_rows, load_config
-from engine.provenance import file_manifest
-from tools.build_refuge_layout_study import (
-    AGENT_COUNT, BATCH_ID, OUTPUT_DIR, PLANNED_CALLS, PROTOCOL_VERSION,
+from engine.config import load_config
+from tools.build_warning_retention_study import (
+    AGENT_COUNT, BATCH_ID, INPUT_OBSERVABILITY_VERSION, OUTPUT_DIR, PLANNED_CALLS,
+    POLICIES, PROTOCOL_VERSION, RETENTION_METRIC_VERSION, RETENTION_METRIC_SPEC_SHA256,
     WALL_TIME_LIMIT_SECONDS as MAX_WALL_S, load_verified_manifest,
 )
-from tools.disaster_behavior_schema_probe import CASES, canonical_bytes, run_one_request, utc_now_iso, _write_attempt
+from tools.disaster_behavior_schema_probe import CASES, run_one_request, utc_now_iso, _write_attempt
 from tools.run_public_vllm import (
     DEFAULT_LOCK, PublicVllmError, _load_json_object, _tree_digest,
     attach_snapshots, build_endpoint_specs, check_installed_runtime,
@@ -34,68 +32,28 @@ from tools.run_public_vllm import (
     verify_completed_run, wait_for_gpu_release, wait_for_simulator,
     write_flashinfer_shadow, write_runtime_inputs, query_gpu_rows,
 )
+from tools.run_refuge_layout_study import (
+    FAILURE_COUNTERS, MODEL_ORDER, RUNTIME_PREFIX, check_runtime_ipc_path,
+    checked_output_paths, predicted_runtime_ipc_path_bytes, promote_batch,
+    public_tree_safe, safe_json, source_gate, specs_for_config,
+)
 from tools.scan_publication import scan_text, scan_tree
 
 MANIFEST = OUTPUT_DIR / "manifest.json"
-RUNTIME_PREFIX = "refuge-study-runtime-"
-RUN_COUNT = 4
-MAX_IPC_PATH_BYTES = 107
-MODEL_ORDER = ("qwen", "llama", "gemma")
-FAILURE_COUNTERS = (
-    "generation_retries", "transport_failures", "syntax_parse_failures",
-    "syntax_parse_attempt_failures", "schema_validation_failures",
-)
-
-
-def source_gate(source_sha: str) -> None:
-    if not isinstance(source_sha, str) or not re.fullmatch(r"[0-9a-f]{40}", source_sha):
-        raise PublicVllmError("source SHA must be 40 lowercase hex characters")
-    def git(*args):
-        return subprocess.run(["git", *args], cwd=REPO_ROOT, check=True,
-                              capture_output=True, text=True, timeout=30).stdout.strip()
-    try:
-        if git("rev-parse", "HEAD") != source_sha or git("status", "--porcelain"):
-            raise PublicVllmError("execution requires the frozen clean source commit")
-    except (OSError, subprocess.SubprocessError) as error:
-        raise PublicVllmError("source inspection failed") from error
-
-
-def check_runtime_ipc_path(runtime_root: Path) -> int:
-    """Check vLLM's TMPDIR/UUID socket path without creating a socket or file."""
-    socket_path = runtime_root / "tmp" / ("0" * 36)
-    size = len(str(socket_path).encode("utf-8"))
-    if size > MAX_IPC_PATH_BYTES:
-        raise PublicVllmError("runtime IPC path exceeds the 107-byte limit")
-    return size
-
-
-def predicted_runtime_ipc_path_bytes() -> int:
-    # The locked CPython tempfile implementation uses eight random characters.
-    # The allocated path is checked again before any server process starts.
-    root = Path(tempfile.gettempdir()) / (RUNTIME_PREFIX + "0" * 8)
-    return check_runtime_ipc_path(root)
+RUN_COUNT = 6
 
 
 def expected_calls(config):
     """Derive the two decision-phase request count from the complete mixed population."""
     duration = config["simulation"]["duration"]
     blocs = config["blocs"]
-    if (type(duration) is not int or duration not in (60, 120)
+    if (type(duration) is not int or duration != 60
             or len(blocs) != len(MODEL_ORDER)
             or tuple(bloc["name"] for bloc in blocs) != MODEL_ORDER
             or any(type(bloc["num_agents"]) is not int or bloc["num_agents"] != 8 for bloc in blocs)
             or sum(bloc["num_agents"] for bloc in blocs) != AGENT_COUNT):
-        raise PublicVllmError("expected the frozen 24-agent mixed population and 60/120 steps")
+        raise PublicVllmError("expected the frozen 24-agent mixed population and 60 steps")
     return duration * AGENT_COUNT * 2
-
-
-def specs_for_config(config, specs):
-    """Keep every mixed-model endpoint; reject incomplete or duplicated runtime routing."""
-    required = {str(row["endpoint_id"]) for bloc in config["blocs"] for row in endpoint_rows(bloc)}
-    selected = [spec for spec in specs if spec.endpoint_id in required]
-    if len(selected) != len(required) or {spec.endpoint_id for spec in selected} != required:
-        raise PublicVllmError("runtime routing does not cover the mixed-model config exactly once")
-    return selected
 
 
 def load_inputs():
@@ -112,6 +70,9 @@ def load_inputs():
         if (row["run_id"] in configs or row["run_id"] != config["simulation"]["run_id"]
                 or row["duration"] != config["simulation"]["duration"]
                 or row["composition"] != "mixed"
+                or row["seed"] != config["simulation"]["seed"]
+                or row["message_selection_policy"] != config["agents"]["message_selection_policy"]
+                or row["message_selection_policy"] != POLICIES[row["condition"]]
                 or row["expected_logical_llm_calls"] != calls
                 or row["expected_http_attempts"] != calls
                 or config["llm_defaults"]["max_concurrency"] != AGENT_COUNT):
@@ -128,7 +89,7 @@ def load_inputs():
             or sum(expected_calls(config) for config in configs.values()) != PLANNED_CALLS
             or manifest["planned_logical_llm_calls"] != PLANNED_CALLS
             or manifest["planned_http_attempts"] != PLANNED_CALLS):
-        raise PublicVllmError("expected four frozen mixed runs and 17280 experiment requests")
+        raise PublicVllmError("expected six frozen paired mixed runs and 17280 experiment requests")
     union_config = dict(next(iter(configs.values())))
     union_config["blocs"] = [models[name] for name in MODEL_ORDER]
     return manifest, configs, models, union_config, lock
@@ -165,130 +126,12 @@ def check_run(run_dir, config, specs, source_sha):
     return row
 
 
-def checked_output_paths(batch, run_ids, *, repo_root=None):
-    root = (REPO_ROOT if repo_root is None else repo_root).resolve(strict=True)
-    parents = [root / name for name in (".tmp", "runs", "derived")]
-    for parent in parents:
-        if parent.is_symlink() or parent.resolve(strict=False) != root / parent.name:
-            raise PublicVllmError("output ancestor is symlinked or outside source checkout")
-        if parent.exists() and not parent.is_dir():
-            raise PublicVllmError("output ancestor is not a directory")
-    stage = parents[0] / batch
-    evidence = parents[2] / ("validation-" + batch)
-    targets = [stage, evidence, *(parents[1] / ("output_" + name) for name in run_ids)]
-    if any(path.exists() or path.is_symlink() for path in targets):
-        raise PublicVllmError("batch or run output collision")
-    devices = {parent.stat().st_dev if parent.exists() else root.stat().st_dev for parent in parents}
-    if len(devices) != 1:
-        raise PublicVllmError("staging and publication must share one filesystem")
-    return stage, evidence
-
-
-def public_tree_safe(root, specs):
-    if root.is_symlink() or any(path.is_symlink() for path in root.rglob("*")):
-        return False
-    if scan_tree(root) or not runtime_binding_values_absent(root, specs):
-        return False
-    forbidden = [spec.base_url for spec in specs]
-
-    def safe(value, depth=0):
-        if depth > 12:
-            return False
-        if isinstance(value, dict):
-            for key, child in value.items():
-                if key.endswith("_body_base64") and isinstance(child, str):
-                    try:
-                        decoded = base64.b64decode(child, validate=True).decode("utf-8")
-                    except (ValueError, UnicodeError):
-                        return False
-                    if not safe(decoded, depth + 1):
-                        return False
-                elif not safe(child, depth + 1):
-                    return False
-        elif isinstance(value, list):
-            return all(safe(child, depth + 1) for child in value)
-        elif isinstance(value, str):
-            if any(marker in value for marker in forbidden) or scan_text("decoded-json", value):
-                return False
-            if value[:1] in ("{", "["):
-                try:
-                    nested = json.loads(value)
-                except (ValueError, RecursionError):
-                    pass
-                else:
-                    return safe(nested, depth + 1)
-        return True
-
-    try:
-        for path in root.rglob("*"):
-            if path.is_file() and path.suffix in (".json", ".jsonl"):
-                text = path.read_text(encoding="utf-8")
-                values = [json.loads(line) for line in text.splitlines()] if path.suffix == ".jsonl" else [json.loads(text)]
-                if not all(safe(value) for value in values):
-                    return False
-    except (OSError, ValueError, RecursionError):
-        return False
-    return True
-
-
-def promote_batch(stage, final_evidence, run_ids, rows, *, repo_root=None):
-    root = REPO_ROOT if repo_root is None else repo_root
-    evidence_stage = stage / "evidence"
-    evidence_stage.mkdir(exist_ok=False)
-    (stage / "probe").rename(evidence_stage / "probe")
-    (stage / "verification.json").rename(evidence_stage / "verification.json")
-    safe_json(evidence_stage / "artifact_manifest.json", {
-        "algorithm": "sha256",
-        "files": {path.relative_to(evidence_stage).as_posix(): file_manifest(path)
-                  for path in sorted(evidence_stage.rglob("*")) if path.is_file()},
-    })
-    sources = [stage / "runs" / ("output_" + name) for name in run_ids] + [evidence_stage]
-    destinations = [root / "runs" / source.name for source in sources[:-1]] + [final_evidence]
-    expected_hashes = [row["run_tree_sha256"] for row in rows] + [_tree_digest(evidence_stage)]
-    for source, destination, expected in zip(sources, destinations, expected_hashes):
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        if destination.exists() or destination.is_symlink() or source.stat().st_dev != destination.parent.stat().st_dev:
-            raise PublicVllmError("publication collision or filesystem mismatch")
-        if _tree_digest(source) != expected:
-            raise PublicVllmError("artifact changed before promotion")
-    moved = []
-    try:
-        for source, destination, expected in zip(sources, destinations, expected_hashes):
-            if destination.exists() or destination.is_symlink():
-                raise PublicVllmError("publication collision during promotion")
-            source.rename(destination)
-            moved.append((source, destination))
-            if _tree_digest(destination) != expected:
-                raise PublicVllmError("artifact changed during promotion")
-    except BaseException as error:
-        rollback_failed = []
-        for source, destination in reversed(moved):
-            try:
-                destination.rename(source)
-            except OSError:
-                rollback_failed.append(destination.name)
-        safe_json(stage / "promotion_failure.json", {
-            "error_code": type(error).__name__, "publication_blocked": True,
-            "partial_promotion_detected": bool(rollback_failed),
-            "remaining_destination_names": rollback_failed,
-        })
-        raise PublicVllmError("promotion failed; see retained promotion failure evidence") from error
-
-
-def safe_json(path, value):
-    content = canonical_bytes(value) + b"\n"
-    if scan_text(path.name, content.decode("utf-8")):
-        raise PublicVllmError("verification failed public boundary")
-    with path.open("xb") as handle:
-        handle.write(content)
-
-
 def run(args):
     manifest, configs, models, union_config, lock = load_inputs()
     indices = parse_gpu_indices(args.gpu_indices, 4, 4)
     specs = build_endpoint_specs(union_config, indices, args.base_port)
     if args.contract_only:
-        print("PASS: four mixed configs, 17280 experiment requests, nine gate requests, four GPUs")
+        print("PASS: six paired mixed configs, 17280 experiment requests, nine gate requests, four GPUs")
         return 0
     if os.name != "posix":
         raise PublicVllmError("GPU execution requires a POSIX host")
@@ -300,7 +143,7 @@ def run(args):
     if not ports_are_free(specs):
         raise PublicVllmError("requested loopback ports are occupied")
     batch = BATCH_ID
-    stage, final_evidence = checked_output_paths(batch, configs)
+    stage, final_evidence = checked_output_paths(batch, configs, repo_root=REPO_ROOT)
     if args.preflight_only:
         print("PASS: clean source, exact runtime and snapshots, four free GPUs, free ports, bounded IPC path, no collisions")
         return 0
@@ -314,7 +157,7 @@ def run(args):
     servers = []
     simulations = []
     rows = [{**{key: row[key] for key in (
-        "run_id", "composition", "layout", "duration",
+        "run_id", "condition", "seed", "composition", "layout", "duration",
         "expected_logical_llm_calls", "expected_http_attempts",
     )}, "status": "not_started"} for row in manifest["rows"]]
     attempts = []
@@ -322,8 +165,11 @@ def run(args):
     process_cleanup = False
     gpu_release = False
     result = {
-        "schema_version": "refuge-layout-study-verification-v1.0.0", "batch_id": batch,
+        "schema_version": "warning-retention-study-verification-v1.0.0", "batch_id": batch,
         "protocol_version": PROTOCOL_VERSION,
+        "retention_metric_version": RETENTION_METRIC_VERSION,
+        "retention_metric_spec_sha256": RETENTION_METRIC_SPEC_SHA256,
+        "input_observability_version": INPUT_OBSERVABILITY_VERSION,
         "planned_runs": RUN_COUNT, "agent_count": AGENT_COUNT,
         "planned_logical_llm_calls": PLANNED_CALLS,
         "planned_http_attempts": PLANNED_CALLS,
@@ -376,6 +222,7 @@ def run(args):
                     config_path, binding_path = write_runtime_inputs(row_runtime, config, used_specs)
                     sim = start_simulator(row_runtime, shadow, config_path, binding_path, stage_runs)
                     simulations.append(sim)
+                    rows[ordinal]["status"] = "started"
                     return_code = wait_for_simulator(sim, servers, guard, remaining)
                     run_dir = stage_runs / ("output_" + run_id)
                     if not run_dir.is_dir():
@@ -397,12 +244,14 @@ def run(args):
     for index, row in enumerate(rows):
         raw_dir = stage_runs / ("output_" + row["run_id"])
         meta_path = raw_dir / "run_meta.json"
-        if row["status"] == "not_started" and meta_path.is_file():
+        if row["status"] in ("not_started", "started") and meta_path.is_file():
             meta = _load_json_object(meta_path)
             rows[index].update({"status": meta.get("status"),
                                 "completed_steps": meta.get("completed_steps"),
                                 "logical_llm_calls": meta.get("logical_llm_calls"),
                                 "http_attempts": meta.get("http_attempts")})
+        elif row["status"] == "started":
+            rows[index]["status"] = "incomplete_missing_terminal_metadata"
     result.update({
         "runs": rows, "probe_attempts": len(attempts),
         "probe_passed": sum(a["result"] == "pass" for a in attempts),
@@ -414,9 +263,15 @@ def run(args):
         "vllm_server_log_files_created": False,
         "runtime_binding_values_persisted": not runtime_binding_values_absent(stage, specs),
     })
-    result["experiment_http_attempts"] = sum(row.get("http_attempts") or 0 for row in rows)
-    result["experiment_logical_llm_calls"] = sum(row.get("logical_llm_calls") or 0 for row in rows)
-    result["total_http_attempts"] = len(attempts) + result["experiment_http_attempts"]
+    for source, target in (("http_attempts", "experiment_http_attempts"),
+                           ("logical_llm_calls", "experiment_logical_llm_calls")):
+        known = sum(row[source] for row in rows if type(row.get(source)) is int)
+        complete = all(row["status"] == "not_started" or type(row.get(source)) is int for row in rows)
+        result[target + "_accounted"] = known
+        result[target] = known if complete else None
+    result["total_http_attempts_accounted"] = len(attempts) + result["experiment_http_attempts_accounted"]
+    result["total_http_attempts"] = (None if result["experiment_http_attempts"] is None
+                                      else len(attempts) + result["experiment_http_attempts"])
     result["gate_passed"] = bool(
         not error_code and process_cleanup and gpu_release and result["ports_released"]
         and not result["runtime_binding_values_persisted"]
@@ -430,8 +285,8 @@ def run(args):
     if not result["gate_passed"]:
         print("STOP: gate failed; immutable attempted evidence retained in ignored staging", flush=True)
         return 3
-    promote_batch(stage, final_evidence, configs, rows)
-    print(f"PASS: four mixed runs completed; evidence={final_evidence.name}", flush=True)
+    promote_batch(stage, final_evidence, configs, rows, repo_root=REPO_ROOT)
+    print(f"PASS: six paired mixed runs completed; evidence={final_evidence.name}", flush=True)
     return 0
 
 
@@ -447,7 +302,7 @@ def main(argv=None):
     try:
         return run(args)
     except (PublicVllmError, ValueError, OSError, subprocess.SubprocessError) as error:
-        print(f"ERROR: {type(error).__name__}: refuge layout execution rejected", file=sys.stderr)
+        print(f"ERROR: {type(error).__name__}: warning retention execution rejected", file=sys.stderr)
         return 2
 
 

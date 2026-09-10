@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 import os
 import random
@@ -26,6 +27,11 @@ from engine.execution_contracts import (
 )
 from engine import legacy_prompts_v1, prompts_v3
 from engine.llm_client import LLMTransportError, call_ollama, call_vllm
+from engine.message_selection import (
+    MESSAGE_PRESENTATION_VERSION,
+    PROMPT_INPUTS_FILE,
+    RECENT_MESSAGE_SELECTION_POLICY,
+)
 from engine.parallel_transport import (
     LLMResponseSchemaError,
     LLMRequest,
@@ -93,6 +99,10 @@ class Simulation:
         self.memory_size = agent_cfg["memory_size"]
         self.message_history_limit = agent_cfg["message_history_limit"]
         self.message_context_size = agent_cfg["message_context_size"]
+        self.message_selection_policy = agent_cfg.get(
+            "message_selection_policy", RECENT_MESSAGE_SELECTION_POLICY
+        )
+        self.input_observability_version = sim_cfg.get("input_observability_version")
 
         llm = self.config["llm_defaults"]
         self.temperature = llm.get("temperature", 0.2)
@@ -204,6 +214,7 @@ class Simulation:
                     memory_size=self.memory_size,
                     message_history_limit=self.message_history_limit,
                     message_context_size=self.message_context_size,
+                    message_selection_policy=self.message_selection_policy,
                     llm_overrides=bloc.get("llm_overrides"),
                     provider=bloc.get("provider", "ollama"),
                     endpoint_id=(
@@ -361,6 +372,26 @@ class Simulation:
                     transport_behavior_version=self.transport_behavior_version,
                 )
             )
+            if self.input_observability_version == MESSAGE_PRESENTATION_VERSION:
+                request = requests[-1]
+                self._log_jsonl(
+                    PROMPT_INPUTS_FILE,
+                    {
+                        "schema_version": MESSAGE_PRESENTATION_VERSION,
+                        "event_id": f"{self.run_id}:prompt_input:{request.request_id}",
+                        "run_id": self.run_id,
+                        "request_id": request.request_id,
+                        "step": step,
+                        "phase": phase,
+                        "agent_id": agent.agent_id,
+                        "message_selection_policy": self.message_selection_policy,
+                        "messages": copy.deepcopy(state["messages"]),
+                        "prompt": request.prompt,
+                        "prompt_sha256": hashlib.sha256(
+                            request.prompt.encode("utf-8")
+                        ).hexdigest(),
+                    },
+                )
         return requests
 
     @staticmethod

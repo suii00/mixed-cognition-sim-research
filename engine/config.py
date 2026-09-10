@@ -6,6 +6,12 @@ import yaml
 
 from engine.llm_client import validate_ollama_overrides, validate_vllm_overrides
 from engine.disaster import parse_disaster_scenario
+from engine.message_selection import (
+    RECENT_MESSAGE_SELECTION_POLICY,
+    validate_input_observability_version,
+    validate_message_selection_policy,
+    validate_retention_limits,
+)
 from engine.execution_contracts import (
     ABORT_RUN_RESPONSE_FAILURE_POLICY,
     BOUNDED_PROMPT_CONTRACT_VERSION,
@@ -222,12 +228,30 @@ def build_effective_config(config: Dict[str, Any]) -> Dict[str, Any]:
             + ", ".join(sorted(EDGE_POLICIES))
         )
     agents["edge_policy"] = edge_policy
+    message_selection_policy = validate_message_selection_policy(
+        agents.get("message_selection_policy", RECENT_MESSAGE_SELECTION_POLICY)
+    )
+    validate_retention_limits(
+        message_selection_policy,
+        agents.get("message_history_limit"),
+        agents.get("message_context_size"),
+    )
+    # Omission remains an implicit recent-v1.0.0 for historical config hashes.
+    # New comparisons explicitly declare both conditions.
 
     simulation = effective.get("simulation")
     if isinstance(simulation, dict):
         simulation.setdefault(
             "log_schema_version", OBSERVABILITY_LOG_SCHEMA_VERSION
         )
+        input_observability_version = validate_input_observability_version(
+            simulation.get("input_observability_version")
+        )
+        if (
+            input_observability_version is not None
+            and simulation["log_schema_version"] != OBSERVABILITY_LOG_SCHEMA_VERSION
+        ):
+            raise ValueError("input observability requires log_schema_version '2.0.0'")
     response_contract_version = validate_response_contract_version(
         simulation.get("response_contract_version")
         if isinstance(simulation, dict)
