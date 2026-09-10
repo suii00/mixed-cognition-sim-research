@@ -21,5 +21,7 @@ jobs:
       - run: python tools/run_public_vllm.py --contract-only
       - run: python tools/build_refuge_layout_study.py --check
       - run: python tools/run_refuge_layout_study.py --contract-only
+      - run: python tools/build_warning_retention_study.py --check
+      - run: python tools/run_warning_retention_study.py --contract-only
       - run: python tools/verify_refuge_layout_artifacts.py --self-test
       - run: python -m pytest -q

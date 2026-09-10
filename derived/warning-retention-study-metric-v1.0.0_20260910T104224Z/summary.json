@@ -1,0 +1,1220 @@
+{
+  "artifact_version": "warning-retention-study-metric-v1.0.0",
+  "batch_id": "warning-retention-study-v1-20260910T080000Z",
+  "comparison_eligible_run_count": 6,
+  "evidence_class": "direct_request_input_and_mechanical_outcomes",
+  "formal_eligible": false,
+  "metric_version": "warning-retention-study-metric-v1.0.0",
+  "pairs": [
+    {
+      "eligible": true,
+      "initial_positions_and_assignment_equal": true,
+      "recent": {
+        "arrived_agent_count": 1,
+        "auxiliary_non_id_lexical_candidate_outputs": 1398,
+        "final_refuge_occupancy": 0,
+        "hazard_agent_steps": 676,
+        "issue_step_phase1_to_phase3_official_loss": 2,
+        "mean_final_distance": 22.958333333333332,
+        "noninitial_agent_count": 18,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 6,
+        "phase1_actual_prompt_exact_id": 17,
+        "phase1_official_selected": 17,
+        "phase3_actual_prompt_exact_id": 11,
+        "phase3_official_selected": 11,
+        "post_issue_phase_denominator": 306
+      },
+      "retained": {
+        "arrived_agent_count": 1,
+        "auxiliary_non_id_lexical_candidate_outputs": 1385,
+        "final_refuge_occupancy": 0,
+        "hazard_agent_steps": 676,
+        "issue_step_phase1_to_phase3_official_loss": 0,
+        "mean_final_distance": 19.375,
+        "noninitial_agent_count": 18,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 6,
+        "phase1_actual_prompt_exact_id": 306,
+        "phase1_official_selected": 306,
+        "phase3_actual_prompt_exact_id": 306,
+        "phase3_official_selected": 306,
+        "post_issue_phase_denominator": 306
+      },
+      "retained_minus_recent": {
+        "arrived_agent_count": 0,
+        "auxiliary_non_id_lexical_candidate_outputs": -13,
+        "final_refuge_occupancy": 0,
+        "hazard_agent_steps": 0,
+        "issue_step_phase1_to_phase3_official_loss": -2,
+        "mean_final_distance": -3.583333333333332,
+        "noninitial_agent_count": 0,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 0,
+        "phase1_actual_prompt_exact_id": 289,
+        "phase1_official_selected": 289,
+        "phase3_actual_prompt_exact_id": 295,
+        "phase3_official_selected": 295,
+        "post_issue_phase_denominator": 0
+      },
+      "run_ids": [
+        "warning-retention-study-v1-20260910T080000Z-recent-d60-s7301",
+        "warning-retention-study-v1-20260910T080000Z-retained-d60-s7301"
+      ],
+      "seed": 7301
+    },
+    {
+      "eligible": true,
+      "initial_positions_and_assignment_equal": true,
+      "recent": {
+        "arrived_agent_count": 1,
+        "auxiliary_non_id_lexical_candidate_outputs": 1393,
+        "final_refuge_occupancy": 1,
+        "hazard_agent_steps": 700,
+        "issue_step_phase1_to_phase3_official_loss": 1,
+        "mean_final_distance": 18.375,
+        "noninitial_agent_count": 18,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 6,
+        "phase1_actual_prompt_exact_id": 61,
+        "phase1_official_selected": 61,
+        "phase3_actual_prompt_exact_id": 56,
+        "phase3_official_selected": 56,
+        "post_issue_phase_denominator": 306
+      },
+      "retained": {
+        "arrived_agent_count": 0,
+        "auxiliary_non_id_lexical_candidate_outputs": 1363,
+        "final_refuge_occupancy": 0,
+        "hazard_agent_steps": 668,
+        "issue_step_phase1_to_phase3_official_loss": 0,
+        "mean_final_distance": 20.791666666666668,
+        "noninitial_agent_count": 18,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 6,
+        "phase1_actual_prompt_exact_id": 306,
+        "phase1_official_selected": 306,
+        "phase3_actual_prompt_exact_id": 306,
+        "phase3_official_selected": 306,
+        "post_issue_phase_denominator": 306
+      },
+      "retained_minus_recent": {
+        "arrived_agent_count": -1,
+        "auxiliary_non_id_lexical_candidate_outputs": -30,
+        "final_refuge_occupancy": -1,
+        "hazard_agent_steps": -32,
+        "issue_step_phase1_to_phase3_official_loss": -1,
+        "mean_final_distance": 2.416666666666668,
+        "noninitial_agent_count": 0,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 0,
+        "phase1_actual_prompt_exact_id": 245,
+        "phase1_official_selected": 245,
+        "phase3_actual_prompt_exact_id": 250,
+        "phase3_official_selected": 250,
+        "post_issue_phase_denominator": 0
+      },
+      "run_ids": [
+        "warning-retention-study-v1-20260910T080000Z-recent-d60-s7302",
+        "warning-retention-study-v1-20260910T080000Z-retained-d60-s7302"
+      ],
+      "seed": 7302
+    },
+    {
+      "eligible": true,
+      "initial_positions_and_assignment_equal": true,
+      "recent": {
+        "arrived_agent_count": 1,
+        "auxiliary_non_id_lexical_candidate_outputs": 1359,
+        "final_refuge_occupancy": 0,
+        "hazard_agent_steps": 796,
+        "issue_step_phase1_to_phase3_official_loss": 4,
+        "mean_final_distance": 25.375,
+        "noninitial_agent_count": 18,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 6,
+        "phase1_actual_prompt_exact_id": 8,
+        "phase1_official_selected": 8,
+        "phase3_actual_prompt_exact_id": 2,
+        "phase3_official_selected": 2,
+        "post_issue_phase_denominator": 306
+      },
+      "retained": {
+        "arrived_agent_count": 1,
+        "auxiliary_non_id_lexical_candidate_outputs": 1374,
+        "final_refuge_occupancy": 0,
+        "hazard_agent_steps": 796,
+        "issue_step_phase1_to_phase3_official_loss": 0,
+        "mean_final_distance": 24.541666666666668,
+        "noninitial_agent_count": 18,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 6,
+        "phase1_actual_prompt_exact_id": 306,
+        "phase1_official_selected": 306,
+        "phase3_actual_prompt_exact_id": 306,
+        "phase3_official_selected": 306,
+        "post_issue_phase_denominator": 306
+      },
+      "retained_minus_recent": {
+        "arrived_agent_count": 0,
+        "auxiliary_non_id_lexical_candidate_outputs": 15,
+        "final_refuge_occupancy": 0,
+        "hazard_agent_steps": 0,
+        "issue_step_phase1_to_phase3_official_loss": -4,
+        "mean_final_distance": -0.8333333333333321,
+        "noninitial_agent_count": 0,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 0,
+        "phase1_actual_prompt_exact_id": 298,
+        "phase1_official_selected": 298,
+        "phase3_actual_prompt_exact_id": 304,
+        "phase3_official_selected": 304,
+        "post_issue_phase_denominator": 0
+      },
+      "run_ids": [
+        "warning-retention-study-v1-20260910T080000Z-recent-d60-s7303",
+        "warning-retention-study-v1-20260910T080000Z-retained-d60-s7303"
+      ],
+      "seed": 7303
+    }
+  ],
+  "planned_run_count": 6,
+  "research_eligible": false,
+  "runs": [
+    {
+      "calls": 2880,
+      "checkpoints": [
+        {
+          "agent_count": 24,
+          "arrived_agent_count": 1,
+          "blocked_moves": 292,
+          "checkpoint": 60,
+          "cross_model_delivery_edges": 3286,
+          "cross_model_exact_id_delivery_edges": 0,
+          "exact_id_delivery_edges": 0,
+          "final_refuge_occupancy": 0,
+          "hazard_agent_steps": 676,
+          "later_reuse_outputs": 0,
+          "mean_final_distance": 22.958333333333332,
+          "mean_initial_distance": 18.291666666666668,
+          "message_delivery_edges": 5026,
+          "move": 1196,
+          "official_exposed_agents": 6,
+          "official_exposure_events": 6,
+          "relay_exposed_agents": 0,
+          "relay_exposure_events": 0,
+          "stay": 244,
+          "warning_exposed_agents": 6,
+          "warning_reused_agents": 0
+        }
+      ],
+      "condition": "recent",
+      "config_path": "configs/warning_retention_study_v1/warning-retention-study-v1-20260910T080000Z-recent-d60-s7301.json",
+      "config_sha256": "9d123f490eadf73590a919f833f6cd5c1da6c716bbaf19c5eeb8b863840887cb",
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 2880,
+        "logical_llm_calls": 2880,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "duration": 60,
+      "eligible": true,
+      "primary": {
+        "auxiliary_non_id_lexical_candidate_outputs": 1398,
+        "issue_step_phase1_to_phase3_official_loss": 2,
+        "noninitial_agent_count": 18,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 6,
+        "phase1_actual_prompt_exact_id": 17,
+        "phase1_official_selected": 17,
+        "phase3_actual_prompt_exact_id": 11,
+        "phase3_official_selected": 11,
+        "post_issue_phase_denominator": 306
+      },
+      "raw_file_manifests": {
+        "llm_attempts.jsonl": {
+          "bytes": 8603862,
+          "lines": 2880,
+          "sha256": "fe814c328f05e4cb09627d87008ab322a78b3b72eb7270b53df094d3ef017b8f"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 345591,
+          "lines": 1440,
+          "sha256": "7a511ea4364b4cb3d57dca744c12155dfb0df88a1041b3d9d147aa786e28ec40"
+        },
+        "messages.jsonl": {
+          "bytes": 291975,
+          "lines": 1366,
+          "sha256": "38bde8f81c54f64b2a688ee7bb6120a24db1eb98525c5e851c3058b474ceab2b"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 427400,
+          "lines": 1440,
+          "sha256": "7771765f867203c5d4cabb5b43064f04da874d06ffbaacedab45521b3bcde222"
+        },
+        "positions.jsonl": {
+          "bytes": 458579,
+          "lines": 1464,
+          "sha256": "60a97d5e8030b02dcb238ed4705da97becdc716c8181421aae6d8d138519060e"
+        },
+        "prompt_inputs.jsonl": {
+          "bytes": 7212104,
+          "lines": 2880,
+          "sha256": "6cb1a1fec7d6c09f57fe4bf0c7c43cd93fa173e714eb0da5d47ab88fb04cb48a"
+        },
+        "run_meta.json": {
+          "bytes": 13546,
+          "lines": 431,
+          "sha256": "7fc3e2725fbc221958a2474e4619c93a65f227c1c3084bf84f467f8680515039"
+        },
+        "termination.jsonl": {
+          "bytes": 417,
+          "lines": 1,
+          "sha256": "64556a9dbacba9355a09494785ba7da32c290c06ace174ec525b6da2e38fa778"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2442,
+          "lines": 7,
+          "sha256": "11edc6e173fbd35ae81954526844147ce921b324661bd239af2db2dc50c544dc"
+        },
+        "world_events.jsonl": {
+          "bytes": 14429,
+          "lines": 61,
+          "sha256": "eb6d05f8eae3ae52ff1f50c4a736c27b849c1e3bb51baa18f82ed283b8230674"
+        }
+      },
+      "run_id": "warning-retention-study-v1-20260910T080000Z-recent-d60-s7301",
+      "seed": 7301,
+      "source_dirty": false,
+      "source_sha": "a5b0e68f6c4756ad1695b2898eff870f9d89cdda",
+      "status": "completed",
+      "strict_validation": {
+        "errors": [],
+        "unverifiable": [
+          "dependency versions unavailable: matplotlib",
+          "complete dependency environment: one or more package versions were unavailable",
+          "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+          "cryptographic authenticity: raw_manifest hashes are not externally signed",
+          "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+        ],
+        "valid": true
+      },
+      "warning_summary": {
+        "agent_count": 24,
+        "agents_with_first_eligible_output_count": 6,
+        "all_exact_id_relay_exposure_edge_count": 0,
+        "causal_parent_inferred": false,
+        "communication_mode": "free_text",
+        "dangerous_area_residence_steps_total": 676,
+        "eligible_warning_output_count": 306,
+        "evacuation_success_count": 0,
+        "exact_id_carrier_delivered_message_count": 0,
+        "exact_id_carrier_generated_not_delivered_count": 0,
+        "exact_id_carrier_output_count": 0,
+        "fact_status_totals": {
+          "shared_context": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 612
+          },
+          "warning_specific": {
+            "match": 1,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 1223
+          }
+        },
+        "later_step_exact_id_reuse_output_count": 0,
+        "metric_version": "disaster-metric-v2.0.0",
+        "post_exposure_exact_id_relay_exposure_edge_count": 0,
+        "post_exposure_refuge_distance_decrease_agent_count": 4,
+        "same_step_post_exposure_exact_id_carrier_count": 0,
+        "schema_version": "disaster-metric-v2-summary-v1.0.0",
+        "source_run_id": "warning-retention-study-v1-20260910T080000Z-recent-d60-s7301",
+        "unattributed_exact_id_carrier_output_count": 0,
+        "warning_exposed_agent_count": 6,
+        "warning_reuse_right_censored_count": 6,
+        "warning_reused_agent_count": 0
+      }
+    },
+    {
+      "calls": 2880,
+      "checkpoints": [
+        {
+          "agent_count": 24,
+          "arrived_agent_count": 1,
+          "blocked_moves": 329,
+          "checkpoint": 60,
+          "cross_model_delivery_edges": 3302,
+          "cross_model_exact_id_delivery_edges": 0,
+          "exact_id_delivery_edges": 0,
+          "final_refuge_occupancy": 0,
+          "hazard_agent_steps": 676,
+          "later_reuse_outputs": 0,
+          "mean_final_distance": 19.375,
+          "mean_initial_distance": 18.291666666666668,
+          "message_delivery_edges": 5266,
+          "move": 1071,
+          "official_exposed_agents": 6,
+          "official_exposure_events": 6,
+          "relay_exposed_agents": 0,
+          "relay_exposure_events": 0,
+          "stay": 369,
+          "warning_exposed_agents": 6,
+          "warning_reused_agents": 0
+        }
+      ],
+      "condition": "retained",
+      "config_path": "configs/warning_retention_study_v1/warning-retention-study-v1-20260910T080000Z-retained-d60-s7301.json",
+      "config_sha256": "30a38b955ed8e94b2a78a477f30dc21bb082d0e34b6f13b376ca479a38d2d81f",
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 2880,
+        "logical_llm_calls": 2880,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "duration": 60,
+      "eligible": true,
+      "primary": {
+        "auxiliary_non_id_lexical_candidate_outputs": 1385,
+        "issue_step_phase1_to_phase3_official_loss": 0,
+        "noninitial_agent_count": 18,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 6,
+        "phase1_actual_prompt_exact_id": 306,
+        "phase1_official_selected": 306,
+        "phase3_actual_prompt_exact_id": 306,
+        "phase3_official_selected": 306,
+        "post_issue_phase_denominator": 306
+      },
+      "raw_file_manifests": {
+        "llm_attempts.jsonl": {
+          "bytes": 8638289,
+          "lines": 2880,
+          "sha256": "6e60e21ef8ae84f4dd8a11d0d3b96c967bb6f52260ecc520656308fded1a4bf9"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 351161,
+          "lines": 1440,
+          "sha256": "2df160aefbe798076c175a016c1c83f23ea77198a4db2005f50ea73738684ebd"
+        },
+        "messages.jsonl": {
+          "bytes": 306777,
+          "lines": 1431,
+          "sha256": "8ef37252bc63111f21dfc2a03f9f0f51d6413ce9e271a5a11eac3b0307be7262"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 430190,
+          "lines": 1440,
+          "sha256": "e8c77938a26646c7845c5f8c97d60abcdcc0f1714b45dde6cf5a1aaa7f360443"
+        },
+        "positions.jsonl": {
+          "bytes": 461420,
+          "lines": 1464,
+          "sha256": "472fad3fa681e5c8e0981a3fc2888e333c104ad4b50a1549b7ac90138ccfc1d5"
+        },
+        "prompt_inputs.jsonl": {
+          "bytes": 7558644,
+          "lines": 2880,
+          "sha256": "fb6d7e8f3195df8b6eef9a5f1d22acde902f181e281fad63e894dcc991e738b1"
+        },
+        "run_meta.json": {
+          "bytes": 13573,
+          "lines": 431,
+          "sha256": "49e7735fff6e1278c5d662d004f77a4692f20b96b324e7bacfa829dc6e29e4a9"
+        },
+        "termination.jsonl": {
+          "bytes": 421,
+          "lines": 1,
+          "sha256": "a6cf10e73967477e7b9dbda4a6d222af764ed6dc64aa963e680e6383fb5003b9"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2456,
+          "lines": 7,
+          "sha256": "d64e1709db24b7f395945e4acc1dd0f46caf2f02c40f403d7a9e76d6f911eeb3"
+        },
+        "world_events.jsonl": {
+          "bytes": 14551,
+          "lines": 61,
+          "sha256": "2b0f679c93bbd99593adad1f40845cf86e7b9c349713bf5ee33b1ba01ad80a8b"
+        }
+      },
+      "run_id": "warning-retention-study-v1-20260910T080000Z-retained-d60-s7301",
+      "seed": 7301,
+      "source_dirty": false,
+      "source_sha": "a5b0e68f6c4756ad1695b2898eff870f9d89cdda",
+      "status": "completed",
+      "strict_validation": {
+        "errors": [],
+        "unverifiable": [
+          "dependency versions unavailable: matplotlib",
+          "complete dependency environment: one or more package versions were unavailable",
+          "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+          "cryptographic authenticity: raw_manifest hashes are not externally signed",
+          "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+        ],
+        "valid": true
+      },
+      "warning_summary": {
+        "agent_count": 24,
+        "agents_with_first_eligible_output_count": 6,
+        "all_exact_id_relay_exposure_edge_count": 0,
+        "causal_parent_inferred": false,
+        "communication_mode": "free_text",
+        "dangerous_area_residence_steps_total": 676,
+        "eligible_warning_output_count": 306,
+        "evacuation_success_count": 0,
+        "exact_id_carrier_delivered_message_count": 0,
+        "exact_id_carrier_generated_not_delivered_count": 0,
+        "exact_id_carrier_output_count": 0,
+        "fact_status_totals": {
+          "shared_context": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 612
+          },
+          "warning_specific": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 1224
+          }
+        },
+        "later_step_exact_id_reuse_output_count": 0,
+        "metric_version": "disaster-metric-v2.0.0",
+        "post_exposure_exact_id_relay_exposure_edge_count": 0,
+        "post_exposure_refuge_distance_decrease_agent_count": 3,
+        "same_step_post_exposure_exact_id_carrier_count": 0,
+        "schema_version": "disaster-metric-v2-summary-v1.0.0",
+        "source_run_id": "warning-retention-study-v1-20260910T080000Z-retained-d60-s7301",
+        "unattributed_exact_id_carrier_output_count": 0,
+        "warning_exposed_agent_count": 6,
+        "warning_reuse_right_censored_count": 6,
+        "warning_reused_agent_count": 0
+      }
+    },
+    {
+      "calls": 2880,
+      "checkpoints": [
+        {
+          "agent_count": 24,
+          "arrived_agent_count": 0,
+          "blocked_moves": 388,
+          "checkpoint": 60,
+          "cross_model_delivery_edges": 2822,
+          "cross_model_exact_id_delivery_edges": 0,
+          "exact_id_delivery_edges": 0,
+          "final_refuge_occupancy": 0,
+          "hazard_agent_steps": 668,
+          "later_reuse_outputs": 0,
+          "mean_final_distance": 20.791666666666668,
+          "mean_initial_distance": 19.25,
+          "message_delivery_edges": 5548,
+          "move": 1299,
+          "official_exposed_agents": 6,
+          "official_exposure_events": 6,
+          "relay_exposed_agents": 0,
+          "relay_exposure_events": 0,
+          "stay": 141,
+          "warning_exposed_agents": 6,
+          "warning_reused_agents": 0
+        }
+      ],
+      "condition": "retained",
+      "config_path": "configs/warning_retention_study_v1/warning-retention-study-v1-20260910T080000Z-retained-d60-s7302.json",
+      "config_sha256": "2825b6dc34079becc7002ef2ec0895891cd4ce6f553040c6fa3ae641546dab04",
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 2880,
+        "logical_llm_calls": 2880,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "duration": 60,
+      "eligible": true,
+      "primary": {
+        "auxiliary_non_id_lexical_candidate_outputs": 1363,
+        "issue_step_phase1_to_phase3_official_loss": 0,
+        "noninitial_agent_count": 18,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 6,
+        "phase1_actual_prompt_exact_id": 306,
+        "phase1_official_selected": 306,
+        "phase3_actual_prompt_exact_id": 306,
+        "phase3_official_selected": 306,
+        "post_issue_phase_denominator": 306
+      },
+      "raw_file_manifests": {
+        "llm_attempts.jsonl": {
+          "bytes": 8574194,
+          "lines": 2880,
+          "sha256": "3af92a4b7e9d2aa39d51e607aa6f99bde6e260957305aae7d1c3053042724c4b"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 337158,
+          "lines": 1440,
+          "sha256": "ad51fee6a34c54a59b23cd7a6c48a9c744b52ce3a4e932dfd4455bad3a160c1d"
+        },
+        "messages.jsonl": {
+          "bytes": 290400,
+          "lines": 1367,
+          "sha256": "7f356d92738f73b4f4004b5786dbe7ce99b56b47f75bd5161abdc28e1296dd64"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 418078,
+          "lines": 1440,
+          "sha256": "a0021c95dd5788dc9f2339c3203f5ff5357fba93f42b46691d76115f30506cfc"
+        },
+        "positions.jsonl": {
+          "bytes": 461060,
+          "lines": 1464,
+          "sha256": "03b74e693c8a765c24bc45ef9755f7a2fb25941c986c6ae43da775cb2d85157d"
+        },
+        "prompt_inputs.jsonl": {
+          "bytes": 7297962,
+          "lines": 2880,
+          "sha256": "21dd938d23472c7fc6ef0a5446960ba10fd7eafd5594217fc4976396dfebcdc2"
+        },
+        "run_meta.json": {
+          "bytes": 13573,
+          "lines": 431,
+          "sha256": "cf3b9bb204765cf816339cbefc086c9dfee5a2d593a324ee714d0aa8312a3eac"
+        },
+        "termination.jsonl": {
+          "bytes": 421,
+          "lines": 1,
+          "sha256": "2c3d5d73f73b74f55b2bc5165f4710ff5e2f8b4e8d6c6b1c256ccdf48babff01"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2456,
+          "lines": 7,
+          "sha256": "f9d76d027ab8905651055c98b08a23172468336686c951e003619830a0a6ef67"
+        },
+        "world_events.jsonl": {
+          "bytes": 14551,
+          "lines": 61,
+          "sha256": "bd4e68fe0872b3266c8874d5b4dda3d99fd41d370f4c64a160b7bff15aaf7e3e"
+        }
+      },
+      "run_id": "warning-retention-study-v1-20260910T080000Z-retained-d60-s7302",
+      "seed": 7302,
+      "source_dirty": false,
+      "source_sha": "a5b0e68f6c4756ad1695b2898eff870f9d89cdda",
+      "status": "completed",
+      "strict_validation": {
+        "errors": [],
+        "unverifiable": [
+          "dependency versions unavailable: matplotlib",
+          "complete dependency environment: one or more package versions were unavailable",
+          "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+          "cryptographic authenticity: raw_manifest hashes are not externally signed",
+          "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+        ],
+        "valid": true
+      },
+      "warning_summary": {
+        "agent_count": 24,
+        "agents_with_first_eligible_output_count": 6,
+        "all_exact_id_relay_exposure_edge_count": 0,
+        "causal_parent_inferred": false,
+        "communication_mode": "free_text",
+        "dangerous_area_residence_steps_total": 668,
+        "eligible_warning_output_count": 306,
+        "evacuation_success_count": 0,
+        "exact_id_carrier_delivered_message_count": 0,
+        "exact_id_carrier_generated_not_delivered_count": 0,
+        "exact_id_carrier_output_count": 0,
+        "fact_status_totals": {
+          "shared_context": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 612
+          },
+          "warning_specific": {
+            "match": 1,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 1223
+          }
+        },
+        "later_step_exact_id_reuse_output_count": 0,
+        "metric_version": "disaster-metric-v2.0.0",
+        "post_exposure_exact_id_relay_exposure_edge_count": 0,
+        "post_exposure_refuge_distance_decrease_agent_count": 4,
+        "same_step_post_exposure_exact_id_carrier_count": 0,
+        "schema_version": "disaster-metric-v2-summary-v1.0.0",
+        "source_run_id": "warning-retention-study-v1-20260910T080000Z-retained-d60-s7302",
+        "unattributed_exact_id_carrier_output_count": 0,
+        "warning_exposed_agent_count": 6,
+        "warning_reuse_right_censored_count": 6,
+        "warning_reused_agent_count": 0
+      }
+    },
+    {
+      "calls": 2880,
+      "checkpoints": [
+        {
+          "agent_count": 24,
+          "arrived_agent_count": 1,
+          "blocked_moves": 383,
+          "checkpoint": 60,
+          "cross_model_delivery_edges": 3366,
+          "cross_model_exact_id_delivery_edges": 0,
+          "exact_id_delivery_edges": 0,
+          "final_refuge_occupancy": 1,
+          "hazard_agent_steps": 700,
+          "later_reuse_outputs": 0,
+          "mean_final_distance": 18.375,
+          "mean_initial_distance": 19.25,
+          "message_delivery_edges": 6674,
+          "move": 1270,
+          "official_exposed_agents": 6,
+          "official_exposure_events": 6,
+          "relay_exposed_agents": 0,
+          "relay_exposure_events": 0,
+          "stay": 170,
+          "warning_exposed_agents": 6,
+          "warning_reused_agents": 0
+        }
+      ],
+      "condition": "recent",
+      "config_path": "configs/warning_retention_study_v1/warning-retention-study-v1-20260910T080000Z-recent-d60-s7302.json",
+      "config_sha256": "dc7a0a642e992ba261490fcd3edbc7d7dd978761f499ed139de2145f880cb03e",
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 2880,
+        "logical_llm_calls": 2880,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "duration": 60,
+      "eligible": true,
+      "primary": {
+        "auxiliary_non_id_lexical_candidate_outputs": 1393,
+        "issue_step_phase1_to_phase3_official_loss": 1,
+        "noninitial_agent_count": 18,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 6,
+        "phase1_actual_prompt_exact_id": 61,
+        "phase1_official_selected": 61,
+        "phase3_actual_prompt_exact_id": 56,
+        "phase3_official_selected": 56,
+        "post_issue_phase_denominator": 306
+      },
+      "raw_file_manifests": {
+        "llm_attempts.jsonl": {
+          "bytes": 8663212,
+          "lines": 2880,
+          "sha256": "deeb461a32aa6bdef7d432072c55aba01977d4b9b1c951410ae62d95393845c1"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 352121,
+          "lines": 1440,
+          "sha256": "4ae3a034f44b9bc111198d9d317ea641cbf9ebb460050b6bdd83a3f94e73316d"
+        },
+        "messages.jsonl": {
+          "bytes": 311233,
+          "lines": 1380,
+          "sha256": "7ff81219e536de2a550ecc0c1a921d0a77155337de3e7d9be4928c8ec27c0eed"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 448430,
+          "lines": 1440,
+          "sha256": "2ce26edb1414fbd2253bbc43c171a13598b0f181f1efa19cecf2db607304ad49"
+        },
+        "positions.jsonl": {
+          "bytes": 458103,
+          "lines": 1464,
+          "sha256": "d43279361621f52a9b35a0988a9a7fb184b9038ae1cc148e0f66ef3d98c5537d"
+        },
+        "prompt_inputs.jsonl": {
+          "bytes": 7442910,
+          "lines": 2880,
+          "sha256": "8444573e477988287182129fb180aa6b53ff87a742c3ac27e90ba542206bf1bb"
+        },
+        "run_meta.json": {
+          "bytes": 13546,
+          "lines": 431,
+          "sha256": "e4fd1325166b323bf3e50142835601926c25d334114a4880a7f4573b434f6293"
+        },
+        "termination.jsonl": {
+          "bytes": 417,
+          "lines": 1,
+          "sha256": "7166212589a6447990b5a3589784ce8634969c08317fddaa29451614dd8af1fa"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2442,
+          "lines": 7,
+          "sha256": "c9ff908010eceac968c4b362ba91bd71f0f9fbe2dd2ebad2ea9ad6fe7babba8a"
+        },
+        "world_events.jsonl": {
+          "bytes": 14429,
+          "lines": 61,
+          "sha256": "25cea537cd7aa33e4c846f680b57aac37018d1f40095b5a677eabe2fd343536e"
+        }
+      },
+      "run_id": "warning-retention-study-v1-20260910T080000Z-recent-d60-s7302",
+      "seed": 7302,
+      "source_dirty": false,
+      "source_sha": "a5b0e68f6c4756ad1695b2898eff870f9d89cdda",
+      "status": "completed",
+      "strict_validation": {
+        "errors": [],
+        "unverifiable": [
+          "dependency versions unavailable: matplotlib",
+          "complete dependency environment: one or more package versions were unavailable",
+          "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+          "cryptographic authenticity: raw_manifest hashes are not externally signed",
+          "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+        ],
+        "valid": true
+      },
+      "warning_summary": {
+        "agent_count": 24,
+        "agents_with_first_eligible_output_count": 6,
+        "all_exact_id_relay_exposure_edge_count": 0,
+        "causal_parent_inferred": false,
+        "communication_mode": "free_text",
+        "dangerous_area_residence_steps_total": 700,
+        "eligible_warning_output_count": 306,
+        "evacuation_success_count": 1,
+        "exact_id_carrier_delivered_message_count": 0,
+        "exact_id_carrier_generated_not_delivered_count": 0,
+        "exact_id_carrier_output_count": 0,
+        "fact_status_totals": {
+          "shared_context": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 612
+          },
+          "warning_specific": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 1224
+          }
+        },
+        "later_step_exact_id_reuse_output_count": 0,
+        "metric_version": "disaster-metric-v2.0.0",
+        "post_exposure_exact_id_relay_exposure_edge_count": 0,
+        "post_exposure_refuge_distance_decrease_agent_count": 3,
+        "same_step_post_exposure_exact_id_carrier_count": 0,
+        "schema_version": "disaster-metric-v2-summary-v1.0.0",
+        "source_run_id": "warning-retention-study-v1-20260910T080000Z-recent-d60-s7302",
+        "unattributed_exact_id_carrier_output_count": 0,
+        "warning_exposed_agent_count": 6,
+        "warning_reuse_right_censored_count": 6,
+        "warning_reused_agent_count": 0
+      }
+    },
+    {
+      "calls": 2880,
+      "checkpoints": [
+        {
+          "agent_count": 24,
+          "arrived_agent_count": 1,
+          "blocked_moves": 453,
+          "checkpoint": 60,
+          "cross_model_delivery_edges": 3262,
+          "cross_model_exact_id_delivery_edges": 0,
+          "exact_id_delivery_edges": 0,
+          "final_refuge_occupancy": 0,
+          "hazard_agent_steps": 796,
+          "later_reuse_outputs": 0,
+          "mean_final_distance": 25.375,
+          "mean_initial_distance": 19.166666666666668,
+          "message_delivery_edges": 5388,
+          "move": 1241,
+          "official_exposed_agents": 6,
+          "official_exposure_events": 6,
+          "relay_exposed_agents": 0,
+          "relay_exposure_events": 0,
+          "stay": 199,
+          "warning_exposed_agents": 6,
+          "warning_reused_agents": 0
+        }
+      ],
+      "condition": "recent",
+      "config_path": "configs/warning_retention_study_v1/warning-retention-study-v1-20260910T080000Z-recent-d60-s7303.json",
+      "config_sha256": "5e986bac2e2ebfe9f551e6a9d7c50bc747050587f3bc88a7f3799eb8b6d70c80",
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 2880,
+        "logical_llm_calls": 2880,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "duration": 60,
+      "eligible": true,
+      "primary": {
+        "auxiliary_non_id_lexical_candidate_outputs": 1359,
+        "issue_step_phase1_to_phase3_official_loss": 4,
+        "noninitial_agent_count": 18,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 6,
+        "phase1_actual_prompt_exact_id": 8,
+        "phase1_official_selected": 8,
+        "phase3_actual_prompt_exact_id": 2,
+        "phase3_official_selected": 2,
+        "post_issue_phase_denominator": 306
+      },
+      "raw_file_manifests": {
+        "llm_attempts.jsonl": {
+          "bytes": 8601639,
+          "lines": 2880,
+          "sha256": "0c729c56e28a4d46317edcdcaffe38363eaec839bb0accc86cdd12ee86271a17"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 350262,
+          "lines": 1440,
+          "sha256": "f8317e7bd90cc52050e5fabb1b5803d47d188b7c54e6b6ae1cc55932447fa1c1"
+        },
+        "messages.jsonl": {
+          "bytes": 291251,
+          "lines": 1385,
+          "sha256": "8402f90131349d83df52d7556ce9b3bc7f0a1ee7b6138649ddd57c1ba8674978"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 416834,
+          "lines": 1440,
+          "sha256": "ca0c051a36579e61d6fbe82c622994cfb89f26c17888e8982f00a09be7ca6143"
+        },
+        "positions.jsonl": {
+          "bytes": 458881,
+          "lines": 1464,
+          "sha256": "fd6fc064dedd58d62893936f40f049612eaba4a927fc8e62658e6c8a06b437aa"
+        },
+        "prompt_inputs.jsonl": {
+          "bytes": 7115694,
+          "lines": 2880,
+          "sha256": "128ed229f7226074516549061f2a1da7132275626c8bcfaf794ac9b3f0410e53"
+        },
+        "run_meta.json": {
+          "bytes": 13546,
+          "lines": 431,
+          "sha256": "d0923d96b220420f9586b5dc3186b995832138ddfba75a3c5356ebed9659265c"
+        },
+        "termination.jsonl": {
+          "bytes": 417,
+          "lines": 1,
+          "sha256": "7a5e57f27e9a29d49a7dc0ff28f6bbc211016b45f17e217623800d2bffb4a8c9"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2442,
+          "lines": 7,
+          "sha256": "50e41aa17c4bb9efbde3f48cd1b5cb1d32bef5848384454d3b508d3ec6c7bd12"
+        },
+        "world_events.jsonl": {
+          "bytes": 14429,
+          "lines": 61,
+          "sha256": "cbef8351b0162e07fa13f448280e8bdbc888d5d1c4fa9be8d96bc8d4676a5a8e"
+        }
+      },
+      "run_id": "warning-retention-study-v1-20260910T080000Z-recent-d60-s7303",
+      "seed": 7303,
+      "source_dirty": false,
+      "source_sha": "a5b0e68f6c4756ad1695b2898eff870f9d89cdda",
+      "status": "completed",
+      "strict_validation": {
+        "errors": [],
+        "unverifiable": [
+          "dependency versions unavailable: matplotlib",
+          "complete dependency environment: one or more package versions were unavailable",
+          "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+          "cryptographic authenticity: raw_manifest hashes are not externally signed",
+          "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+        ],
+        "valid": true
+      },
+      "warning_summary": {
+        "agent_count": 24,
+        "agents_with_first_eligible_output_count": 6,
+        "all_exact_id_relay_exposure_edge_count": 0,
+        "causal_parent_inferred": false,
+        "communication_mode": "free_text",
+        "dangerous_area_residence_steps_total": 796,
+        "eligible_warning_output_count": 306,
+        "evacuation_success_count": 0,
+        "exact_id_carrier_delivered_message_count": 0,
+        "exact_id_carrier_generated_not_delivered_count": 0,
+        "exact_id_carrier_output_count": 0,
+        "fact_status_totals": {
+          "shared_context": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 612
+          },
+          "warning_specific": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 1224
+          }
+        },
+        "later_step_exact_id_reuse_output_count": 0,
+        "metric_version": "disaster-metric-v2.0.0",
+        "post_exposure_exact_id_relay_exposure_edge_count": 0,
+        "post_exposure_refuge_distance_decrease_agent_count": 5,
+        "same_step_post_exposure_exact_id_carrier_count": 0,
+        "schema_version": "disaster-metric-v2-summary-v1.0.0",
+        "source_run_id": "warning-retention-study-v1-20260910T080000Z-recent-d60-s7303",
+        "unattributed_exact_id_carrier_output_count": 0,
+        "warning_exposed_agent_count": 6,
+        "warning_reuse_right_censored_count": 6,
+        "warning_reused_agent_count": 0
+      }
+    },
+    {
+      "calls": 2880,
+      "checkpoints": [
+        {
+          "agent_count": 24,
+          "arrived_agent_count": 1,
+          "blocked_moves": 355,
+          "checkpoint": 60,
+          "cross_model_delivery_edges": 3520,
+          "cross_model_exact_id_delivery_edges": 0,
+          "exact_id_delivery_edges": 0,
+          "final_refuge_occupancy": 0,
+          "hazard_agent_steps": 796,
+          "later_reuse_outputs": 0,
+          "mean_final_distance": 24.541666666666668,
+          "mean_initial_distance": 19.166666666666668,
+          "message_delivery_edges": 5970,
+          "move": 1219,
+          "official_exposed_agents": 6,
+          "official_exposure_events": 6,
+          "relay_exposed_agents": 0,
+          "relay_exposure_events": 0,
+          "stay": 221,
+          "warning_exposed_agents": 6,
+          "warning_reused_agents": 0
+        }
+      ],
+      "condition": "retained",
+      "config_path": "configs/warning_retention_study_v1/warning-retention-study-v1-20260910T080000Z-retained-d60-s7303.json",
+      "config_sha256": "b597ab0162102fdfcb21f54b9b5aebc47f87a977bd50d741dbbb452b84798341",
+      "counters": {
+        "generation_retries": 0,
+        "http_attempts": 2880,
+        "logical_llm_calls": 2880,
+        "schema_validation_failures": 0,
+        "syntax_parse_attempt_failures": 0,
+        "syntax_parse_failures": 0,
+        "transport_failures": 0
+      },
+      "duration": 60,
+      "eligible": true,
+      "primary": {
+        "auxiliary_non_id_lexical_candidate_outputs": 1374,
+        "issue_step_phase1_to_phase3_official_loss": 0,
+        "noninitial_agent_count": 18,
+        "noninitial_exact_id_peer_delivery_edges": 0,
+        "noninitial_exact_id_peer_recipient_count": 0,
+        "noninitial_later_step_reuse_outputs": 0,
+        "noninitial_later_step_reused_agents": 0,
+        "official_recipient_count": 6,
+        "phase1_actual_prompt_exact_id": 306,
+        "phase1_official_selected": 306,
+        "phase3_actual_prompt_exact_id": 306,
+        "phase3_official_selected": 306,
+        "post_issue_phase_denominator": 306
+      },
+      "raw_file_manifests": {
+        "llm_attempts.jsonl": {
+          "bytes": 8668760,
+          "lines": 2880,
+          "sha256": "97004d467fed90a9c48b6a1ef47188a003a66bb29f5540e14847338fddcaa5b2"
+        },
+        "memory_reasoning.jsonl": {
+          "bytes": 359620,
+          "lines": 1440,
+          "sha256": "b9b3f8ceec7090003b682429258ef21a1aeb02948f83aae2dc36af9d603a2924"
+        },
+        "messages.jsonl": {
+          "bytes": 296752,
+          "lines": 1371,
+          "sha256": "b2253e46e02f675db308b59eddeaca732c4948d91e24caf0e7b43a2569249584"
+        },
+        "parse_errors.jsonl": {
+          "bytes": 0,
+          "lines": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "phase1_raw.jsonl": {
+          "bytes": 430894,
+          "lines": 1440,
+          "sha256": "ceb1129dd396277cb34ce04e9fffbeccb546ef8fcd7c1f81c05e4560a11d99d2"
+        },
+        "positions.jsonl": {
+          "bytes": 461657,
+          "lines": 1464,
+          "sha256": "eb237163d02984cd9f08945c5cc612822203597c019a216e516029e251442852"
+        },
+        "prompt_inputs.jsonl": {
+          "bytes": 7595726,
+          "lines": 2880,
+          "sha256": "90a313df25c6e9df47c3dcd0f5ec9e94899b27af448b826de00624f697abbaa9"
+        },
+        "run_meta.json": {
+          "bytes": 13573,
+          "lines": 431,
+          "sha256": "be580de65d3eb57f873268cabf5f83c8866c1f9bf1e32ed6b107cad7135dc7ba"
+        },
+        "termination.jsonl": {
+          "bytes": 421,
+          "lines": 1,
+          "sha256": "9c5c37457af3d1dad222cf5496823e358369d64944616e424c84f4414aa24b79"
+        },
+        "warning_events.jsonl": {
+          "bytes": 2456,
+          "lines": 7,
+          "sha256": "1262c5edb23e81f9dcd2a1082a10a1d8c46f66c967c211a22c0232d8a8cd28a1"
+        },
+        "world_events.jsonl": {
+          "bytes": 14551,
+          "lines": 61,
+          "sha256": "c8625c2e108151437f0d12ad240b93faf3e8db2b79742a404380b6be797dbcaf"
+        }
+      },
+      "run_id": "warning-retention-study-v1-20260910T080000Z-retained-d60-s7303",
+      "seed": 7303,
+      "source_dirty": false,
+      "source_sha": "a5b0e68f6c4756ad1695b2898eff870f9d89cdda",
+      "status": "completed",
+      "strict_validation": {
+        "errors": [],
+        "unverifiable": [
+          "dependency versions unavailable: matplotlib",
+          "complete dependency environment: one or more package versions were unavailable",
+          "global event identity for primary logs: schema 2.0 event IDs cover attempt, termination, and disaster events, but not every primary Phase/message row",
+          "cryptographic authenticity: raw_manifest hashes are not externally signed",
+          "operational endpoint address identity: runtime bindings are deliberately excluded from public artifacts"
+        ],
+        "valid": true
+      },
+      "warning_summary": {
+        "agent_count": 24,
+        "agents_with_first_eligible_output_count": 6,
+        "all_exact_id_relay_exposure_edge_count": 0,
+        "causal_parent_inferred": false,
+        "communication_mode": "free_text",
+        "dangerous_area_residence_steps_total": 796,
+        "eligible_warning_output_count": 306,
+        "evacuation_success_count": 0,
+        "exact_id_carrier_delivered_message_count": 0,
+        "exact_id_carrier_generated_not_delivered_count": 0,
+        "exact_id_carrier_output_count": 0,
+        "fact_status_totals": {
+          "shared_context": {
+            "match": 0,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 612
+          },
+          "warning_specific": {
+            "match": 9,
+            "mixed": 0,
+            "recognized_conflict": 0,
+            "unrecognized": 1215
+          }
+        },
+        "later_step_exact_id_reuse_output_count": 0,
+        "metric_version": "disaster-metric-v2.0.0",
+        "post_exposure_exact_id_relay_exposure_edge_count": 0,
+        "post_exposure_refuge_distance_decrease_agent_count": 5,
+        "same_step_post_exposure_exact_id_carrier_count": 0,
+        "schema_version": "disaster-metric-v2-summary-v1.0.0",
+        "source_run_id": "warning-retention-study-v1-20260910T080000Z-retained-d60-s7303",
+        "unattributed_exact_id_carrier_output_count": 0,
+        "warning_exposed_agent_count": 6,
+        "warning_reuse_right_censored_count": 6,
+        "warning_reused_agent_count": 0
+      }
+    }
+  ]
+}

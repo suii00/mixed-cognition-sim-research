@@ -165,9 +165,9 @@ def check_run(run_dir, config, specs, source_sha):
     return row
 
 
-def checked_output_paths(batch, run_ids):
-    root = REPO_ROOT.resolve(strict=True)
-    parents = [REPO_ROOT / name for name in (".tmp", "runs", "derived")]
+def checked_output_paths(batch, run_ids, *, repo_root=None):
+    root = (REPO_ROOT if repo_root is None else repo_root).resolve(strict=True)
+    parents = [root / name for name in (".tmp", "runs", "derived")]
     for parent in parents:
         if parent.is_symlink() or parent.resolve(strict=False) != root / parent.name:
             raise PublicVllmError("output ancestor is symlinked or outside source checkout")
@@ -231,7 +231,8 @@ def public_tree_safe(root, specs):
     return True
 
 
-def promote_batch(stage, final_evidence, run_ids, rows):
+def promote_batch(stage, final_evidence, run_ids, rows, *, repo_root=None):
+    root = REPO_ROOT if repo_root is None else repo_root
     evidence_stage = stage / "evidence"
     evidence_stage.mkdir(exist_ok=False)
     (stage / "probe").rename(evidence_stage / "probe")
@@ -242,7 +243,7 @@ def promote_batch(stage, final_evidence, run_ids, rows):
                   for path in sorted(evidence_stage.rglob("*")) if path.is_file()},
     })
     sources = [stage / "runs" / ("output_" + name) for name in run_ids] + [evidence_stage]
-    destinations = [REPO_ROOT / "runs" / source.name for source in sources[:-1]] + [final_evidence]
+    destinations = [root / "runs" / source.name for source in sources[:-1]] + [final_evidence]
     expected_hashes = [row["run_tree_sha256"] for row in rows] + [_tree_digest(evidence_stage)]
     for source, destination, expected in zip(sources, destinations, expected_hashes):
         destination.parent.mkdir(parents=True, exist_ok=True)

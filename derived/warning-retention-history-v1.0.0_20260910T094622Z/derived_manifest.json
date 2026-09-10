@@ -1,0 +1,46 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "agent_phases.jsonl": {
+      "bytes": 35599831,
+      "lines": 17280,
+      "sha256": "ac3ac98042cc8457bc1d460b2f98c6cea6185e54ea9c288a8d1d978c6b41542b"
+    },
+    "agent_steps.jsonl": {
+      "bytes": 10005641,
+      "lines": 8736,
+      "sha256": "47512b8f92cadd6b5a247372856906bf457c56e8a40e045dc153d87af8af827a"
+    },
+    "agents.jsonl": {
+      "bytes": 156314,
+      "lines": 96,
+      "sha256": "1d5f2d8633641096dda0eb044a2be7dbd651c39b9085003b6c41a93f99df7533"
+    },
+    "analysis_meta.json": {
+      "bytes": 5426,
+      "lines": 153,
+      "sha256": "baa4a91c776f44ccc7982e8489c8d63e635dd229727dfbfb7d996291a1aea533"
+    },
+    "report.md": {
+      "bytes": 952,
+      "lines": 13,
+      "sha256": "6703e6443e72ae0e168e6e4c755cb01bf359f556c5f51fb37981974974a8ea5b"
+    },
+    "speech.jsonl": {
+      "bytes": 6905648,
+      "lines": 8640,
+      "sha256": "69a709af8832bca53a776cb74efd32c94d55d66499cf7dad4046e999260ee42c"
+    },
+    "summary.json": {
+      "bytes": 27259,
+      "lines": 711,
+      "sha256": "a83934cb3f139528d6500f3a81f920588f565b50e31c6f9811821255bfc0ddda"
+    },
+    "warning_outputs.jsonl": {
+      "bytes": 3796581,
+      "lines": 1944,
+      "sha256": "8d18ff61ebcd7da04974271cd725ed0d288aa3c0c0d6bcaad6d73aa786d57d3e"
+    }
+  },
+  "metric_version": "warning-retention-study-metric-v1.0.0"
+}

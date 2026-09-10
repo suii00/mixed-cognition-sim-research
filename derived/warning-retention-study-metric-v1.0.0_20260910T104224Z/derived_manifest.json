@@ -1,0 +1,51 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "agent_phases.jsonl": {
+      "bytes": 40964365,
+      "lines": 17280,
+      "sha256": "dd303ca0bf922d285e4129fada232440c4d1167854470821602ed9c312bb7fe3"
+    },
+    "agent_steps.jsonl": {
+      "bytes": 10163682,
+      "lines": 8784,
+      "sha256": "8281090d34530a022a5b7dd06fd57d7e751682d84e8b79c8083feed2d84c85e0"
+    },
+    "agents.jsonl": {
+      "bytes": 239836,
+      "lines": 144,
+      "sha256": "8b61789d4506ef789d29141cd53810cf4573634a4fa85eb40357346fb53d54d9"
+    },
+    "analysis_meta.json": {
+      "bytes": 5959,
+      "lines": 163,
+      "sha256": "9c218e0713b3e5258189716c7fa61dcce6b7a679da7ffdef1a00092f8a867c02"
+    },
+    "comparison.html": {
+      "bytes": 58743864,
+      "lines": 59,
+      "sha256": "c66b76482d41a00d02580f493d88aba5205cd195805d997265a0e5083697b6c4"
+    },
+    "report.md": {
+      "bytes": 1194,
+      "lines": 15,
+      "sha256": "9c53cfa9088b25cf8840a3a38c15e48caab007b0349e7c6e5b0b260a0a83e576"
+    },
+    "speech.jsonl": {
+      "bytes": 6904172,
+      "lines": 8640,
+      "sha256": "4feb91287592ff0c9132a199c94ba23ad4cb04794ea3656f7aeb210daa7f20e9"
+    },
+    "summary.json": {
+      "bytes": 47597,
+      "lines": 1220,
+      "sha256": "1cf08b4d866fd5d8afc4816518ba6adbe4b0b7d0cc151423f677ea859fb38cdd"
+    },
+    "warning_outputs.jsonl": {
+      "bytes": 3590439,
+      "lines": 1836,
+      "sha256": "095f5cf7d62f5cf9f78ec1ad751ff1e2fe5946084887994d566b1c4b6941a832"
+    }
+  },
+  "metric_version": "warning-retention-study-metric-v1.0.0"
+}

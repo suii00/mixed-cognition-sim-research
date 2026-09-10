@@ -23,6 +23,12 @@ Every run contains:
 Disaster scenarios additionally contain `world_events.jsonl`, `positions.jsonl`, and
 `warning_events.jsonl`.
 
+Runs explicitly selecting `simulation.input_observability_version:
+message-presentation-v1.0.0` additionally contain `prompt_inputs.jsonl`, following
+the independently versioned [message presentation evidence contract](MESSAGE_PRESENTATION_V1_SPEC.md).
+This optional stream records the frozen selected messages and exact prepared
+request prompt; it is included in the run's terminal raw manifest.
+
 ## Ordering and identity
 
 Primary records use deterministic `(step, phase, agent_id)` commit order. Concurrent worker

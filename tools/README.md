@@ -39,6 +39,11 @@ python tools/ingest_run.py <source-output-directory>
 
 ## Experiment builders and runners
 
+- `build_warning_retention_study.py`: freezes three paired seeds for recent-five
+  versus retained-official-warning input selection, with 24 agents and 60 steps.
+- `run_warning_retention_study.py`: checks the frozen source and runs six cells
+  behind the nine-request schema probe, with four GPUs and a three-hour ceiling.
+  See the [prospective protocol](../docs/EXPERIMENT_PROTOCOL_WARNING_RETENTION_STUDY_V1.md).
 - `build_public_disaster_matrix.py`: freezes the research-eligible 4 x 3 x 5
   public matrix at 60 runs and 144,000 no-retry HTTP attempts.
 - `run_public_disaster_matrix.py`: owns five no-log vLLM servers on at most six
@@ -55,6 +60,11 @@ python tools/ingest_run.py <source-output-directory>
 
 ## Analysis
 
+- `analyze_warning_retention_study.py`: checks actual prepared input records,
+  independently replays message selection, and reports all three paired outcomes.
+  Its `--historical` mode labels reconstruction of prior runs separately.
+- `render_warning_retention_study.py`: supplies the self-contained A/B agent and
+  step comparison included by the analyzer; model text is displayed as inert data.
 - `metric_v2.py`: versioned communication/reuse metrics.
 - `disaster_metric.py`: disaster-chain metrics.
 - `candidate_projection.py`: candidate-discovery projection.
