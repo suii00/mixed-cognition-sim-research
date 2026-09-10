@@ -7,8 +7,8 @@
 
 本体17,280 calls、別枠のengineering probe 9件、失敗・再試行0。全3組で初期配置とモデル割当の
 一致を確認し、独立した生ログ再計算でも指定指標と対応差が一致した。
-[全6 runのA/B比較HTML](../derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/comparison.html)と[機械可読な全結果](../derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/summary.json)を収録した。
-HTMLは自己完結型の58,743,864 bytes（約56 MiB）で、ダウンロードしてローカルで開く形式。
+[全6 runのA/B比較HTMLをブラウザーで開く](https://suii00.github.io/mixed-cognition-sim-research/derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/comparison.html)。[機械可読な全結果](../derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/summary.json)も収録した。
+HTMLは自己完結型の58,743,864 bytes（約56 MiB）。GitHub Pagesで直接閲覧できる。読み込みに時間がかかる場合がある。[保存済みHTML](../derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/comparison.html)をダウンロードしてローカルで開く方法も利用できる。配信内容は保存済み成果物とバイト単位で同一であり、実験結果やmanifestは変更していない。[公開成果物一覧](https://suii00.github.io/mixed-cognition-sim-research/)。
 ブラウザーでの視覚的な表示確認は未実施であり、確認済み範囲は末尾に記す。
 
 固定した計画は[実験protocol](EXPERIMENT_PROTOCOL_WARNING_RETENTION_STUDY_V1.md)、
@@ -251,7 +251,7 @@ policyにより拒否され、視覚的な表示確認は未実施。別の閲�
 証拠への入口:
 
 - [全結果](../derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/summary.json): 6 runの適格性、config/source/raw hashes、3組の対応差。
-- [A/B比較HTML](../derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/comparison.html): seed・24体・step選択、受信→提示→発話→配送→行動と地図。
+- [A/B比較HTMLを開く](https://suii00.github.io/mixed-cognition-sim-research/derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/comparison.html): seed・24体・step選択、受信→提示→発話→配送→行動と地図。[保存済みHTML](../derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/comparison.html)からのダウンロードも可能。
 - [Phase入力](../derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/agent_phases.jsonl): 全実入力提示とraw行参照。
 - [全発話](../derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/speech.jsonl): Phase 1発話・配送先・固定語彙flag。
 - [個体集計](../derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/agents.jsonl): 初回到達・打切り・終点。

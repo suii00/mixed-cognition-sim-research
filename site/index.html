@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="混成LLMシミュレーションの公開成果物。警報保持方式のA/B比較、避難所配置のリプレイ、過去の実行レポートをブラウザーで閲覧できます。">
+  <title>公開成果物 | mixed-cognition-sim-research</title>
+  <style>
+    :root { color-scheme: light; --ink: #172d3b; --muted: #4b626e; --accent: #08655e; --line: #d4dfe2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f7f6; color: var(--ink); font: 1rem/1.8 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    a { color: var(--accent); text-underline-offset: .2em; overflow-wrap: anywhere; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 3px solid #bf6713; outline-offset: 4px; }
+    .skip { position: absolute; left: 1rem; top: -5rem; background: white; padding: .4rem 1rem; }
+    .skip:focus { top: 1rem; }
+    header, main, footer { max-width: 1040px; margin: auto; padding-left: 28px; padding-right: 28px; }
+    header { padding-top: 40px; padding-bottom: 24px; }
+    .eyebrow { margin: 0; color: var(--muted); font-size: .85rem; letter-spacing: .04em; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.3; margin: .4rem 0 .75rem; }
+    h2 { font-size: 1.4rem; margin: 0 0 .65rem; line-height: 1.5; }
+    p { margin: .65rem 0; }
+    nav { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; margin-top: 1rem; }
+    section { background: white; border: 1px solid var(--line); border-radius: 10px; padding: 26px; margin-bottom: 22px; }
+    .lead { border-top: 4px solid var(--accent); }
+    .meta { color: var(--muted); font-size: .9rem; margin-top: 0; }
+    .button { display: inline-block; margin: .6rem 0; padding: .6rem 1rem; background: var(--accent); color: white; border-radius: 5px; text-decoration: none; font-weight: 650; }
+    .button:hover { background: #064d47; text-decoration: underline; }
+    .note { color: var(--muted); font-size: .9rem; }
+    .table-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; text-align: left; }
+    th, td { padding: .8rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { font-size: .9rem; color: var(--muted); }
+    td small { display: block; color: var(--muted); white-space: nowrap; }
+    footer { padding-top: 4px; padding-bottom: 36px; font-size: .85rem; color: var(--muted); }
+    @media (max-width: 600px) {
+      header, main, footer { padding-left: 16px; padding-right: 16px; }
+      header { padding-top: 26px; }
+      section { padding: 18px; }
+      th, td { padding: .7rem .35rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#artifacts">成果物へ移動</a>
+  <header>
+    <p class="eyebrow">mixed-cognition-sim-research</p>
+    <h1>公開成果物</h1>
+    <p>混成LLMシミュレーションの入力・発話・配送・行動を、保存された実験記録からたどる。</p>
+    <p class="note">HTMLはこのサイトで直接開けます。実験条件、結果の解釈、生ログは各結果レポートを参照してください。</p>
+    <nav aria-label="成果物の種類">
+      <a href="#warning-retention">警報保持のA/B比較</a>
+      <a href="#refuge-layout">避難所配置の比較</a>
+      <a href="#engineering-ja">過去の実行レポート</a>
+      <a href="https://github.com/suii00/mixed-cognition-sim-research">GitHub</a>
+    </nav>
+  </header>
+  <main id="artifacts">
+    <section class="lead" id="warning-retention" aria-labelledby="warning-title">
+      <p class="meta">2026-09-10 · 24 agents · 60 steps · 3 seeds × 2条件</p>
+      <h2 id="warning-title">警報を、判断時の入力に残すとどうなるか</h2>
+      <p>Aは受信履歴の直近5件。Bは直接受信した公式警報1件と他者メッセージ最大4件。6 runを切り替え、受信・入力への提示・発話・配送・行動を確認できます。</p>
+      <a class="button" href="derived/warning-retention-study-metric-v1.0.0_20260910T104224Z/comparison.html">A/B比較HTMLを開く</a>
+      <p class="note">約56 MiB。全6 runのデータを含むため、読み込みに時間がかかる場合があります。</p>
+      <p><a href="https://github.com/suii00/mixed-cognition-sim-research/blob/main/docs/RESULTS_WARNING_RETENTION_STUDY_20260910.md">観測結果・条件・限界・生ログ</a></p>
+    </section>
+    <section id="refuge-layout" aria-labelledby="refuge-title">
+      <p class="meta">2026-09-10 · 24 agents · 60 / 120 steps · seed 6301</p>
+      <h2 id="refuge-title">避難所配置と観測期間の比較</h2>
+      <p>避難所を端に置く条件と中央寄りに置く条件、60 stepと120 stepの全4 run。各HTMLではstepとagentを選択でき、PNGでは全軌跡を見渡せます。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">配置・期間</th><th scope="col">リプレイ</th><th scope="col">全軌跡</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">端 · 60 steps</th><td><a href="derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d60-s6301/replay.html">HTMLを開く</a><small>約3.5 MiB</small></td><td><a href="derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d60-s6301/summary.png">PNGを見る</a></td></tr>
+            <tr><th scope="row">中央寄り · 60 steps</th><td><a href="derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d60-s6301/replay.html">HTMLを開く</a><small>約3.5 MiB</small></td><td><a href="derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d60-s6301/summary.png">PNGを見る</a></td></tr>
+            <tr><th scope="row">中央寄り · 120 steps</th><td><a href="derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d120-s6301/replay.html">HTMLを開く</a><small>約7.3 MiB</small></td><td><a href="derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d120-s6301/summary.png">PNGを見る</a></td></tr>
+            <tr><th scope="row">端 · 120 steps</th><td><a href="derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d120-s6301/replay.html">HTMLを開く</a><small>約7.3 MiB</small></td><td><a href="derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d120-s6301/summary.png">PNGを見る</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><a href="https://github.com/suii00/mixed-cognition-sim-research/blob/main/docs/RESULTS_REFUGE_LAYOUT_STUDY_20260910.md">観測結果・条件・限界・生ログ</a></p>
+    </section>
+    <section id="engineering-ja" aria-labelledby="engineering-title">
+      <p class="meta">2026-08-30 · 24 agents · 60 steps · seed 2403</p>
+      <h2 id="engineering-title">日本語プロンプトの実行レポート</h2>
+      <p>Qwen2.5・Swallow・ELYZAを用いた過去の実行。上の2実験とはモデルとpromptが異なるため、同じ条件の反復としては扱いません。</p>
+      <p><a href="derived/output_engineering-ja-qwen25-swallow05-elyza8b-24a60s-s2403-20260830-r001/engineering-ja-qwen25-swallow05-elyza8b-24a60s-s2403-20260830-r001.html">HTMLレポートを開く</a> <span class="note">（約0.7 MiB）</span></p>
+      <p><a href="derived/output_engineering-ja-qwen25-swallow05-elyza8b-24a60s-s2403-20260830-r001/engineering-ja-qwen25-swallow05-elyza8b-24a60s-s2403-20260830-r001.mp4">動画を見る</a> <span class="note">（MP4・約0.3 MiB）</span></p>
+      <p><a href="https://github.com/suii00/mixed-cognition-sim-research/blob/4b1632848ba9f09fddddf951a6e18b609d4603b0/docs/JAPANESE_PROMPT_EXPERIMENT_V1.md">当時の実験仕様</a> · <a href="https://github.com/suii00/mixed-cognition-sim-research/tree/4b1632848ba9f09fddddf951a6e18b609d4603b0/runs/output_engineering-ja-qwen25-swallow05-elyza8b-24a60s-s2403-20260830-r001">当時の生ログ</a></p>
+    </section>
+  </main>
+  <footer>
+    <p>HTML・PNG・動画は保存済み成果物と同一の内容です。各実験の少数runによる観測は、モデルの優劣や実災害での有効性を示すものではありません。</p>
+    <p><a href="https://github.com/suii00/mixed-cognition-sim-research/blob/main/docs/PAGES_PUBLICATION.md">公開と再解析について</a> · <a href="assets.json">配信ファイルの来歴</a></p>
+  </footer>
+</body>
+</html>

@@ -24,6 +24,12 @@ overwrite; no tool creates a transformed public snapshot.
 
 ## Integrity and publication boundary
 
+`build_pages_site.py --check` validates the explicit Pages asset list, hashes,
+publication boundary, and local links without creating output. Without `--check`,
+it places those same bytes in a new timestamped `.tmp/pages-site_*` directory for
+the official GitHub Pages artifact workflow. It never regenerates or rewrites
+experimental evidence. See [Pages publication](../docs/PAGES_PUBLICATION.md).
+
 ```bash
 python tools/validate_run.py runs/output_<run_id> --strict
 python tools/verify_repository.py

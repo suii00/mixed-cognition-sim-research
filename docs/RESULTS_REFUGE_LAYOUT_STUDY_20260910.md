@@ -125,10 +125,12 @@ batchは`refuge-layout-study-v1-20260909T162300Z`、推論sourceは`a5f1421818bb
 
 | 独立run | replay | 全軌跡・到達余地のPNG | 来歴 |
 | --- | --- | --- | --- |
-| 端・60 | [HTML](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d60-s6301/replay.html) | [PNG](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d60-s6301/summary.png) | [manifest](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d60-s6301/input_manifest.json) |
-| 中央寄り・60 | [HTML](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d60-s6301/replay.html) | [PNG](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d60-s6301/summary.png) | [manifest](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d60-s6301/input_manifest.json) |
-| 中央寄り・120 | [HTML](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d120-s6301/replay.html) | [PNG](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d120-s6301/summary.png) | [manifest](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d120-s6301/input_manifest.json) |
-| 端・120 | [HTML](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d120-s6301/replay.html) | [PNG](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d120-s6301/summary.png) | [manifest](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d120-s6301/input_manifest.json) |
+| 端・60 | [HTMLを開く](https://suii00.github.io/mixed-cognition-sim-research/derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d60-s6301/replay.html) | [PNG](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d60-s6301/summary.png) | [manifest](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d60-s6301/input_manifest.json) |
+| 中央寄り・60 | [HTMLを開く](https://suii00.github.io/mixed-cognition-sim-research/derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d60-s6301/replay.html) | [PNG](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d60-s6301/summary.png) | [manifest](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d60-s6301/input_manifest.json) |
+| 中央寄り・120 | [HTMLを開く](https://suii00.github.io/mixed-cognition-sim-research/derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d120-s6301/replay.html) | [PNG](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d120-s6301/summary.png) | [manifest](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_inset-d120-s6301/input_manifest.json) |
+| 端・120 | [HTMLを開く](https://suii00.github.io/mixed-cognition-sim-research/derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d120-s6301/replay.html) | [PNG](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d120-s6301/summary.png) | [manifest](../derived/disaster-run-replay-v1.0.0_20260909T180820Z_edge-d120-s6301/input_manifest.json) |
+
+HTMLリンクはGitHub Pagesで直接開く。[公開成果物一覧](https://suii00.github.io/mixed-cognition-sim-research/)からも全4本を選択できる。各manifestと同じ保存ディレクトリの`replay.html`をダウンロードしてローカルで開く方法も利用できる。配信ファイルは保存済み成果物とバイト単位で同一であり、生ログ・解析結果・manifestは変更していない。
 
 配置比較を優先する60-step runの図を示す。三角は初期位置、四角とIDは終点、線は記録位置を結ぶ。重なる記号は同じcellへの在所を含み、move出力と実際の変位は区別する。
 
@@ -170,7 +172,7 @@ strict validationが合格しても、以下の未検証事項は残る。
 
 モデル別の初期位置・警報recipientの役割を入れ替えるcounterbalanceや複数seedの反復はしていない。混成集団と単一モデル集団の差、モデルの優劣、警報が移動を引き起こした因果効果はこの設計では判断しない。先行4-agent runとは人数・初期eligible・並列負荷も異なり、同じ実験の反復として併合しない。`research_eligible=false`、`formal_eligible=false`を維持する。
 
-以下はrepository rootでの保存済みrawからの再解析の例。未使用のUTC timestampを指定し、既存run/derivedは上書きしない。この版のanalyzerでは相対`--manifest`がsource照合時に拒否されるため、既定manifestを用いる（明示する場合は絶対パスが必要）。初回の相対パスによる解析停止では派生出力は作られず、設定や計測コードを変えずに既定パスで再解析した。
+以下は、解析source `d6fa9ad6c2b4ecb539eb488de356c49bbb75ef88` の作業ツリーにおけるrepository rootで、保存済みrawから再解析する例。最新mainではvalidator等が更新されており、旧実験の凍結sourceとのバイト一致検査に通らない場合がある。過去commit用の作業ツリーの作り方は[公開と再解析の案内](PAGES_PUBLICATION.md#過去runの再解析)を参照。未使用のUTC timestampを指定し、既存run/derivedは上書きしない。この版のanalyzerでは相対`--manifest`がsource照合時に拒否されるため、既定manifestを用いる（明示する場合は絶対パスが必要）。初回の相対パスによる解析停止では派生出力は作られず、設定や計測コードを変えずに既定パスで再解析した。
 
 ```bash
 python tools/build_refuge_layout_study.py --check
