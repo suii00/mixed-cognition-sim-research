@@ -1,0 +1,153 @@
+{
+  "artifact_version": "warning-retention-history-v1.0.0",
+  "implementation_manifests": {
+    "configs/refuge_layout_study_v1/manifest.json": {
+      "bytes": 4919,
+      "lines": 180,
+      "sha256": "e8d76a2eaa314c7daec25c171090c7dd088c66342d20387418936b3a8ad08666"
+    },
+    "configs/refuge_layout_study_v1/refuge-layout-study-v1-20260909T162300Z-edge-d120-s6301.json": {
+      "bytes": 5643,
+      "lines": 204,
+      "sha256": "dd37842e91e07d744111ad0a3b6461923b2b46b9dca4cce812c13ef0ce5a9522"
+    },
+    "configs/refuge_layout_study_v1/refuge-layout-study-v1-20260909T162300Z-edge-d60-s6301.json": {
+      "bytes": 5640,
+      "lines": 204,
+      "sha256": "5ebaf45aa89a376e10f50939a52be3f65e04ea60a4bbed7c3ed0e47510656cea"
+    },
+    "configs/refuge_layout_study_v1/refuge-layout-study-v1-20260909T162300Z-inset-d120-s6301.json": {
+      "bytes": 5641,
+      "lines": 204,
+      "sha256": "90e5c239bd10f49fb5ae4a703d40028aab02bbeba1a0bf5de0297524f683eb66"
+    },
+    "configs/refuge_layout_study_v1/refuge-layout-study-v1-20260909T162300Z-inset-d60-s6301.json": {
+      "bytes": 5638,
+      "lines": 204,
+      "sha256": "8c2e770f30915d380316c95237684f349a44647a2647379d9f7d1393b0930268"
+    },
+    "docs/DISASTER_METRIC_V2_SPEC.md": {
+      "bytes": 8553,
+      "lines": 203,
+      "sha256": "cd0ca4fec67d945a2b878fe5c0c7e49391e9bacf10a3f7aa0a142f7962cbf711"
+    },
+    "docs/EXPERIMENT_PROTOCOL_WARNING_RETENTION_STUDY_V1.md": {
+      "bytes": 12131,
+      "lines": 160,
+      "sha256": "10574ffd78c97d18592dd0bf603d3336a8c72f25b76e96847476d9f8611bc6d3"
+    },
+    "docs/MESSAGE_PRESENTATION_V1_SPEC.md": {
+      "bytes": 3994,
+      "lines": 71,
+      "sha256": "4e1f184d08d3dfb9cfd4a3290d8c4bffa2b10659459af931a9252cea201199ba"
+    },
+    "docs/MESSAGE_SELECTION_V1_SPEC.md": {
+      "bytes": 3608,
+      "lines": 63,
+      "sha256": "baaec1b4b36dac10be13fa37dd76b7f6f32821b0658ccfe348235aaf8dd7e568"
+    },
+    "docs/WARNING_RETENTION_STUDY_METRIC_V1_SPEC.md": {
+      "bytes": 6186,
+      "lines": 99,
+      "sha256": "a8bca6c4b0f9563e3d2a7bfaeabd2b9530eec28abf86495360fafb60a8452e81"
+    },
+    "engine/agent.py": {
+      "bytes": 3901,
+      "lines": 96,
+      "sha256": "b473c6df9373768d6f6221df13f3fe8fddab8cfba541997cb66973956ba3eb88"
+    },
+    "engine/config.py": {
+      "bytes": 21278,
+      "lines": 520,
+      "sha256": "5fb13d42ed32e2f44d948c93a19691233b4b15121dfd3e975912256891d29a77"
+    },
+    "engine/disaster.py": {
+      "bytes": 13540,
+      "lines": 385,
+      "sha256": "4876ff0b827b181508a59f6608d57a36d780cffa8cface563640a0f4b080b4a5"
+    },
+    "engine/message_selection.py": {
+      "bytes": 1673,
+      "lines": 45,
+      "sha256": "f39ea3a98b6b885b1b7c8d695121b5102311decf5caba5ac6334fce396d8d710"
+    },
+    "engine/prompts.py": {
+      "bytes": 5979,
+      "lines": 182,
+      "sha256": "4b1f0bb63015239d57b9a3af296e0cab7da19b2240776cd860abbdae4425655b"
+    },
+    "engine/prompts_v3.py": {
+      "bytes": 5116,
+      "lines": 150,
+      "sha256": "a2c1a15c9f71c0e844e2c4173dbf7b13aa4be4bcaced1aff81a4c946dcbe6f0f"
+    },
+    "engine/provenance.py": {
+      "bytes": 49695,
+      "lines": 1345,
+      "sha256": "c67cc62d0c00dd7c20222faa8a0bab926de5aea764f9fc4b9592cae7bc083bab"
+    },
+    "engine/sim.py": {
+      "bytes": 37054,
+      "lines": 919,
+      "sha256": "26c6b17af797969905e22f79eb3a5496dc13ba6a99ddca4b59a070c5e6d22aef"
+    },
+    "tools/analyze_refuge_layout_study.py": {
+      "bytes": 27301,
+      "lines": 415,
+      "sha256": "c14bbdcbfd0f32f143481e938c9bdf46ab50135812b520051ead74def43b5a53"
+    },
+    "tools/analyze_warning_retention_study.py": {
+      "bytes": 23056,
+      "lines": 372,
+      "sha256": "1bb94566aec9b286d8d31f1e90ed686add8ffd87eb45010fa92922ce82a462ee"
+    },
+    "tools/artifact_boundaries.py": {
+      "bytes": 1636,
+      "lines": 52,
+      "sha256": "af1065c9dd2ff8ab4dbe7de9f0f7c2ec287e7ca6cdd145989de384b3fd2bf913"
+    },
+    "tools/build_warning_retention_study.py": {
+      "bytes": 10367,
+      "lines": 203,
+      "sha256": "02cb02bf60c71c88c7dbcae48bbe88b69f9a4afeb0bd9e2c88b3db467f6d74db"
+    },
+    "tools/disaster_metric_v2_core.py": {
+      "bytes": 45055,
+      "lines": 1150,
+      "sha256": "d9aaa83fbd15fb66013b04e4379a85f2bc5d8e2210847d9384911e03453b2682"
+    },
+    "tools/render_warning_retention_study.py": {
+      "bytes": 12628,
+      "lines": 81,
+      "sha256": "eac73b4f39e7bd54c7b6a2fdfbcffb6b5f591c3d9403fd9f64d5f105e3bea0e1"
+    },
+    "tools/run_disaster_behavior_pilot.py": {
+      "bytes": 20180,
+      "lines": 408,
+      "sha256": "dea9318e9d3d2ca42cd6d5e5fb7fb3c19b94800ecd791694a703f9abaa04ab11"
+    },
+    "tools/scan_publication.py": {
+      "bytes": 10385,
+      "lines": 274,
+      "sha256": "4b99cde5575d3464f6259f36c8f7f6097fd8803c21b492739d25cef7b7c64f54"
+    },
+    "tools/validate_run.py": {
+      "bytes": 103043,
+      "lines": 2687,
+      "sha256": "cddcdb078e6d41500b8d4f55602b660ba3ec539df8a46533cd6ba812ff835bc3"
+    }
+  },
+  "inference_source_commits": [
+    "a5f1421818bbbed15fa810b0906fddcc991fa885"
+  ],
+  "input_scan_passed": true,
+  "metric_spec_sha256": "a8bca6c4b0f9563e3d2a7bfaeabd2b9530eec28abf86495360fafb60a8452e81",
+  "metric_version": "warning-retention-study-metric-v1.0.0",
+  "raw_modified": false,
+  "source_state": {
+    "git_dirty": false,
+    "git_probe_errors": [],
+    "git_probe_status": "available",
+    "git_sha": "a5b0e68f6c4756ad1695b2898eff870f9d89cdda"
+  }
+}
