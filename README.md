@@ -4,7 +4,7 @@
 守りたいのは、災害時にも情報を共有し、人や社会が状況を確かめて行動を調整できる機能です。
 本研究でいう「メタ安全保障」は、その前提となるAI間の情報伝達と行動の連鎖を検証可能にするという研究目的です。現実の安全性向上を実証したという意味ではありません。
 
-**警報保持方式の追加比較:** [事前protocol](docs/EXPERIMENT_PROTOCOL_WARNING_RETENTION_STUDY_V1.md)と[指標仕様](docs/WARNING_RETENTION_STUDY_METRIC_V1_SPEC.md)。混成24体・60 steps・3組のseedで、直近5件と公式警報1件＋他者4件の入力選択方式を比較します。各Phaseの実際の入力記録を追加し、受信・提示・中継・後続再使用を区別します。実行前に仕様・実装・configを固定する探索的実験です。
+**2026-09-10 警報保持方式の対応比較:** [6 runの観測結果とA/B比較HTML](docs/RESULTS_WARNING_RETENTION_STUDY_20260910.md)。混成24体・60 steps・3組のseedを完走しました（17,280 calls、失敗・再試行0）。公式警報を保持するB条件では、直接受信者への提示が全seed・両Phaseで100%になりました。一方、警報IDを含む発話の生成・配送・後続再使用は全6 runで0でした。入力の継続提示だけでは、この条件のexact-ID伝達は増えませんでした。3組の探索的観測であり、言い換えを含む共有全般や理解の有無は判定していません。[事前protocol](docs/EXPERIMENT_PROTOCOL_WARNING_RETENTION_STUDY_V1.md)、生ログ、指標仕様、独立照合済みの解析と検証記録を収録しています。
 
 **2026-09-10 混成24体の追加実験:** [避難所配置・60/120 stepの観測結果と4本のreplay](docs/RESULTS_REFUGE_LAYOUT_STUDY_20260910.md)。Qwen・Llama・Gemma各8体が同居する全4 runが完走しました（17,280 calls、失敗・再試行0）。[事前protocol](docs/EXPERIMENT_PROTOCOL_REFUGE_LAYOUT_STUDY_V1.md)と[計測仕様](docs/REFUGE_LAYOUT_STUDY_METRIC_V1_SPEC.md)を固定し、初期位置・モデル割当・初期警報受信者をそろえました。独立60-step runの期間内到達は端0/24体、中央寄り1/24体。120-step run自身の60→120 stepでは、端0→0体、中央寄り2→3体でした。終点での避難所内在所、警報IDの後続再使用は全条件で0です。原本JSONL・全条件の集計・図・検証記録を収録しています。1 seedの記述的観測であり、24体を独立な反復数として扱いません。
 
